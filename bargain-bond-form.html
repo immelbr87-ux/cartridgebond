@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Save on Games, Before You Buy — Bargain Bond</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #22c55e;
+    --green-dim: #16a34a;
+    --green-dark: #14532d;
+    --green-bg: #0d2318;
+    --green-light: #dcfce7;
+    --green-mid: #86efac;
+    --ink: #0f0f0f;
+    --ink-mid: #3a3a3a;
+    --ink-light: #777;
+    --border: #e2e2da;
+    --surface: #f8f8f5;
+    --white: #ffffff;
+    --radius: 10px;
+  }
+
+  body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh; }
+
+  /* HEADER */
+  .page-header {
+    background: var(--green-bg);
+    color: white;
+    padding: 28px 20px 22px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(34,197,94,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(34,197,94,0.07) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+  .eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    color: rgba(34,197,94,0.6); margin-bottom: 8px; font-weight: 600; position: relative;
+  }
+  .page-header h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px; font-weight: 700; line-height: .92;
+    margin-bottom: 18px; letter-spacing: -.01em; position: relative;
+  }
+  .page-header h1 .l1 { display: block; color: white; }
+  .page-header h1 .l2 { display: block; color: var(--green); }
+
+  .stat-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .stat-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    white-space: nowrap;
+  }
+
+  .how-it-works {
+    margin-top: 18px;
+    position: relative;
+  }
+
+  .hiw-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .hiw-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .hiw-step {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .hiw-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--green-dim);
+    color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .hiw-txt {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .hiw-arrow {
+    color: rgba(255,255,255,0.25);
+    font-size: 14px;
+  }
+
+  /* CONTAINER */
+  .container { max-width: 520px; margin: 0 auto; padding: 20px 16px 52px; }
+
+  /* TOGGLE */
+  .role-toggle {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1.5px solid var(--border); border-radius: var(--radius);
+    overflow: hidden; margin-bottom: 18px; background: var(--white);
+  }
+  .role-btn {
+    padding: 14px 10px; text-align: center; cursor: pointer;
+    border: none; background: transparent;
+    font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 600;
+    color: var(--ink-mid); transition: all .15s;
+  }
+  .role-btn:first-child { border-right: 1.5px solid var(--border); }
+  .role-btn.active { background: var(--ink); color: white; }
+  .role-btn .ri { display: block; font-size: 20px; margin-bottom: 4px; }
+  .role-btn .rs { display: block; font-size: 11px; opacity: .55; margin-top: 1px; font-weight: 400; }
+
+  /* CARD */
+  .card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; }
+  .card-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px; text-transform: uppercase; letter-spacing: .1em;
+    font-weight: 700; color: var(--ink); margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--green-dim);
+  }
+
+  /* FIELDS */
+  .field { margin-bottom: 14px; }
+  .field:last-child { margin-bottom: 0; }
+  label { display: block; font-size: 13px; font-weight: 500; color: var(--ink-mid); margin-bottom: 6px; }
+  select, input[type="text"], input[type="email"], input[type="tel"], textarea {
+    width: 100%; padding: 11px 14px;
+    border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--ink);
+    background: var(--surface); -webkit-appearance: none; appearance: none;
+    transition: border-color .15s; outline: none;
+  }
+  select:focus, input:focus, textarea:focus { border-color: var(--green-dim); background: white; }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer;
+  }
+
+  /* PRICE DISPLAY */
+  .price-display {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    padding: 12px 14px; background: var(--green-light);
+    border: 1.5px solid var(--green-mid); border-radius: 8px; min-height: 48px;
+  }
+  .price-val { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; color: var(--green-dim); letter-spacing: -.01em; line-height: 1; }
+
+  /* CONDITION - A1 ONLY */
+  .a1-only-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    background: var(--green-light);
+    border: 1.5px solid var(--green-mid);
+    border-radius: 8px;
+  }
+
+  .a1-check {
+    width: 28px; height: 28px;
+    background: var(--green-dim);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 14px; font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  .a1-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 700;
+    color: var(--green-dark);
+    letter-spacing: .02em;
+    margin-bottom: 4px;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+
+  .a1-badge {
+    font-size: 10px; font-weight: 700;
+    background: var(--green-dim); color: white;
+    padding: 2px 8px; border-radius: 10px;
+    letter-spacing: .05em; text-transform: uppercase;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  .a1-desc {
+    font-size: 12px;
+    color: var(--green-dark);
+    line-height: 1.55;
+    opacity: .8;
+  }
+
+  .cond-future {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--ink-light);
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* BADGES */
+  .pb { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; }
+  .ba1 { background: #dcfce7; color: var(--green-dark); }
+  .ba2 { background: #dbeafe; color: #1e3a8a; }
+  .bb  { background: #fef9c3; color: #713f12; }
+  .bc  { background: #fee2e2; color: #7f1d1d; }
+
+  .compare-note { font-size: 12px; color: var(--ink-light); margin-top: 8px; line-height: 1.5; }
+
+  /* PAYMENT */
+  .pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pay-btn { padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; text-align: center; cursor: pointer; font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink-mid); background: var(--surface); transition: all .12s; }
+  .pay-btn:hover { border-color: var(--green-dim); color: var(--green-dim); }
+  .pay-btn.sel { border-color: var(--green-dim); background: var(--green-light); color: var(--green-dark); }
+  textarea { resize: none; height: 80px; }
+
+  /* SUBMIT */
+  .submit-btn {
+    width: 100%; padding: 16px; background: var(--green-dim); color: white; border: none;
+    border-radius: var(--radius); font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    cursor: pointer; transition: background .2s; margin-top: 6px;
+  }
+  .submit-btn:hover { background: var(--green-dark); }
+
+  .trust-row { display: flex; justify-content: center; gap: 16px; margin-top: 12px; font-size: 11px; color: var(--ink-light); flex-wrap: wrap; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; padding: 16px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: white; border-radius: 14px; max-width: 480px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 26px 22px 22px; }
+  .modal h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 4px; }
+  .modal-sub { font-size: 13px; color: var(--ink-light); margin-bottom: 18px; line-height: 1.5; }
+  .terms-box { background: var(--surface); border: 1.5px solid var(--border); border-radius: 8px; padding: 14px; font-size: 12.5px; color: var(--ink-mid); line-height: 1.7; max-height: 200px; overflow-y: auto; margin-bottom: 16px; }
+  .terms-box h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-light); margin: 12px 0 4px; }
+  .terms-box h4:first-child { margin-top: 0; }
+  .agree-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; cursor: pointer; }
+  .agree-row input { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; accent-color: var(--green-dim); cursor: pointer; }
+  .agree-row span { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
+  .sig-field { margin-bottom: 16px; }
+  .sig-field label { font-size: 12px; color: var(--ink-light); margin-bottom: 6px; }
+  .sig-field input { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--green-dark); border: none; border-bottom: 1.5px solid var(--border); border-radius: 0; background: transparent; padding: 6px 0; width: 100%; outline: none; }
+  .sig-field input:focus { border-bottom-color: var(--green-dim); }
+  .confirm-btn { width: 100%; padding: 14px; background: var(--green-dim); color: white; border: none; border-radius: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; opacity: .45; pointer-events: none; transition: background .2s, opacity .15s; }
+  .confirm-btn.ready { opacity: 1; pointer-events: auto; }
+  .confirm-btn.ready:hover { background: var(--green-dark); }
+
+  /* SUCCESS */
+  .success-screen { display: none; text-align: center; padding: 44px 20px; }
+  .success-screen.show { display: block; }
+  .success-icon { width: 60px; height: 60px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 26px; }
+  .success-screen h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 8px; }
+  .success-screen p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; max-width: 320px; margin: 0 auto 18px; }
+
+  .next-steps {
+    text-align: left;
+    margin: 0 auto 20px;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .next-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .ns-num {
+    width: 26px; height: 26px;
+    background: var(--green-dim);
+    color: white;
+    border-radius: 50%;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  .ns-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .04em;
+    color: var(--ink); margin-bottom: 3px;
+  }
+
+  .ns-sub { font-size: 12px; color: var(--ink-mid); line-height: 1.55; }
+  .bond-summary { background: var(--green-light); border: 1.5px solid var(--green-mid); border-radius: var(--radius); padding: 14px; text-align: left; font-size: 13px; color: var(--green-dark); margin-bottom: 18px; }
+  .sum-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--green-mid); }
+  .sum-row:last-child { border-bottom: none; }
+  .sum-row span:last-child { font-weight: 600; }
+  .form-inner { display: block; }
+
+  #otherGameFields, #buyOtherGameFields {
+    margin-top: 14px;
+    padding: 14px;
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+  }
+
+  #otherGameFields .field, #buyOtherGameFields .field { margin-bottom: 10px; }
+  #otherGameFields .field:last-child, #buyOtherGameFields .field:last-child { margin-bottom: 0; }
+  .beta-banner {
+    background: #1a1a1a;
+    border-bottom: 1px solid rgba(34,197,94,0.2);
+    padding: 9px 20px;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+  .beta-banner strong { color: var(--green); font-weight: 600; }
+
+  .no-payment-note {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: rgba(34,197,94,0.06);
+    border: 1px solid rgba(34,197,94,0.2);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--ink-mid);
+    text-align: center;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="beta-banner">
+  <strong>&#9679; Early Beta</strong> &nbsp;We're manually matching buyers and sellers while we build the full platform.
+</div>
+
+<div class="page-header">
+  <h1><span class="l1">Save on Games,</span><span class="l2">Before You Buy.</span></h1>
+  <div class="stat-row">
+    <div class="stat-pill">No Marketplace Hassle</div>
+    <div class="stat-pill">Beat GameStop Pricing</div>
+    <div class="stat-pill">Guaranteed A1 Condition</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="role-toggle" id="roleToggle">
+    <button class="role-btn active" data-role="sell" onclick="setRole('sell')">
+      <span class="ri">&#128176;</span>Sell used<span class="rs">Lock in your return now</span>
+    </button>
+    <button class="role-btn" data-role="buy" onclick="setRole('buy')">
+      <span class="ri">&#127918;</span>Buy used<span class="rs">Get a game at a locked price</span>
+    </button>
+  </div>
+
+  <div class="form-inner" id="formInner">
+
+    <div id="sellFields">
+      <div class="card">
+        <div class="card-label">Your game</div>
+
+        <div class="field">
+          <label for="system">Select system</label>
+          <select id="system" onchange="populateGames()">
+            <option value="">— choose a system —</option>
+            <option value="ps5">PlayStation 5</option>
+            <option value="xbox">Xbox Series X|S</option>
+            <option value="switch">Nintendo Switch</option>
+            <option value="ps4">PlayStation 4</option>
+            <option value="xbone">Xbox One</option>
+          </select>
+        </div>
+
+        <div class="field" id="gameFieldWrap" style="display:none;">
+          <label for="game">Select game</label>
+          <select id="game" onchange="handleGameSelect()">
+            <option value="">— choose a game —</option>
+          </select>
+        </div>
+
+        <div id="otherGameFields" style="display:none;">
+          <div class="field">
+            <label for="customGame">Game title</label>
+            <input type="text" id="customGame" placeholder="e.g. God of War Ragnarök">
+          </div>
+          <div class="field">
+            <label for="customPrice">Your asking resale price ($)</label>
+            <input type="text" id="customPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="window">How soon can you sell?</label>
+          <select id="window" onchange="updatePrice()">
+            <option value="fast">Fast Flip — 0–90 days (Highest Return)</option>
+            <option value="flexible">Flexible — 90–180 days (More Time)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Game condition</label>
+          <div class="a1-only-box">
+            <div class="a1-check">&#10003;</div>
+            <div>
+              <div class="a1-title">A1 — Like New / Very Good <span class="a1-badge">90%+ condition</span></div>
+              <div class="a1-desc">Game plays perfectly. Original case included. Minor surface scuffs acceptable — disc must be free of scratches that affect gameplay. Requires all original components.</div>
+            </div>
+          </div>
+          <div class="cond-future">Other condition tiers coming soon.</div>
+        </div>
+        <div class="field" id="resalePriceRow" style="display:none;">
+          <label>Your guaranteed resale price</label>
+          <div class="price-display" id="resalePriceBox"><span style="color:var(--ink-light)">Select a game above</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="buyFields" style="display:none;">
+      <div class="card">
+        <div class="card-label">Game you want</div>
+
+        <div class="field">
+          <label for="buySystem">Select system</label>
+          <select id="buySystem" onchange="populateBuyGames()">
+            <option value="">— choose a system —</option>
+            <option value="ps5">PlayStation 5</option>
+            <option value="xbox">Xbox Series X|S</option>
+            <option value="switch">Nintendo Switch</option>
+            <option value="ps4">PlayStation 4</option>
+            <option value="xbone">Xbox One</option>
+          </select>
+        </div>
+
+        <div class="field" id="buyGameFieldWrap" style="display:none;">
+          <label for="buyGame">Select game</label>
+          <select id="buyGame" onchange="handleBuyGameSelect()">
+            <option value="">— choose a game —</option>
+          </select>
+        </div>
+
+        <div id="buyOtherGameFields" style="display:none;">
+          <div class="field">
+            <label for="buyCustomGame">Game title</label>
+            <input type="text" id="buyCustomGame" placeholder="e.g. God of War Ragnarök">
+          </div>
+          <div class="field">
+            <label for="buyCustomPrice">Your offer price ($)</label>
+            <input type="text" id="buyCustomPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+          </div>
+        </div>
+
+        <div class="field" id="buyPriceRow" style="display:none;">
+          <label>Locked price — no bidding, no competition</label>
+          <div class="price-display" id="buyPriceBox"><span>—</span></div>
+          <div style="font-size:12px;color:var(--ink-light);margin-top:8px;line-height:1.5;">A1 condition — game plays perfectly, original case included. Minor surface scuffs acceptable; disc must be free of scratches that affect gameplay. Requires all original components.</div>
+        </div>
+        <div class="field">
+          <label for="buyWindow">When do you need it?</label>
+          <select id="buyWindow">
+            <option value="fast">Within 0–90 days</option>
+            <option value="flexible">Within 90–180 days</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Your info</div>
+      <div class="field"><label for="name">Full name</label><input type="text" id="name" placeholder="Jane Smith"></div>
+      <div class="field"><label for="email">Email</label><input type="email" id="email" placeholder="jane@email.com"></div>
+      <div class="field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" placeholder="(555) 000-0000"></div>
+      <div class="field"><label for="zip">Zip code</label><input type="text" id="zip" placeholder="60601" maxlength="5"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Anything else?</div>
+      <div class="field">
+        <label for="notes">Notes or questions (optional)</label>
+        <textarea id="notes" placeholder="e.g. disc is in great shape, bought at Target last month..."></textarea>
+      </div>
+    </div>
+
+    <div class="no-payment-note">
+      &#128274; No payment is collected at this stage. This is an interest form only — we'll coordinate everything personally once we find your match.
+    </div>
+    <button class="submit-btn" onclick="submitForm()">Submit My Offer &#8594;</button>
+    <div class="trust-row">
+      <span>&#10003; Zero obligation</span>
+      <span>&#10003; Free to submit</span>
+      <span>&#10003; Real person responds</span>
+    </div>
+  </div>
+
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">&#10003;</div>
+    <h2>Got it — we're on it.</h2>
+    <p>Thanks for being an early tester. We're doing this by hand right now, which means a real person will review your submission and reach out directly. Here's what to expect:</p>
+    <div class="next-steps">
+      <div class="next-step">
+        <span class="ns-num">1</span>
+        <div>
+          <div class="ns-title">We review your submission</div>
+          <div class="ns-sub">Usually within 24–48 hours. We're a small operation — no bots, no auto-replies, just us checking the queue.</div>
+        </div>
+      </div>
+      <div class="next-step">
+        <span class="ns-num">2</span>
+        <div>
+          <div class="ns-title">We look for your match</div>
+          <div class="ns-sub">If a buyer or seller lines up with your game, price, and window, we'll connect you directly. First in, first matched.</div>
+        </div>
+      </div>
+      <div class="next-step">
+        <span class="ns-num">3</span>
+        <div>
+          <div class="ns-title">We reach out to coordinate</div>
+          <div class="ns-sub">Expect a DM or email to set up the exchange. If no match is found right away, we'll check back in — no payment ever changes hands until you're comfortable.</div>
+        </div>
+      </div>
+    </div>
+    <div class="bond-summary" id="bondSummary"></div>
+    <p style="font-size:12px;color:var(--ink-light);margin-top:4px;">Questions or second thoughts? Just DM us on the original post — no hard feelings.</p>
+  </div>
+
+</div>
+
+<script>
+var currentRole = 'sell', selectedCond = 'a1';
+
+var condData = {
+  a1: { mult:1.00, label:'A1 — Like New / Very Good', badge:'ba1' }
+};
+
+var gamesBySystem = {
+  ps5: [
+    ['Marvel\'s Spider-Man 2',              70, 50],
+    ['Final Fantasy VII Rebirth',           70, 50],
+    ['Stellar Blade',                       70, 50],
+    ['Rise of the Ronin',                   70, 50],
+    ['Dragon Ball: Sparking! Zero',         70, 50],
+    ['Mortal Kombat 1',                     70, 50],
+    ['WWE 2K25',                            70, 50],
+    ['NBA 2K25',                            70, 50],
+    ['Call of Duty: Black Ops 6',           70, 50],
+    ['EA Sports College Football 25',       70, 50],
+    ['Madden NFL 25',                       70, 50],
+    ['EA Sports FC 25',                     70, 50],
+    ['NHL 25',                              70, 50],
+    ['God of War Ragnarök',                 60, 43],
+    ['Elden Ring',                          60, 43],
+    ['Like a Dragon: Infinite Wealth',      70, 50],
+    ['Persona 3 Reload',                    60, 43],
+    ['Dragon\'s Dogma 2',                   60, 43],
+    ['Hogwarts Legacy',                     60, 43],
+    ['Star Wars Jedi: Survivor',            60, 43],
+    ['Baldur\'s Gate 3',                    60, 43],
+    ['Resident Evil 4 Remake',              60, 43],
+    ['Street Fighter 6',                    60, 43],
+    ['Tekken 8',                            70, 50],
+    ['Final Fantasy XVI',                   60, 43],
+    ['Returnal',                            50, 36],
+    ['Horizon Forbidden West',              50, 36],
+    ['Ghost of Tsushima Director\'s Cut',   50, 36],
+    ['Ratchet & Clank: Rift Apart',         50, 36],
+    ['Spider-Man: Miles Morales',           50, 36],
+    ['Demon\'s Souls',                      50, 36],
+    ['Gran Turismo 7',                      50, 36],
+    ['The Last of Us Part I',               50, 36],
+    ['The Last of Us Part II Remastered',   50, 36],
+    ['Dead Space Remake',                   50, 36],
+    ['Lies of P',                           50, 36],
+    ['Lords of the Fallen',                 50, 36],
+    ['Armored Core VI',                     50, 36],
+    ['Alan Wake 2',                         60, 43],
+    ['Diablo IV',                           50, 36],
+    ['Black Myth: Wukong',                  60, 43],
+    ['Resident Evil Village',               45, 32],
+    ['Cyberpunk 2077',                      40, 28],
+    ['Red Dead Redemption 2',               40, 28],
+    ['Assassin\'s Creed Mirage',            45, 32],
+    ['NBA 2K24',                            40, 28],
+    ['WWE 2K24',                            50, 36],
+    ['Helldivers 2',                        40, 28],
+    ['A Plague Tale: Requiem',              40, 28],
+    ['Like a Dragon: Ishin!',              40, 28],
+    ['Atomic Heart',                        35, 24],
+    ['Wo Long: Fallen Dynasty',             30, 20],
+    ['Sifu',                                30, 20],
+    ['Ghostwire Tokyo',                     30, 20],
+    ['Gotham Knights',                      25, 17],
+    ['Suicide Squad: Kill the Justice League', 20, 12],
+    ['Forspoken',                           20, 12],
+    ['GTA V',                               30, 20],
+    ['Bloodborne',                          40, 28],
+  ],
+  xbox: [
+    ['Call of Duty: Black Ops 6',           70, 50],
+    ['Indiana Jones and the Great Circle',  70, 50],
+    ['EA Sports College Football 25',       70, 50],
+    ['Madden NFL 25',                       70, 50],
+    ['EA Sports FC 25',                     70, 50],
+    ['NHL 25',                              70, 50],
+    ['Dragon Ball: Sparking! Zero',         70, 50],
+    ['Mortal Kombat 1',                     60, 43],
+    ['Like a Dragon: Infinite Wealth',      70, 50],
+    ['Elden Ring',                          60, 43],
+    ['Hogwarts Legacy',                     60, 43],
+    ['Diablo IV',                           50, 36],
+    ['Starfield',                           45, 32],
+    ['Forza Motorsport 2023',               55, 39],
+    ['Forza Horizon 5',                     50, 36],
+    ['Halo Infinite',                       30, 20],
+    ['Senua\'s Saga: Hellblade II',         60, 43],
+    ['Tekken 8',                            70, 50],
+    ['Street Fighter 6',                    60, 43],
+    ['Black Myth: Wukong',                  60, 43],
+    ['Persona 3 Reload',                    60, 43],
+    ['Dragon\'s Dogma 2',                   60, 43],
+    ['Lies of P',                           50, 36],
+    ['Lords of the Fallen',                 50, 36],
+    ['Dead Space Remake',                   50, 36],
+    ['Armored Core VI',                     50, 36],
+    ['A Plague Tale: Requiem',              40, 28],
+    ['Cyberpunk 2077',                      40, 28],
+    ['Red Dead Redemption 2',               40, 28],
+    ['Assassin\'s Creed Mirage',            45, 32],
+    ['Avatar: Frontiers of Pandora',        45, 32],
+    ['Atomic Heart',                        35, 24],
+    ['Redfall',                             15, 8],
+    ['GTA V',                               30, 20],
+    ['NBA 2K25',                            70, 50],
+    ['WWE 2K24',                            50, 36],
+    ['Gotham Knights',                      25, 17],
+    ['Suicide Squad: Kill the Justice League', 20, 12],
+  ],
+  switch: [
+    ['Zelda: Tears of the Kingdom',         70, 50],
+    ['Super Mario Bros. Wonder',            60, 43],
+    ['Mario Kart 8 Deluxe',                 60, 43],
+    ['Super Smash Bros. Ultimate',          60, 43],
+    ['Splatoon 3',                          55, 39],
+    ['Pokemon Scarlet',                     55, 39],
+    ['Pokemon Violet',                      55, 39],
+    ['Animal Crossing: New Horizons',       50, 36],
+    ['Pokemon Legends: Arceus',             45, 32],
+    ['Zelda: Breath of the Wild',           55, 39],
+    ['Metroid Dread',                       50, 36],
+    ['Kirby and the Forgotten Land',        50, 36],
+    ['Pikmin 4',                            50, 36],
+    ['Fire Emblem Engage',                  50, 36],
+    ['Xenoblade Chronicles 3',              50, 36],
+    ['Bayonetta 3',                         45, 32],
+    ['Super Mario Odyssey',                 50, 36],
+    ['Mario Party Superstars',              50, 36],
+    ['Luigi\'s Mansion 3',                  45, 32],
+    ['Hogwarts Legacy',                     50, 36],
+    ['Donkey Kong Country: Tropical Freeze',40, 28],
+    ['Hyrule Warriors: Age of Calamity',    35, 24],
+    ['Astral Chain',                        40, 28],
+    ['Persona 5 Royal',                     40, 28],
+    ['Pokemon Sword',                       35, 24],
+    ['Pokemon Shield',                      35, 24],
+    ['New Pokemon Snap',                    35, 24],
+    ['Ring Fit Adventure',                  45, 32],
+    ['Minecraft',                           25, 17],
+    ['Just Dance 2024',                     30, 20],
+    ['Fitness Boxing 2',                    25, 17],
+  ],
+  ps4: [
+    ['God of War: Ragnarök',                40, 28],
+    ['Horizon Forbidden West',              35, 24],
+    ['Ghost of Tsushima',                   35, 24],
+    ['The Last of Us Part II',              30, 20],
+    ['Spider-Man: Miles Morales',           30, 20],
+    ['Cyberpunk 2077',                      25, 17],
+    ['Red Dead Redemption 2',               25, 17],
+    ['Elden Ring',                          40, 28],
+    ['Hogwarts Legacy',                     35, 24],
+    ['God of War 2018',                     25, 17],
+    ['Bloodborne',                          35, 24],
+    ['Dark Souls III',                      25, 17],
+    ['Persona 5 Royal',                     30, 20],
+    ['GTA V',                               20, 12],
+    ['Minecraft',                           20, 12],
+    ['Diablo IV',                           35, 24],
+    ['Resident Evil 4 Remake',              35, 24],
+    ['Call of Duty: Modern Warfare III',    30, 20],
+    ['FIFA 23',                             15, 8],
+    ['Madden NFL 24',                       25, 17],
+  ],
+  xbone: [
+    ['Red Dead Redemption 2',               25, 17],
+    ['GTA V',                               20, 12],
+    ['Cyberpunk 2077',                      20, 12],
+    ['Forza Horizon 4',                     25, 17],
+    ['Halo 5: Guardians',                   15, 8],
+    ['Elden Ring',                          35, 24],
+    ['Hogwarts Legacy',                     30, 20],
+    ['Call of Duty: Modern Warfare II',     20, 12],
+    ['Minecraft',                           20, 12],
+    ['Gears 5',                             15, 8],
+    ['Diablo IV',                           30, 20],
+    ['FIFA 23',                             12, 7],
+    ['Madden NFL 24',                       20, 12],
+  ]
+};
+
+function populateGames() {
+  var sys = document.getElementById('system').value;
+  var gameWrap = document.getElementById('gameFieldWrap');
+  var gameSelect = document.getElementById('game');
+  var priceRow = document.getElementById('resalePriceRow');
+  var otherFields = document.getElementById('otherGameFields');
+
+  gameSelect.innerHTML = '<option value="">— choose a game —</option>';
+  otherFields.style.display = 'none';
+  priceRow.style.display = 'none';
+
+  if (!sys) { gameWrap.style.display = 'none'; return; }
+
+  var sorted = (gamesBySystem[sys] || []).slice().sort(function(a,b){ return a[0].localeCompare(b[0]); });
+  sorted.forEach(function(g) {
+    var opt = document.createElement('option');
+    opt.value = g[0] + '|' + g[1] + '|' + g[2];
+    opt.textContent = g[0];
+    gameSelect.appendChild(opt);
+  });
+  var other = document.createElement('option');
+  other.value = 'OTHER';
+  other.textContent = 'Title not shown? Enter details below';
+  gameSelect.appendChild(other);
+
+  gameWrap.style.display = 'block';
+}
+
+function populateBuyGames() {
+  var sys = document.getElementById('buySystem').value;
+  var gameWrap = document.getElementById('buyGameFieldWrap');
+  var gameSelect = document.getElementById('buyGame');
+  var priceRow = document.getElementById('buyPriceRow');
+  var otherFields = document.getElementById('buyOtherGameFields');
+
+  gameSelect.innerHTML = '<option value="">— choose a game —</option>';
+  priceRow.style.display = 'none';
+  otherFields.style.display = 'none';
+
+  if (!sys) { gameWrap.style.display = 'none'; return; }
+
+  var sorted = (gamesBySystem[sys] || []).slice().sort(function(a,b){ return a[0].localeCompare(b[0]); });
+  sorted.forEach(function(g) {
+    var opt = document.createElement('option');
+    opt.value = g[0] + '|' + g[2];
+    opt.textContent = g[0] + ' \u2014 $' + g[2];
+    gameSelect.appendChild(opt);
+  });
+  var other = document.createElement('option');
+  other.value = 'OTHER';
+  other.textContent = 'Title not shown? Enter details below';
+  gameSelect.appendChild(other);
+
+  gameWrap.style.display = 'block';
+}
+
+function handleBuyGameSelect() {
+  var sel = document.getElementById('buyGame').value;
+  var otherFields = document.getElementById('buyOtherGameFields');
+  otherFields.style.display = sel === 'OTHER' ? 'block' : 'none';
+  if (sel !== 'OTHER') updateBuyPrice();
+  else document.getElementById('buyPriceRow').style.display = 'none';
+}
+
+function handleGameSelect() {
+  var sel = document.getElementById('game').value;
+  var otherFields = document.getElementById('otherGameFields');
+  otherFields.style.display = sel === 'OTHER' ? 'block' : 'none';
+  if (sel !== 'OTHER') updatePrice();
+  else document.getElementById('resalePriceRow').style.display = 'none';
+}
+
+function setRole(r) {
+  currentRole = r;
+  document.querySelectorAll('.role-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelector('[data-role="'+r+'"]').classList.add('active');
+  document.getElementById('sellFields').style.display = r==='sell'?'block':'none';
+  document.getElementById('buyFields').style.display  = r==='buy' ?'block':'none';
+}
+
+function updatePrice() {
+  var sel = document.getElementById('game').value;
+  var win = document.getElementById('window').value;
+  var row = document.getElementById('resalePriceRow');
+  if (!sel || sel === 'OTHER') { row.style.display='none'; return; }
+  row.style.display = 'block';
+  var parts = sel.split('|');
+  var fast = parseInt(parts[2]);
+  var flex = Math.round(fast * 0.9);
+  var resale = win==='fast' ? fast : flex;
+  var winLbl = win==='fast' ? '0\u201390 days' : '90\u2013180 days';
+  document.getElementById('resalePriceBox').innerHTML =
+    '<span class="price-val">$'+resale+'</span>' +
+    '<span style="color:var(--ink-light);font-size:13px;">guaranteed \u00b7 '+winLbl+'</span>' +
+    '<span class="pb ba1">A1 \u2014 Like New / Very Good</span>';
+}
+
+function updateBuyPrice() {
+  var sel = document.getElementById('buyGame').value;
+  var row = document.getElementById('buyPriceRow');
+  if (!sel) { row.style.display='none'; return; }
+  row.style.display = 'block';
+  var price = sel.split('|')[1];
+  document.getElementById('buyPriceBox').innerHTML =
+    '<span class="price-val">$'+price+'</span>' +
+    '<span style="color:var(--ink-light);font-size:13px;">locked \u2014 no bidding</span>';
+}
+
+function submitForm() {
+  var name  = document.getElementById('name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var game  = currentRole==='sell'
+    ? (document.getElementById('game').value || document.getElementById('customGame').value.trim())
+    : (document.getElementById('buyGame').value || document.getElementById('buyCustomGame').value.trim());
+  if (!name || !email || !game) {
+    alert('Please fill in your name, email, and select a game before submitting.');
+    return;
+  }
+  document.getElementById('formInner').style.display = 'none';
+  var html = '';
+  if (currentRole === 'sell') {
+    var gsel = document.getElementById('game').value;
+    var sys = document.getElementById('system').value;
+    var sysLabels = {ps5:'PS5',xbox:'Xbox Series X|S',switch:'Nintendo Switch',ps4:'PS4',xbone:'Xbox One'};
+    var win = document.getElementById('window').value;
+    var wlbl = win==='fast' ? 'Fast Flip (0\u201390 days)' : 'Flexible (90\u2013180 days)';
+    var gname, res;
+    if (gsel && gsel !== 'OTHER') {
+      var parts = gsel.split('|');
+      gname = parts[0] + (sys ? ' (' + (sysLabels[sys]||sys) + ')' : '');
+      var fast = parseInt(parts[2]);
+      res = win==='fast' ? fast : Math.round(fast * 0.9);
+    } else {
+      var cg = document.getElementById('customGame').value.trim();
+      var cp = document.getElementById('customPrice').value.trim();
+      gname = cg + (sys ? ' (' + (sysLabels[sys]||sys) + ')' : '');
+      res = cp || '\u2014';
+    }
+    html = '<div class="sum-row"><span>Role</span><span>Selling used</span></div>' +
+           '<div class="sum-row"><span>Game</span><span>'+gname+'</span></div>' +
+           '<div class="sum-row"><span>Condition</span><span>'+condData[selectedCond].label+'</span></div>' +
+           '<div class="sum-row"><span>Resale price</span><span>$'+res+'</span></div>' +
+           '<div class="sum-row"><span>Window</span><span>'+wlbl+'</span></div>';
+  } else {
+    var bg = document.getElementById('buyGame').value;
+    var bsys = document.getElementById('buySystem').value;
+    var bsysLabels = {ps5:'PS5',xbox:'Xbox Series X|S',switch:'Nintendo Switch',ps4:'PS4',xbone:'Xbox One'};
+    var sysStr = bsys ? ' (' + (bsysLabels[bsys]||bsys) + ')' : '';
+    var bn, bp;
+    if (bg && bg !== 'OTHER') {
+      var bparts = bg.split('|');
+      bn = bparts[0] + sysStr;
+      bp = bparts[1];
+    } else {
+      bn = (document.getElementById('buyCustomGame').value.trim() || '\u2014') + sysStr;
+      bp = document.getElementById('buyCustomPrice').value.trim() || '\u2014';
+    }
+    var bw = document.getElementById('buyWindow').value==='fast' ? 'Within 0\u201390 days' : 'Within 90\u2013180 days';
+    html = '<div class="sum-row"><span>Role</span><span>Buying used</span></div>' +
+           '<div class="sum-row"><span>Game</span><span>'+bn+'</span></div>' +
+           '<div class="sum-row"><span>Offer price</span><span>$'+bp+'</span></div>' +
+           '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>' +
+           '<div class="sum-row"><span>Timeline</span><span>'+bw+'</span></div>';
+  }
+  document.getElementById('bondSummary').innerHTML = html;
+  document.getElementById('successScreen').classList.add('show');
+  document.getElementById('roleToggle').style.display = 'none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.getElementById('modalOverlay') && document.getElementById('modalOverlay').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('open'); });
+</script>
+</body>
+</html>
