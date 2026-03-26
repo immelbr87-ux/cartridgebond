@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   :root {
     --green: #22c55e;
     --green-dim: #16a34a;
@@ -23,9 +23,9 @@
     --white: #ffffff;
     --radius: 10px;
   }
-
+ 
   body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh; }
-
+ 
   /* HEADER */
   .page-header {
     background: var(--green-bg);
@@ -55,7 +55,7 @@
   }
   .page-header h1 .l1 { display: block; color: white; }
   .page-header h1 .l2 { display: block; color: var(--green); }
-
+ 
   .stat-row {
     display: flex;
     justify-content: center;
@@ -63,7 +63,7 @@
     flex-wrap: wrap;
     position: relative;
   }
-
+ 
   .stat-pill {
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
@@ -75,12 +75,12 @@
     color: rgba(255,255,255,0.85);
     white-space: nowrap;
   }
-
+ 
   .how-it-works {
     margin-top: 18px;
     position: relative;
   }
-
+ 
   .hiw-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 10px;
@@ -90,7 +90,7 @@
     margin-bottom: 10px;
     font-weight: 600;
   }
-
+ 
   .hiw-steps {
     display: flex;
     align-items: center;
@@ -98,13 +98,13 @@
     gap: 8px;
     flex-wrap: wrap;
   }
-
+ 
   .hiw-step {
     display: flex;
     align-items: center;
     gap: 7px;
   }
-
+ 
   .hiw-num {
     width: 22px;
     height: 22px;
@@ -119,21 +119,21 @@
     justify-content: center;
     flex-shrink: 0;
   }
-
+ 
   .hiw-txt {
     font-size: 13px;
     font-weight: 500;
     color: rgba(255,255,255,0.75);
   }
-
+ 
   .hiw-arrow {
     color: rgba(255,255,255,0.25);
     font-size: 14px;
   }
-
+ 
   /* CONTAINER */
   .container { max-width: 520px; margin: 0 auto; padding: 20px 16px 52px; }
-
+ 
   /* TOGGLE */
   .role-toggle {
     display: grid; grid-template-columns: 1fr 1fr;
@@ -150,7 +150,7 @@
   .role-btn.active { background: var(--ink); color: white; }
   .role-btn .ri { display: block; font-size: 20px; margin-bottom: 4px; }
   .role-btn .rs { display: block; font-size: 11px; opacity: .55; margin-top: 1px; font-weight: 400; }
-
+ 
   /* CARD */
   .card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; }
   .card-label {
@@ -159,7 +159,7 @@
     font-weight: 700; color: var(--ink); margin-bottom: 16px;
     padding-bottom: 10px; border-bottom: 2px solid var(--green-dim);
   }
-
+ 
   /* FIELDS */
   .field { margin-bottom: 14px; }
   .field:last-child { margin-bottom: 0; }
@@ -176,7 +176,7 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer;
   }
-
+ 
   /* PRICE DISPLAY */
   .price-display {
     display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
@@ -184,7 +184,7 @@
     border: 1.5px solid var(--green-mid); border-radius: 8px; min-height: 48px;
   }
   .price-val { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; color: var(--green-dim); letter-spacing: -.01em; line-height: 1; }
-
+ 
   /* CONDITION - A1 ONLY */
   .a1-only-box {
     display: flex;
@@ -195,7 +195,7 @@
     border: 1.5px solid var(--green-mid);
     border-radius: 8px;
   }
-
+ 
   .a1-check {
     width: 28px; height: 28px;
     background: var(--green-dim);
@@ -204,7 +204,7 @@
     color: white; font-size: 14px; font-weight: 700;
     flex-shrink: 0; margin-top: 1px;
   }
-
+ 
   .a1-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 16px; font-weight: 700;
@@ -213,7 +213,7 @@
     margin-bottom: 4px;
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   }
-
+ 
   .a1-badge {
     font-size: 10px; font-weight: 700;
     background: var(--green-dim); color: white;
@@ -221,14 +221,14 @@
     letter-spacing: .05em; text-transform: uppercase;
     font-family: 'Barlow Condensed', sans-serif;
   }
-
+ 
   .a1-desc {
     font-size: 12px;
     color: var(--green-dark);
     line-height: 1.55;
     opacity: .8;
   }
-
+ 
   .cond-future {
     margin-top: 8px;
     font-size: 11px;
@@ -236,23 +236,23 @@
     text-align: center;
     font-style: italic;
   }
-
+ 
   /* BADGES */
   .pb { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; }
   .ba1 { background: #dcfce7; color: var(--green-dark); }
   .ba2 { background: #dbeafe; color: #1e3a8a; }
   .bb  { background: #fef9c3; color: #713f12; }
   .bc  { background: #fee2e2; color: #7f1d1d; }
-
+ 
   .compare-note { font-size: 12px; color: var(--ink-light); margin-top: 8px; line-height: 1.5; }
-
+ 
   /* PAYMENT */
   .pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .pay-btn { padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; text-align: center; cursor: pointer; font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink-mid); background: var(--surface); transition: all .12s; }
   .pay-btn:hover { border-color: var(--green-dim); color: var(--green-dim); }
   .pay-btn.sel { border-color: var(--green-dim); background: var(--green-light); color: var(--green-dark); }
   textarea { resize: none; height: 80px; }
-
+ 
   /* SUBMIT */
   .submit-btn {
     width: 100%; padding: 16px; background: var(--green-dim); color: white; border: none;
@@ -261,9 +261,9 @@
     cursor: pointer; transition: background .2s; margin-top: 6px;
   }
   .submit-btn:hover { background: var(--green-dark); }
-
+ 
   .trust-row { display: flex; justify-content: center; gap: 16px; margin-top: 12px; font-size: 11px; color: var(--ink-light); flex-wrap: wrap; }
-
+ 
   /* MODAL */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; padding: 16px; }
   .modal-overlay.open { display: flex; }
@@ -283,14 +283,14 @@
   .confirm-btn { width: 100%; padding: 14px; background: var(--green-dim); color: white; border: none; border-radius: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; opacity: .45; pointer-events: none; transition: background .2s, opacity .15s; }
   .confirm-btn.ready { opacity: 1; pointer-events: auto; }
   .confirm-btn.ready:hover { background: var(--green-dark); }
-
+ 
   /* SUCCESS */
   .success-screen { display: none; text-align: center; padding: 44px 20px; }
   .success-screen.show { display: block; }
   .success-icon { width: 60px; height: 60px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 26px; }
   .success-screen h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 8px; }
   .success-screen p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; max-width: 320px; margin: 0 auto 18px; }
-
+ 
   .next-steps {
     text-align: left;
     margin: 0 auto 20px;
@@ -299,7 +299,7 @@
     flex-direction: column;
     gap: 12px;
   }
-
+ 
   .next-step {
     display: flex;
     align-items: flex-start;
@@ -309,7 +309,7 @@
     border: 1.5px solid var(--border);
     border-radius: var(--radius);
   }
-
+ 
   .ns-num {
     width: 26px; height: 26px;
     background: var(--green-dim);
@@ -320,21 +320,21 @@
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; margin-top: 1px;
   }
-
+ 
   .ns-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 15px; font-weight: 700;
     text-transform: uppercase; letter-spacing: .04em;
     color: var(--ink); margin-bottom: 3px;
   }
-
+ 
   .ns-sub { font-size: 12px; color: var(--ink-mid); line-height: 1.55; }
   .bond-summary { background: var(--green-light); border: 1.5px solid var(--green-mid); border-radius: var(--radius); padding: 14px; text-align: left; font-size: 13px; color: var(--green-dark); margin-bottom: 18px; }
   .sum-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--green-mid); }
   .sum-row:last-child { border-bottom: none; }
   .sum-row span:last-child { font-weight: 600; }
   .form-inner { display: block; }
-
+ 
   #otherGameFields, #buyOtherGameFields {
     margin-top: 14px;
     padding: 14px;
@@ -342,7 +342,7 @@
     border: 1px dashed var(--border);
     border-radius: 8px;
   }
-
+ 
   #otherGameFields .field, #buyOtherGameFields .field { margin-bottom: 10px; }
   #otherGameFields .field:last-child, #buyOtherGameFields .field:last-child { margin-bottom: 0; }
   .beta-banner {
@@ -356,7 +356,7 @@
     line-height: 1.5;
   }
   .beta-banner strong { color: var(--green); font-weight: 600; }
-
+ 
   .no-payment-note {
     margin-top: 10px;
     padding: 10px 14px;
@@ -371,11 +371,11 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="beta-banner">
   <strong>&#9679; Early Beta</strong> &nbsp;We're manually matching buyers and sellers while we build the full platform.
 </div>
-
+ 
 <div class="page-header">
   <h1><span class="l1">Save on Games,</span><span class="l2">Before You Buy.</span></h1>
   <div class="stat-row">
@@ -384,9 +384,9 @@
     <div class="stat-pill">Guaranteed A1 Condition</div>
   </div>
 </div>
-
+ 
 <div class="container">
-
+ 
   <div class="role-toggle" id="roleToggle">
     <button class="role-btn active" data-role="sell" onclick="setRole('sell')">
       <span class="ri">&#128176;</span>Sell used<span class="rs">Lock in your return now</span>
@@ -395,10 +395,10 @@
       <span class="ri">&#127918;</span>Buy used<span class="rs">Get a game at a locked price</span>
     </button>
   </div>
-
+ 
   <div class="form-inner" id="formInner">
   <form id="bbForm" action="https://formspree.io/f/xvzvopzr" method="POST">
-
+ 
   <!-- hidden fields populated by JS before submit -->
   <input type="hidden" name="role" id="h_role">
   <input type="hidden" name="system" id="h_system">
@@ -407,11 +407,11 @@
   <input type="hidden" name="window" id="h_window">
   <input type="hidden" name="condition" id="h_condition">
   <input type="hidden" name="timeline" id="h_timeline">
-
+ 
     <div id="sellFields">
       <div class="card">
         <div class="card-label">Your game</div>
-
+ 
         <div class="field">
           <label for="system">Select system</label>
           <select id="system" onchange="populateGames()">
@@ -423,14 +423,14 @@
             <option value="xbone">Xbox One</option>
           </select>
         </div>
-
+ 
         <div class="field" id="gameFieldWrap" style="display:none;">
           <label for="game">Select game</label>
           <select id="game" onchange="handleGameSelect()">
             <option value="">— choose a game —</option>
           </select>
         </div>
-
+ 
         <div id="otherGameFields" style="display:none;">
           <div class="field">
             <label for="customGame">Game title</label>
@@ -441,7 +441,7 @@
             <input type="text" id="customPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
           </div>
         </div>
-
+ 
         <div class="field">
           <label for="sellWindow">How soon can you sell?</label>
           <select id="sellWindow" onchange="updatePrice()">
@@ -466,11 +466,11 @@
         </div>
       </div>
     </div>
-
+ 
     <div id="buyFields" style="display:none;">
       <div class="card">
         <div class="card-label">Game you want</div>
-
+ 
         <div class="field">
           <label for="buySystem">Select system</label>
           <select id="buySystem" onchange="populateBuyGames()">
@@ -482,14 +482,14 @@
             <option value="xbone">Xbox One</option>
           </select>
         </div>
-
+ 
         <div class="field" id="buyGameFieldWrap" style="display:none;">
           <label for="buyGame">Select game</label>
           <select id="buyGame" onchange="handleBuyGameSelect()">
             <option value="">— choose a game —</option>
           </select>
         </div>
-
+ 
         <div id="buyOtherGameFields" style="display:none;">
           <div class="field">
             <label for="buyCustomGame">Game title</label>
@@ -500,7 +500,7 @@
             <input type="text" id="buyCustomPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
           </div>
         </div>
-
+ 
         <div class="field" id="buyPriceRow" style="display:none;">
           <label>Locked price — no bidding, no competition</label>
           <div class="price-display" id="buyPriceBox"><span>—</span></div>
@@ -515,7 +515,7 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="card">
       <div class="card-label">Your info</div>
       <div class="field"><label for="name">Full name</label><input type="text" id="name" name="name" placeholder="Jane Smith"></div>
@@ -523,7 +523,7 @@
       <div class="field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" placeholder="(555) 000-0000"></div>
       <div class="field"><label for="zip">Zip code</label><input type="text" id="zip" name="zip" placeholder="60601" maxlength="5"></div>
     </div>
-
+ 
     <div class="card">
       <div class="card-label">Anything else?</div>
       <div class="field">
@@ -531,11 +531,11 @@
         <textarea id="notes" name="notes" placeholder="e.g. disc is in great shape, bought at Target last month..."></textarea>
       </div>
     </div>
-
+ 
     <div class="no-payment-note">
       &#128274; No payment is collected at this stage. This is an interest form only — we'll coordinate everything personally once we find your match.
     </div>
-    <button class="submit-btn" onclick="submitForm(); return false;">Submit My Offer &#8594;</button>
+    <button type="button" class="submit-btn" onclick="submitForm()">Submit My Offer &#8594;</button>
     <div class="trust-row">
       <span>&#10003; Zero obligation</span>
       <span>&#10003; Free to submit</span>
@@ -543,7 +543,7 @@
     </div>
   </form>
   </div>
-
+ 
   <div class="success-screen" id="successScreen">
     <div class="success-icon">&#10003;</div>
     <h2>Got it — we're on it.</h2>
@@ -574,16 +574,16 @@
     <div class="bond-summary" id="bondSummary"></div>
     <p style="font-size:12px;color:var(--ink-light);margin-top:4px;">Questions or second thoughts? Just DM us on the original post — no hard feelings.</p>
   </div>
-
+ 
 </div>
-
+ 
 <script>
 var currentRole = 'sell', selectedCond = 'a1';
-
+ 
 var condData = {
   a1: { mult:1.00, label:'A1 — Like New / Very Good', badge:'ba1' }
 };
-
+ 
 var gamesBySystem = {
   ps5: [
     ['Marvel\'s Spider-Man 2',              70, 50],
@@ -757,20 +757,20 @@ var gamesBySystem = {
     ['Madden NFL 24',                       20, 12],
   ]
 };
-
+ 
 function populateGames() {
   var sys = document.getElementById('system').value;
   var gameWrap = document.getElementById('gameFieldWrap');
   var gameSelect = document.getElementById('game');
   var priceRow = document.getElementById('resalePriceRow');
   var otherFields = document.getElementById('otherGameFields');
-
+ 
   gameSelect.innerHTML = '<option value="">— choose a game —</option>';
   otherFields.style.display = 'none';
   priceRow.style.display = 'none';
-
+ 
   if (!sys) { gameWrap.style.display = 'none'; return; }
-
+ 
   var sorted = (gamesBySystem[sys] || []).slice().sort(function(a,b){ return a[0].localeCompare(b[0]); });
   sorted.forEach(function(g) {
     var opt = document.createElement('option');
@@ -782,23 +782,23 @@ function populateGames() {
   other.value = 'OTHER';
   other.textContent = 'Title not shown? Enter details below';
   gameSelect.appendChild(other);
-
+ 
   gameWrap.style.display = 'block';
 }
-
+ 
 function populateBuyGames() {
   var sys = document.getElementById('buySystem').value;
   var gameWrap = document.getElementById('buyGameFieldWrap');
   var gameSelect = document.getElementById('buyGame');
   var priceRow = document.getElementById('buyPriceRow');
   var otherFields = document.getElementById('buyOtherGameFields');
-
+ 
   gameSelect.innerHTML = '<option value="">— choose a game —</option>';
   priceRow.style.display = 'none';
   otherFields.style.display = 'none';
-
+ 
   if (!sys) { gameWrap.style.display = 'none'; return; }
-
+ 
   var sorted = (gamesBySystem[sys] || []).slice().sort(function(a,b){ return a[0].localeCompare(b[0]); });
   sorted.forEach(function(g) {
     var opt = document.createElement('option');
@@ -810,10 +810,10 @@ function populateBuyGames() {
   other.value = 'OTHER';
   other.textContent = 'Title not shown? Enter details below';
   gameSelect.appendChild(other);
-
+ 
   gameWrap.style.display = 'block';
 }
-
+ 
 function handleBuyGameSelect() {
   var sel = document.getElementById('buyGame').value;
   var otherFields = document.getElementById('buyOtherGameFields');
@@ -821,7 +821,7 @@ function handleBuyGameSelect() {
   if (sel !== 'OTHER') updateBuyPrice();
   else document.getElementById('buyPriceRow').style.display = 'none';
 }
-
+ 
 function handleGameSelect() {
   var sel = document.getElementById('game').value;
   var otherFields = document.getElementById('otherGameFields');
@@ -829,7 +829,7 @@ function handleGameSelect() {
   if (sel !== 'OTHER') updatePrice();
   else document.getElementById('resalePriceRow').style.display = 'none';
 }
-
+ 
 function setRole(r) {
   currentRole = r;
   document.querySelectorAll('.role-btn').forEach(function(b){b.classList.remove('active');});
@@ -837,7 +837,7 @@ function setRole(r) {
   document.getElementById('sellFields').style.display = r==='sell'?'block':'none';
   document.getElementById('buyFields').style.display  = r==='buy' ?'block':'none';
 }
-
+ 
 function updatePrice() {
   var sel = document.getElementById('game').value;
   var win = document.getElementById('sellWindow').value;
@@ -854,7 +854,7 @@ function updatePrice() {
     '<span style="color:var(--ink-light);font-size:13px;">guaranteed \u00b7 '+winLbl+'</span>' +
     '<span class="pb ba1">A1 \u2014 Like New / Very Good</span>';
 }
-
+ 
 function updateBuyPrice() {
   var sel = document.getElementById('buyGame').value;
   var row = document.getElementById('buyPriceRow');
@@ -865,7 +865,7 @@ function updateBuyPrice() {
     '<span class="price-val">$'+price+'</span>' +
     '<span style="color:var(--ink-light);font-size:13px;">locked \u2014 no bidding</span>';
 }
-
+ 
 function submitForm() {
   var name  = document.getElementById('name').value.trim();
   var email = document.getElementById('email').value.trim();
@@ -876,11 +876,11 @@ function submitForm() {
     alert('Please fill in your name, email, and select a game before submitting.');
     return;
   }
-
+ 
   var sysLabels = {ps5:'PS5',xbox:'Xbox Series X|S',switch:'Nintendo Switch',ps4:'PS4',xbone:'Xbox One'};
   var html = '';
   var gname, res, wlbl, bn, bp, bw;
-
+ 
   if (currentRole === 'sell') {
     var gsel = document.getElementById('game').value;
     var sys  = document.getElementById('system').value;
@@ -935,7 +935,7 @@ function submitForm() {
            '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>' +
            '<div class="sum-row"><span>Timeline</span><span>'+bw+'</span></div>';
   }
-
+ 
   var form = document.getElementById('bbForm');
   fetch(form.action, {
     method: 'POST',
@@ -951,8 +951,11 @@ function submitForm() {
     alert('Something went wrong submitting — please try again or DM us directly.');
   });
 }
-
+ 
 document.getElementById('modalOverlay') && document.getElementById('modalOverlay').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('open'); });
 </script>
 </body>
 </html>
+ 
+
+
