@@ -357,6 +357,59 @@
   }
   .beta-banner strong { color: var(--green); font-weight: 600; }
  
+  .add-game-btn {
+    width: 100%;
+    padding: 11px;
+    background: transparent;
+    border: 1.5px dashed var(--green-dim);
+    border-radius: 8px;
+    color: var(--green-dim);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .add-game-btn:hover { background: var(--green-light); }
+ 
+  .cart-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--green-dim);
+    margin-bottom: 8px;
+  }
+ 
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 12px;
+    background: var(--green-light);
+    border: 1px solid var(--green-mid);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: var(--green-dark);
+  }
+ 
+  .cart-item-name { font-weight: 500; flex: 1; }
+  .cart-item-price { font-weight: 700; margin: 0 10px; }
+  .cart-item-remove {
+    background: none;
+    border: none;
+    color: var(--ink-light);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 2px;
+    line-height: 1;
+  }
+  .cart-item-remove:hover { color: #dc2626; }
+ 
   .no-payment-note {
     margin-top: 10px;
     padding: 10px 14px;
@@ -449,6 +502,21 @@
             <option value="flexible">Flexible — 90–180 days (More Time)</option>
           </select>
         </div>
+ 
+        <div class="field" id="resalePriceRow" style="display:none;">
+          <label>Your guaranteed resale price</label>
+          <div class="price-display" id="resalePriceBox"><span style="color:var(--ink-light)">Select a game above</span></div>
+        </div>
+ 
+        <div class="field" id="addGameBtnWrap" style="display:none;">
+          <button type="button" class="add-game-btn" onclick="addGameToCart()">+ Add this game</button>
+        </div>
+ 
+        <div id="gameCart" style="display:none;">
+          <div class="cart-label">Games added &#10003;</div>
+          <div id="cartItems"></div>
+        </div>
+ 
         <div class="field">
           <label>Game condition</label>
           <div class="a1-only-box">
@@ -459,10 +527,6 @@
             </div>
           </div>
           <div class="cond-future">Other condition tiers coming soon.</div>
-        </div>
-        <div class="field" id="resalePriceRow" style="display:none;">
-          <label>Your guaranteed resale price</label>
-          <div class="price-display" id="resalePriceBox"><span style="color:var(--ink-light)">Select a game above</span></div>
         </div>
       </div>
     </div>
@@ -505,6 +569,15 @@
           <label>Locked price — no bidding, no competition</label>
           <div class="price-display" id="buyPriceBox"><span>—</span></div>
           <div style="font-size:12px;color:var(--ink-light);margin-top:8px;line-height:1.5;">A1 condition — game plays perfectly, original case included. Minor surface scuffs acceptable; disc must be free of scratches that affect gameplay. Requires all original components.</div>
+        </div>
+ 
+        <div class="field" id="addBuyGameBtnWrap" style="display:none;">
+          <button type="button" class="add-game-btn" onclick="addBuyGameToCart()">+ Add this game</button>
+        </div>
+ 
+        <div id="buyGameCart" style="display:none;">
+          <div class="cart-label">Games added &#10003;</div>
+          <div id="buyCartItems"></div>
         </div>
         <div class="field">
           <label for="buyWindow">When do you need it?</label>
@@ -573,12 +646,18 @@
     </div>
     <div class="bond-summary" id="bondSummary"></div>
     <p style="font-size:12px;color:var(--ink-light);margin-top:4px;">Questions or second thoughts? Just DM us on the original post — no hard feelings.</p>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
+      <button type="button" onclick="addAnother()" style="padding:12px 22px;background:var(--green-dim);color:white;border:none;border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">+ Submit Another Game</button>
+      <button type="button" onclick="resetForm()" style="padding:12px 22px;background:transparent;color:var(--ink-mid);border:1.5px solid var(--border);border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">&#8592; Start Over</button>
+    </div>
   </div>
  
 </div>
  
 <script>
 var currentRole = 'sell', selectedCond = 'a1';
+var sellCart = [];
+var buyCart = [];
  
 var condData = {
   a1: { mult:1.00, label:'A1 — Like New / Very Good', badge:'ba1' }
@@ -842,8 +921,10 @@ function updatePrice() {
   var sel = document.getElementById('game').value;
   var win = document.getElementById('sellWindow').value;
   var row = document.getElementById('resalePriceRow');
-  if (!sel || sel === 'OTHER') { row.style.display='none'; return; }
+  var addBtn = document.getElementById('addGameBtnWrap');
+  if (!sel || sel === 'OTHER') { row.style.display='none'; addBtn.style.display='none'; return; }
   row.style.display = 'block';
+  addBtn.style.display = 'block';
   var parts = sel.split('|');
   var fast = parseInt(parts[2]);
   var flex = Math.round(fast * 0.9);
@@ -858,82 +939,194 @@ function updatePrice() {
 function updateBuyPrice() {
   var sel = document.getElementById('buyGame').value;
   var row = document.getElementById('buyPriceRow');
-  if (!sel) { row.style.display='none'; return; }
+  var addBtn = document.getElementById('addBuyGameBtnWrap');
+  if (!sel || sel === 'OTHER') { row.style.display='none'; if(addBtn) addBtn.style.display='none'; return; }
   row.style.display = 'block';
+  if(addBtn) addBtn.style.display = 'block';
   var price = sel.split('|')[1];
   document.getElementById('buyPriceBox').innerHTML =
     '<span class="price-val">$'+price+'</span>' +
     '<span style="color:var(--ink-light);font-size:13px;">locked \u2014 no bidding</span>';
 }
  
+function addGameToCart() {
+  var sel = document.getElementById('game').value;
+  var win = document.getElementById('sellWindow').value;
+  var sys = document.getElementById('system').value;
+  var sysLabels = {ps5:'PS5',xbox:'Xbox Series X|S',switch:'Nintendo Switch',ps4:'PS4',xbone:'Xbox One'};
+  if (!sel || sel === 'OTHER') return;
+  var parts = sel.split('|');
+  var fast = parseInt(parts[2]);
+  var resale = win==='fast' ? fast : Math.round(fast * 0.9);
+  var winLbl = win==='fast' ? 'Fast Flip' : 'Flexible';
+  var name = parts[0] + ' (' + (sysLabels[sys]||sys) + ') \u2014 ' + winLbl;
+  sellCart.push({ name: name, price: resale, raw: parts[0], sys: sysLabels[sys]||sys, win: winLbl, resale: resale });
+  renderSellCart();
+  document.getElementById('game').value = '';
+  document.getElementById('resalePriceRow').style.display = 'none';
+  document.getElementById('addGameBtnWrap').style.display = 'none';
+}
+ 
+function renderSellCart() {
+  var cart = document.getElementById('gameCart');
+  var items = document.getElementById('cartItems');
+  if (sellCart.length === 0) { cart.style.display = 'none'; return; }
+  cart.style.display = 'block';
+  items.innerHTML = sellCart.map(function(g, i) {
+    return '<div class="cart-item">' +
+      '<span class="cart-item-name">'+g.name+'</span>' +
+      '<span class="cart-item-price">$'+g.resale+'</span>' +
+      '<button type="button" class="cart-item-remove" onclick="removeSellItem('+i+')">&times;</button>' +
+      '</div>';
+  }).join('');
+}
+ 
+function removeSellItem(i) {
+  sellCart.splice(i, 1);
+  renderSellCart();
+}
+ 
+function addBuyGameToCart() {
+  var sel = document.getElementById('buyGame').value;
+  var bsys = document.getElementById('buySystem').value;
+  var sysLabels = {ps5:'PS5',xbox:'Xbox Series X|S',switch:'Nintendo Switch',ps4:'PS4',xbone:'Xbox One'};
+  if (!sel || sel === 'OTHER') return;
+  var parts = sel.split('|');
+  var win = document.getElementById('buyWindow').value === 'fast' ? 'Within 0\u201390 days' : 'Within 90\u2013180 days';
+  var name = parts[0] + ' (' + (sysLabels[bsys]||bsys) + ')';
+  buyCart.push({ name: name, price: parts[1], timeline: win });
+  renderBuyCart();
+  document.getElementById('buyGame').value = '';
+  document.getElementById('buyPriceRow').style.display = 'none';
+  document.getElementById('addBuyGameBtnWrap').style.display = 'none';
+}
+ 
+function renderBuyCart() {
+  var cart = document.getElementById('buyGameCart');
+  var items = document.getElementById('buyCartItems');
+  if (buyCart.length === 0) { cart.style.display = 'none'; return; }
+  cart.style.display = 'block';
+  items.innerHTML = buyCart.map(function(g, i) {
+    return '<div class="cart-item">' +
+      '<span class="cart-item-name">'+g.name+'</span>' +
+      '<span class="cart-item-price">$'+g.price+'</span>' +
+      '<button type="button" class="cart-item-remove" onclick="removeBuyItem('+i+')">&times;</button>' +
+      '</div>';
+  }).join('');
+}
+ 
+function removeBuyItem(i) {
+  buyCart.splice(i, 1);
+  renderBuyCart();
+}
+ 
+function resetForm() {
+  sellCart = []; buyCart = [];
+  document.getElementById('formInner').style.display = 'block';
+  document.getElementById('successScreen').classList.remove('show');
+  document.getElementById('roleToggle').style.display = 'grid';
+  document.getElementById('bbForm').reset();
+  document.getElementById('resalePriceRow').style.display = 'none';
+  document.getElementById('addGameBtnWrap').style.display = 'none';
+  document.getElementById('gameFieldWrap').style.display = 'none';
+  document.getElementById('gameCart').style.display = 'none';
+  document.getElementById('cartItems').innerHTML = '';
+  document.getElementById('buyGameFieldWrap').style.display = 'none';
+  document.getElementById('buyGameCart').style.display = 'none';
+  document.getElementById('buyCartItems').innerHTML = '';
+  document.getElementById('buyPriceRow').style.display = 'none';
+  document.getElementById('bondSummary').innerHTML = '';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+ 
+function addAnother() {
+  var savedName = document.getElementById('name') ? document.getElementById('name').value : '';
+  var savedEmail = document.getElementById('email') ? document.getElementById('email').value : '';
+  document.getElementById('formInner').style.display = 'block';
+  document.getElementById('successScreen').classList.remove('show');
+  document.getElementById('roleToggle').style.display = 'grid';
+  document.getElementById('game').value = '';
+  document.getElementById('resalePriceRow').style.display = 'none';
+  document.getElementById('addGameBtnWrap').style.display = 'none';
+  document.getElementById('gameFieldWrap').style.display = 'none';
+  document.getElementById('cartItems').innerHTML = '';
+  document.getElementById('gameCart').style.display = 'none';
+  sellCart = []; buyCart = [];
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+ 
 function submitForm() {
   var name  = document.getElementById('name').value.trim();
   var email = document.getElementById('email').value.trim();
-  var game  = currentRole==='sell'
-    ? (document.getElementById('game').value || document.getElementById('customGame').value.trim())
-    : (document.getElementById('buyGame').value || document.getElementById('buyCustomGame').value.trim());
-  if (!name || !email || !game) {
-    alert('Please fill in your name, email, and select a game before submitting.');
+ 
+  var hasGame = currentRole==='sell'
+    ? (sellCart.length > 0 || document.getElementById('game').value || document.getElementById('customGame').value.trim())
+    : (buyCart.length > 0 || document.getElementById('buyGame').value || document.getElementById('buyCustomGame').value.trim());
+ 
+  if (!name || !email || !hasGame) {
+    alert('Please fill in your name, email, and add at least one game before submitting.');
     return;
   }
  
   var sysLabels = {ps5:'PS5',xbox:'Xbox Series X|S',switch:'Nintendo Switch',ps4:'PS4',xbone:'Xbox One'};
   var html = '';
-  var gname, res, wlbl, bn, bp, bw;
  
   if (currentRole === 'sell') {
+    var allItems = sellCart.slice();
     var gsel = document.getElementById('game').value;
     var sys  = document.getElementById('system').value;
     var win  = document.getElementById('sellWindow').value;
-    wlbl = win==='fast' ? 'Fast Flip (0\u201390 days)' : 'Flexible (90\u2013180 days)';
-    if (gsel && gsel !== 'OTHER') {
+    if (gsel && gsel !== 'OTHER' && allItems.length === 0) {
       var parts = gsel.split('|');
-      gname = parts[0] + (sys ? ' (' + (sysLabels[sys]||sys) + ')' : '');
       var fast = parseInt(parts[2]);
-      res = win==='fast' ? fast : Math.round(fast * 0.9);
-    } else {
+      var resale = win==='fast' ? fast : Math.round(fast * 0.9);
+      var winLbl = win==='fast' ? 'Fast Flip' : 'Flexible';
+      allItems.push({ name: parts[0] + ' (' + (sysLabels[sys]||sys) + ') \u2014 ' + winLbl, resale: resale });
+    }
+    if (gsel === 'OTHER') {
       var cg = document.getElementById('customGame').value.trim();
       var cp = document.getElementById('customPrice').value.trim();
-      gname = cg + (sys ? ' (' + (sysLabels[sys]||sys) + ')' : '');
-      res = cp || '\u2014';
+      allItems.push({ name: cg + ' (' + (sysLabels[sys]||sys) + ')', resale: cp || '\u2014' });
     }
     document.getElementById('h_role').value      = 'Sell Used';
-    document.getElementById('h_system').value    = sysLabels[sys] || sys || '';
-    document.getElementById('h_game').value      = gname;
-    document.getElementById('h_price').value     = '$' + res;
-    document.getElementById('h_window').value    = wlbl;
+    document.getElementById('h_system').value    = '';
+    document.getElementById('h_game').value      = allItems.map(function(g){ return g.name; }).join(' | ');
+    document.getElementById('h_price').value     = allItems.map(function(g){ return '$'+g.resale; }).join(' | ');
+    document.getElementById('h_window').value    = '';
     document.getElementById('h_condition').value = 'A1 — Like New / Very Good';
     document.getElementById('h_timeline').value  = '';
-    html = '<div class="sum-row"><span>Role</span><span>Selling used</span></div>' +
-           '<div class="sum-row"><span>Game</span><span>'+gname+'</span></div>' +
-           '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>' +
-           '<div class="sum-row"><span>Resale price</span><span>$'+res+'</span></div>' +
-           '<div class="sum-row"><span>Window</span><span>'+wlbl+'</span></div>';
+    html = '<div class="sum-row"><span>Role</span><span>Selling used</span></div>';
+    allItems.forEach(function(g) {
+      html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.resale+'</span></div>';
+    });
+    html += '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>';
   } else {
+    var allBuy = buyCart.slice();
     var bg   = document.getElementById('buyGame').value;
     var bsys = document.getElementById('buySystem').value;
     var sysStr = bsys ? ' (' + (sysLabels[bsys]||bsys) + ')' : '';
-    if (bg && bg !== 'OTHER') {
+    var bw = document.getElementById('buyWindow').value==='fast' ? 'Within 0\u201390 days' : 'Within 90\u2013180 days';
+    if (bg && bg !== 'OTHER' && allBuy.length === 0) {
       var bparts = bg.split('|');
-      bn = bparts[0] + sysStr;
-      bp = bparts[1];
-    } else {
-      bn = (document.getElementById('buyCustomGame').value.trim() || '\u2014') + sysStr;
-      bp = document.getElementById('buyCustomPrice').value.trim() || '\u2014';
+      allBuy.push({ name: bparts[0] + sysStr, price: bparts[1], timeline: bw });
     }
-    bw = document.getElementById('buyWindow').value==='fast' ? 'Within 0\u201390 days' : 'Within 90\u2013180 days';
+    if (bg === 'OTHER') {
+      var bn = (document.getElementById('buyCustomGame').value.trim() || '\u2014') + sysStr;
+      var bp = document.getElementById('buyCustomPrice').value.trim() || '\u2014';
+      allBuy.push({ name: bn, price: bp, timeline: bw });
+    }
     document.getElementById('h_role').value      = 'Buy Used';
-    document.getElementById('h_system').value    = sysLabels[bsys] || bsys || '';
-    document.getElementById('h_game').value      = bn;
-    document.getElementById('h_price').value     = '$' + bp;
+    document.getElementById('h_system').value    = '';
+    document.getElementById('h_game').value      = allBuy.map(function(g){ return g.name; }).join(' | ');
+    document.getElementById('h_price').value     = allBuy.map(function(g){ return '$'+g.price; }).join(' | ');
     document.getElementById('h_window').value    = '';
     document.getElementById('h_condition').value = 'A1 — Like New / Very Good';
-    document.getElementById('h_timeline').value  = bw;
-    html = '<div class="sum-row"><span>Role</span><span>Buying used</span></div>' +
-           '<div class="sum-row"><span>Game</span><span>'+bn+'</span></div>' +
-           '<div class="sum-row"><span>Offer price</span><span>$'+bp+'</span></div>' +
-           '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>' +
-           '<div class="sum-row"><span>Timeline</span><span>'+bw+'</span></div>';
+    document.getElementById('h_timeline').value  = allBuy.map(function(g){ return g.timeline; }).join(' | ');
+    html = '<div class="sum-row"><span>Role</span><span>Buying used</span></div>';
+    allBuy.forEach(function(g) {
+      html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.price+'</span></div>';
+    });
+    html += '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>';
   }
  
   var form = document.getElementById('bbForm');
@@ -941,14 +1134,14 @@ function submitForm() {
     method: 'POST',
     body: new FormData(form),
     headers: { 'Accept': 'application/json' }
-  }).then(function(response) {
+  }).then(function() {
     document.getElementById('formInner').style.display = 'none';
     document.getElementById('bondSummary').innerHTML = html;
     document.getElementById('successScreen').classList.add('show');
     document.getElementById('roleToggle').style.display = 'none';
     window.scrollTo({top:0,behavior:'smooth'});
   }).catch(function() {
-    alert('Something went wrong submitting — please try again or DM us directly.');
+    alert('Something went wrong — please try again or DM us directly.');
   });
 }
  
