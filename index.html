@@ -426,7 +426,7 @@
 <body>
  
 <div class="beta-banner">
-  <strong>&#9679; Early Beta</strong> &nbsp;We're starting with a focused list of games to make matches happen faster. More titles coming soon.
+  <strong>&#9679; Early Beta — Nintendo Switch Only</strong> &nbsp;Starting with Switch cartridges so local swaps are fast and easy to verify on the spot. More platforms coming soon.
 </div>
  
 <div class="page-header">
@@ -469,11 +469,7 @@
           <label for="system">Select system</label>
           <select id="system" onchange="populateGames()">
             <option value="">— choose a system —</option>
-            <option value="ps5">PlayStation 5</option>
-            <option value="xbox">Xbox Series X|S</option>
             <option value="switch">Nintendo Switch</option>
-            <option value="ps4">PlayStation 4</option>
-            <option value="xbone">Xbox One</option>
           </select>
         </div>
  
@@ -539,11 +535,7 @@
           <label for="buySystem">Select system</label>
           <select id="buySystem" onchange="populateBuyGames()">
             <option value="">— choose a system —</option>
-            <option value="ps5">PlayStation 5</option>
-            <option value="xbox">Xbox Series X|S</option>
             <option value="switch">Nintendo Switch</option>
-            <option value="ps4">PlayStation 4</option>
-            <option value="xbone">Xbox One</option>
           </select>
         </div>
  
@@ -664,32 +656,15 @@ var condData = {
 };
  
 var gamesBySystem = {
-  ps5: [
-    ['Call of Duty: Black Ops 6',           70, 50],
-    ['Elden Ring',                          60, 43],
-    ['Madden NFL 25',                       70, 50],
-    ['EA Sports College Football 25',       70, 50],
-  ],
-  xbox: [
-    ['Call of Duty: Black Ops 6',           70, 50],
-    ['Elden Ring',                          60, 43],
-    ['Madden NFL 25',                       70, 50],
-    ['EA Sports College Football 25',       70, 50],
-  ],
   switch: [
-    ['Zelda: Tears of the Kingdom',         70, 50],
+    ['Animal Crossing: New Horizons',       60, 36],
     ['Mario Kart 8 Deluxe',                 60, 43],
+    ['Pokemon Scarlet',                     60, 39],
+    ['Pokemon Violet',                      60, 39],
+    ['Super Smash Bros. Ultimate',          60, 43],
+    ['Zelda: Tears of the Kingdom',         70, 50],
   ],
-  ps4: [
-    ['Call of Duty: Black Ops 6',           60, 43],
-    ['Elden Ring',                          40, 28],
-    ['Madden NFL 25',                       60, 43],
-  ],
-  xbone: [
-    ['Call of Duty: Black Ops 6',           55, 39],
-    ['Elden Ring',                          35, 24],
-    ['Madden NFL 25',                       55, 39],
-  ]
+  ps5: [], xbox: [], ps4: [], xbone: []
 };
  
 function populateGames() {
