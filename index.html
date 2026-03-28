@@ -998,14 +998,12 @@ function submitForm() {
   fetch(endpoint, {
     method:  'POST',
     body:    JSON.stringify(payload),
-    headers: { 'Content-Type': 'application/json' },
+    mode:    'no-cors', // Apps Script doesn't handle preflight — skip it
   })
-  .then(function(res) {
-    // Apps Script Web Apps sometimes redirect — both success and redirect mean it worked
+  .then(function() {
     showSuccess();
   })
   .catch(function() {
-    // Network errors on redirect are expected with Apps Script — still show success
     showSuccess();
   });
 }
