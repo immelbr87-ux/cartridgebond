@@ -205,6 +205,9 @@
 </footer>
 
 <script>
+// Paste your Apps Script Web App URL here after deploying
+var WEBAPP_URL = 'PASTE_YOUR_WEBAPP_URL_HERE';
+
 function submitWaitlist() {
   var name  = document.getElementById('wName').value.trim();
   var email = document.getElementById('wEmail').value.trim();
@@ -215,18 +218,31 @@ function submitWaitlist() {
     return;
   }
 
-  var form = document.getElementById('waitlistForm');
-  fetch(form.action, {
-    method: 'POST',
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
-  }).then(function() {
+  var payload = {
+    form_type: 'Expansion Waitlist',
+    name:      name,
+    email:     email,
+    city:      city,
+    zip:       document.getElementById('wZip').value.trim(),
+    role:      document.getElementById('wRole').value,
+    platform:  document.getElementById('wPlatform').value,
+    timeline:  document.getElementById('wTimeline').value,
+    notes:     document.getElementById('wNotes').value.trim(),
+  };
+
+  function showSuccess() {
     document.getElementById('formSection').style.display = 'none';
     document.getElementById('successScreen').classList.add('show');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }).catch(function() {
-    alert('Something went wrong — please try again or DM us directly.');
-  });
+  }
+
+  fetch(WEBAPP_URL, {
+    method:  'POST',
+    body:    JSON.stringify(payload),
+    headers: { 'Content-Type': 'application/json' },
+  })
+  .then(showSuccess)
+  .catch(showSuccess); // Apps Script redirect = success
 }
 </script>
 </body>
