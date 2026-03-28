@@ -3,7 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Save on Games, Before You Buy — Bargain Bond</title>
+<title>Sell Your Switch Games — Without the BS | CartridgeBond</title>
+ 
+<!-- Google Analytics — replace GA_MEASUREMENT_ID with your G-XXXXXXXX -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script>
+ 
+<!-- OG Social Preview — create a 1200x630 image and update the URL -->
+<meta property="og:title" content="Sell Your Switch Games — Without the BS">
+<meta property="og:description" content="CartridgeBond locks your price and condition before you ever meet. Local swap, no fees, no flakes. Milwaukee &amp; North Shore beta.">
+<meta property="og:image" content="https://cartridgebond.com/og-preview.png">
+<meta property="og:url" content="https://cartridgebond.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+ 
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,7 +48,7 @@
   .page-header {
     background: var(--green-bg);
     color: white;
-    padding: 28px 20px 22px;
+    padding: 28px 20px 24px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -46,12 +64,12 @@
   .eyebrow {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
-    color: rgba(34,197,94,0.6); margin-bottom: 8px; font-weight: 600; position: relative;
+    color: rgba(34,197,94,0.6); margin-bottom: 10px; font-weight: 600; position: relative;
   }
   .page-header h1 {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 52px; font-weight: 700; line-height: .92;
-    margin-bottom: 18px; letter-spacing: -.01em; position: relative;
+    font-size: clamp(36px, 9vw, 52px); font-weight: 700; line-height: .95;
+    margin-bottom: 20px; letter-spacing: -.01em; position: relative;
   }
   .page-header h1 .l1 { display: block; color: white; }
   .page-header h1 .l2 { display: block; color: var(--green); }
@@ -66,70 +84,80 @@
  
   .stat-pill {
     background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.14);
     border-radius: 20px;
-    padding: 6px 12px;
+    padding: 7px 14px;
     font-family: 'Barlow', sans-serif;
     font-size: 12px;
     font-weight: 600;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.88);
     white-space: nowrap;
   }
  
-  .how-it-works {
-    margin-top: 18px;
+  /* FOUNDER NOTE */
+  .founder-note {
+    background: #111;
+    border-bottom: 1px solid rgba(34,197,94,0.15);
+    padding: 20px;
     position: relative;
+    overflow: hidden;
   }
- 
-  .hiw-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 10px;
-    font-weight: 600;
+  .founder-note::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--green), transparent);
+    opacity: 0.45;
   }
- 
-  .hiw-steps {
+  .founder-inner {
+    max-width: 520px;
+    margin: 0 auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 14px;
+    align-items: flex-start;
   }
- 
-  .hiw-step {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
- 
-  .hiw-num {
-    width: 22px;
-    height: 22px;
+  .founder-avatar {
+    width: 38px; height: 38px;
     border-radius: 50%;
     background: var(--green-dim);
-    color: white;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
     flex-shrink: 0;
+    margin-top: 2px;
   }
- 
-  .hiw-txt {
-    font-size: 13px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.75);
+  .founder-body { flex: 1; }
+  .founder-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--green); margin-bottom: 6px;
   }
- 
-  .hiw-arrow {
-    color: rgba(255,255,255,0.25);
-    font-size: 14px;
+  .founder-text {
+    font-size: 13px; line-height: 1.65;
+    color: rgba(255,255,255,0.62);
   }
+  .founder-text strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+  .free-tag {
+    display: inline-block;
+    background: rgba(34,197,94,0.15);
+    border: 1px solid rgba(34,197,94,0.3);
+    color: var(--green);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    padding: 1px 7px; border-radius: 10px;
+    margin: 0 2px; vertical-align: middle;
+  }
+  .founder-50 {
+    margin-top: 10px; padding: 8px 12px;
+    background: rgba(34,197,94,0.07);
+    border: 1px solid rgba(34,197,94,0.18);
+    border-radius: 8px;
+    font-size: 12px; color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+  .founder-50 strong { color: var(--green); }
  
   /* CONTAINER */
   .container { max-width: 520px; margin: 0 auto; padding: 20px 16px 52px; }
@@ -177,6 +205,16 @@
     background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer;
   }
  
+  /* GAME SEARCH */
+  .game-search-wrap { position: relative; }
+  .game-search-wrap input[type="text"] { padding-right: 40px; }
+  .search-icon {
+    position: absolute; right: 13px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-light); font-size: 14px; pointer-events: none;
+  }
+  .search-hint { font-size: 11px; color: var(--ink-light); margin-top: 5px; font-style: italic; }
+ 
   /* PRICE DISPLAY */
   .price-display {
     display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
@@ -187,71 +225,31 @@
  
   /* CONDITION - A1 ONLY */
   .a1-only-box {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 14px;
-    background: var(--green-light);
-    border: 1.5px solid var(--green-mid);
-    border-radius: 8px;
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px; background: var(--green-light);
+    border: 1.5px solid var(--green-mid); border-radius: 8px;
   }
- 
   .a1-check {
-    width: 28px; height: 28px;
-    background: var(--green-dim);
-    border-radius: 50%;
+    width: 28px; height: 28px; background: var(--green-dim); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 14px; font-weight: 700;
-    flex-shrink: 0; margin-top: 1px;
+    color: white; font-size: 14px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
   }
- 
   .a1-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px; font-weight: 700;
-    color: var(--green-dark);
-    letter-spacing: .02em;
-    margin-bottom: 4px;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700;
+    color: var(--green-dark); letter-spacing: .02em; margin-bottom: 4px;
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   }
- 
   .a1-badge {
-    font-size: 10px; font-weight: 700;
-    background: var(--green-dim); color: white;
-    padding: 2px 8px; border-radius: 10px;
-    letter-spacing: .05em; text-transform: uppercase;
+    font-size: 10px; font-weight: 700; background: var(--green-dim); color: white;
+    padding: 2px 8px; border-radius: 10px; letter-spacing: .05em; text-transform: uppercase;
     font-family: 'Barlow Condensed', sans-serif;
   }
- 
-  .a1-desc {
-    font-size: 12px;
-    color: var(--green-dark);
-    line-height: 1.55;
-    opacity: .8;
-  }
- 
-  .cond-future {
-    margin-top: 8px;
-    font-size: 11px;
-    color: var(--ink-light);
-    text-align: center;
-    font-style: italic;
-  }
+  .a1-desc { font-size: 12px; color: var(--green-dark); line-height: 1.55; opacity: .8; }
+  .cond-future { margin-top: 8px; font-size: 11px; color: var(--ink-light); text-align: center; font-style: italic; }
  
   /* BADGES */
   .pb { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; }
   .ba1 { background: #dcfce7; color: var(--green-dark); }
-  .ba2 { background: #dbeafe; color: #1e3a8a; }
-  .bb  { background: #fef9c3; color: #713f12; }
-  .bc  { background: #fee2e2; color: #7f1d1d; }
- 
-  .compare-note { font-size: 12px; color: var(--ink-light); margin-top: 8px; line-height: 1.5; }
- 
-  /* PAYMENT */
-  .pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .pay-btn { padding: 10px; border: 1.5px solid var(--border); border-radius: 8px; text-align: center; cursor: pointer; font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink-mid); background: var(--surface); transition: all .12s; }
-  .pay-btn:hover { border-color: var(--green-dim); color: var(--green-dim); }
-  .pay-btn.sel { border-color: var(--green-dim); background: var(--green-light); color: var(--green-dark); }
-  textarea { resize: none; height: 80px; }
  
   /* SUBMIT */
   .submit-btn {
@@ -264,25 +262,7 @@
  
   .trust-row { display: flex; justify-content: center; gap: 16px; margin-top: 12px; font-size: 11px; color: var(--ink-light); flex-wrap: wrap; }
  
-  /* MODAL */
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center; padding: 16px; }
-  .modal-overlay.open { display: flex; }
-  .modal { background: white; border-radius: 14px; max-width: 480px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 26px 22px 22px; }
-  .modal h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 4px; }
-  .modal-sub { font-size: 13px; color: var(--ink-light); margin-bottom: 18px; line-height: 1.5; }
-  .terms-box { background: var(--surface); border: 1.5px solid var(--border); border-radius: 8px; padding: 14px; font-size: 12.5px; color: var(--ink-mid); line-height: 1.7; max-height: 200px; overflow-y: auto; margin-bottom: 16px; }
-  .terms-box h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-light); margin: 12px 0 4px; }
-  .terms-box h4:first-child { margin-top: 0; }
-  .agree-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; cursor: pointer; }
-  .agree-row input { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; accent-color: var(--green-dim); cursor: pointer; }
-  .agree-row span { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
-  .sig-field { margin-bottom: 16px; }
-  .sig-field label { font-size: 12px; color: var(--ink-light); margin-bottom: 6px; }
-  .sig-field input { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--green-dark); border: none; border-bottom: 1.5px solid var(--border); border-radius: 0; background: transparent; padding: 6px 0; width: 100%; outline: none; }
-  .sig-field input:focus { border-bottom-color: var(--green-dim); }
-  .confirm-btn { width: 100%; padding: 14px; background: var(--green-dim); color: white; border: none; border-radius: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; opacity: .45; pointer-events: none; transition: background .2s, opacity .15s; }
-  .confirm-btn.ready { opacity: 1; pointer-events: auto; }
-  .confirm-btn.ready:hover { background: var(--green-dark); }
+  textarea { resize: none; height: 80px; }
  
   /* SUCCESS */
   .success-screen { display: none; text-align: center; padding: 44px 20px; }
@@ -291,135 +271,55 @@
   .success-screen h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 8px; }
   .success-screen p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; max-width: 320px; margin: 0 auto 18px; }
  
-  .next-steps {
-    text-align: left;
-    margin: 0 auto 20px;
-    max-width: 380px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
- 
-  .next-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 14px;
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-  }
- 
-  .ns-num {
-    width: 26px; height: 26px;
-    background: var(--green-dim);
-    color: white;
-    border-radius: 50%;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; margin-top: 1px;
-  }
- 
-  .ns-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .04em;
-    color: var(--ink); margin-bottom: 3px;
-  }
- 
+  .next-steps { text-align: left; margin: 0 auto 20px; max-width: 380px; display: flex; flex-direction: column; gap: 12px; }
+  .next-step { display: flex; align-items: flex-start; gap: 14px; padding: 14px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); }
+  .ns-num { width: 26px; height: 26px; background: var(--green-dim); color: white; border-radius: 50%; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .ns-title { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--ink); margin-bottom: 3px; }
   .ns-sub { font-size: 12px; color: var(--ink-mid); line-height: 1.55; }
+ 
   .bond-summary { background: var(--green-light); border: 1.5px solid var(--green-mid); border-radius: var(--radius); padding: 14px; text-align: left; font-size: 13px; color: var(--green-dark); margin-bottom: 18px; }
   .sum-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--green-mid); }
   .sum-row:last-child { border-bottom: none; }
   .sum-row span:last-child { font-weight: 600; }
+ 
   .form-inner { display: block; }
  
   #otherGameFields, #buyOtherGameFields {
-    margin-top: 14px;
-    padding: 14px;
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: 8px;
+    margin-top: 14px; padding: 14px;
+    background: var(--surface); border: 1px dashed var(--border); border-radius: 8px;
   }
- 
   #otherGameFields .field, #buyOtherGameFields .field { margin-bottom: 10px; }
   #otherGameFields .field:last-child, #buyOtherGameFields .field:last-child { margin-bottom: 0; }
+ 
   .beta-banner {
-    background: #1a1a1a;
-    border-bottom: 1px solid rgba(34,197,94,0.2);
-    padding: 9px 20px;
-    text-align: center;
-    font-family: 'Barlow', sans-serif;
-    font-size: 12px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.5;
+    background: #1a1a1a; border-bottom: 1px solid rgba(34,197,94,0.2);
+    padding: 9px 20px; text-align: center;
+    font-family: 'Barlow', sans-serif; font-size: 12px;
+    color: rgba(255,255,255,0.55); line-height: 1.5;
   }
   .beta-banner strong { color: var(--green); font-weight: 600; }
  
   .add-game-btn {
-    width: 100%;
-    padding: 11px;
-    background: transparent;
-    border: 1.5px dashed var(--green-dim);
-    border-radius: 8px;
-    color: var(--green-dim);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all .15s;
+    width: 100%; padding: 11px; background: transparent;
+    border: 1.5px dashed var(--green-dim); border-radius: 8px;
+    color: var(--green-dim); font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    cursor: pointer; transition: all .15s;
   }
   .add-game-btn:hover { background: var(--green-light); }
  
-  .cart-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    color: var(--green-dim);
-    margin-bottom: 8px;
-  }
- 
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 9px 12px;
-    background: var(--green-light);
-    border: 1px solid var(--green-mid);
-    border-radius: 8px;
-    margin-bottom: 6px;
-    font-size: 13px;
-    color: var(--green-dark);
-  }
- 
+  .cart-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--green-dim); margin-bottom: 8px; }
+  .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; background: var(--green-light); border: 1px solid var(--green-mid); border-radius: 8px; margin-bottom: 6px; font-size: 13px; color: var(--green-dark); }
   .cart-item-name { font-weight: 500; flex: 1; }
   .cart-item-price { font-weight: 700; margin: 0 10px; }
-  .cart-item-remove {
-    background: none;
-    border: none;
-    color: var(--ink-light);
-    cursor: pointer;
-    font-size: 16px;
-    padding: 0 2px;
-    line-height: 1;
-  }
+  .cart-item-remove { background: none; border: none; color: var(--ink-light); cursor: pointer; font-size: 16px; padding: 0 2px; line-height: 1; }
   .cart-item-remove:hover { color: #dc2626; }
  
   .no-payment-note {
-    margin-top: 10px;
-    padding: 10px 14px;
-    background: rgba(34,197,94,0.06);
-    border: 1px solid rgba(34,197,94,0.2);
-    border-radius: 8px;
-    font-size: 12px;
-    color: var(--ink-mid);
-    text-align: center;
-    line-height: 1.5;
+    margin-top: 10px; padding: 10px 14px;
+    background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2);
+    border-radius: 8px; font-size: 12px; color: var(--ink-mid);
+    text-align: center; line-height: 1.5;
   }
 </style>
 </head>
@@ -430,11 +330,41 @@
 </div>
  
 <div class="page-header">
-  <h1><span class="l1">Save on Games,</span><span class="l2">Before You Buy.</span></h1>
+  <div class="eyebrow">CartridgeBond &mdash; Milwaukee &amp; North Shore</div>
+  <h1>
+    <span class="l1">Sell Your Switch Games —</span>
+    <span class="l2">Without the BS.</span>
+  </h1>
   <div class="stat-row">
-    <div class="stat-pill">No Marketplace Hassle</div>
-    <div class="stat-pill">Beat GameStop Pricing</div>
-    <div class="stat-pill">Guaranteed A1 Condition</div>
+    <div class="stat-pill">⚡ Skip the Marketplace Hassle (No DMs)</div>
+    <div class="stat-pill">🔒 Price &amp; Condition Locked Before You Meet</div>
+    <div class="stat-pill">📍 Local Swap — No Shipping, No Strangers</div>
+  </div>
+  <div style="margin-top:14px;position:relative;">
+    <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(34,197,94,0.5);">
+      <!-- Update this number manually as trades complete -->
+      🎮 <span id="tradeCount">0</span> trades completed in Milwaukee &amp; North Shore
+    </span>
+  </div>
+</div>
+ 
+<!-- FOUNDER'S BETA NOTE -->
+<div class="founder-note">
+  <div class="founder-inner">
+    <div class="founder-avatar">🎮</div>
+    <div class="founder-body">
+      <div class="founder-label">A note from the founder</div>
+      <div class="founder-text">
+        CartridgeBond is in <strong>free beta</strong> right now. <span class="free-tag">No Fees</span><br><br>
+        We connect buyers and sellers directly — no escrow, no platform cut, no middleman taking a slice.
+        You lock in your terms, we find your match, you meet locally. That's it.<br><br>
+        Fees and escrow are coming down the road. <strong>Getting in now means you trade in the free era.</strong>
+        Every submission is reviewed by a real person — no bots, no auto-matches, just us.
+      </div>
+      <div class="founder-50">
+        🎁 <strong>First 25 users get free trades for life</strong> — even after we introduce fees. You're early. That matters.
+      </div>
+    </div>
   </div>
 </div>
  
@@ -452,163 +382,195 @@
   <div class="form-inner" id="formInner">
   <form id="bbForm" action="https://formspree.io/f/xvzvopzr" method="POST">
  
-  <!-- hidden fields populated by JS before submit -->
-  <input type="hidden" name="role" id="h_role">
-  <input type="hidden" name="system" id="h_system">
-  <input type="hidden" name="game" id="h_game">
+  <input type="hidden" name="role"         id="h_role">
+  <input type="hidden" name="system"       id="h_system">
+  <input type="hidden" name="game"         id="h_game">
   <input type="hidden" name="resale_price" id="h_price">
-  <input type="hidden" name="window" id="h_window">
-  <input type="hidden" name="condition" id="h_condition">
-  <input type="hidden" name="timeline" id="h_timeline">
+  <input type="hidden" name="window"       id="h_window">
+  <input type="hidden" name="condition"    id="h_condition">
+  <input type="hidden" name="timeline"     id="h_timeline">
  
-    <div id="sellFields">
-      <div class="card">
-        <div class="card-label">Your game</div>
- 
-        <div class="field">
-          <label for="system">Select system</label>
-          <select id="system" onchange="populateGames()">
-            <option value="">— choose a system —</option>
-            <option value="switch">Nintendo Switch</option>
-          </select>
-        </div>
- 
-        <div class="field" id="gameFieldWrap" style="display:none;">
-          <label for="game">Select game</label>
-          <select id="game" onchange="handleGameSelect()">
-            <option value="">— choose a game —</option>
-          </select>
-        </div>
- 
-        <div id="otherGameFields" style="display:none;">
-          <div class="field">
-            <label for="customGame">Game title</label>
-            <input type="text" id="customGame" placeholder="e.g. God of War Ragnarök">
-          </div>
-          <div class="field">
-            <label for="customPrice">Your asking resale price ($)</label>
-            <input type="text" id="customPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-          </div>
-        </div>
- 
-        <div class="field">
-          <label for="sellWindow">How soon can you sell?</label>
-          <select id="sellWindow" onchange="updatePrice()">
-            <option value="fast">Fast Flip — 0–90 days (Highest Return)</option>
-            <option value="flexible">Flexible — 90–180 days (More Time)</option>
-          </select>
-        </div>
- 
-        <div class="field" id="resalePriceRow" style="display:none;">
-          <label>Your guaranteed resale price</label>
-          <div class="price-display" id="resalePriceBox"><span style="color:var(--ink-light)">Select a game above</span></div>
-        </div>
- 
-        <div class="field" id="addGameBtnWrap" style="display:none;">
-          <button type="button" class="add-game-btn" onclick="addGameToCart()">+ Add this game</button>
-        </div>
- 
-        <div id="gameCart" style="display:none;">
-          <div class="cart-label">Games added &#10003;</div>
-          <div id="cartItems"></div>
-        </div>
- 
-        <div class="field">
-          <label>Game condition</label>
-          <div class="a1-only-box">
-            <div class="a1-check">&#10003;</div>
-            <div>
-              <div class="a1-title">A1 — Like New / Very Good <span class="a1-badge">90%+ condition</span></div>
-              <div class="a1-desc">Game plays perfectly. Original case included. Minor surface scuffs acceptable — disc must be free of scratches that affect gameplay. Requires all original components.</div>
-            </div>
-          </div>
-          <div class="cond-future">Other condition tiers coming soon.</div>
-        </div>
-      </div>
-    </div>
- 
-    <div id="buyFields" style="display:none;">
-      <div class="card">
-        <div class="card-label">Game you want</div>
- 
-        <div class="field">
-          <label for="buySystem">Select system</label>
-          <select id="buySystem" onchange="populateBuyGames()">
-            <option value="">— choose a system —</option>
-            <option value="switch">Nintendo Switch</option>
-          </select>
-        </div>
- 
-        <div class="field" id="buyGameFieldWrap" style="display:none;">
-          <label for="buyGame">Select game</label>
-          <select id="buyGame" onchange="handleBuyGameSelect()">
-            <option value="">— choose a game —</option>
-          </select>
-        </div>
- 
-        <div id="buyOtherGameFields" style="display:none;">
-          <div class="field">
-            <label for="buyCustomGame">Game title</label>
-            <input type="text" id="buyCustomGame" placeholder="e.g. God of War Ragnarök">
-          </div>
-          <div class="field">
-            <label for="buyCustomPrice">Your offer price ($)</label>
-            <input type="text" id="buyCustomPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-          </div>
-        </div>
- 
-        <div class="field" id="buyPriceRow" style="display:none;">
-          <label>Locked price — no bidding, no competition</label>
-          <div class="price-display" id="buyPriceBox"><span>—</span></div>
-          <div style="font-size:12px;color:var(--ink-light);margin-top:8px;line-height:1.5;">A1 condition — game plays perfectly, original case included. Minor surface scuffs acceptable; disc must be free of scratches that affect gameplay. Requires all original components.</div>
-        </div>
- 
-        <div class="field" id="addBuyGameBtnWrap" style="display:none;">
-          <button type="button" class="add-game-btn" onclick="addBuyGameToCart()">+ Add this game</button>
-        </div>
- 
-        <div id="buyGameCart" style="display:none;">
-          <div class="cart-label">Games added &#10003;</div>
-          <div id="buyCartItems"></div>
-        </div>
-        <div class="field">
-          <label for="buyWindow">When do you need it?</label>
-          <select id="buyWindow">
-            <option value="fast">Within 0–90 days</option>
-            <option value="flexible">Within 90–180 days</option>
-          </select>
-        </div>
-      </div>
-    </div>
- 
+  <!-- ===== SELL FIELDS ===== -->
+  <div id="sellFields">
     <div class="card">
-      <div class="card-label">Your info</div>
-      <div class="field"><label for="name">Full name</label><input type="text" id="name" name="name" placeholder="Jane Smith"></div>
-      <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="jane@email.com"></div>
-      <div class="field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" placeholder="(555) 000-0000"></div>
-      <div class="field"><label for="zip">Zip code</label><input type="text" id="zip" name="zip" placeholder="60601" maxlength="5"></div>
-    </div>
+      <div class="card-label">Your game</div>
  
-    <div class="card">
-      <div class="card-label">Anything else?</div>
       <div class="field">
-        <label for="notes">Notes or questions (optional)</label>
-        <textarea id="notes" name="notes" placeholder="e.g. disc is in great shape, bought at Target last month..."></textarea>
+        <label for="system">Select system</label>
+        <select id="system" onchange="populateGames()">
+          <option value="">— choose a system —</option>
+          <option value="switch">Nintendo Switch</option>
+        </select>
+      </div>
+ 
+      <div class="field" id="gameFieldWrap" style="display:none;">
+        <label for="gameSearch">Search or type a game title</label>
+        <div class="game-search-wrap">
+          <input type="text" id="gameSearch" list="gameSuggestions"
+            placeholder="e.g. Mario Kart 8 Deluxe…"
+            autocomplete="off" oninput="handleGameSearch()">
+          <span class="search-icon">🔍</span>
+          <datalist id="gameSuggestions"></datalist>
+        </div>
+        <div class="search-hint">Type to search or pick from the list. Title not showing? Just type it and fill in the details below.</div>
+      </div>
+ 
+      <div id="otherGameFields" style="display:none;">
+        <div class="field">
+          <label for="customGame">Game title</label>
+          <input type="text" id="customGame" placeholder="e.g. Metroid Dread">
+        </div>
+        <div class="field">
+          <label for="customPrice">Your asking resale price ($)</label>
+          <input type="text" id="customPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+        </div>
+      </div>
+ 
+      <div class="field">
+        <label for="sellWindow">How soon can you sell?</label>
+        <select id="sellWindow" onchange="updatePrice()">
+          <option value="fast">Fast Flip — 0–90 days (Highest Return)</option>
+          <option value="flexible">Flexible — 90–180 days (More Time)</option>
+        </select>
+      </div>
+ 
+      <div class="field" id="resalePriceRow" style="display:none;">
+        <label>Your guaranteed resale price</label>
+        <div class="price-display" id="resalePriceBox"><span style="color:var(--ink-light)">Select a game above</span></div>
+      </div>
+ 
+      <div class="field" id="addGameBtnWrap" style="display:none;">
+        <button type="button" class="add-game-btn" onclick="addGameToCart()">+ Add this game</button>
+      </div>
+ 
+      <div id="gameCart" style="display:none;">
+        <div class="cart-label">Games added &#10003;</div>
+        <div id="cartItems"></div>
+      </div>
+ 
+      <div class="field">
+        <label>Game condition</label>
+        <div class="a1-only-box">
+          <div class="a1-check">&#10003;</div>
+          <div>
+            <div class="a1-title">A1 — Like New / Very Good <span class="a1-badge">90%+ condition</span></div>
+            <div class="a1-desc">Game plays perfectly. Original case included. Minor surface scuffs acceptable — disc must be free of scratches that affect gameplay. Requires all original components.</div>
+          </div>
+        </div>
+        <div class="cond-future">Other condition tiers coming soon.</div>
       </div>
     </div>
+  </div>
  
-    <div class="no-payment-note">
-      &#128274; No payment is collected at this stage. This is an interest form only — we'll coordinate everything personally once we find your match.
+  <!-- ===== BUY FIELDS ===== -->
+  <div id="buyFields" style="display:none;">
+    <div class="card">
+      <div class="card-label">Game you want</div>
+ 
+      <div class="field">
+        <label for="buySystem">Select system</label>
+        <select id="buySystem" onchange="populateBuyGames()">
+          <option value="">— choose a system —</option>
+          <option value="switch">Nintendo Switch</option>
+        </select>
+      </div>
+ 
+      <div class="field" id="buyGameFieldWrap" style="display:none;">
+        <label for="buyGameSearch">Search or type a game title</label>
+        <div class="game-search-wrap">
+          <input type="text" id="buyGameSearch" list="buyGameSuggestions"
+            placeholder="e.g. Zelda: Tears of the Kingdom…"
+            autocomplete="off" oninput="handleBuyGameSearch()">
+          <span class="search-icon">🔍</span>
+          <datalist id="buyGameSuggestions"></datalist>
+        </div>
+        <div class="search-hint">Type to search or pick from the list. Title not showing? Just type it and fill in the details below.</div>
+      </div>
+ 
+      <div id="buyOtherGameFields" style="display:none;">
+        <div class="field">
+          <label for="buyCustomGame">Game title</label>
+          <input type="text" id="buyCustomGame" placeholder="e.g. Metroid Dread">
+        </div>
+        <div class="field">
+          <label for="buyCustomPrice">Your offer price ($)</label>
+          <input type="text" id="buyCustomPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+        </div>
+      </div>
+ 
+      <div class="field" id="buyPriceRow" style="display:none;">
+        <label>Locked price — no bidding, no competition</label>
+        <div class="price-display" id="buyPriceBox"><span>—</span></div>
+        <div style="font-size:12px;color:var(--ink-light);margin-top:8px;line-height:1.5;">A1 condition — game plays perfectly, original case included. Minor surface scuffs acceptable; disc must be free of scratches that affect gameplay. Requires all original components.</div>
+      </div>
+ 
+      <div class="field" id="addBuyGameBtnWrap" style="display:none;">
+        <button type="button" class="add-game-btn" onclick="addBuyGameToCart()">+ Add this game</button>
+      </div>
+ 
+      <div id="buyGameCart" style="display:none;">
+        <div class="cart-label">Games added &#10003;</div>
+        <div id="buyCartItems"></div>
+      </div>
+ 
+      <div class="field">
+        <label for="buyWindow">When do you need it?</label>
+        <select id="buyWindow">
+          <option value="fast">Within 0–90 days</option>
+          <option value="flexible">Within 90–180 days</option>
+        </select>
+      </div>
     </div>
-    <button type="button" class="submit-btn" onclick="submitForm()">Submit My Offer &#8594;</button>
-    <div class="trust-row">
-      <span>&#10003; Zero obligation</span>
-      <span>&#10003; Free to submit</span>
-      <span>&#10003; Real person responds</span>
+  </div>
+ 
+  <div class="card">
+    <div class="card-label">Your info</div>
+    <div class="field"><label for="name">Full name</label><input type="text" id="name" name="name" placeholder="Jane Smith"></div>
+    <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="jane@email.com"></div>
+    <div class="field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" placeholder="(555) 000-0000"></div>
+    <div class="field"><label for="zip">Zip code</label><input type="text" id="zip" name="zip" placeholder="53097" maxlength="5"></div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-label">Anything else?</div>
+    <div class="field">
+      <label for="notes">Notes or questions (optional)</label>
+      <textarea id="notes" name="notes" placeholder="e.g. disc is in great shape, bought at Target last month..."></textarea>
     </div>
+  </div>
+ 
+  <div class="no-payment-note">
+    &#128274; No payment is collected at this stage. This is an interest form only — we'll coordinate everything personally once we find your match.
+  </div>
+ 
+  <!-- AGE GATE -->
+  <div style="display:flex;align-items:flex-start;gap:10px;margin:14px 0 6px;padding:12px 14px;background:white;border:1.5px solid var(--border);border-radius:8px;">
+    <input type="checkbox" id="ageGate" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--green-dim);cursor:pointer;">
+    <label for="ageGate" style="font-size:13px;color:var(--ink-mid);line-height:1.5;cursor:pointer;margin:0;">
+      I confirm I am 13 years of age or older and I have read and agree to the
+      <a href="terms.html" target="_blank" style="color:var(--green-dim);text-decoration:underline;">Terms of Service</a> and
+      <a href="privacy.html" target="_blank" style="color:var(--green-dim);text-decoration:underline;">Privacy Policy</a>.
+    </label>
+  </div>
+ 
+  <button type="button" class="submit-btn" id="submitBtn" onclick="submitForm()" style="opacity:.45;pointer-events:none;">Submit My Offer &#8594;</button>
+  <div class="trust-row">
+    <span>&#10003; Zero obligation</span>
+    <span>&#10003; Free to submit</span>
+    <span>&#10003; Real person responds</span>
+  </div>
+ 
+  <!-- REFERRAL -->
+  <div style="margin-top:18px;padding:14px;background:white;border:1.5px solid var(--border);border-radius:var(--radius);text-align:center;">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:8px;">Know someone with Switch games to sell?</div>
+    <button type="button" onclick="copyReferral()" id="referralBtn" style="padding:9px 20px;background:var(--green-light);color:var(--green-dark);border:1.5px solid var(--green-mid);border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;">📋 Copy My Referral Link</button>
+    <div id="referralConfirm" style="display:none;font-size:12px;color:var(--green-dim);margin-top:6px;font-weight:600;">✓ Link copied! Send it their way.</div>
+  </div>
+ 
   </form>
   </div>
  
+  <!-- SUCCESS SCREEN -->
   <div class="success-screen" id="successScreen">
     <div class="success-icon">&#10003;</div>
     <h2>Got it — we're on it.</h2>
@@ -647,338 +609,394 @@
 </div>
  
 <script>
-var currentRole = 'sell', selectedCond = 'a1';
+var currentRole = 'sell';
 var sellCart = [];
-var buyCart = [];
+var buyCart  = [];
+var currentSellGameData = null; // [name, retail, resale] or null
+var currentBuyGameData  = null;
  
-var condData = {
-  a1: { mult:1.00, label:'A1 — Like New / Very Good', badge:'ba1' }
-};
+var sysLabels = { switch:'Nintendo Switch', ps5:'PS5', xbox:'Xbox Series X|S', ps4:'PS4', xbone:'Xbox One' };
  
 var gamesBySystem = {
   switch: [
-    ['Animal Crossing: New Horizons',       60, 36],
-    ['Mario Kart 8 Deluxe',                 60, 43],
-    ['Pokemon Scarlet',                     60, 39],
-    ['Pokemon Violet',                      60, 39],
-    ['Super Smash Bros. Ultimate',          60, 43],
-    ['Zelda: Tears of the Kingdom',         70, 50],
+    ['Animal Crossing: New Horizons',  60, 36],
+    ['Mario Kart 8 Deluxe',            60, 43],
+    ['Pokemon Scarlet',                60, 39],
+    ['Pokemon Violet',                 60, 39],
+    ['Super Smash Bros. Ultimate',     60, 43],
+    ['Zelda: Tears of the Kingdom',    70, 50],
   ],
-  ps5: [], xbox: [], ps4: [], xbone: []
+  ps5:[], xbox:[], ps4:[], xbone:[]
 };
  
+// ── SELL SIDE ──────────────────────────────────────────
+ 
 function populateGames() {
-  var sys = document.getElementById('system').value;
-  var gameWrap = document.getElementById('gameFieldWrap');
-  var gameSelect = document.getElementById('game');
-  var priceRow = document.getElementById('resalePriceRow');
-  var otherFields = document.getElementById('otherGameFields');
+  var sys        = document.getElementById('system').value;
+  var gameWrap   = document.getElementById('gameFieldWrap');
+  var datalist   = document.getElementById('gameSuggestions');
+  var gameSearch = document.getElementById('gameSearch');
  
-  gameSelect.innerHTML = '<option value="">— choose a game —</option>';
-  otherFields.style.display = 'none';
-  priceRow.style.display = 'none';
+  datalist.innerHTML = '';
+  gameSearch.value   = '';
+  currentSellGameData = null;
+  document.getElementById('otherGameFields').style.display  = 'none';
+  document.getElementById('resalePriceRow').style.display   = 'none';
+  document.getElementById('addGameBtnWrap').style.display   = 'none';
  
   if (!sys) { gameWrap.style.display = 'none'; return; }
  
-  var sorted = (gamesBySystem[sys] || []).slice().sort(function(a,b){ return a[0].localeCompare(b[0]); });
-  sorted.forEach(function(g) {
-    var opt = document.createElement('option');
-    opt.value = g[0] + '|' + g[1] + '|' + g[2];
-    opt.textContent = g[0];
-    gameSelect.appendChild(opt);
-  });
-  var other = document.createElement('option');
-  other.value = 'OTHER';
-  other.textContent = 'Title not shown? Enter details below';
-  gameSelect.appendChild(other);
+  (gamesBySystem[sys] || []).slice()
+    .sort(function(a,b){ return a[0].localeCompare(b[0]); })
+    .forEach(function(g) {
+      var opt = document.createElement('option');
+      opt.value = g[0];
+      datalist.appendChild(opt);
+    });
  
   gameWrap.style.display = 'block';
 }
  
-function populateBuyGames() {
-  var sys = document.getElementById('buySystem').value;
-  var gameWrap = document.getElementById('buyGameFieldWrap');
-  var gameSelect = document.getElementById('buyGame');
-  var priceRow = document.getElementById('buyPriceRow');
-  var otherFields = document.getElementById('buyOtherGameFields');
+function handleGameSearch() {
+  var typed  = document.getElementById('gameSearch').value.trim();
+  var sys    = document.getElementById('system').value;
+  var games  = gamesBySystem[sys] || [];
+  var others = document.getElementById('otherGameFields');
  
-  gameSelect.innerHTML = '<option value="">— choose a game —</option>';
-  priceRow.style.display = 'none';
-  otherFields.style.display = 'none';
+  var match = null;
+  for (var i = 0; i < games.length; i++) {
+    if (games[i][0].toLowerCase() === typed.toLowerCase()) { match = games[i]; break; }
+  }
  
-  if (!sys) { gameWrap.style.display = 'none'; return; }
- 
-  var sorted = (gamesBySystem[sys] || []).slice().sort(function(a,b){ return a[0].localeCompare(b[0]); });
-  sorted.forEach(function(g) {
-    var opt = document.createElement('option');
-    opt.value = g[0] + '|' + g[2];
-    opt.textContent = g[0] + ' \u2014 $' + g[2];
-    gameSelect.appendChild(opt);
-  });
-  var other = document.createElement('option');
-  other.value = 'OTHER';
-  other.textContent = 'Title not shown? Enter details below';
-  gameSelect.appendChild(other);
- 
-  gameWrap.style.display = 'block';
-}
- 
-function handleBuyGameSelect() {
-  var sel = document.getElementById('buyGame').value;
-  var otherFields = document.getElementById('buyOtherGameFields');
-  otherFields.style.display = sel === 'OTHER' ? 'block' : 'none';
-  if (sel !== 'OTHER') updateBuyPrice();
-  else document.getElementById('buyPriceRow').style.display = 'none';
-}
- 
-function handleGameSelect() {
-  var sel = document.getElementById('game').value;
-  var otherFields = document.getElementById('otherGameFields');
-  otherFields.style.display = sel === 'OTHER' ? 'block' : 'none';
-  if (sel !== 'OTHER') updatePrice();
-  else document.getElementById('resalePriceRow').style.display = 'none';
-}
- 
-function setRole(r) {
-  currentRole = r;
-  document.querySelectorAll('.role-btn').forEach(function(b){b.classList.remove('active');});
-  document.querySelector('[data-role="'+r+'"]').classList.add('active');
-  document.getElementById('sellFields').style.display = r==='sell'?'block':'none';
-  document.getElementById('buyFields').style.display  = r==='buy' ?'block':'none';
+  if (match) {
+    currentSellGameData = match;
+    others.style.display = 'none';
+    updatePrice();
+  } else if (typed.length > 2) {
+    currentSellGameData = null;
+    others.style.display = 'block';
+    document.getElementById('resalePriceRow').style.display = 'none';
+    document.getElementById('addGameBtnWrap').style.display = 'none';
+    var cg = document.getElementById('customGame');
+    if (!cg.value) cg.value = typed;
+  } else {
+    currentSellGameData = null;
+    others.style.display = 'none';
+    document.getElementById('resalePriceRow').style.display = 'none';
+    document.getElementById('addGameBtnWrap').style.display = 'none';
+  }
 }
  
 function updatePrice() {
-  var sel = document.getElementById('game').value;
-  var win = document.getElementById('sellWindow').value;
-  var row = document.getElementById('resalePriceRow');
-  var addBtn = document.getElementById('addGameBtnWrap');
-  if (!sel || sel === 'OTHER') { row.style.display='none'; addBtn.style.display='none'; return; }
-  row.style.display = 'block';
-  addBtn.style.display = 'block';
-  var parts = sel.split('|');
-  var fast = parseInt(parts[2]);
-  var flex = Math.round(fast * 0.9);
-  var resale = win==='fast' ? fast : flex;
-  var winLbl = win==='fast' ? '0\u201390 days' : '90\u2013180 days';
+  if (!currentSellGameData) return;
+  var win    = document.getElementById('sellWindow').value;
+  var fast   = currentSellGameData[2];
+  var resale = win === 'fast' ? fast : Math.round(fast * 0.9);
+  var winLbl = win === 'fast' ? '0\u201390 days' : '90\u2013180 days';
+ 
+  document.getElementById('resalePriceRow').style.display = 'block';
+  document.getElementById('addGameBtnWrap').style.display = 'block';
   document.getElementById('resalePriceBox').innerHTML =
-    '<span class="price-val">$'+resale+'</span>' +
-    '<span style="color:var(--ink-light);font-size:13px;">guaranteed \u00b7 '+winLbl+'</span>' +
+    '<span class="price-val">$' + resale + '</span>' +
+    '<span style="color:var(--ink-light);font-size:13px;">guaranteed \u00b7 ' + winLbl + '</span>' +
     '<span class="pb ba1">A1 \u2014 Like New / Very Good</span>';
 }
  
-function updateBuyPrice() {
-  var sel = document.getElementById('buyGame').value;
-  var row = document.getElementById('buyPriceRow');
-  var addBtn = document.getElementById('addBuyGameBtnWrap');
-  if (!sel || sel === 'OTHER') { row.style.display='none'; if(addBtn) addBtn.style.display='none'; return; }
-  row.style.display = 'block';
-  if(addBtn) addBtn.style.display = 'block';
-  var price = sel.split('|')[1];
-  document.getElementById('buyPriceBox').innerHTML =
-    '<span class="price-val">$'+price+'</span>' +
-    '<span style="color:var(--ink-light);font-size:13px;">locked \u2014 no bidding</span>';
-}
- 
 function addGameToCart() {
-  var sel = document.getElementById('game').value;
-  var win = document.getElementById('sellWindow').value;
-  var sys = document.getElementById('system').value;
-  var sysLabels = {ps5:'PS5',xbox:'Xbox Series X|S',switch:'Nintendo Switch',ps4:'PS4',xbone:'Xbox One'};
-  if (!sel || sel === 'OTHER') return;
-  var parts = sel.split('|');
-  var fast = parseInt(parts[2]);
-  var resale = win==='fast' ? fast : Math.round(fast * 0.9);
-  var winLbl = win==='fast' ? 'Fast Flip' : 'Flexible';
-  var name = parts[0] + ' (' + (sysLabels[sys]||sys) + ') \u2014 ' + winLbl;
-  sellCart.push({ name: name, price: resale, raw: parts[0], sys: sysLabels[sys]||sys, win: winLbl, resale: resale });
+  if (!currentSellGameData) return;
+  var sys    = document.getElementById('system').value;
+  var win    = document.getElementById('sellWindow').value;
+  var fast   = currentSellGameData[2];
+  var resale = win === 'fast' ? fast : Math.round(fast * 0.9);
+  var winLbl = win === 'fast' ? 'Fast Flip' : 'Flexible';
+  var name   = currentSellGameData[0] + ' (' + (sysLabels[sys]||sys) + ') \u2014 ' + winLbl;
+ 
+  sellCart.push({ name:name, resale:resale });
   renderSellCart();
-  document.getElementById('game').value = '';
+ 
+  document.getElementById('gameSearch').value = '';
+  currentSellGameData = null;
   document.getElementById('resalePriceRow').style.display = 'none';
   document.getElementById('addGameBtnWrap').style.display = 'none';
+  document.getElementById('otherGameFields').style.display = 'none';
 }
  
 function renderSellCart() {
-  var cart = document.getElementById('gameCart');
+  var cart  = document.getElementById('gameCart');
   var items = document.getElementById('cartItems');
-  if (sellCart.length === 0) { cart.style.display = 'none'; return; }
+  if (!sellCart.length) { cart.style.display = 'none'; return; }
   cart.style.display = 'block';
-  items.innerHTML = sellCart.map(function(g, i) {
+  items.innerHTML = sellCart.map(function(g,i){
     return '<div class="cart-item">' +
-      '<span class="cart-item-name">'+g.name+'</span>' +
-      '<span class="cart-item-price">$'+g.resale+'</span>' +
+      '<span class="cart-item-name">' + g.name + '</span>' +
+      '<span class="cart-item-price">$' + g.resale + '</span>' +
       '<button type="button" class="cart-item-remove" onclick="removeSellItem('+i+')">&times;</button>' +
       '</div>';
   }).join('');
 }
+function removeSellItem(i){ sellCart.splice(i,1); renderSellCart(); }
  
-function removeSellItem(i) {
-  sellCart.splice(i, 1);
-  renderSellCart();
+// ── BUY SIDE ───────────────────────────────────────────
+ 
+function populateBuyGames() {
+  var sys        = document.getElementById('buySystem').value;
+  var gameWrap   = document.getElementById('buyGameFieldWrap');
+  var datalist   = document.getElementById('buyGameSuggestions');
+  var gameSearch = document.getElementById('buyGameSearch');
+ 
+  datalist.innerHTML = '';
+  gameSearch.value   = '';
+  currentBuyGameData = null;
+  document.getElementById('buyOtherGameFields').style.display = 'none';
+  document.getElementById('buyPriceRow').style.display        = 'none';
+  document.getElementById('addBuyGameBtnWrap').style.display  = 'none';
+ 
+  if (!sys) { gameWrap.style.display = 'none'; return; }
+ 
+  (gamesBySystem[sys] || []).slice()
+    .sort(function(a,b){ return a[0].localeCompare(b[0]); })
+    .forEach(function(g) {
+      var opt = document.createElement('option');
+      opt.value = g[0];
+      datalist.appendChild(opt);
+    });
+ 
+  gameWrap.style.display = 'block';
+}
+ 
+function handleBuyGameSearch() {
+  var typed  = document.getElementById('buyGameSearch').value.trim();
+  var sys    = document.getElementById('buySystem').value;
+  var games  = gamesBySystem[sys] || [];
+  var others = document.getElementById('buyOtherGameFields');
+ 
+  var match = null;
+  for (var i = 0; i < games.length; i++) {
+    if (games[i][0].toLowerCase() === typed.toLowerCase()) { match = games[i]; break; }
+  }
+ 
+  if (match) {
+    currentBuyGameData = match;
+    others.style.display = 'none';
+    updateBuyPrice();
+  } else if (typed.length > 2) {
+    currentBuyGameData = null;
+    others.style.display = 'block';
+    document.getElementById('buyPriceRow').style.display       = 'none';
+    document.getElementById('addBuyGameBtnWrap').style.display = 'none';
+    var cg = document.getElementById('buyCustomGame');
+    if (!cg.value) cg.value = typed;
+  } else {
+    currentBuyGameData = null;
+    others.style.display = 'none';
+    document.getElementById('buyPriceRow').style.display       = 'none';
+    document.getElementById('addBuyGameBtnWrap').style.display = 'none';
+  }
+}
+ 
+function updateBuyPrice() {
+  if (!currentBuyGameData) return;
+  document.getElementById('buyPriceRow').style.display       = 'block';
+  document.getElementById('addBuyGameBtnWrap').style.display = 'block';
+  document.getElementById('buyPriceBox').innerHTML =
+    '<span class="price-val">$' + currentBuyGameData[2] + '</span>' +
+    '<span style="color:var(--ink-light);font-size:13px;">locked \u2014 no bidding</span>';
 }
  
 function addBuyGameToCart() {
-  var sel = document.getElementById('buyGame').value;
+  if (!currentBuyGameData) return;
   var bsys = document.getElementById('buySystem').value;
-  var sysLabels = {ps5:'PS5',xbox:'Xbox Series X|S',switch:'Nintendo Switch',ps4:'PS4',xbone:'Xbox One'};
-  if (!sel || sel === 'OTHER') return;
-  var parts = sel.split('|');
-  var win = document.getElementById('buyWindow').value === 'fast' ? 'Within 0\u201390 days' : 'Within 90\u2013180 days';
-  var name = parts[0] + ' (' + (sysLabels[bsys]||bsys) + ')';
-  buyCart.push({ name: name, price: parts[1], timeline: win });
+  var bwin = document.getElementById('buyWindow').value === 'fast' ? 'Within 0\u201390 days' : 'Within 90\u2013180 days';
+  var name = currentBuyGameData[0] + ' (' + (sysLabels[bsys]||bsys) + ')';
+ 
+  buyCart.push({ name:name, price:currentBuyGameData[2], timeline:bwin });
   renderBuyCart();
-  document.getElementById('buyGame').value = '';
-  document.getElementById('buyPriceRow').style.display = 'none';
+ 
+  document.getElementById('buyGameSearch').value = '';
+  currentBuyGameData = null;
+  document.getElementById('buyPriceRow').style.display       = 'none';
   document.getElementById('addBuyGameBtnWrap').style.display = 'none';
+  document.getElementById('buyOtherGameFields').style.display = 'none';
 }
  
 function renderBuyCart() {
-  var cart = document.getElementById('buyGameCart');
+  var cart  = document.getElementById('buyGameCart');
   var items = document.getElementById('buyCartItems');
-  if (buyCart.length === 0) { cart.style.display = 'none'; return; }
+  if (!buyCart.length) { cart.style.display = 'none'; return; }
   cart.style.display = 'block';
-  items.innerHTML = buyCart.map(function(g, i) {
+  items.innerHTML = buyCart.map(function(g,i){
     return '<div class="cart-item">' +
-      '<span class="cart-item-name">'+g.name+'</span>' +
-      '<span class="cart-item-price">$'+g.price+'</span>' +
+      '<span class="cart-item-name">' + g.name + '</span>' +
+      '<span class="cart-item-price">$' + g.price + '</span>' +
       '<button type="button" class="cart-item-remove" onclick="removeBuyItem('+i+')">&times;</button>' +
       '</div>';
   }).join('');
 }
+function removeBuyItem(i){ buyCart.splice(i,1); renderBuyCart(); }
  
-function removeBuyItem(i) {
-  buyCart.splice(i, 1);
-  renderBuyCart();
+// ── ROLE TOGGLE ────────────────────────────────────────
+ 
+function setRole(r) {
+  currentRole = r;
+  document.querySelectorAll('.role-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelector('[data-role="'+r+'"]').classList.add('active');
+  document.getElementById('sellFields').style.display = r==='sell' ? 'block' : 'none';
+  document.getElementById('buyFields').style.display  = r==='buy'  ? 'block' : 'none';
 }
  
-function resetForm() {
-  sellCart = []; buyCart = [];
-  document.getElementById('formInner').style.display = 'block';
-  document.getElementById('successScreen').classList.remove('show');
-  document.getElementById('roleToggle').style.display = 'grid';
-  document.getElementById('bbForm').reset();
-  document.getElementById('resalePriceRow').style.display = 'none';
-  document.getElementById('addGameBtnWrap').style.display = 'none';
-  document.getElementById('gameFieldWrap').style.display = 'none';
-  document.getElementById('gameCart').style.display = 'none';
-  document.getElementById('cartItems').innerHTML = '';
-  document.getElementById('buyGameFieldWrap').style.display = 'none';
-  document.getElementById('buyGameCart').style.display = 'none';
-  document.getElementById('buyCartItems').innerHTML = '';
-  document.getElementById('buyPriceRow').style.display = 'none';
-  document.getElementById('bondSummary').innerHTML = '';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
- 
-function addAnother() {
-  var savedName = document.getElementById('name') ? document.getElementById('name').value : '';
-  var savedEmail = document.getElementById('email') ? document.getElementById('email').value : '';
-  document.getElementById('formInner').style.display = 'block';
-  document.getElementById('successScreen').classList.remove('show');
-  document.getElementById('roleToggle').style.display = 'grid';
-  document.getElementById('game').value = '';
-  document.getElementById('resalePriceRow').style.display = 'none';
-  document.getElementById('addGameBtnWrap').style.display = 'none';
-  document.getElementById('gameFieldWrap').style.display = 'none';
-  document.getElementById('cartItems').innerHTML = '';
-  document.getElementById('gameCart').style.display = 'none';
-  sellCart = []; buyCart = [];
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+// ── SUBMIT ─────────────────────────────────────────────
  
 function submitForm() {
   var name  = document.getElementById('name').value.trim();
   var email = document.getElementById('email').value.trim();
+  var hasGame;
  
-  var hasGame = currentRole==='sell'
-    ? (sellCart.length > 0 || document.getElementById('game').value || document.getElementById('customGame').value.trim())
-    : (buyCart.length > 0 || document.getElementById('buyGame').value || document.getElementById('buyCustomGame').value.trim());
+  if (currentRole === 'sell') {
+    hasGame = sellCart.length > 0 || currentSellGameData || document.getElementById('customGame').value.trim();
+  } else {
+    hasGame = buyCart.length > 0 || currentBuyGameData || document.getElementById('buyCustomGame').value.trim();
+  }
  
   if (!name || !email || !hasGame) {
     alert('Please fill in your name, email, and add at least one game before submitting.');
     return;
   }
  
-  var sysLabels = {ps5:'PS5',xbox:'Xbox Series X|S',switch:'Nintendo Switch',ps4:'PS4',xbone:'Xbox One'};
   var html = '';
  
   if (currentRole === 'sell') {
     var allItems = sellCart.slice();
-    var gsel = document.getElementById('game').value;
-    var sys  = document.getElementById('system').value;
-    var win  = document.getElementById('sellWindow').value;
-    if (gsel && gsel !== 'OTHER' && allItems.length === 0) {
-      var parts = gsel.split('|');
-      var fast = parseInt(parts[2]);
-      var resale = win==='fast' ? fast : Math.round(fast * 0.9);
-      var winLbl = win==='fast' ? 'Fast Flip' : 'Flexible';
-      allItems.push({ name: parts[0] + ' (' + (sysLabels[sys]||sys) + ') \u2014 ' + winLbl, resale: resale });
+    var sys = document.getElementById('system').value;
+    var win = document.getElementById('sellWindow').value;
+ 
+    if (currentSellGameData && !allItems.length) {
+      var fast   = currentSellGameData[2];
+      var resale = win==='fast' ? fast : Math.round(fast*0.9);
+      var wl     = win==='fast' ? 'Fast Flip' : 'Flexible';
+      allItems.push({ name: currentSellGameData[0]+' ('+(sysLabels[sys]||sys)+') \u2014 '+wl, resale:resale });
     }
-    if (gsel === 'OTHER') {
-      var cg = document.getElementById('customGame').value.trim();
-      var cp = document.getElementById('customPrice').value.trim();
-      allItems.push({ name: cg + ' (' + (sysLabels[sys]||sys) + ')', resale: cp || '\u2014' });
-    }
+    var cg = document.getElementById('customGame').value.trim();
+    var cp = document.getElementById('customPrice').value.trim();
+    if (!currentSellGameData && cg) allItems.push({ name:cg+' ('+(sysLabels[sys]||sys)+')', resale:cp||'\u2014' });
+ 
     document.getElementById('h_role').value      = 'Sell Used';
-    document.getElementById('h_system').value    = '';
-    document.getElementById('h_game').value      = allItems.map(function(g){ return g.name; }).join(' | ');
-    document.getElementById('h_price').value     = allItems.map(function(g){ return '$'+g.resale; }).join(' | ');
-    document.getElementById('h_window').value    = '';
+    document.getElementById('h_game').value      = allItems.map(function(g){return g.name;}).join(' | ');
+    document.getElementById('h_price').value     = allItems.map(function(g){return '$'+g.resale;}).join(' | ');
     document.getElementById('h_condition').value = 'A1 — Like New / Very Good';
-    document.getElementById('h_timeline').value  = '';
+ 
     html = '<div class="sum-row"><span>Role</span><span>Selling used</span></div>';
-    allItems.forEach(function(g) {
-      html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.resale+'</span></div>';
-    });
+    allItems.forEach(function(g){ html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.resale+'</span></div>'; });
     html += '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>';
+ 
   } else {
     var allBuy = buyCart.slice();
-    var bg   = document.getElementById('buyGame').value;
     var bsys = document.getElementById('buySystem').value;
-    var sysStr = bsys ? ' (' + (sysLabels[bsys]||bsys) + ')' : '';
-    var bw = document.getElementById('buyWindow').value==='fast' ? 'Within 0\u201390 days' : 'Within 90\u2013180 days';
-    if (bg && bg !== 'OTHER' && allBuy.length === 0) {
-      var bparts = bg.split('|');
-      allBuy.push({ name: bparts[0] + sysStr, price: bparts[1], timeline: bw });
+    var bwin = document.getElementById('buyWindow').value==='fast' ? 'Within 0\u201390 days' : 'Within 90\u2013180 days';
+ 
+    if (currentBuyGameData && !allBuy.length) {
+      allBuy.push({ name:currentBuyGameData[0]+' ('+(sysLabels[bsys]||bsys)+')', price:currentBuyGameData[2], timeline:bwin });
     }
-    if (bg === 'OTHER') {
-      var bn = (document.getElementById('buyCustomGame').value.trim() || '\u2014') + sysStr;
-      var bp = document.getElementById('buyCustomPrice').value.trim() || '\u2014';
-      allBuy.push({ name: bn, price: bp, timeline: bw });
-    }
+    var bn = document.getElementById('buyCustomGame').value.trim();
+    var bp = document.getElementById('buyCustomPrice').value.trim();
+    if (!currentBuyGameData && bn) allBuy.push({ name:bn+' ('+(sysLabels[bsys]||bsys)+')', price:bp||'\u2014', timeline:bwin });
+ 
     document.getElementById('h_role').value      = 'Buy Used';
-    document.getElementById('h_system').value    = '';
-    document.getElementById('h_game').value      = allBuy.map(function(g){ return g.name; }).join(' | ');
-    document.getElementById('h_price').value     = allBuy.map(function(g){ return '$'+g.price; }).join(' | ');
-    document.getElementById('h_window').value    = '';
+    document.getElementById('h_game').value      = allBuy.map(function(g){return g.name;}).join(' | ');
+    document.getElementById('h_price').value     = allBuy.map(function(g){return '$'+g.price;}).join(' | ');
     document.getElementById('h_condition').value = 'A1 — Like New / Very Good';
-    document.getElementById('h_timeline').value  = allBuy.map(function(g){ return g.timeline; }).join(' | ');
+    document.getElementById('h_timeline').value  = allBuy.map(function(g){return g.timeline;}).join(' | ');
+ 
     html = '<div class="sum-row"><span>Role</span><span>Buying used</span></div>';
-    allBuy.forEach(function(g) {
-      html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.price+'</span></div>';
-    });
+    allBuy.forEach(function(g){ html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.price+'</span></div>'; });
     html += '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>';
   }
  
-  var form = document.getElementById('bbForm');
-  fetch(form.action, {
+  fetch(document.getElementById('bbForm').action, {
     method: 'POST',
-    body: new FormData(form),
+    body: new FormData(document.getElementById('bbForm')),
     headers: { 'Accept': 'application/json' }
   }).then(function() {
     document.getElementById('formInner').style.display = 'none';
-    document.getElementById('bondSummary').innerHTML = html;
+    document.getElementById('bondSummary').innerHTML   = html;
     document.getElementById('successScreen').classList.add('show');
     document.getElementById('roleToggle').style.display = 'none';
-    window.scrollTo({top:0,behavior:'smooth'});
+    window.scrollTo({ top:0, behavior:'smooth' });
   }).catch(function() {
     alert('Something went wrong — please try again or DM us directly.');
   });
 }
  
-document.getElementById('modalOverlay') && document.getElementById('modalOverlay').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('open'); });
+// ── RESET ──────────────────────────────────────────────
+ 
+function resetForm() {
+  sellCart=[]; buyCart=[]; currentSellGameData=null; currentBuyGameData=null;
+  document.getElementById('formInner').style.display    = 'block';
+  document.getElementById('successScreen').classList.remove('show');
+  document.getElementById('roleToggle').style.display   = 'grid';
+  document.getElementById('bbForm').reset();
+  ['resalePriceRow','addGameBtnWrap','gameFieldWrap','gameCart',
+   'otherGameFields','buyGameFieldWrap','buyGameCart','buyPriceRow',
+   'addBuyGameBtnWrap','buyOtherGameFields'].forEach(function(id){
+    document.getElementById(id).style.display='none';
+  });
+  document.getElementById('cartItems').innerHTML    = '';
+  document.getElementById('buyCartItems').innerHTML = '';
+  document.getElementById('bondSummary').innerHTML  = '';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+ 
+function addAnother() {
+  sellCart=[]; buyCart=[]; currentSellGameData=null; currentBuyGameData=null;
+  document.getElementById('formInner').style.display    = 'block';
+  document.getElementById('successScreen').classList.remove('show');
+  document.getElementById('roleToggle').style.display   = 'grid';
+  ['resalePriceRow','addGameBtnWrap','gameFieldWrap','gameCart','otherGameFields'].forEach(function(id){
+    document.getElementById(id).style.display='none';
+  });
+  document.getElementById('gameSearch').value       = '';
+  document.getElementById('cartItems').innerHTML    = '';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+ 
+// Age gate — enables submit button only when checked
+document.getElementById('ageGate').addEventListener('change', function() {
+  var btn = document.getElementById('submitBtn');
+  btn.style.opacity = this.checked ? '1' : '.45';
+  btn.style.pointerEvents = this.checked ? 'auto' : 'none';
+});
+ 
+// Referral copy link
+function copyReferral() {
+  var url = 'https://cartridgebond.com/?utm_source=referral&utm_medium=friend';
+  navigator.clipboard.writeText(url).then(function() {
+    document.getElementById('referralConfirm').style.display = 'block';
+    setTimeout(function(){ document.getElementById('referralConfirm').style.display='none'; }, 3000);
+  }).catch(function() {
+    // Fallback for older browsers
+    var ta = document.createElement('textarea');
+    ta.value = url; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    document.getElementById('referralConfirm').style.display = 'block';
+    setTimeout(function(){ document.getElementById('referralConfirm').style.display='none'; }, 3000);
+  });
+}
 </script>
+ 
+<!-- FOOTER -->
+<footer style="background:#111;padding:24px 20px;text-align:center;border-top:1px solid rgba(34,197,94,0.12);">
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#22c55e;margin-bottom:12px;">CartridgeBond</div>
+  <div style="font-size:11px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px;">
+    <a href="terms.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Terms of Service</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="privacy.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Privacy Policy</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="meetup.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Safe Meetup Guide</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="faq.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">FAQ</a>
+  </div>
+  <div style="font-size:11px;color:rgba(255,255,255,0.2);">© 2025 CartridgeBond. A connection platform only — not a party to any transaction.</div>
+</footer>
 </body>
 </html>
  
-
-
