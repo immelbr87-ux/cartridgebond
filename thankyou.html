@@ -41,7 +41,7 @@
 <body>
 
 <div class="page-header">
-  <div class="brand">CartridgeBond</div>
+  <div class="brand">Cartridge<span style="color:#22c55e;">Bond</span></div>
   <div class="check">✓</div>
   <h1>Got it — we're on it.</h1>
   <div class="sub">Your submission is in. Here's what happens next.</div>
@@ -89,28 +89,46 @@
 </div>
 
 <footer>
-  <div class="footer-brand">CartridgeBond</div>
+  <div class="footer-brand">Cartridge<span style="color:#22c55e;">Bond</span></div>
   <div class="footer-links">
     <a href="index.html">Home</a><span class="footer-sep">·</span>
     <a href="terms.html">Terms</a><span class="footer-sep">·</span>
     <a href="privacy.html">Privacy</a><span class="footer-sep">·</span>
-    <a href="faq.html">FAQ</a>
+    <a href="faq.html">FAQ</a><span class="footer-sep">·</span>
+    <a href="prices.html">Price Guide</a><span class="footer-sep">·</span>
+    <a href="meetup.html">Safe Meetup Guide</a><span class="footer-sep">·</span>
+    <a href="waitlist.html">Not in Milwaukee?</a>
   </div>
   <div class="footer-copy">© 2025 CartridgeBond. A connection platform only — not a party to any transaction.</div>
 </footer>
 
 <script>
 function copyLink() {
-  var url = 'https://cartridgebond.com/?utm_source=referral&utm_medium=thankyou';
-  navigator.clipboard.writeText(url).catch(function(){
-    var ta = document.createElement('textarea');
-    ta.value = url; document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta);
-  }).finally(function(){
-    var msg = document.getElementById('copiedMsg');
+  var url = window.location.origin + '/index.html?utm_source=referral&utm_medium=thankyou';
+  var btn = document.querySelector('.share-btn');
+  var msg = document.getElementById('copiedMsg');
+
+  function showConfirm() {
     msg.style.display = 'block';
-    setTimeout(function(){ msg.style.display='none'; }, 3000);
-  });
+    if (btn) btn.textContent = '✓ Copied!';
+    setTimeout(function() {
+      msg.style.display = 'none';
+      if (btn) btn.textContent = '📋 Copy CartridgeBond Link';
+    }, 3000);
+  }
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url).then(showConfirm).catch(fallback);
+  } else { fallback(); }
+
+  function fallback() {
+    var ta = document.createElement('textarea');
+    ta.value = url; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try { document.execCommand('copy'); showConfirm(); }
+    catch(e) { alert('Copy this link: ' + url); }
+    document.body.removeChild(ta);
+  }
 }
 </script>
 </body>
