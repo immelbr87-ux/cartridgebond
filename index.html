@@ -909,15 +909,21 @@ function submitForm() {
   var hasGame;
 
   if (currentRole === 'sell') {
-    hasGame = sellCart.length > 0 || currentSellGameData || document.getElementById('customGame').value.trim();
+    hasGame = sellCart.length > 0 || currentSellGameData !== null || document.getElementById('customGame').value.trim();
+    if (!hasGame) {
+      alert('Please add at least one game using the "+ Add this game" button before submitting.');
+      return;
+    }
   } else {
-    hasGame = buyCart.length > 0 || currentBuyGameData || document.getElementById('buyCustomGame').value.trim();
+    hasGame = buyCart.length > 0 || currentBuyGameData !== null || document.getElementById('buyCustomGame').value.trim();
+    if (!hasGame) {
+      alert('Please add at least one game using the "+ Add this game" button before submitting.');
+      return;
+    }
   }
 
-  if (!name || !email || !hasGame) {
-    alert('Please fill in your name, email, and add at least one game before submitting.');
-    return;
-  }
+  if (!name) { alert('Please enter your full name.'); return; }
+  if (!email || email.indexOf('@') === -1) { alert('Please enter a valid email address.'); return; }
 
   var html = '';
 
@@ -940,9 +946,11 @@ function submitForm() {
     document.getElementById('h_game').value      = allItems.map(function(g){return g.name;}).join(' | ');
     document.getElementById('h_price').value     = allItems.map(function(g){return '$'+g.resale;}).join(' | ');
     document.getElementById('h_condition').value = 'A1 — Like New / Very Good';
+    document.getElementById('h_timeline').value  = win==='fast' ? 'Fast Flip (0–90 days)' : 'Flexible (90–180 days)';
 
     html = '<div class="sum-row"><span>Role</span><span>Selling used</span></div>';
     allItems.forEach(function(g){ html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.resale+'</span></div>'; });
+    html += '<div class="sum-row"><span>Window</span><span>'+(win==='fast' ? 'Fast Flip (0\u201390 days)' : 'Flexible (90\u2013180 days)')+'</span></div>';
     html += '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>';
 
   } else {
