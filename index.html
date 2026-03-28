@@ -461,6 +461,10 @@
           <label for="customPrice">Your asking resale price ($)</label>
           <input type="text" id="customPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
         </div>
+        <div class="field">
+          <button type="button" class="add-game-btn" onclick="addCustomSellGameToCart()">+ Add this game</button>
+        </div>
+        <div id="customSellCartConfirm" style="display:none;font-size:12px;color:var(--green-dim);font-weight:600;margin-top:6px;">✓ Added — fill in your info below to submit.</div>
       </div>
  
       <div class="field">
@@ -533,6 +537,10 @@
           <label for="buyCustomPrice">Your offer price ($)</label>
           <input type="text" id="buyCustomPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
         </div>
+        <div class="field">
+          <button type="button" class="add-game-btn" onclick="addCustomBuyGameToCart()">+ Add this game</button>
+        </div>
+        <div id="customBuyCartConfirm" style="display:none;font-size:12px;color:var(--green-dim);font-weight:600;margin-top:6px;">✓ Added — fill in your info below to submit.</div>
       </div>
  
       <div class="field" id="buyPriceRow" style="display:none;">
@@ -727,7 +735,7 @@ function handleGameSearch() {
     document.getElementById('resalePriceRow').style.display = 'none';
     document.getElementById('addGameBtnWrap').style.display = 'none';
     var cg = document.getElementById('customGame');
-    if (!cg.value) cg.value = typed;
+    cg.value = typed;
   } else {
     currentSellGameData = null;
     others.style.display = 'none';
@@ -834,7 +842,7 @@ function handleBuyGameSearch() {
     document.getElementById('buyPriceRow').style.display       = 'none';
     document.getElementById('addBuyGameBtnWrap').style.display = 'none';
     var cg = document.getElementById('buyCustomGame');
-    if (!cg.value) cg.value = typed;
+    cg.value = typed;
   } else {
     currentBuyGameData = null;
     others.style.display = 'none';
@@ -1005,6 +1013,51 @@ function addAnother() {
   document.getElementById('gameSearch').value       = '';
   document.getElementById('cartItems').innerHTML    = '';
   window.scrollTo({top:0,behavior:'smooth'});
+}
+ 
+function addCustomSellGameToCart() {
+  var title = document.getElementById('customGame').value.trim();
+  var price = document.getElementById('customPrice').value.trim();
+  var sys   = document.getElementById('system').value;
+ 
+  if (!title) { alert('Please enter a game title.'); return; }
+  if (!price) { alert('Please enter your asking price.'); return; }
+ 
+  var name = title + ' (' + (sysLabels[sys] || sys || 'Switch') + ') — Custom';
+  sellCart.push({ name: name, resale: price });
+  renderSellCart();
+ 
+  // Clear fields and show confirm
+  document.getElementById('customGame').value  = '';
+  document.getElementById('customPrice').value = '';
+  document.getElementById('gameSearch').value  = '';
+  document.getElementById('otherGameFields').style.display = 'none';
+  var conf = document.getElementById('customSellCartConfirm');
+  conf.style.display = 'block';
+  setTimeout(function(){ conf.style.display = 'none'; }, 3000);
+}
+ 
+function addCustomBuyGameToCart() {
+  var title = document.getElementById('buyCustomGame').value.trim();
+  var price = document.getElementById('buyCustomPrice').value.trim();
+  var bsys  = document.getElementById('buySystem').value;
+  var bwin  = document.getElementById('buyWindow').value === 'fast' ? 'Within 0\u201390 days' : 'Within 90\u2013180 days';
+ 
+  if (!title) { alert('Please enter a game title.'); return; }
+  if (!price) { alert('Please enter your offer price.'); return; }
+ 
+  var name = title + ' (' + (sysLabels[bsys] || bsys || 'Switch') + ')';
+  buyCart.push({ name: name, price: price, timeline: bwin });
+  renderBuyCart();
+ 
+  // Clear fields and show confirm
+  document.getElementById('buyCustomGame').value  = '';
+  document.getElementById('buyCustomPrice').value = '';
+  document.getElementById('buyGameSearch').value  = '';
+  document.getElementById('buyOtherGameFields').style.display = 'none';
+  var conf = document.getElementById('customBuyCartConfirm');
+  conf.style.display = 'block';
+  setTimeout(function(){ conf.style.display = 'none'; }, 3000);
 }
  
 // Age gate — enables submit button only when checked
