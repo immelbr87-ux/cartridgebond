@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safe Meetup Guide | CartridgeBond</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #22c55e; --green-dim: #16a34a; --green-dark: #14532d;
+    --green-bg: #0d2318; --green-light: #dcfce7; --green-mid: #86efac;
+    --ink: #0f0f0f; --ink-mid: #3a3a3a; --ink-light: #777;
+    --border: #e2e2da; --surface: #f8f8f5; --white: #ffffff; --radius: 10px;
+  }
+  body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh; }
+  .page-header { background: var(--green-bg); color: white; padding: 24px 20px 20px; position: relative; overflow: hidden; }
+  .page-header::before { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px); background-size:32px 32px; pointer-events:none; }
+  .back-link { display:inline-flex; align-items:center; gap:6px; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(34,197,94,0.7); text-decoration:none; margin-bottom:12px; position:relative; }
+  .back-link:hover { color:var(--green); }
+  .page-header h1 { font-family:'Barlow Condensed',sans-serif; font-size:36px; font-weight:700; letter-spacing:-.01em; color:white; position:relative; }
+  .page-header .sub { font-size:13px; color:rgba(255,255,255,0.4); margin-top:6px; position:relative; }
+  .container { max-width: 680px; margin: 0 auto; padding: 32px 20px 60px; }
+  .disclaimer { background:#fff3cd; border:1.5px solid #ffc107; border-radius:var(--radius); padding:16px 18px; margin-bottom:28px; }
+  .disclaimer p { font-size:13px; line-height:1.7; color:#5a4000; }
+  .disclaimer strong { font-weight:700; }
+  .rule-grid { display:flex; flex-direction:column; gap:14px; margin-bottom:32px; }
+  .rule-card { background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius); padding:16px 18px; display:flex; gap:16px; align-items:flex-start; }
+  .rule-icon { font-size:26px; flex-shrink:0; margin-top:2px; }
+  .rule-title { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); margin-bottom:5px; }
+  .rule-body { font-size:13px; line-height:1.7; color:var(--ink-mid); }
+  .rule-body strong { color:var(--ink); font-weight:600; }
+  .section-head { font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid var(--green-dim); }
+  .location-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; }
+  @media(max-width:480px){ .location-grid { grid-template-columns:1fr; } }
+  .location-card { background:var(--green-light); border:1.5px solid var(--green-mid); border-radius:var(--radius); padding:14px; }
+  .location-name { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--green-dark); margin-bottom:4px; }
+  .location-sub { font-size:12px; color:var(--green-dark); opacity:.75; line-height:1.5; }
+  .inspect-steps { display:flex; flex-direction:column; gap:10px; margin-bottom:32px; }
+  .inspect-step { display:flex; align-items:flex-start; gap:14px; padding:14px; background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius); }
+  .step-num { width:28px; height:28px; background:var(--green-dim); color:white; border-radius:50%; font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+  .step-title { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--ink); margin-bottom:3px; }
+  .step-body { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+  footer { background:#111; padding:22px 20px; text-align:center; border-top:1px solid rgba(34,197,94,0.12); }
+  footer a { color:rgba(255,255,255,0.4); text-decoration:none; font-size:11px; }
+  footer a:hover { color:var(--green); }
+  .footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:6px 16px; margin-bottom:10px; }
+  .footer-sep { color:rgba(255,255,255,0.15); font-size:11px; }
+  .footer-copy { font-size:11px; color:rgba(255,255,255,0.2); }
+  .footer-brand { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#22c55e; margin-bottom:12px; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <a href="index.html" class="back-link">← Back to CartridgeBond</a>
+  <h1>Safe Meetup Guide</h1>
+  <div class="sub">Read this before your first exchange. Your safety is your responsibility — we're here to help.</div>
+</div>
+
+<div class="container">
+
+  <div class="disclaimer">
+    <p><strong>Important:</strong> CartridgeBond connects buyers and sellers but is not present at meetups, does not supervise exchanges, and is not responsible for your personal safety or the outcome of any transaction. Meeting a stranger always carries risk. These guidelines are designed to minimize that risk — but following them does not guarantee safety. Use your judgment.</p>
+  </div>
+
+  <div class="section-head">The Rules</div>
+  <div class="rule-grid">
+    <div class="rule-card">
+      <div class="rule-icon">📍</div>
+      <div>
+        <div class="rule-title">Meet in a public place</div>
+        <div class="rule-body">Coffee shops, libraries, grocery store parking lots, and police station lobbies are ideal. <strong>Never meet at someone's home</strong> for a first exchange — public visibility is your best protection.</div>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">👁️</div>
+      <div>
+        <div class="rule-title">Inspect before you pay</div>
+        <div class="rule-body">Never hand over money before you've tested the cartridge. <strong>Power on a Switch and verify the game launches.</strong> A1 condition means no scratches affecting gameplay and original case included — verify this on the spot.</div>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">👥</div>
+      <div>
+        <div class="rule-title">Bring a friend if you can</div>
+        <div class="rule-body">Two people at a meetup is always better than one. If you're going alone, <strong>tell someone where you're going</strong> and who you're meeting. Share your location on your phone.</div>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">💵</div>
+      <div>
+        <div class="rule-title">Agree on payment method in advance</div>
+        <div class="rule-body">Cash, Venmo, and PayPal are common. <strong>Avoid any payment method you can't reverse</strong> for a buyer (like Zelle to a stranger). Agree on what you're using before you leave the house.</div>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🚫</div>
+      <div>
+        <div class="rule-title">Trust your gut</div>
+        <div class="rule-body">If something feels wrong when you arrive — the person, the location, the item — <strong>it's completely okay to walk away.</strong> No game is worth your safety. You owe no one an exchange.</div>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">📱</div>
+      <div>
+        <div class="rule-title">Keep your phone charged</div>
+        <div class="rule-body">Have your phone at full charge before you go. Keep CartridgeBond's contact info saved so you can reach us if something goes wrong with the match details.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head">Good Meetup Spots in Milwaukee &amp; North Shore</div>
+  <div class="location-grid">
+    <div class="location-card">
+      <div class="location-name">📚 Public Library</div>
+      <div class="location-sub">Mequon, Glendale, Shorewood, Whitefish Bay branches — well-lit, staffed, public</div>
+    </div>
+    <div class="location-card">
+      <div class="location-name">☕ Starbucks / Panera</div>
+      <div class="location-sub">Any busy location — cameras, staff, and witnesses nearby</div>
+    </div>
+    <div class="location-card">
+      <div class="location-name">🏪 Grocery Parking Lot</div>
+      <div class="location-sub">Pick Piggly Wiggly, Sendik's, or any large lot — daytime preferred</div>
+    </div>
+    <div class="location-card">
+      <div class="location-name">🚔 Police Station Lobby</div>
+      <div class="location-sub">Many WI police stations offer their lobbies as exchange zones — safest option</div>
+    </div>
+    <div class="location-card">
+      <div class="location-name">🎮 GameStop</div>
+      <div class="location-sub">Ironic but effective — staffed retail location, cameras, familiar environment</div>
+    </div>
+    <div class="location-card">
+      <div class="location-name">🛒 Target / Best Buy</div>
+      <div class="location-sub">Customer service desks near the entrance are a natural, safe handoff point</div>
+    </div>
+  </div>
+
+  <div class="section-head">What to Check at the Meetup</div>
+  <div class="inspect-steps">
+    <div class="inspect-step">
+      <span class="step-num">1</span>
+      <div>
+        <div class="step-title">Check the cartridge physically</div>
+        <div class="step-body">No cracks, chips, or significant scratches. Label should be intact and legible. Pins should be clean — no corrosion.</div>
+      </div>
+    </div>
+    <div class="inspect-step">
+      <span class="step-num">2</span>
+      <div>
+        <div class="step-title">Test it in a Switch</div>
+        <div class="step-body">Insert the cartridge and confirm the game launches. Don't skip this step — "it works great" isn't enough. See it boot.</div>
+      </div>
+    </div>
+    <div class="inspect-step">
+      <span class="step-num">3</span>
+      <div>
+        <div class="step-title">Check the case</div>
+        <div class="step-body">A1 condition requires the original case. Verify it's present, undamaged, and contains the correct game.</div>
+      </div>
+    </div>
+    <div class="inspect-step">
+      <span class="step-num">4</span>
+      <div>
+        <div class="step-title">Confirm the agreed price</div>
+        <div class="step-body">Both parties should verbally confirm the price before payment. If the seller tries to change the price at the meetup, you are not obligated to proceed.</div>
+      </div>
+    </div>
+    <div class="inspect-step">
+      <span class="step-num">5</span>
+      <div>
+        <div class="step-title">Complete payment</div>
+        <div class="step-body">Only exchange payment once you're satisfied with the item. Once payment is made, CartridgeBond has no role in any dispute.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">CartridgeBond</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a><span class="footer-sep">·</span>
+    <a href="terms.html">Terms of Service</a><span class="footer-sep">·</span>
+    <a href="privacy.html">Privacy Policy</a><span class="footer-sep">·</span>
+    <a href="faq.html">FAQ</a>
+  </div>
+  <div class="footer-copy">© 2025 CartridgeBond. A connection platform only — not a party to any transaction.</div>
+</footer>
+
+</body>
+</html>

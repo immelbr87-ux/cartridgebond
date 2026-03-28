@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ | CartridgeBond</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #22c55e; --green-dim: #16a34a; --green-dark: #14532d;
+    --green-bg: #0d2318; --green-light: #dcfce7; --green-mid: #86efac;
+    --ink: #0f0f0f; --ink-mid: #3a3a3a; --ink-light: #777;
+    --border: #e2e2da; --surface: #f8f8f5; --white: #ffffff; --radius: 10px;
+  }
+  body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh; }
+  .page-header { background: var(--green-bg); color: white; padding: 24px 20px 20px; position: relative; overflow: hidden; }
+  .page-header::before { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px); background-size:32px 32px; pointer-events:none; }
+  .back-link { display:inline-flex; align-items:center; gap:6px; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(34,197,94,0.7); text-decoration:none; margin-bottom:12px; position:relative; }
+  .back-link:hover { color:var(--green); }
+  .page-header h1 { font-family:'Barlow Condensed',sans-serif; font-size:36px; font-weight:700; letter-spacing:-.01em; color:white; position:relative; }
+  .page-header .sub { font-size:13px; color:rgba(255,255,255,0.4); margin-top:6px; position:relative; }
+  .container { max-width: 680px; margin: 0 auto; padding: 32px 20px 60px; }
+  .faq-group { margin-bottom: 36px; }
+  .group-label { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--green-dim); margin-bottom:14px; }
+  .faq-item { background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius); margin-bottom:10px; overflow:hidden; }
+  .faq-q { width:100%; text-align:left; background:none; border:none; padding:16px 18px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; gap:12px; }
+  .faq-q-text { font-family:'Barlow', sans-serif; font-size:14px; font-weight:600; color:var(--ink); line-height:1.4; }
+  .faq-arrow { color:var(--green-dim); font-size:18px; flex-shrink:0; transition:transform .2s; }
+  .faq-item.open .faq-arrow { transform:rotate(180deg); }
+  .faq-a { display:none; padding:0 18px 16px; font-size:14px; line-height:1.75; color:var(--ink-mid); border-top:1px solid var(--border); padding-top:14px; }
+  .faq-item.open .faq-a { display:block; }
+  .faq-a a { color:var(--green-dim); }
+  .faq-a strong { color:var(--ink); font-weight:600; }
+  .still-question { background:var(--green-bg); border-radius:var(--radius); padding:24px 20px; text-align:center; margin-top:32px; }
+  .still-question h3 { font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:white; margin-bottom:8px; }
+  .still-question p { font-size:13px; color:rgba(255,255,255,0.55); margin-bottom:14px; line-height:1.6; }
+  .still-question a { display:inline-block; padding:11px 24px; background:var(--green-dim); color:white; text-decoration:none; border-radius:8px; font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+  footer { background:#111; padding:22px 20px; text-align:center; border-top:1px solid rgba(34,197,94,0.12); }
+  footer a { color:rgba(255,255,255,0.4); text-decoration:none; font-size:11px; }
+  footer a:hover { color:var(--green); }
+  .footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:6px 16px; margin-bottom:10px; }
+  .footer-sep { color:rgba(255,255,255,0.15); font-size:11px; }
+  .footer-copy { font-size:11px; color:rgba(255,255,255,0.2); }
+  .footer-brand { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#22c55e; margin-bottom:12px; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <a href="index.html" class="back-link">← Back to CartridgeBond</a>
+  <h1>Frequently Asked Questions</h1>
+  <div class="sub">How CartridgeBond works, what to expect, and what we can't do for you.</div>
+</div>
+
+<div class="container">
+
+  <!-- HOW IT WORKS -->
+  <div class="faq-group">
+    <div class="group-label">How It Works</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What exactly does CartridgeBond do?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">CartridgeBond matches local Nintendo Switch game buyers and sellers. You submit what you have (or want), lock in your price and condition terms, and we find someone compatible in your area. Once we have a match, we connect both parties by email or DM and you coordinate a local meetup. We don't hold money, we don't ship anything, and we're not at the meetup — we just make the introduction.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">How long does it take to get matched?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">We review every submission within 24–48 hours. If we have a match available, we'll reach out right away. If not, your submission stays active for the duration of your stated window (0–90 days for Fast Flip, 90–180 days for Flexible). We'll check back in if something comes up — <strong>you don't need to resubmit</strong>.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What happens if no match is found?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">Nothing — there's no obligation, no penalty, and nothing at stake. Your submission simply expires at the end of your window. We'll send you a note letting you know, and you're welcome to resubmit any time. We're beta, which means our pool of buyers and sellers is still growing. The best thing you can do to help is share the link with friends who have Switch games.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What games are supported right now?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">We're in beta with six Nintendo Switch titles: Animal Crossing: New Horizons, Mario Kart 8 Deluxe, Pokémon Scarlet, Pokémon Violet, Super Smash Bros. Ultimate, and Zelda: Tears of the Kingdom. You can submit other Switch titles using the "type a title" option — we'll do our best to match them, though our pool is smaller for unlisted games. More titles and platforms are coming soon.</div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="faq-group">
+    <div class="group-label">Pricing & Payment</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">How are prices set?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">For our listed titles, we set reference prices based on current secondary market rates — what games actually sell for between private parties, not GameStop trade-in values or eBay auction highs. Sellers lock in a guaranteed price at submission. Buyers know exactly what they'll pay before they ever leave the house. There's no bidding, no counter-offers, no haggling at the meetup.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">How do I get paid as a seller?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">Payment is handled directly between you and the buyer at the meetup. CartridgeBond doesn't collect or transfer money. Common methods are cash, Venmo, or PayPal. <strong>Agree on the payment method with your buyer before you meet.</strong> We recommend confirming this when we introduce you — before you leave the house.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Is CartridgeBond free?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">Yes — completely free during beta. No submission fees, no platform cut, no hidden charges. Fees and escrow features are coming in a future version. The first 25 users to complete a trade get free trades for life, even after fees are introduced.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Why are your prices different from GameStop's?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">GameStop trade-in prices are set to allow them to resell at a significant markup. Our prices reflect what real buyers are willing to pay in a private sale — typically 30–60% more than a GameStop trade-in offer for the same game. We're not a middleman buying to resell, so the spread goes to the seller, not a retailer.</div>
+    </div>
+  </div>
+
+  <!-- CONDITION -->
+  <div class="faq-group">
+    <div class="group-label">Condition & Disputes</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What does A1 condition mean?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">A1 is our current (and only) condition tier. It means: the game plays perfectly, original case is included, the cartridge has no scratches affecting gameplay, and all original components are present. Minor cosmetic surface scuffs are acceptable. If you're not sure whether your game qualifies, describe its condition in the notes field — we'll let you know before we match you.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What if the game isn't in A1 condition when I receive it?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a"><strong>Inspect the game before paying.</strong> This is the most important rule of every CartridgeBond meetup. If the condition doesn't match what was agreed, you're not obligated to complete the exchange. Walk away. CartridgeBond is not a party to the transaction and cannot mediate or resolve condition disputes after payment has been made. See our <a href="meetup.html">Safe Meetup Guide</a> for the full inspection checklist.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What if the other person doesn't show up?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">Let us know by replying to your match email. No-shows affect a user's standing in the system — we track this and factor it into future matches. You're welcome to resubmit and we'll prioritize your match. We're building a rating system to make reliability visible before you ever meet.</div>
+    </div>
+  </div>
+
+  <!-- SAFETY -->
+  <div class="faq-group">
+    <div class="group-label">Safety & Privacy</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">What personal info does the other person see?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">When we introduce a match, we share first name and general zip code area only. Full email addresses are shared only in the introduction email so you can coordinate the meetup. We never share phone numbers without consent. See our <a href="privacy.html">Privacy Policy</a> for the full picture.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        <span class="faq-q-text">Is it safe to meet a stranger to trade games?</span>
+        <span class="faq-arrow">⌄</span>
+      </button>
+      <div class="faq-a">Local exchanges are generally safe when done correctly. Our <a href="meetup.html">Safe Meetup Guide</a> covers everything — meet in public, inspect before paying, tell someone where you're going. Many police departments also offer their lobbies as exchange zones. The risk is real but manageable with the right habits.</div>
+    </div>
+  </div>
+
+  <div class="still-question">
+    <h3>Still have a question?</h3>
+    <p>DM us on the post where you found CartridgeBond, or email us directly. A real person reads every message.</p>
+    <a href="mailto:hello@cartridgebond.com">Email hello@cartridgebond.com</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">CartridgeBond</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a><span class="footer-sep">·</span>
+    <a href="terms.html">Terms of Service</a><span class="footer-sep">·</span>
+    <a href="privacy.html">Privacy Policy</a><span class="footer-sep">·</span>
+    <a href="meetup.html">Safe Meetup Guide</a>
+  </div>
+  <div class="footer-copy">© 2025 CartridgeBond. A connection platform only — not a party to any transaction.</div>
+</footer>
+
+<script>
+function toggle(btn) {
+  var item = btn.closest('.faq-item');
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el){ el.classList.remove('open'); });
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
