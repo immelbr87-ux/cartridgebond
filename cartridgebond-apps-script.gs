@@ -58,7 +58,10 @@ function onOpen() {
     .createMenu('🎮 CartridgeBond')
     .addItem('Send Pending Match Emails', 'sendPendingMatchEmails')
     .addItem('Send Follow-Up Emails (48hr)', 'sendFollowUpEmails')
+    .addItem('Install Auto Daily Trigger', 'installTriggers')
+    .addSeparator()
     .addItem('Test: Email Yourself', 'sendTestEmail')
+    .addItem('Setup: Create Column Headers', 'setupSheetHeaders')
     .addToUi();
 }
 
@@ -317,3 +320,99 @@ function sendTestEmail() {
   GmailApp.sendEmail(email, '[TEST] CartridgeBond Match Email', '', { name: CONFIG.senderName, htmlBody: body });
   ui.alert('Test email sent to ' + email);
 }
+
+// ─── TIME-BASED TRIGGER SETUP ─────────────────────────────────
+/**
+ * Run ONCE from the CartridgeBond menu to install automatic daily
+ * follow-up email checks. After that it runs every morning at 9am.
+ *
+ * To view/remove: Extensions → Apps Script → Triggers (clock icon)
+ */
+function installTriggers() {
+  // Remove any existing follow-up triggers to avoid duplicates
+  ScriptApp.getProjectTriggers().forEach(function(t) {
+    if (t.getHandlerFunction() === 'sendFollowUpEmails') {
+      ScriptApp.deleteTrigger(t);
+    }
+  });
+
+  // Fire follow-up email check every day at 9am
+  ScriptApp.newTrigger('sendFollowUpEmails')
+    .timeBased()
+    .everyDays(1)
+    .atHour(9)
+    .create();
+
+  SpreadsheetApp.getUi().alert(
+    '✓ Auto-trigger installed!\n\n' +
+    'Follow-up emails will now send automatically every morning at 9am ' +
+    'for any matches that are 48+ hours old without a follow-up.\n\n' +
+    'Verify at: Extensions → Apps Script → Triggers (clock icon in left sidebar).'
+  );
+}
+
+// ─── SHEET COLUMN SETUP ───────────────────────────────────────
+/**
+ * Run once to write correct column headers to your Sheet.
+ * WARNING: Overwrites Row 1. Back up first if you have existing data there.
+ */
+function setupSheetHeaders() {
+  var ui = SpreadsheetApp.getUi();
+  var confirm = ui.alert(
+    'Setup Column Headers',
+    'This writes CartridgeBond headers to Row 1 of "' + CONFIG.sheetName + '".\n\nRow 1 will be overwritten. Continue?',
+    ui.ButtonSet.YES_NO
+  );
+  if (confirm !== ui.Button.YES) return;
+
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(CONFIG.sheetName);
+  if (!sheet) {
+    ui.alert('Sheet "' + CONFIG.sheetName + '" not found. Update CONFIG.sheetName and retry.');
+    return;
+  }
+
+  var headers = [
+    'Timestamp',           // A  col 1
+    'Name',                // B  col 2
+    'Email',               // C  col 3
+    'Role',                // D  col 4
+    'Game(s)',             // E  col 5
+    'Price(s)',            // F  col 6
+    'Condition',           // G  col 7
+    'Zip Code',            // H  col 8
+    'Notes',               // I  col 9
+    'Status',              // J  col 10 ← type "Matched" to trigger email
+    'Matched With (Row)',  // K  col 11 ← row number of their match
+    'Founder Status',      // L  col 12 ← "Founder — Free for Life" for first 25
+    'Match Email Sent',    // M  col 13 ← auto-filled by script
+    'Follow-Up Sent',      // N  col 14 ← auto-filled by script
+    'No-Show Flag',        // O  col 15 ← type "No-Show" if they ghost
+    'Rating Received',     // P  col 16 ← post-trade rating 1–5
+  ];
+
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+
+  // Style the header row
+  var hdrRange = sheet.getRange(1, 1, 1, headers.length);
+  hdrRange.setBackground('#0d2318');
+  hdrRange.setFontColor('#22c55e');
+  hdrRange.setFontWeight('bold');
+  hdrRange.setFontSize(11);
+
+  // Highlight the two action columns in brighter green
+  sheet.getRange(1, 10).setBackground('#16a34a').setFontColor('white'); // Status
+  sheet.getRange(1, 11).setBackground('#16a34a').setFontColor('white'); // Matched With
+
+  sheet.setFrozenRows(1);
+
+  ui.alert(
+    '✓ Headers created in "' + CONFIG.sheetName + '"!\n\n' +
+    'Key columns to fill manually:\n' +
+    '• Col J — Status: type "Matched" to fire match emails\n' +
+    '• Col K — Matched With: enter the row number of their match\n' +
+    '• Col L — Founder Status: "Founder — Free for Life" for first 25\n' +
+    '• Col O — No-Show Flag: "No-Show" to log ghosts\n' +
+    '• Col P — Rating Received: 1–5 stars after trade completes'
+  );
+}
+

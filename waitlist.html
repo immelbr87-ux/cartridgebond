@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming to Your City | CartridgeBond</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #22c55e; --green-dim: #16a34a; --green-dark: #14532d;
+    --green-bg: #0d2318; --green-light: #dcfce7; --green-mid: #86efac;
+    --ink: #0f0f0f; --ink-mid: #3a3a3a; --ink-light: #777;
+    --border: #e2e2da; --surface: #f8f8f5; --white: #ffffff; --radius: 10px;
+  }
+  body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh; }
+  .page-header { background: var(--green-bg); color: white; padding: 28px 20px 24px; text-align: center; position: relative; overflow: hidden; }
+  .page-header::before { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px); background-size:32px 32px; pointer-events:none; }
+  .back-link { display:inline-flex; align-items:center; gap:6px; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(34,197,94,0.7); text-decoration:none; margin-bottom:14px; position:relative; }
+  .back-link:hover { color:var(--green); }
+  .page-header h1 { font-family:'Barlow Condensed',sans-serif; font-size:clamp(32px,9vw,48px); font-weight:700; line-height:.95; color:white; position:relative; margin-bottom:10px; }
+  .page-header h1 span { color: var(--green); display:block; }
+  .page-header .sub { font-size:14px; color:rgba(255,255,255,0.45); position:relative; line-height:1.6; max-width:420px; margin:0 auto; }
+
+  .container { max-width: 520px; margin: 0 auto; padding: 28px 16px 60px; }
+
+  .how-it-spreads { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .spread-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); }
+  .spread-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .spread-title { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--ink); margin-bottom: 3px; }
+  .spread-body { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+
+  .card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px; margin-bottom: 14px; }
+  .card-label { font-family: 'Barlow Condensed', sans-serif; font-size: 17px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--green-dim); }
+
+  .field { margin-bottom: 14px; }
+  .field:last-child { margin-bottom: 0; }
+  label { display: block; font-size: 13px; font-weight: 500; color: var(--ink-mid); margin-bottom: 6px; }
+  input[type="text"], input[type="email"], select, textarea {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--ink);
+    background: var(--surface); -webkit-appearance: none; appearance: none;
+    transition: border-color .15s; outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--green-dim); background: white; }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; cursor:pointer; }
+  textarea { resize: none; height: 72px; }
+
+  .submit-btn { width: 100%; padding: 16px; background: var(--green-dim); color: white; border: none; border-radius: var(--radius); font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: background .2s; }
+  .submit-btn:hover { background: var(--green-dark); }
+
+  .trust-row { display: flex; justify-content: center; gap: 16px; margin-top: 12px; font-size: 11px; color: var(--ink-light); flex-wrap: wrap; }
+
+  /* SUCCESS */
+  .success-screen { display: none; text-align: center; padding: 40px 20px; }
+  .success-screen.show { display: block; }
+  .success-icon { width: 60px; height: 60px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 26px; }
+  .success-screen h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 10px; }
+  .success-screen p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; max-width: 320px; margin: 0 auto 20px; }
+
+  /* DEMAND MAP */
+  .demand-note { background: var(--green-light); border: 1.5px solid var(--green-mid); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 24px; }
+  .demand-note p { font-size: 13px; color: var(--green-dark); line-height: 1.65; }
+  .demand-note strong { font-weight: 700; }
+
+  footer { background:#111; padding:22px 20px; text-align:center; border-top:1px solid rgba(34,197,94,0.12); }
+  .footer-brand { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#22c55e; margin-bottom:12px; }
+  .footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:6px 16px; margin-bottom:10px; }
+  .footer-links a { color:rgba(255,255,255,0.4); text-decoration:none; font-size:11px; }
+  .footer-sep { color:rgba(255,255,255,0.15); font-size:11px; }
+  .footer-copy { font-size:11px; color:rgba(255,255,255,0.2); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <a href="index.html" class="back-link">← Back to CartridgeBond</a>
+  <h1>Not in Milwaukee?<span>Tell us where you are.</span></h1>
+  <div class="sub">CartridgeBond is beta-launching in Milwaukee & North Shore. Demand signals tell us where to expand next — your city could be next.</div>
+</div>
+
+<div class="container">
+
+  <div class="demand-note">
+    <p><strong>How expansion works:</strong> When enough people in a city join the waitlist, we have the buyer/seller pool to make matches viable. We expand where demand is real, not random. Your submission directly shapes the roadmap.</p>
+  </div>
+
+  <div class="how-it-spreads">
+    <div class="spread-item">
+      <div class="spread-icon">📍</div>
+      <div>
+        <div class="spread-title">You join the waitlist</div>
+        <div class="spread-body">Tell us your city, what platform you're selling or buying, and how soon you'd use it.</div>
+      </div>
+    </div>
+    <div class="spread-item">
+      <div class="spread-icon">📊</div>
+      <div>
+        <div class="spread-title">We track demand by market</div>
+        <div class="spread-body">Cities with enough waitlist volume get prioritized. We're targeting 20+ submissions per market before launching.</div>
+      </div>
+    </div>
+    <div class="spread-item">
+      <div class="spread-icon">📬</div>
+      <div>
+        <div class="spread-title">You get first access</div>
+        <div class="spread-body">When we launch in your city, waitlist members are notified first and get priority matching — ahead of new signups.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="formSection">
+    <div class="card">
+      <div class="card-label">Join the Waitlist</div>
+
+      <form id="waitlistForm" action="https://formspree.io/f/xvzvopzr" method="POST">
+        <input type="hidden" name="form_type" value="Expansion Waitlist">
+
+        <div class="field">
+          <label for="wName">Your name</label>
+          <input type="text" id="wName" name="name" placeholder="Jane Smith" required>
+        </div>
+
+        <div class="field">
+          <label for="wEmail">Email address</label>
+          <input type="email" id="wEmail" name="email" placeholder="jane@email.com" required>
+        </div>
+
+        <div class="field">
+          <label for="wCity">Your city</label>
+          <input type="text" id="wCity" name="city" placeholder="e.g. Chicago, IL" required>
+        </div>
+
+        <div class="field">
+          <label for="wZip">Zip code</label>
+          <input type="text" id="wZip" name="zip" placeholder="60601" maxlength="5">
+        </div>
+
+        <div class="field">
+          <label for="wRole">Are you looking to buy or sell?</label>
+          <select id="wRole" name="role">
+            <option value="both">Both — buy and sell</option>
+            <option value="sell">Mostly sell</option>
+            <option value="buy">Mostly buy</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="wPlatform">What platform(s)?</label>
+          <select id="wPlatform" name="platform">
+            <option value="switch">Nintendo Switch</option>
+            <option value="switch_ps5">Switch + PS5</option>
+            <option value="switch_xbox">Switch + Xbox</option>
+            <option value="all">All platforms</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="wTimeline">When would you use it?</label>
+          <select id="wTimeline" name="timeline">
+            <option value="asap">As soon as it's available</option>
+            <option value="3mo">Within 3 months of launch</option>
+            <option value="6mo">Within 6 months</option>
+            <option value="exploring">Just exploring for now</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="wNotes">Anything else? (optional)</label>
+          <textarea id="wNotes" name="notes" placeholder="e.g. I have a lot of Switch games to offload, or I'm in a gaming Facebook group in Chicago…"></textarea>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="submitWaitlist()">Join the Waitlist →</button>
+        <div class="trust-row">
+          <span>✓ No spam</span>
+          <span>✓ Notified first when we launch</span>
+          <span>✓ Free forever</span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✓</div>
+    <h2>You're on the list.</h2>
+    <p>We've logged your city. When we hit the threshold to launch in your market, you'll be the first to know — and the first to get matched.</p>
+    <p style="font-size:13px;color:var(--ink-light);">In the meantime, share CartridgeBond with anyone in your city who has Switch games. More demand = faster launch.</p>
+    <a href="index.html" style="display:inline-block;margin-top:20px;padding:12px 24px;background:var(--green-dim);color:white;text-decoration:none;border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">← Back to CartridgeBond</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">CartridgeBond</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a><span class="footer-sep">·</span>
+    <a href="faq.html">FAQ</a><span class="footer-sep">·</span>
+    <a href="prices.html">Price Guide</a><span class="footer-sep">·</span>
+    <a href="terms.html">Terms</a>
+  </div>
+  <div class="footer-copy">© 2025 CartridgeBond. A connection platform only — not a party to any transaction.</div>
+</footer>
+
+<script>
+function submitWaitlist() {
+  var name  = document.getElementById('wName').value.trim();
+  var email = document.getElementById('wEmail').value.trim();
+  var city  = document.getElementById('wCity').value.trim();
+
+  if (!name || !email || !city) {
+    alert('Please fill in your name, email, and city.');
+    return;
+  }
+
+  var form = document.getElementById('waitlistForm');
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(function() {
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('successScreen').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }).catch(function() {
+    alert('Something went wrong — please try again or DM us directly.');
+  });
+}
+</script>
+</body>
+</html>
