@@ -1,5 +1,5 @@
 /**
- * CartridgeBond — Google Apps Script Match Emailer
+ * CartridgeBond - Google Apps Script Match Emailer
  * ─────────────────────────────────────────────────
  * HOW TO SET UP:
  * 1. Open your Google Sheet (the one Formspree feeds into)
@@ -8,7 +8,7 @@
  * 4. Click Save, then Run → onOpen (grant permissions when prompted)
  * 5. A "CartridgeBond" menu will appear in your Sheet
  *
- * COLUMN SETUP — Your sheet needs these columns (add if missing):
+ * COLUMN SETUP - Your sheet needs these columns (add if missing):
  *   A: Timestamp
  *   B: Name
  *   C: Email
@@ -20,7 +20,7 @@
  *   I: Notes
  *   J: Status         ← Type "Matched" here to trigger emails
  *   K: Matched With   ← Type the ROW NUMBER of their match here
- *   L: Founder Status ← Type "Founder — Free for Life" for first 25
+ *   L: Founder Status ← Type "Founder - Free for Life" for first 25
  *   M: Email Sent     ← Script auto-fills this (do not edit)
  *   N: Follow-Up Sent ← Script auto-fills this
  *
@@ -31,10 +31,10 @@
  *      e.g. Seller is row 4, Buyer is row 7
  *      → Row 4 col K: 7  |  Row 7 col K: 4
  *   4. The script watches for "Matched" and fires the emails automatically
- *      via the onEdit trigger — or run "Send Pending Match Emails" from the menu
+ *      via the onEdit trigger - or run "Send Pending Match Emails" from the menu
  */
 
-// ─── CONFIGURATION — update these ───────────────────────────
+// ─── CONFIGURATION - update these ───────────────────────────
 
 var CONFIG = {
   senderName:    'CartridgeBond',
@@ -43,7 +43,7 @@ var CONFIG = {
   meetupGuide:   'https://cartridgebond.com/meetup.html',
   faqUrl:        'https://cartridgebond.com/faq.html',
   ratingFormUrl: 'https://forms.gle/REPLACE_WITH_YOUR_GOOGLE_FORM',  // Create a simple Google Form for post-trade ratings
-  sheetName:     'Form Responses 1',  // Tab name in your Google Sheet — update if different
+  sheetName:     'Form Responses 1',  // Tab name in your Google Sheet - update if different
   statusCol:     10,   // Column J (1-indexed)
   matchedCol:    11,   // Column K
   founderCol:    12,   // Column L
@@ -113,7 +113,7 @@ function sendMatchEmailForRow(sheet, row) {
 
   var matchedRowNum = parseInt(data[idx][CONFIG.matchedCol - 1]);
   if (!matchedRowNum || isNaN(matchedRowNum)) {
-    Logger.log('Row ' + row + ': No match row number in column K — skipping.');
+    Logger.log('Row ' + row + ': No match row number in column K - skipping.');
     return;
   }
 
@@ -135,7 +135,7 @@ function sendMatchEmailForRow(sheet, row) {
   }
 
   // Build and send email to THIS person
-  var subject = '🎮 CartridgeBond — Your Match is Ready!';
+  var subject = '🎮 CartridgeBond - Your Match is Ready!';
   var body    = buildMatchEmail(person, match);
 
   try {
@@ -194,7 +194,7 @@ function parseRow(rowData, rowNum) {
     role:      String(rowData[3] || '').trim(),
     game:      String(rowData[4] || '').trim(),
     price:     String(rowData[5] || '').trim(),
-    condition: String(rowData[6] || '').trim() || 'A1 — Like New / Very Good',
+    condition: String(rowData[6] || '').trim() || 'A1 - Like New / Very Good',
     zip:       String(rowData[7] || '').trim(),
     notes:     String(rowData[8] || '').trim(),
     founder:   String(rowData[11] || '').toLowerCase().includes('founder'),
@@ -210,7 +210,7 @@ function buildMatchEmail(person, match) {
   var actionVerb  = isSeller ? 'sell' : 'buy';
 
   var founderNote = person.founder
-    ? '<p style="margin:0 0 12px;padding:10px 14px;background:#dcfce7;border:1px solid #86efac;border-radius:8px;font-size:13px;color:#14532d;">🎁 <strong>Founder perk:</strong> Your trades are free for life — even after we introduce fees. Thanks for being one of our first 25.</p>'
+    ? '<p style="margin:0 0 12px;padding:10px 14px;background:#dcfce7;border:1px solid #86efac;border-radius:8px;font-size:13px;color:#14532d;">🎁 <strong>Founder perk:</strong> Your trades are free for life - even after we introduce fees. Thanks for being one of our first 25.</p>'
     : '';
 
   return [
@@ -227,7 +227,7 @@ function buildMatchEmail(person, match) {
     // Body
     '<div style="padding:24px;">',
     '<p style="font-size:15px;color:#3a3a3a;margin:0 0 18px;">Hey ' + person.name + ',</p>',
-    '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">Good news — we found a <strong>' + matchLabel + '</strong> for your submission. Here are the details:</p>',
+    '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">Good news - we found a <strong>' + matchLabel + '</strong> for your submission. Here are the details:</p>',
 
     // Match summary box
     '<div style="background:#dcfce7;border:1.5px solid #86efac;border-radius:10px;padding:16px;margin-bottom:20px;">',
@@ -251,13 +251,13 @@ function buildMatchEmail(person, match) {
     '<ul style="font-size:13px;color:#3a3a3a;line-height:1.8;margin:0;padding-left:18px;">',
     '<li>Meet in a public place (library, coffee shop, police station lobby)</li>',
     '<li>Inspect the game <em>before</em> exchanging payment</li>',
-    '<li>Test the cartridge in a Switch — confirm it boots</li>',
+    '<li>Test the cartridge in a Switch - confirm it boots</li>',
     '<li>Agree on payment method in advance</li>',
     '</ul>',
     '<a href="' + CONFIG.meetupGuide + '" style="display:inline-block;margin-top:10px;font-size:12px;color:#16a34a;text-decoration:underline;">Read the full Safe Meetup Guide →</a>',
     '</div>',
 
-    '<p style="font-size:13px;color:#777;line-height:1.7;margin:0;">Questions? Reply to this email — we\'re here. Once your trade is complete, we\'ll send a quick rating request so your match knows you\'re reliable.</p>',
+    '<p style="font-size:13px;color:#777;line-height:1.7;margin:0;">Questions? Reply to this email - we\'re here. Once your trade is complete, we\'ll send a quick rating request so your match knows you\'re reliable.</p>',
     '</div>',
 
     // Footer
@@ -283,11 +283,11 @@ function sendFollowUpEmail(person) {
     '</div>',
     '<div style="padding:24px;">',
     '<p style="font-size:15px;color:#3a3a3a;margin:0 0 14px;">Hey ' + person.name + ',</p>',
-    '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">It\'s been a couple days since we matched you. We hope the trade went smoothly! Rate your experience in 30 seconds — it helps keep CartridgeBond trustworthy for everyone.</p>',
+    '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">It\'s been a couple days since we matched you. We hope the trade went smoothly! Rate your experience in 30 seconds - it helps keep CartridgeBond trustworthy for everyone.</p>',
     '<div style="text-align:center;margin-bottom:20px;">',
     '<a href="' + CONFIG.ratingFormUrl + '" style="display:inline-block;padding:13px 28px;background:#16a34a;color:white;text-decoration:none;border-radius:8px;font-weight:bold;font-size:15px;letter-spacing:.04em;text-transform:uppercase;">Rate My Trade →</a>',
     '</div>',
-    '<p style="font-size:13px;color:#777;line-height:1.7;margin:0;">If something went wrong — no-show, condition issue, anything — reply to this email and let us know. We track reliability and use it to improve future matches.</p>',
+    '<p style="font-size:13px;color:#777;line-height:1.7;margin:0;">If something went wrong - no-show, condition issue, anything - reply to this email and let us know. We track reliability and use it to improve future matches.</p>',
     '</div>',
     '<div style="background:#111;padding:14px 24px;text-align:center;">',
     '<div style="font-size:10px;color:rgba(255,255,255,0.2);">CartridgeBond · A connection platform only · not a party to any transaction.</div>',
@@ -313,8 +313,8 @@ function sendTestEmail() {
   var ui    = SpreadsheetApp.getUi();
   var email = Session.getActiveUser().getEmail();
 
-  var fakeSeller = { name:'Test Seller', email:email, role:'Sell Used', game:'Mario Kart 8 Deluxe (Nintendo Switch)', price:'$43', condition:'A1 — Like New / Very Good', zip:'53097', notes:'', founder:true };
-  var fakeBuyer  = { name:'Test Buyer',  email:email, role:'Buy Used',  game:'Mario Kart 8 Deluxe (Nintendo Switch)', price:'$43', condition:'A1 — Like New / Very Good', zip:'53092', notes:'', founder:false };
+  var fakeSeller = { name:'Test Seller', email:email, role:'Sell Used', game:'Mario Kart 8 Deluxe (Nintendo Switch)', price:'$43', condition:'A1 - Like New / Very Good', zip:'53097', notes:'', founder:true };
+  var fakeBuyer  = { name:'Test Buyer',  email:email, role:'Buy Used',  game:'Mario Kart 8 Deluxe (Nintendo Switch)', price:'$43', condition:'A1 - Like New / Very Good', zip:'53092', notes:'', founder:false };
 
   var body = buildMatchEmail(fakeSeller, fakeBuyer);
   GmailApp.sendEmail(email, '[TEST] CartridgeBond Match Email', '', { name: CONFIG.senderName, htmlBody: body });
@@ -383,7 +383,7 @@ function setupSheetHeaders() {
     'Notes',               // I  col 9
     'Status',              // J  col 10 ← type "Matched" to trigger email
     'Matched With (Row)',  // K  col 11 ← row number of their match
-    'Founder Status',      // L  col 12 ← "Founder — Free for Life" for first 25
+    'Founder Status',      // L  col 12 ← "Founder - Free for Life" for first 25
     'Match Email Sent',    // M  col 13 ← auto-filled by script
     'Follow-Up Sent',      // N  col 14 ← auto-filled by script
     'No-Show Flag',        // O  col 15 ← type "No-Show" if they ghost
@@ -408,11 +408,11 @@ function setupSheetHeaders() {
   ui.alert(
     '✓ Headers created in "' + CONFIG.sheetName + '"!\n\n' +
     'Key columns to fill manually:\n' +
-    '• Col J — Status: type "Matched" to fire match emails\n' +
-    '• Col K — Matched With: enter the row number of their match\n' +
-    '• Col L — Founder Status: "Founder — Free for Life" for first 25\n' +
-    '• Col O — No-Show Flag: "No-Show" to log ghosts\n' +
-    '• Col P — Rating Received: 1–5 stars after trade completes'
+    '• Col J - Status: type "Matched" to fire match emails\n' +
+    '• Col K - Matched With: enter the row number of their match\n' +
+    '• Col L - Founder Status: "Founder - Free for Life" for first 25\n' +
+    '• Col O - No-Show Flag: "No-Show" to log ghosts\n' +
+    '• Col P - Rating Received: 1–5 stars after trade completes'
   );
 }
 

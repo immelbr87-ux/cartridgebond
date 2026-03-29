@@ -1,11 +1,11 @@
 /**
- * CartridgeBond — Google Apps Script Web App
+ * CartridgeBond - Google Apps Script Web App
  * ═══════════════════════════════════════════
  *
  * SETUP INSTRUCTIONS (do this once):
  * ────────────────────────────────────
  * 1. Go to sheets.google.com (signed in as cartridgebond@gmail.com)
- * 2. Create a new blank spreadsheet — name it "CartridgeBond Submissions"
+ * 2. Create a new blank spreadsheet - name it "CartridgeBond Submissions"
  * 3. Click Extensions → Apps Script
  * 4. Delete all existing code and paste THIS entire file
  * 5. Click Save (💾)
@@ -19,7 +19,7 @@
  *
  * EVERY TIME you edit this script you must:
  *    Deploy → Manage Deployments → Edit → New Version → Deploy
- *    (The URL stays the same — only the code updates)
+ *    (The URL stays the same - only the code updates)
  */
 
 // ─── CONFIGURATION ────────────────────────────────────────────
@@ -37,7 +37,7 @@ var CONFIG = {
 // ─── WEB APP ENTRY POINT ──────────────────────────────────────
 
 /**
- * Handles GET requests — returns a simple status page
+ * Handles GET requests - returns a simple status page
  * (useful for testing the deployment is live)
  */
 function doGet(e) {
@@ -55,7 +55,7 @@ function doPost(e) {
   try {
     var data = {};
 
-    // Parse body — works whether Content-Type is set or not
+    // Parse body - works whether Content-Type is set or not
     var raw = (e.postData && e.postData.contents) ? e.postData.contents : '';
 
     if (raw) {
@@ -122,7 +122,7 @@ function writeToSheet(data) {
       'City (Waitlist)',     // M
       'Status',              // N  ← type "Matched" to fire match email
       'Matched With (Row)',  // O  ← row number of their match
-      'Founder Status',      // P  ← "Founder — Free for Life" for first 25
+      'Founder Status',      // P  ← "Founder - Free for Life" for first 25
       'Match Email Sent',    // Q  ← auto-filled
       'Follow-Up Sent',      // R  ← auto-filled
       'No-Show Flag',        // S  ← manual
@@ -184,10 +184,10 @@ function sendConfirmationEmail(data) {
     subject = 'You\'re on the CartridgeBond waitlist!';
     body    = buildWaitlistConfirmEmail(firstName, data);
   } else if (isSell) {
-    subject = 'CartridgeBond — We Got Your Listing';
+    subject = 'CartridgeBond - We Got Your Listing';
     body    = buildSellerConfirmEmail(firstName, data);
   } else {
-    subject = 'CartridgeBond — We Got Your Request';
+    subject = 'CartridgeBond - We Got Your Request';
     body    = buildBuyerConfirmEmail(firstName, data);
   }
 
@@ -206,19 +206,19 @@ function sendConfirmationEmail(data) {
 // ─── ADMIN NOTIFICATION ───────────────────────────────────────
 
 function sendAdminNotification(data) {
-  var subject = 'New CartridgeBond Submission — ' + (data.name || 'Unknown') + ' (' + (data.role || data.form_type || 'Unknown') + ')';
+  var subject = 'New CartridgeBond Submission - ' + (data.name || 'Unknown') + ' (' + (data.role || data.form_type || 'Unknown') + ')';
   var lines = [
-    'Name: '      + (data.name || '—'),
-    'Email: '     + (data.email || '—'),
-    'Phone: '     + (data.phone || '—'),
-    'Zip: '       + (data.zip || '—'),
-    'Role: '      + (data.role || data.form_type || '—'),
-    'Game(s): '   + (data.game || '—'),
-    'Price(s): '  + (data.resale_price || '—'),
-    'Condition: ' + (data.condition || '—'),
-    'Timeline: '  + (data.timeline || '—'),
-    'Notes: '     + (data.notes || '—'),
-    'City: '      + (data.city || '—'),
+    'Name: '      + (data.name || '-'),
+    'Email: '     + (data.email || '-'),
+    'Phone: '     + (data.phone || '-'),
+    'Zip: '       + (data.zip || '-'),
+    'Role: '      + (data.role || data.form_type || '-'),
+    'Game(s): '   + (data.game || '-'),
+    'Price(s): '  + (data.resale_price || '-'),
+    'Condition: ' + (data.condition || '-'),
+    'Timeline: '  + (data.timeline || '-'),
+    'Notes: '     + (data.notes || '-'),
+    'City: '      + (data.city || '-'),
     '',
     'Open your Sheet to review and match.',
   ];
@@ -254,7 +254,7 @@ function emailWrapper(content) {
     '<a href="' + CONFIG.faqUrl + '" style="color:rgba(255,255,255,0.3);">FAQ</a> &nbsp;·&nbsp; ',
     '<a href="' + CONFIG.meetupGuide + '" style="color:rgba(255,255,255,0.3);">Safe Meetup Guide</a>',
     '</div>',
-    '<div style="font-size:10px;color:rgba(255,255,255,0.15);margin-top:6px;">CartridgeBond is a connection platform only — not a party to any transaction.</div>',
+    '<div style="font-size:10px;color:rgba(255,255,255,0.15);margin-top:6px;">CartridgeBond is a connection platform only - not a party to any transaction.</div>',
     '</div>',
 
     '</div></body></html>',
@@ -270,10 +270,10 @@ function buildSellerConfirmEmail(firstName, data) {
     '<div style="background:#dcfce7;border:1.5px solid #86efac;border-radius:10px;padding:16px;margin-bottom:20px;">',
     '<div style="font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:#16a34a;margin-bottom:10px;">Your Submission</div>',
     '<table style="width:100%;font-size:13px;color:#14532d;border-collapse:collapse;">',
-    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;width:38%;">Game(s)</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (data.game || '—') + '</td></tr>',
-    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Your price</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (data.resale_price || '—') + '</td></tr>',
+    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;width:38%;">Game(s)</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (data.game || '-') + '</td></tr>',
+    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Your price</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (data.resale_price || '-') + '</td></tr>',
     '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Condition</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (data.condition || 'A1') + '</td></tr>',
-    '<tr><td style="padding:5px 0;">Window</td><td style="padding:5px 0;font-weight:600;">' + (data.timeline || '—') + '</td></tr>',
+    '<tr><td style="padding:5px 0;">Window</td><td style="padding:5px 0;font-weight:600;">' + (data.timeline || '-') + '</td></tr>',
     '</table>',
     '</div>',
 
@@ -299,15 +299,15 @@ function buildBuyerConfirmEmail(firstName, data) {
     '<div style="background:#dcfce7;border:1.5px solid #86efac;border-radius:10px;padding:16px;margin-bottom:20px;">',
     '<div style="font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:#16a34a;margin-bottom:10px;">Your Request</div>',
     '<table style="width:100%;font-size:13px;color:#14532d;border-collapse:collapse;">',
-    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;width:38%;">Game(s)</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (data.game || '—') + '</td></tr>',
-    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Locked price</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (data.resale_price || '—') + '</td></tr>',
-    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Condition</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">A1 — Like New / Very Good</td></tr>',
-    '<tr><td style="padding:5px 0;">Needed by</td><td style="padding:5px 0;font-weight:600;">' + (data.timeline || '—') + '</td></tr>',
+    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;width:38%;">Game(s)</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (data.game || '-') + '</td></tr>',
+    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Locked price</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (data.resale_price || '-') + '</td></tr>',
+    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Condition</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">A1 - Like New / Very Good</td></tr>',
+    '<tr><td style="padding:5px 0;">Needed by</td><td style="padding:5px 0;font-weight:600;">' + (data.timeline || '-') + '</td></tr>',
     '</table>',
     '</div>',
 
     '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 14px;"><strong>What happens next:</strong> We\'ll search for a seller who matches your game, price, and timeline. If we find one, we\'ll connect you by email to set up a local meetup. First in, first matched.</p>',
-    '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">The price you see is the price you pay. No bidding, no haggling at the meetup. Inspect before you pay — that\'s the only rule.</p>',
+    '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">The price you see is the price you pay. No bidding, no haggling at the meetup. Inspect before you pay - that\'s the only rule.</p>',
 
     '<div style="background:#f8f8f5;border:1.5px solid #e2e2da;border-radius:8px;padding:14px;">',
     '<p style="font-size:13px;color:#3a3a3a;line-height:1.7;margin:0;">Questions? Just reply to this email. A real person reads every message.</p>',
@@ -325,7 +325,7 @@ function buildWaitlistConfirmEmail(firstName, data) {
     '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">You\'re on the CartridgeBond waitlist for <strong>' + (data.city || 'your city') + '</strong>. We\'ve logged your demand signal.</p>',
 
     '<div style="background:#dcfce7;border:1.5px solid #86efac;border-radius:10px;padding:16px;margin-bottom:20px;">',
-    '<p style="font-size:14px;color:#14532d;line-height:1.7;margin:0;">When enough people in your area join the waitlist, we launch there. You\'ll be notified first and get priority matching ahead of new signups — <strong>free, always.</strong></p>',
+    '<p style="font-size:14px;color:#14532d;line-height:1.7;margin:0;">When enough people in your area join the waitlist, we launch there. You\'ll be notified first and get priority matching ahead of new signups - <strong>free, always.</strong></p>',
     '</div>',
 
     '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 14px;">The fastest way to move your city up the list: share CartridgeBond with anyone nearby who has Switch games to sell or buy.</p>',
@@ -343,20 +343,20 @@ function buildMatchEmail(person, match) {
   var matchLabel = isSeller ? 'buyer' : 'seller';
 
   var founderNote = person.founder
-    ? '<p style="margin:0 0 12px;padding:10px 14px;background:#dcfce7;border:1px solid #86efac;border-radius:8px;font-size:13px;color:#14532d;"><strong>Founder Perk:</strong> Your trades are free for life — even after we introduce fees. Thanks for being one of our first 25.</p>'
+    ? '<p style="margin:0 0 12px;padding:10px 14px;background:#dcfce7;border:1px solid #86efac;border-radius:8px;font-size:13px;color:#14532d;"><strong>Founder Perk:</strong> Your trades are free for life - even after we introduce fees. Thanks for being one of our first 25.</p>'
     : '';
 
   var content = [
     '<div style="padding:24px;">',
     '<p style="font-size:15px;color:#3a3a3a;margin:0 0 14px;">Hey ' + person.name + ',</p>',
-    '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">Good news — we found a <strong>' + matchLabel + '</strong> for your game. Here are the details:</p>',
+    '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">Good news - we found a <strong>' + matchLabel + '</strong> for your game. Here are the details:</p>',
 
     '<div style="background:#dcfce7;border:1.5px solid #86efac;border-radius:10px;padding:16px;margin-bottom:20px;">',
     '<div style="font-size:11px;font-weight:bold;letter-spacing:.1em;text-transform:uppercase;color:#16a34a;margin-bottom:10px;">Match Details</div>',
     '<table style="width:100%;font-size:13px;color:#14532d;border-collapse:collapse;">',
     '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;width:40%;">Game</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + person.game + '</td></tr>',
     '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Agreed price</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + person.price + '</td></tr>',
-    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Condition</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (person.condition || 'A1 — Like New') + '</td></tr>',
+    '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Condition</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + (person.condition || 'A1 - Like New') + '</td></tr>',
     '<tr><td style="padding:5px 0;border-bottom:1px solid #86efac;">Your match</td><td style="padding:5px 0;border-bottom:1px solid #86efac;font-weight:600;">' + match.name + ' (near ' + match.zip + ')</td></tr>',
     '<tr><td style="padding:5px 0;">Their email</td><td style="padding:5px 0;font-weight:600;"><a href="mailto:' + match.email + '" style="color:#16a34a;">' + match.email + '</a></td></tr>',
     '</table>',
@@ -369,7 +369,7 @@ function buildMatchEmail(person, match) {
     '<div style="background:#f8f8f5;border:1.5px solid #e2e2da;border-radius:8px;padding:14px;margin-bottom:14px;">',
     '<div style="font-size:11px;font-weight:bold;color:#777;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Before you meet</div>',
     '<ul style="font-size:13px;color:#3a3a3a;line-height:1.9;margin:0;padding-left:18px;">',
-    '<li>Meet in a public place — library, coffee shop, police station lobby</li>',
+    '<li>Meet in a public place - library, coffee shop, police station lobby</li>',
     '<li>Test the cartridge in a Switch before paying</li>',
     '<li>Inspect the case and confirm all components</li>',
     '<li>Agree on payment method before you leave the house</li>',
@@ -377,7 +377,7 @@ function buildMatchEmail(person, match) {
     '<a href="' + CONFIG.meetupGuide + '" style="display:inline-block;margin-top:10px;font-size:12px;color:#16a34a;">Read the full Safe Meetup Guide →</a>',
     '</div>',
 
-    '<p style="font-size:13px;color:#777;">Questions? Reply to this email — we\'re here.</p>',
+    '<p style="font-size:13px;color:#777;">Questions? Reply to this email - we\'re here.</p>',
     '</div>',
   ].join('');
 
@@ -405,7 +405,7 @@ function parseRow(rowData, rowNum) {
     role:      String(rowData[5] || '').trim(),
     game:      String(rowData[6] || '').trim(),
     price:     String(rowData[7] || '').trim(),
-    condition: String(rowData[8] || '').trim() || 'A1 — Like New / Very Good',
+    condition: String(rowData[8] || '').trim() || 'A1 - Like New / Very Good',
     zip:       String(rowData[4] || '').trim(),
     founder:   String(rowData[15] || '').toLowerCase().includes('founder'),
   };
@@ -446,7 +446,7 @@ function sendMatchEmailForRow(sheet, data, row, idx) {
 
   var matchedRowNum = parseInt(data[idx][14]); // Col O
   if (!matchedRowNum || isNaN(matchedRowNum)) {
-    Logger.log('Row ' + row + ': No match row in Col O — skipping.');
+    Logger.log('Row ' + row + ': No match row in Col O - skipping.');
     return;
   }
 
@@ -457,7 +457,7 @@ function sendMatchEmailForRow(sheet, data, row, idx) {
   var match  = parseRow(data[matchIdx], matchedRowNum);
   if (!person.email || !match.email) return;
 
-  var subject = 'CartridgeBond — Your Match is Ready!';
+  var subject = 'CartridgeBond - Your Match is Ready!';
   var body    = buildMatchEmail(person, match);
 
   try {
@@ -510,11 +510,11 @@ function sendFollowUpEmail(person) {
   var content = [
     '<div style="padding:24px;">',
     '<p style="font-size:15px;color:#3a3a3a;margin:0 0 14px;">Hey ' + person.name + ',</p>',
-    '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">It\'s been a couple days since we matched you. We hope the trade went smoothly! Rate your experience in 30 seconds — it helps keep CartridgeBond reliable for everyone.</p>',
+    '<p style="font-size:14px;color:#3a3a3a;line-height:1.7;margin:0 0 18px;">It\'s been a couple days since we matched you. We hope the trade went smoothly! Rate your experience in 30 seconds - it helps keep CartridgeBond reliable for everyone.</p>',
     '<div style="text-align:center;margin-bottom:20px;">',
     '<a href="' + CONFIG.ratingFormUrl + '" style="display:inline-block;padding:13px 28px;background:#16a34a;color:white;text-decoration:none;border-radius:8px;font-weight:bold;font-size:15px;letter-spacing:.04em;text-transform:uppercase;">Rate My Trade →</a>',
     '</div>',
-    '<p style="font-size:13px;color:#777;line-height:1.7;">If something went wrong — no-show, condition issue — just reply to this email. We track reliability and factor it into future matches.</p>',
+    '<p style="font-size:13px;color:#777;line-height:1.7;">If something went wrong - no-show, condition issue - just reply to this email. We track reliability and factor it into future matches.</p>',
     '</div>',
   ].join('');
 

@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nintendo Switch Game Price Guide — What Your Game Is Worth | CartridgeBond</title>
+<title>Nintendo Switch Game Price Guide - What Your Game Is Worth | CartridgeBond</title>
 <meta name="description" content="How much are used Nintendo Switch games worth in 2025? CartridgeBond vs GameStop trade-in vs eBay prices for Mario Kart, Zelda, Animal Crossing, Pokemon, Smash Bros, and more.">
 <meta name="keywords" content="Nintendo Switch game resale value 2025, how much are used Switch games worth, Switch game trade-in value, sell Switch games Milwaukee price, Mario Kart 8 Deluxe resale price, Zelda Tears of the Kingdom resale value">
 <meta name="robots" content="index, follow">
 <meta name="author" content="CartridgeBond">
 <link rel="canonical" href="https://cartridgebond.com/prices.html">
 <meta property="og:title" content="Nintendo Switch Game Price Guide 2025 | CartridgeBond">
-<meta property="og:description" content="See what used Switch games actually sell for — CartridgeBond vs GameStop trade-in vs eBay for the top 6 titles.">
+<meta property="og:description" content="See what used Switch games actually sell for - CartridgeBond vs GameStop trade-in vs eBay for the top 6 titles.">
 <meta property="og:url" content="https://cartridgebond.com/prices.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CartridgeBond">
@@ -20,7 +20,7 @@
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Nintendo Switch Game Price Guide",
-  "description": "Resale value comparison for used Nintendo Switch games — CartridgeBond vs GameStop trade-in vs eBay sold listings.",
+  "description": "Resale value comparison for used Nintendo Switch games - CartridgeBond vs GameStop trade-in vs eBay sold listings.",
   "url": "https://cartridgebond.com/prices.html",
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -174,7 +174,7 @@
 
 <div class="page-header">
   <a href="index.html" class="back-link">← Back to <strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a>
-  <h1>Price Guide — <span>What Your Game Is Actually Worth</span></h1>
+  <h1>Price Guide - <span>What Your Game Is Actually Worth</span></h1>
   <div class="sub">CartridgeBond prices vs. GameStop trade-in vs. eBay sold listings · Updated January 2025 · A1 condition</div>
 </div>
 
@@ -183,7 +183,7 @@
   <div class="summary-box">
     <div class="summary-icon">💡</div>
     <div class="summary-body">
-      <p>GameStop trade-in prices are set so they can resell at 3–6× markup. CartridgeBond prices reflect what real buyers actually pay in private sales — <strong>typically $10–$20 more per game</strong> than a GameStop offer, and close to eBay sold prices without the seller fees or shipping.</p>
+      <p>GameStop trade-in prices are set so they can resell at 3–6× markup. CartridgeBond prices reflect what real buyers actually pay in private sales - <strong>typically $10–$20 more per game</strong> than a GameStop offer, and close to eBay sold prices without the seller fees or shipping.</p>
     </div>
   </div>
 
@@ -199,7 +199,7 @@
   <div class="data-note">
     Prices reflect approximate secondary market rates as of January 2025 for A1 condition cartridges with original case.<br>
     GameStop trade-in values fluctuate and may vary by location. eBay figures are averages of recent sold listings before fees (~13%).<br>
-    CartridgeBond prices are reference points — you set your own price when submitting a custom title.
+    CartridgeBond prices are reference points - you set your own price when submitting a custom title.
   </div>
 
   <div class="cta-box">
@@ -214,13 +214,14 @@
   <div class="footer-brand"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></div>
   <div class="footer-links">
     <a href="index.html">Home</a><span class="footer-sep">·</span>
+    <a href="blog/index.html">Blog</a><span class="footer-sep">·</span>
     <a href="faq.html">FAQ</a><span class="footer-sep">·</span>
     <a href="meetup.html">Safe Meetup Guide</a><span class="footer-sep">·</span>
     <a href="terms.html">Terms</a><span class="footer-sep">·</span>
     <a href="privacy.html">Privacy</a><span class="footer-sep">·</span>
     <a href="waitlist.html">Not in Milwaukee?</a>
   </div>
-  <div class="footer-copy">© 2025 CartridgeBond. A connection platform only — not a party to any transaction.</div>
+  <div class="footer-copy">© 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
 </footer>
 
 <script>
@@ -287,7 +288,7 @@ function pct(val, max) {
 
 function delta(cb, compare) {
   var diff = cb - compare;
-  if (diff === 0) return '<span class="delta-neu">—</span>';
+  if (diff === 0) return '<span class="delta-neu">-</span>';
   var sign = diff > 0 ? '+' : '';
   var cls  = diff > 0 ? 'delta-pos' : 'delta-neg';
   return '<span class="' + cls + '">' + sign + '$' + diff + '</span>';
@@ -325,7 +326,7 @@ function buildCards() {
     html += '<div class="price-row">';
     html += '<div class="price-label">CartridgeBond<small>Flexible (90–180d)</small></div>';
     html += '<div class="bar-wrap"><div class="bar bar-cb-f" style="width:' + pct(g.cbFlex, maxVal) + '%">$' + g.cbFlex + '</div></div>';
-    html += '<div class="price-delta delta-neu" style="font-size:11px;color:var(--ink-light);">—</div>';
+    html += '<div class="price-delta delta-neu" style="font-size:11px;color:var(--ink-light);">-</div>';
     html += '</div>';
 
     html += '<div class="divider"></div>';
@@ -342,7 +343,7 @@ function buildCards() {
     html += '<div class="price-label">eBay<small>Avg Sold (pre-fee)</small></div>';
     html += '<div class="bar-wrap"><div class="bar bar-eb" style="width:' + pct(g.eb, maxVal) + '%">$' + g.eb + '</div></div>';
     var ebDiff = g.cb - g.eb;
-    var ebDiffStr = ebDiff === 0 ? '—' : (ebDiff > 0 ? '<span class="delta-pos">+$'+ebDiff+'</span>' : '<span class="delta-neg">-$'+Math.abs(ebDiff)+'</span>');
+    var ebDiffStr = ebDiff === 0 ? '-' : (ebDiff > 0 ? '<span class="delta-pos">+$'+ebDiff+'</span>' : '<span class="delta-neg">-$'+Math.abs(ebDiff)+'</span>');
     html += '<div class="price-delta">' + ebDiffStr + '</div>';
     html += '</div>';
 
