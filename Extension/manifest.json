@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "CartridgeBond — Local Switch Game Deals",
+  "version": "1.0.0",
+  "description": "See if someone near you in Milwaukee wants to buy or sell this Nintendo Switch game on CartridgeBond — before you pay retail.",
+
+  "permissions": [
+    "storage"
+  ],
+
+  "host_permissions": [
+    "https://www.amazon.com/*",
+    "https://www.gamestop.com/*",
+    "https://www.bestbuy.com/*",
+    "https://www.target.com/*",
+    "https://www.walmart.com/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.amazon.com/*/dp/*",
+        "https://www.amazon.com/dp/*",
+        "https://www.gamestop.com/*.html",
+        "https://www.bestbuy.com/site/*",
+        "https://www.target.com/p/*",
+        "https://www.walmart.com/ip/*"
+      ],
+      "js": ["content.js"],
+      "css": ["badge.css"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "CartridgeBond"
+  },
+
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
