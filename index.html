@@ -306,10 +306,14 @@
   textarea { resize: none; height: 80px; }
 
   /* SUCCESS */
-  .success-screen { display: none; text-align: center; padding: 44px 20px; }
+  .success-screen { display: none; text-align: center; padding: 0 0 40px; }
   .success-screen.show { display: block; }
-  .success-icon { width: 60px; height: 60px; background: var(--green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 26px; }
-  .success-screen h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 8px; }
+  .success-hero { background: var(--green-bg); padding: 32px 20px 28px; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .success-hero::before { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px); background-size:32px 32px; pointer-events:none; }
+  .success-hero .success-icon { width: 56px; height: 56px; background: var(--green-dim); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 24px; position: relative; }
+  .success-screen h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; margin-bottom: 8px; color: white; position: relative; }
+  .success-screen .success-sub { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 300px; margin: 0 auto; position: relative; }
+  .success-body { padding: 0 16px; }
   .success-screen p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; max-width: 320px; margin: 0 auto 18px; }
 
   .next-steps { text-align: left; margin: 0 auto 20px; max-width: 380px; display: flex; flex-direction: column; gap: 12px; }
@@ -678,38 +682,48 @@
 
   <!-- SUCCESS SCREEN -->
   <div class="success-screen" id="successScreen">
-    <div class="success-icon">&#10003;</div>
-    <h2>Got it — we're on it.</h2>
-    <p>A confirmation email is on its way to your inbox. Here's what happens next:</p>
-    <div class="next-steps">
-      <div class="next-step">
-        <span class="ns-num">1</span>
-        <div>
-          <div class="ns-title">We review your submission</div>
-          <div class="ns-sub">Usually within 24–48 hours. No bots, no auto-matches — a real person reviews every submission and looks for your match.</div>
+
+    <div class="success-hero">
+      <div class="success-icon">&#10003;</div>
+      <h2>You're Submitted!</h2>
+      <div class="success-sub">Confirmation email sent. We'll be in touch within 24–48 hours when your match is found.</div>
+    </div>
+
+    <div class="success-body">
+      <div class="bond-summary" id="bondSummary" style="margin-bottom:16px;"></div>
+
+      <div class="next-steps" style="margin-bottom:20px;">
+        <div class="next-step">
+          <span class="ns-num">1</span>
+          <div>
+            <div class="ns-title">We review your submission</div>
+            <div class="ns-sub">No bots, no auto-matches — a real person reviews every submission and looks for your match.</div>
+          </div>
+        </div>
+        <div class="next-step">
+          <span class="ns-num">2</span>
+          <div>
+            <div class="ns-title">We find your match</div>
+            <div class="ns-sub">If a buyer or seller lines up with your game, price, and timeline, we connect you directly by email.</div>
+          </div>
+        </div>
+        <div class="next-step">
+          <span class="ns-num">3</span>
+          <div>
+            <div class="ns-title">You meet locally</div>
+            <div class="ns-sub">Inspect the game before paying. No payment changes hands until you're comfortable.</div>
+          </div>
         </div>
       </div>
-      <div class="next-step">
-        <span class="ns-num">2</span>
-        <div>
-          <div class="ns-title">We find your match</div>
-          <div class="ns-sub">If a buyer or seller lines up with your game, price, and window, we'll connect you directly by email. First in, first matched.</div>
-        </div>
-      </div>
-      <div class="next-step">
-        <span class="ns-num">3</span>
-        <div>
-          <div class="ns-title">You meet locally</div>
-          <div class="ns-sub">Coordinate a public meetup, inspect the game before paying, and you're done. No payment changes hands until you're comfortable.</div>
-        </div>
+
+      <p style="font-size:12px;color:var(--ink-light);margin-bottom:20px;">Questions? Email <a href="mailto:cartridgebond@gmail.com" style="color:var(--green-dim);">cartridgebond@gmail.com</a></p>
+
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button type="button" onclick="addAnother()" style="padding:12px 22px;background:var(--green-dim);color:white;border:none;border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">+ Submit Another Game</button>
+        <button type="button" onclick="resetForm()" style="padding:12px 22px;background:transparent;color:var(--ink-mid);border:1.5px solid var(--border);border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">&#8592; Start Over</button>
       </div>
     </div>
-    <div class="bond-summary" id="bondSummary"></div>
-    <p style="font-size:12px;color:var(--ink-light);margin-top:4px;">Questions or second thoughts? Just DM us on the original post — no hard feelings.</p>
-    <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
-      <button type="button" onclick="addAnother()" style="padding:12px 22px;background:var(--green-dim);color:white;border:none;border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">+ Submit Another Game</button>
-      <button type="button" onclick="resetForm()" style="padding:12px 22px;background:transparent;color:var(--ink-mid);border:1.5px solid var(--border);border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">&#8592; Start Over</button>
-    </div>
+
   </div>
 
 </div>
@@ -1054,7 +1068,8 @@ function submitForm() {
     document.getElementById('bondSummary').innerHTML    = html;
     document.getElementById('successScreen').classList.add('show');
     document.getElementById('roleToggle').style.display = 'none';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
   fetch(endpoint, {

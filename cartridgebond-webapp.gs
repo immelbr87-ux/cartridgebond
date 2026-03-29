@@ -53,19 +53,20 @@ function doPost(e) {
   var response = { success: false, message: '' };
 
   try {
-    // Parse the incoming form data
     var data = {};
-    if (e.postData && e.postData.contents) {
-      // JSON body (fetch with JSON.stringify)
-      try {
-        data = JSON.parse(e.postData.contents);
-      } catch(err) {
-        // URL-encoded fallback
-        var params = e.postData.contents.split('&');
-        params.forEach(function(p) {
+
+    // Parse body — works whether Content-Type is set or not
+    var raw = (e.postData && e.postData.contents) ? e.postData.contents : '';
+
+    if (raw) {
+      // Try JSON first
+      try { data = JSON.parse(raw); }
+      catch(err) {
+        // Fall back to URL-encoded
+        raw.split('&').forEach(function(p) {
           var kv = p.split('=');
-          if (kv.length === 2) {
-            data[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1].replace(/\+/g, ' '));
+          if (kv.length >= 2) {
+            data[decodeURIComponent(kv[0])] = decodeURIComponent(kv.slice(1).join('=').replace(/\+/g,' '));
           }
         });
       }
@@ -73,15 +74,14 @@ function doPost(e) {
       data = e.parameter;
     }
 
-    // Write to Google Sheet
-    writeToSheet(data);
-
-    // Send confirmation email to user
-    if (data.email) {
-      sendConfirmationEmail(data);
+    if (!data || Object.keys(data).length === 0) {
+      throw new Error('No data received in POST body');
     }
 
-    // Send admin notification
+    writeToSheet(data);
+
+    if (data.email) sendConfirmationEmail(data);
+
     sendAdminNotification(data);
 
     response.success = true;
@@ -92,7 +92,6 @@ function doPost(e) {
     Logger.log('doPost error: ' + err.toString());
   }
 
-  // Allow CORS so the browser form can post to this endpoint
   return ContentService
     .createTextOutput(JSON.stringify(response))
     .setMimeType(ContentService.MimeType.JSON);
@@ -185,10 +184,10 @@ function sendConfirmationEmail(data) {
     subject = 'You\'re on the CartridgeBond waitlist!';
     body    = buildWaitlistConfirmEmail(firstName, data);
   } else if (isSell) {
-    subject = '🎮 CartridgeBond — We Got Your Listing';
+    subject = 'CartridgeBond — We Got Your Listing';
     body    = buildSellerConfirmEmail(firstName, data);
   } else {
-    subject = '🎮 CartridgeBond — We Got Your Request';
+    subject = 'CartridgeBond — We Got Your Request';
     body    = buildBuyerConfirmEmail(firstName, data);
   }
 
@@ -207,7 +206,7 @@ function sendConfirmationEmail(data) {
 // ─── ADMIN NOTIFICATION ───────────────────────────────────────
 
 function sendAdminNotification(data) {
-  var subject = '📬 New CartridgeBond submission — ' + (data.name || '?') + ' (' + (data.role || data.form_type || '?') + ')';
+  var subject = 'New CartridgeBond Submission — ' + (data.name || 'Unknown') + ' (' + (data.role || data.form_type || 'Unknown') + ')';
   var lines = [
     'Name: '      + (data.name || '—'),
     'Email: '     + (data.email || '—'),
@@ -344,7 +343,7 @@ function buildMatchEmail(person, match) {
   var matchLabel = isSeller ? 'buyer' : 'seller';
 
   var founderNote = person.founder
-    ? '<p style="margin:0 0 12px;padding:10px 14px;background:#dcfce7;border:1px solid #86efac;border-radius:8px;font-size:13px;color:#14532d;">🎁 <strong>Founder perk:</strong> Your trades are free for life — even after we introduce fees. Thanks for being one of our first 25.</p>'
+    ? '<p style="margin:0 0 12px;padding:10px 14px;background:#dcfce7;border:1px solid #86efac;border-radius:8px;font-size:13px;color:#14532d;"><strong>Founder Perk:</strong> Your trades are free for life — even after we introduce fees. Thanks for being one of our first 25.</p>'
     : '';
 
   var content = [
@@ -458,7 +457,7 @@ function sendMatchEmailForRow(sheet, data, row, idx) {
   var match  = parseRow(data[matchIdx], matchedRowNum);
   if (!person.email || !match.email) return;
 
-  var subject = '🎮 CartridgeBond — Your Match is Ready!';
+  var subject = 'CartridgeBond — Your Match is Ready!';
   var body    = buildMatchEmail(person, match);
 
   try {
