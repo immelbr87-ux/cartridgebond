@@ -63,7 +63,7 @@
     --ink: #0f0f0f; --ink-mid: #3a3a3a; --ink-light: #777;
     --border: #e2e2da; --surface: #f8f8f5; --white: #ffffff; --radius: 10px;
   }
-  body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh; }
+  body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh; padding-top: 48px; }
   .page-header { background: var(--green-bg); color: white; padding: 24px 20px 20px; position: relative; overflow: hidden; }
   .page-header::before { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px); background-size:32px 32px; pointer-events:none; }
   .back-link { display:inline-flex; align-items:center; gap:6px; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(34,197,94,0.7); text-decoration:none; margin-bottom:12px; position:relative; }
@@ -93,9 +93,83 @@
   .footer-sep { color:rgba(255,255,255,0.15); font-size:11px; }
   .footer-copy { font-size:11px; color:rgba(255,255,255,0.2); }
   .footer-brand { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:12px; }
+  /* STICKY NAV */
+  .site-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: #0a1a10;
+    border-bottom: 1px solid rgba(34,197,94,0.2);
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+  .site-nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    line-height: 1;
+  }
+  .nav-logo .cartridge { color: rgba(255,255,255,0.9); }
+  .nav-logo .bond { color: #22c55e; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: #22c55e; }
+  .nav-links .nav-cta {
+    background: #16a34a;
+    color: white !important;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+  }
+  .nav-links .nav-cta:hover { background: #14532d !important; }
 </style>
 </head>
 <body>
+
+<!-- STICKY NAV -->
+<nav class="site-nav" id="siteNav">
+  <a href="../index.html" class="nav-logo">
+    <span class="cartridge">Cartridge</span><span class="bond">Bond</span>
+  </a>
+  <div class="nav-links">
+    <a href="../blog/index.html">Blog</a>
+    <a href="../prices.html">Game Values</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="../index.html#formInner" class="nav-cta">Buy / Sell Now</a>
+  </div>
+</nav>
+
 
 <div class="page-header">
   <a href="index.html" class="back-link">← Back to <strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a>
@@ -237,18 +311,24 @@
 
 </div>
 
-<footer>
-  <div class="footer-brand"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></div>
-  <div class="footer-links">
-    <a href="index.html">Home</a><span class="footer-sep">·</span>
-    <a href="blog/index.html">Blog</a><span class="footer-sep">·</span>
-    <a href="terms.html">Terms of Service</a><span class="footer-sep">·</span>
-    <a href="privacy.html">Privacy Policy</a><span class="footer-sep">·</span>
-    <a href="meetup.html">Safe Meetup Guide</a><span class="footer-sep">·</span>
-    <a href="prices.html">Price Guide</a><span class="footer-sep">·</span>
-    <a href="waitlist.html">Not in Milwaukee?</a>
+<footer style="background:#111;padding:24px 20px;text-align:center;border-top:1px solid rgba(34,197,94,0.12);">
+  <div style="margin-bottom:12px;"><a href="index.html" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a></div>
+  <div style="font-size:11px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px;">
+    <a href="blog/index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Blog</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="prices.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Game Values</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="faq.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">FAQ</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="meetup.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Safe Meetup Guide</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="terms.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Terms</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="privacy.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Privacy</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="waitlist.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Not in Milwaukee?</a>
   </div>
-  <div class="footer-copy">© 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
+  <div style="font-size:11px;color:rgba(255,255,255,0.2);">&#169; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
 </footer>
 
 <script>
