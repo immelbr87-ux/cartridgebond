@@ -116,6 +116,7 @@
     position: relative;
     z-index: 1;
     line-height: 1;
+    flex-shrink: 0;
   }
   .nav-logo .cartridge { color: rgba(255,255,255,0.9); }
   .nav-logo .bond { color: #22c55e; }
@@ -135,16 +136,104 @@
     color: rgba(255,255,255,0.45);
     text-decoration: none;
     transition: color .15s;
+    white-space: nowrap;
   }
   .nav-links a:hover { color: #22c55e; }
   .nav-links .nav-cta {
     background: #16a34a;
-    color: white;
-    padding: 6px 12px;
+    color: white !important;
+    padding: 7px 14px;
     border-radius: 6px;
-    font-size: 11px;
+    font-size: 12px;
+    white-space: nowrap;
   }
-  .nav-links .nav-cta:hover { background: #14532d; color: white; }
+  .nav-links .nav-cta:hover { background: #14532d !important; color: white !important; }
+
+  /* Hamburger */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 2px;
+    transition: all .2s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile dropdown menu */
+  .nav-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 48px;
+    left: 0;
+    right: 0;
+    background: #0a1a10;
+    border-bottom: 1px solid rgba(34,197,94,0.25);
+    z-index: 999;
+    padding: 8px 0;
+  }
+  .nav-mobile-menu.open { display: block; }
+  .nav-mobile-menu a {
+    display: block;
+    padding: 12px 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-mobile-menu a:last-child { border-bottom: none; }
+  .nav-mobile-menu a:active { background: rgba(34,197,94,0.1); color: #22c55e; }
+
+  @media (max-width: 560px) {
+    .nav-desktop-links { display: none !important; }
+    .nav-hamburger { display: flex !important; }
+    .nav-mobile-cta { display: block !important; }
+  }
+  @media (min-width: 561px) {
+    .nav-mobile-right { display: none !important; }
+    .nav-mobile-menu { display: none !important; }
+  }
+  .nav-mobile-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+  }
+  .nav-mobile-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    background: #16a34a;
+    color: white !important;
+    padding: 6px 11px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
 
   /* TESTIMONIALS */
   .testimonial-card {
@@ -527,13 +616,41 @@
   <a href="#top" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
     <span class="cartridge">Cartridge</span><span class="bond">Bond</span>
   </a>
-  <div class="nav-links">
+  <!-- Desktop links -->
+  <div class="nav-links nav-desktop-links">
     <a href="blog/index.html">Blog</a>
     <a href="prices.html">Game Values</a>
     <a href="faq.html">FAQ</a>
     <a href="#formInner" class="nav-cta" onclick="document.getElementById('formInner').scrollIntoView({behavior:'smooth'});return false;">Buy / Sell Now</a>
   </div>
+  <!-- Mobile: CTA + hamburger -->
+  <div class="nav-mobile-right">
+    <a href="#formInner" class="nav-cta nav-mobile-cta" onclick="document.getElementById('formInner').scrollIntoView({behavior:'smooth'});closeMobileMenu();return false;">Buy / Sell Now</a>
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- Mobile dropdown -->
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="blog/index.html" onclick="closeMobileMenu()">Blog</a>
+  <a href="prices.html" onclick="closeMobileMenu()">Game Values</a>
+  <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
+  <a href="meetup.html" onclick="closeMobileMenu()">Safe Meetup Guide</a>
+  <a href="waitlist.html" onclick="closeMobileMenu()">Not in Milwaukee?</a>
+</div>
+
+<script>
+function toggleMobileMenu() {
+  document.getElementById('navMobileMenu').classList.toggle('open');
+  document.getElementById('navHamburger').classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('navMobileMenu').classList.remove('open');
+  document.getElementById('navHamburger').classList.remove('open');
+}
+</script>
 
 <div class="beta-banner" id="betaBanner">
   <span style="color:var(--green);font-weight:700;">Milwaukee &amp; North Shore only</span> &nbsp;·&nbsp; Nintendo Switch cartridges &nbsp;·&nbsp; A1 condition only &nbsp;·&nbsp; <span style="opacity:.7;">More platforms, conditions &amp; areas coming soon</span>

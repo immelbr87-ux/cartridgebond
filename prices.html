@@ -168,273 +168,59 @@
     .price-delta { width: 42px; font-size: 12px; }
     .bar { font-size: 13px; padding: 0 7px; }
   }
-  /* STICKY NAV */
-  .site-nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    background: #0a1a10;
-    border-bottom: 1px solid rgba(34,197,94,0.2);
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-  }
-  .site-nav::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px);
-    background-size: 24px 24px;
-    pointer-events: none;
-  }
-  .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    position: relative;
-    z-index: 1;
-    line-height: 1;
-  }
-  .nav-logo .cartridge { color: rgba(255,255,255,0.9); }
-  .nav-logo .bond { color: #22c55e; }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    position: relative;
-    z-index: 1;
-  }
-  .nav-links a {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    text-decoration: none;
-    transition: color .15s;
-  }
-  .nav-links a:hover { color: #22c55e; }
-  .nav-links .nav-cta {
-    background: #16a34a;
-    color: white !important;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 11px;
-  }
-  .nav-links .nav-cta:hover { background: #14532d !important; }
+    /* STICKY NAV */
+  .site-nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.2); height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
+  .site-nav::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px); background-size:24px 24px; pointer-events:none; }
+  .nav-logo { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; position:relative; z-index:1; line-height:1; flex-shrink:0; }
+  .nav-logo .cartridge { color:rgba(255,255,255,0.9); }
+  .nav-logo .bond { color:#22c55e; }
+  .nav-links { display:flex; align-items:center; gap:18px; position:relative; z-index:1; }
+  .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; transition:color .15s; white-space:nowrap; }
+  .nav-links a:hover { color:#22c55e; }
+  .nav-links .nav-cta { background:#16a34a; color:white !important; padding:7px 14px; border-radius:6px; font-size:12px; }
+  .nav-links .nav-cta:hover { background:#14532d !important; }
+  .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; background:none; border:none; cursor:pointer; padding:4px; position:relative; z-index:2; flex-shrink:0; }
+  .nav-hamburger span { display:block; width:20px; height:2px; background:rgba(255,255,255,0.6); border-radius:2px; transition:all .2s; }
+  .nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity:0; }
+  .nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .nav-mobile-menu { display:none; position:fixed; top:48px; left:0; right:0; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.25); z-index:999; padding:8px 0; }
+  .nav-mobile-menu.open { display:block; }
+  .nav-mobile-menu a { display:block; padding:12px 20px; font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,0.6); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.05); }
+  .nav-mobile-menu a:last-child { border-bottom:none; }
+  .nav-mobile-right { display:flex; align-items:center; gap:10px; position:relative; z-index:2; }
+  .nav-mobile-cta { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:#16a34a; color:white !important; padding:6px 11px; border-radius:6px; text-decoration:none; white-space:nowrap; }
+  @media (max-width:560px) { .nav-desktop-links { display:none !important; } .nav-hamburger { display:flex !important; } .nav-mobile-cta { display:block !important; } }
+  @media (min-width:561px) { .nav-mobile-right { display:none !important; } .nav-mobile-menu { display:none !important; } }
+
 </style>
 </head>
 <body>
 
 <!-- STICKY NAV -->
 <nav class="site-nav" id="siteNav">
-  <a href="../index.html" class="nav-logo">
-    <span class="cartridge">Cartridge</span><span class="bond">Bond</span>
-  </a>
-  <div class="nav-links">
-    <a href="../blog/index.html">Blog</a>
-    <a href="../prices.html">Game Values</a>
-    <a href="../faq.html">FAQ</a>
-    <a href="../index.html#formInner" class="nav-cta">Buy / Sell Now</a>
+  <a href="index.html" class="nav-logo"><span class="cartridge">Cartridge</span><span class="bond">Bond</span></a>
+  <div class="nav-links nav-desktop-links">
+    <a href="blog/index.html">Blog</a>
+    <a href="prices.html">Game Values</a>
+    <a href="faq.html">FAQ</a>
+    <a href="index.html#formInner" class="nav-cta">Buy / Sell Now</a>
+  </div>
+  <div class="nav-mobile-right">
+    <a href="index.html#formInner" class="nav-cta nav-mobile-cta" onclick="closeMobileMenu()">Buy / Sell Now</a>
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-
-
-<div class="page-header">
-  <a href="index.html" class="back-link">← Back to <strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a>
-  <h1>Price Guide - <span>What Your Game Is Actually Worth</span></h1>
-  <div class="sub">CartridgeBond prices vs. GameStop trade-in vs. eBay sold listings · Updated January 2025 · A1 condition</div>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="blog/index.html" onclick="closeMobileMenu()">Blog</a>
+  <a href="prices.html" onclick="closeMobileMenu()">Game Values</a>
+  <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
+  <a href="meetup.html" onclick="closeMobileMenu()">Safe Meetup Guide</a>
+  <a href="waitlist.html" onclick="closeMobileMenu()">Not in Milwaukee?</a>
 </div>
-
-<div class="container">
-
-  <div class="summary-box">
-    <div class="summary-icon">💡</div>
-    <div class="summary-body">
-      <p>GameStop trade-in prices are set so they can resell at 3–6× markup. CartridgeBond prices reflect what real buyers actually pay in private sales - <strong>typically $10–$20 more per game</strong> than a GameStop offer, and close to eBay sold prices without the seller fees or shipping.</p>
-    </div>
-  </div>
-
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot dot-cb"></div>CartridgeBond (Fast Flip)</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#15803d;opacity:.75;"></div>CartridgeBond (Flexible)</div>
-    <div class="legend-item"><div class="legend-dot dot-gs"></div>GameStop Trade-In</div>
-    <div class="legend-item"><div class="legend-dot dot-eb"></div>eBay Avg Sold</div>
-  </div>
-
-  <div id="gameCards"></div>
-
-  <div class="data-note">
-    Prices reflect approximate secondary market rates as of January 2025 for A1 condition cartridges with original case.<br>
-    GameStop trade-in values fluctuate and may vary by location. eBay figures are averages of recent sold listings before fees (~13%).<br>
-    CartridgeBond prices are reference points - you set your own price when submitting a custom title.
-  </div>
-
-  <div class="cta-box">
-    <h3>Ready to <span>lock in your price?</span></h3>
-    <p>Submit your game in under 2 minutes. No fees, no DMs, no haggling at the meetup.</p>
-    <a href="index.html" class="cta-btn">Submit My Game →</a>
-  </div>
-
-</div>
-
-<footer style="background:#111;padding:24px 20px;text-align:center;border-top:1px solid rgba(34,197,94,0.12);">
-  <div style="margin-bottom:12px;"><a href="index.html" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a></div>
-  <div style="font-size:11px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px;">
-    <a href="blog/index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Blog</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="prices.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Game Values</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="faq.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">FAQ</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="meetup.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Safe Meetup Guide</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="terms.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Terms</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="privacy.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Privacy</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="waitlist.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Not in Milwaukee?</a>
-  </div>
-  <div style="font-size:11px;color:rgba(255,255,255,0.2);">&#169; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
-</footer>
-
 <script>
-var games = [
-  {
-    title:   'Zelda: Tears of the Kingdom',
-    retail:  70,
-    cb:      50,
-    cbFlex:  45,
-    gs:      28,
-    eb:      52,
-    tag:     'hot', tagLabel: '🔥 Most Wanted',
-  },
-  {
-    title:   'Mario Kart 8 Deluxe',
-    retail:  60,
-    cb:      43,
-    cbFlex:  39,
-    gs:      22,
-    eb:      44,
-    tag:     'popular', tagLabel: '⭐ Most Popular',
-  },
-  {
-    title:   'Super Smash Bros. Ultimate',
-    retail:  60,
-    cb:      43,
-    cbFlex:  39,
-    gs:      20,
-    eb:      42,
-    tag:     'popular', tagLabel: '⭐ Most Popular',
-  },
-  {
-    title:   'Animal Crossing: New Horizons',
-    retail:  60,
-    cb:      36,
-    cbFlex:  32,
-    gs:      16,
-    eb:      35,
-    tag:     'value', tagLabel: '💚 Best Value',
-  },
-  {
-    title:   'Pokémon Scarlet',
-    retail:  60,
-    cb:      39,
-    cbFlex:  35,
-    gs:      18,
-    eb:      38,
-    tag:     null,
-  },
-  {
-    title:   'Pokémon Violet',
-    retail:  60,
-    cb:      39,
-    cbFlex:  35,
-    gs:      18,
-    eb:      38,
-    tag:     null,
-  },
-];
-
-function pct(val, max) {
-  return Math.max(12, Math.round((val / max) * 100));
-}
-
-function delta(cb, compare) {
-  var diff = cb - compare;
-  if (diff === 0) return '<span class="delta-neu">-</span>';
-  var sign = diff > 0 ? '+' : '';
-  var cls  = diff > 0 ? 'delta-pos' : 'delta-neg';
-  return '<span class="' + cls + '">' + sign + '$' + diff + '</span>';
-}
-
-function buildCards() {
-  var container = document.getElementById('gameCards');
-  var html = '';
-
-  games.forEach(function(g) {
-    var maxVal = Math.max(g.cb, g.eb, g.gs, g.retail) + 4;
-    var gsVsCb = g.cb - g.gs;
-    var ebVsCb = g.cb - g.eb;
-
-    html += '<div class="game-card">';
-
-    // Header
-    html += '<div class="game-header">';
-    html += '<div><div class="game-title">' + g.title + '</div>';
-    html += '<div class="game-retail">MSRP: $' + g.retail + ' new</div></div>';
-    if (g.tag) html += '<div class="game-tag tag-' + g.tag + '">' + g.tagLabel + '</div>';
-    html += '</div>';
-
-    // Bars
-    html += '<div class="price-bars">';
-
-    // CartridgeBond Fast
-    html += '<div class="price-row">';
-    html += '<div class="price-label">CartridgeBond<small>Fast Flip (0–90d)</small></div>';
-    html += '<div class="bar-wrap"><div class="bar bar-cb" style="width:' + pct(g.cb, maxVal) + '%">$' + g.cb + '</div></div>';
-    html += '<div class="price-delta">' + delta(g.cb, g.gs) + ' vs GS</div>';
-    html += '</div>';
-
-    // CartridgeBond Flexible
-    html += '<div class="price-row">';
-    html += '<div class="price-label">CartridgeBond<small>Flexible (90–180d)</small></div>';
-    html += '<div class="bar-wrap"><div class="bar bar-cb-f" style="width:' + pct(g.cbFlex, maxVal) + '%">$' + g.cbFlex + '</div></div>';
-    html += '<div class="price-delta delta-neu" style="font-size:11px;color:var(--ink-light);">-</div>';
-    html += '</div>';
-
-    html += '<div class="divider"></div>';
-
-    // GameStop
-    html += '<div class="price-row">';
-    html += '<div class="price-label">GameStop<small>Trade-In Est.</small></div>';
-    html += '<div class="bar-wrap"><div class="bar bar-gs" style="width:' + pct(g.gs, maxVal) + '%">$' + g.gs + '</div></div>';
-    html += '<div class="price-delta"><span class="delta-neg">-$' + gsVsCb + '</span></div>';
-    html += '</div>';
-
-    // eBay
-    html += '<div class="price-row">';
-    html += '<div class="price-label">eBay<small>Avg Sold (pre-fee)</small></div>';
-    html += '<div class="bar-wrap"><div class="bar bar-eb" style="width:' + pct(g.eb, maxVal) + '%">$' + g.eb + '</div></div>';
-    var ebDiff = g.cb - g.eb;
-    var ebDiffStr = ebDiff === 0 ? '-' : (ebDiff > 0 ? '<span class="delta-pos">+$'+ebDiff+'</span>' : '<span class="delta-neg">-$'+Math.abs(ebDiff)+'</span>');
-    html += '<div class="price-delta">' + ebDiffStr + '</div>';
-    html += '</div>';
-
-    html += '</div>'; // price-bars
-    html += '</div>'; // game-card
-  });
-
-  container.innerHTML = html;
-}
-
-buildCards();
+function toggleMobileMenu(){document.getElementById('navMobileMenu').classList.toggle('open');document.getElementById('navHamburger').classList.toggle('open');}
+function closeMobileMenu(){document.getElementById('navMobileMenu').classList.remove('open');document.getElementById('navHamburger').classList.remove('open');}
 </script>
 </body>
 </html>

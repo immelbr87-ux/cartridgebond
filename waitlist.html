@@ -88,262 +88,59 @@
   .footer-links a { color:rgba(255,255,255,0.4); text-decoration:none; font-size:11px; }
   .footer-sep { color:rgba(255,255,255,0.15); font-size:11px; }
   .footer-copy { font-size:11px; color:rgba(255,255,255,0.2); }
-  /* STICKY NAV */
-  .site-nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    background: #0a1a10;
-    border-bottom: 1px solid rgba(34,197,94,0.2);
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-  }
-  .site-nav::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px);
-    background-size: 24px 24px;
-    pointer-events: none;
-  }
-  .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    position: relative;
-    z-index: 1;
-    line-height: 1;
-  }
-  .nav-logo .cartridge { color: rgba(255,255,255,0.9); }
-  .nav-logo .bond { color: #22c55e; }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    position: relative;
-    z-index: 1;
-  }
-  .nav-links a {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    text-decoration: none;
-    transition: color .15s;
-  }
-  .nav-links a:hover { color: #22c55e; }
-  .nav-links .nav-cta {
-    background: #16a34a;
-    color: white !important;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 11px;
-  }
-  .nav-links .nav-cta:hover { background: #14532d !important; }
+    /* STICKY NAV */
+  .site-nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.2); height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
+  .site-nav::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px); background-size:24px 24px; pointer-events:none; }
+  .nav-logo { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; position:relative; z-index:1; line-height:1; flex-shrink:0; }
+  .nav-logo .cartridge { color:rgba(255,255,255,0.9); }
+  .nav-logo .bond { color:#22c55e; }
+  .nav-links { display:flex; align-items:center; gap:18px; position:relative; z-index:1; }
+  .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; transition:color .15s; white-space:nowrap; }
+  .nav-links a:hover { color:#22c55e; }
+  .nav-links .nav-cta { background:#16a34a; color:white !important; padding:7px 14px; border-radius:6px; font-size:12px; }
+  .nav-links .nav-cta:hover { background:#14532d !important; }
+  .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; background:none; border:none; cursor:pointer; padding:4px; position:relative; z-index:2; flex-shrink:0; }
+  .nav-hamburger span { display:block; width:20px; height:2px; background:rgba(255,255,255,0.6); border-radius:2px; transition:all .2s; }
+  .nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity:0; }
+  .nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .nav-mobile-menu { display:none; position:fixed; top:48px; left:0; right:0; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.25); z-index:999; padding:8px 0; }
+  .nav-mobile-menu.open { display:block; }
+  .nav-mobile-menu a { display:block; padding:12px 20px; font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,0.6); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.05); }
+  .nav-mobile-menu a:last-child { border-bottom:none; }
+  .nav-mobile-right { display:flex; align-items:center; gap:10px; position:relative; z-index:2; }
+  .nav-mobile-cta { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:#16a34a; color:white !important; padding:6px 11px; border-radius:6px; text-decoration:none; white-space:nowrap; }
+  @media (max-width:560px) { .nav-desktop-links { display:none !important; } .nav-hamburger { display:flex !important; } .nav-mobile-cta { display:block !important; } }
+  @media (min-width:561px) { .nav-mobile-right { display:none !important; } .nav-mobile-menu { display:none !important; } }
+
 </style>
 </head>
 <body>
 
 <!-- STICKY NAV -->
 <nav class="site-nav" id="siteNav">
-  <a href="../index.html" class="nav-logo">
-    <span class="cartridge">Cartridge</span><span class="bond">Bond</span>
-  </a>
-  <div class="nav-links">
-    <a href="../blog/index.html">Blog</a>
-    <a href="../prices.html">Game Values</a>
-    <a href="../faq.html">FAQ</a>
-    <a href="../index.html#formInner" class="nav-cta">Buy / Sell Now</a>
+  <a href="index.html" class="nav-logo"><span class="cartridge">Cartridge</span><span class="bond">Bond</span></a>
+  <div class="nav-links nav-desktop-links">
+    <a href="blog/index.html">Blog</a>
+    <a href="prices.html">Game Values</a>
+    <a href="faq.html">FAQ</a>
+    <a href="index.html#formInner" class="nav-cta">Buy / Sell Now</a>
+  </div>
+  <div class="nav-mobile-right">
+    <a href="index.html#formInner" class="nav-cta nav-mobile-cta" onclick="closeMobileMenu()">Buy / Sell Now</a>
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-
-
-<div class="page-header">
-  <a href="index.html" class="back-link">← Back to <strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a>
-  <h1>Not in Milwaukee?<span>Tell us where you are.</span></h1>
-  <div class="sub"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong> is beta-launching in Milwaukee & North Shore. Demand signals tell us where to expand next - your city could be next.</div>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="blog/index.html" onclick="closeMobileMenu()">Blog</a>
+  <a href="prices.html" onclick="closeMobileMenu()">Game Values</a>
+  <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
+  <a href="meetup.html" onclick="closeMobileMenu()">Safe Meetup Guide</a>
+  <a href="waitlist.html" onclick="closeMobileMenu()">Not in Milwaukee?</a>
 </div>
-
-<div class="container">
-
-  <div class="demand-note">
-    <p><strong>How expansion works:</strong> When enough people in a city join the waitlist, we have the buyer/seller pool to make matches viable. We expand where demand is real, not random. Your submission directly shapes the roadmap.</p>
-  </div>
-
-  <div class="how-it-spreads">
-    <div class="spread-item">
-      <div class="spread-icon">📍</div>
-      <div>
-        <div class="spread-title">You join the waitlist</div>
-        <div class="spread-body">Tell us your city, what platform you're selling or buying, and how soon you'd use it.</div>
-      </div>
-    </div>
-    <div class="spread-item">
-      <div class="spread-icon">📊</div>
-      <div>
-        <div class="spread-title">We track demand by market</div>
-        <div class="spread-body">Cities with enough waitlist volume get prioritized. We're targeting 20+ submissions per market before launching.</div>
-      </div>
-    </div>
-    <div class="spread-item">
-      <div class="spread-icon">📬</div>
-      <div>
-        <div class="spread-title">You get first access</div>
-        <div class="spread-body">When we launch in your city, waitlist members are notified first and get priority matching - ahead of new signups.</div>
-      </div>
-    </div>
-  </div>
-
-  <div id="formSection">
-    <div class="card">
-      <div class="card-label">Join the Waitlist</div>
-
-      <form id="waitlistForm" action="https://formspree.io/f/xvzvopzr" method="POST">
-        <input type="hidden" name="form_type" value="Expansion Waitlist">
-
-        <div class="field">
-          <label for="wName">Your name</label>
-          <input type="text" id="wName" name="name" placeholder="Jane Smith" required>
-        </div>
-
-        <div class="field">
-          <label for="wEmail">Email address</label>
-          <input type="email" id="wEmail" name="email" placeholder="jane@email.com" required>
-        </div>
-
-        <div class="field">
-          <label for="wCity">Your city</label>
-          <input type="text" id="wCity" name="city" placeholder="e.g. Chicago, IL" required>
-        </div>
-
-        <div class="field">
-          <label for="wZip">Zip code</label>
-          <input type="text" id="wZip" name="zip" placeholder="60601" maxlength="5">
-        </div>
-
-        <div class="field">
-          <label for="wRole">Are you looking to buy or sell?</label>
-          <select id="wRole" name="role">
-            <option value="both">Both - buy and sell</option>
-            <option value="sell">Mostly sell</option>
-            <option value="buy">Mostly buy</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="wPlatform">What platform(s)?</label>
-          <select id="wPlatform" name="platform">
-            <option value="switch">Nintendo Switch</option>
-            <option value="switch_ps5">Switch + PS5</option>
-            <option value="switch_xbox">Switch + Xbox</option>
-            <option value="all">All platforms</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="wTimeline">When would you use it?</label>
-          <select id="wTimeline" name="timeline">
-            <option value="asap">As soon as it's available</option>
-            <option value="3mo">Within 3 months of launch</option>
-            <option value="6mo">Within 6 months</option>
-            <option value="exploring">Just exploring for now</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="wNotes">Anything else? (optional)</label>
-          <textarea id="wNotes" name="notes" placeholder="e.g. I have a lot of Switch games to offload, or I'm in a gaming Facebook group in Chicago…"></textarea>
-        </div>
-
-        <button type="button" class="submit-btn" onclick="submitWaitlist()">Join the Waitlist →</button>
-        <div class="trust-row">
-          <span>✓ No spam</span>
-          <span>✓ Notified first when we launch</span>
-          <span>✓ Free forever</span>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div class="success-screen" id="successScreen">
-    <div class="success-icon">✓</div>
-    <h2>You're on the list.</h2>
-    <p>We've logged your city. When we hit the threshold to launch in your market, you'll be the first to know - and the first to get matched.</p>
-    <p style="font-size:13px;color:var(--ink-light);">In the meantime, share CartridgeBond with anyone in your city who has Switch games. More demand = faster launch.</p>
-    <a href="index.html" style="display:inline-block;margin-top:20px;padding:12px 24px;background:var(--green-dim);color:white;text-decoration:none;border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">← Back to <strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a>
-  </div>
-
-</div>
-
-<footer style="background:#111;padding:24px 20px;text-align:center;border-top:1px solid rgba(34,197,94,0.12);">
-  <div style="margin-bottom:12px;"><a href="index.html" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a></div>
-  <div style="font-size:11px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px;">
-    <a href="blog/index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Blog</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="prices.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Game Values</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="faq.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">FAQ</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="meetup.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Safe Meetup Guide</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="terms.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Terms</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="privacy.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Privacy</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="waitlist.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Not in Milwaukee?</a>
-  </div>
-  <div style="font-size:11px;color:rgba(255,255,255,0.2);">&#169; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
-</footer>
-
 <script>
-// Paste your Apps Script Web App URL here after deploying
-var WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyjmJRHvvYg2aT1ZOQ8YUbTFaJnn3SK9iz0yIypFnpsLLXoKX_7PheUwot9jxKm6RoB/exec';
-
-function submitWaitlist() {
-  var name  = document.getElementById('wName').value.trim();
-  var email = document.getElementById('wEmail').value.trim();
-  var city  = document.getElementById('wCity').value.trim();
-
-  if (!name || !email || !city) {
-    alert('Please fill in your name, email, and city.');
-    return;
-  }
-
-  var payload = {
-    form_type: 'Expansion Waitlist',
-    name:      name,
-    email:     email,
-    city:      city,
-    zip:       document.getElementById('wZip').value.trim(),
-    role:      document.getElementById('wRole').value,
-    platform:  document.getElementById('wPlatform').value,
-    timeline:  document.getElementById('wTimeline').value,
-    notes:     document.getElementById('wNotes').value.trim(),
-  };
-
-  function showSuccess() {
-    document.getElementById('formSection').style.display = 'none';
-    document.getElementById('successScreen').classList.add('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  fetch(WEBAPP_URL, {
-    method:  'POST',
-    body:    JSON.stringify(payload),
-    mode:    'no-cors',
-  })
-  .then(showSuccess)
-  .catch(showSuccess); // Apps Script redirect = success
-}
+function toggleMobileMenu(){document.getElementById('navMobileMenu').classList.toggle('open');document.getElementById('navHamburger').classList.toggle('open');}
+function closeMobileMenu(){document.getElementById('navMobileMenu').classList.remove('open');document.getElementById('navHamburger').classList.remove('open');}
 </script>
 </body>
 </html>

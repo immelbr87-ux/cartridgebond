@@ -50,180 +50,59 @@
   .footer-sep { color:rgba(255,255,255,0.15); font-size:11px; }
   .footer-copy { font-size:11px; color:rgba(255,255,255,0.2); }
   .footer-brand { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:12px; }
-  /* STICKY NAV */
-  .site-nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    background: #0a1a10;
-    border-bottom: 1px solid rgba(34,197,94,0.2);
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-  }
-  .site-nav::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px);
-    background-size: 24px 24px;
-    pointer-events: none;
-  }
-  .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    position: relative;
-    z-index: 1;
-    line-height: 1;
-  }
-  .nav-logo .cartridge { color: rgba(255,255,255,0.9); }
-  .nav-logo .bond { color: #22c55e; }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    position: relative;
-    z-index: 1;
-  }
-  .nav-links a {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    text-decoration: none;
-    transition: color .15s;
-  }
-  .nav-links a:hover { color: #22c55e; }
-  .nav-links .nav-cta {
-    background: #16a34a;
-    color: white !important;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 11px;
-  }
-  .nav-links .nav-cta:hover { background: #14532d !important; }
+    /* STICKY NAV */
+  .site-nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.2); height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
+  .site-nav::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px); background-size:24px 24px; pointer-events:none; }
+  .nav-logo { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; position:relative; z-index:1; line-height:1; flex-shrink:0; }
+  .nav-logo .cartridge { color:rgba(255,255,255,0.9); }
+  .nav-logo .bond { color:#22c55e; }
+  .nav-links { display:flex; align-items:center; gap:18px; position:relative; z-index:1; }
+  .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; transition:color .15s; white-space:nowrap; }
+  .nav-links a:hover { color:#22c55e; }
+  .nav-links .nav-cta { background:#16a34a; color:white !important; padding:7px 14px; border-radius:6px; font-size:12px; }
+  .nav-links .nav-cta:hover { background:#14532d !important; }
+  .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; background:none; border:none; cursor:pointer; padding:4px; position:relative; z-index:2; flex-shrink:0; }
+  .nav-hamburger span { display:block; width:20px; height:2px; background:rgba(255,255,255,0.6); border-radius:2px; transition:all .2s; }
+  .nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity:0; }
+  .nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .nav-mobile-menu { display:none; position:fixed; top:48px; left:0; right:0; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.25); z-index:999; padding:8px 0; }
+  .nav-mobile-menu.open { display:block; }
+  .nav-mobile-menu a { display:block; padding:12px 20px; font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,0.6); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.05); }
+  .nav-mobile-menu a:last-child { border-bottom:none; }
+  .nav-mobile-right { display:flex; align-items:center; gap:10px; position:relative; z-index:2; }
+  .nav-mobile-cta { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:#16a34a; color:white !important; padding:6px 11px; border-radius:6px; text-decoration:none; white-space:nowrap; }
+  @media (max-width:560px) { .nav-desktop-links { display:none !important; } .nav-hamburger { display:flex !important; } .nav-mobile-cta { display:block !important; } }
+  @media (min-width:561px) { .nav-mobile-right { display:none !important; } .nav-mobile-menu { display:none !important; } }
+
 </style>
 </head>
 <body>
 
 <!-- STICKY NAV -->
 <nav class="site-nav" id="siteNav">
-  <a href="../index.html" class="nav-logo">
-    <span class="cartridge">Cartridge</span><span class="bond">Bond</span>
-  </a>
-  <div class="nav-links">
-    <a href="../blog/index.html">Blog</a>
-    <a href="../prices.html">Game Values</a>
-    <a href="../faq.html">FAQ</a>
-    <a href="../index.html#formInner" class="nav-cta">Buy / Sell Now</a>
+  <a href="index.html" class="nav-logo"><span class="cartridge">Cartridge</span><span class="bond">Bond</span></a>
+  <div class="nav-links nav-desktop-links">
+    <a href="blog/index.html">Blog</a>
+    <a href="prices.html">Game Values</a>
+    <a href="faq.html">FAQ</a>
+    <a href="index.html#formInner" class="nav-cta">Buy / Sell Now</a>
+  </div>
+  <div class="nav-mobile-right">
+    <a href="index.html#formInner" class="nav-cta nav-mobile-cta" onclick="closeMobileMenu()">Buy / Sell Now</a>
+    <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-
-
-<div class="page-header">
-  <div class="brand"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></div>
-  <div class="check">✓</div>
-  <h1>Got it - we're on it.</h1>
-  <div class="sub">Your submission is in. Here's what happens next.</div>
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <a href="blog/index.html" onclick="closeMobileMenu()">Blog</a>
+  <a href="prices.html" onclick="closeMobileMenu()">Game Values</a>
+  <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
+  <a href="meetup.html" onclick="closeMobileMenu()">Safe Meetup Guide</a>
+  <a href="waitlist.html" onclick="closeMobileMenu()">Not in Milwaukee?</a>
 </div>
-
-<div class="container">
-
-  <div class="next-steps">
-    <div class="next-step">
-      <span class="ns-num">1</span>
-      <div>
-        <div class="ns-title">We review your submission</div>
-        <div class="ns-sub">Usually within 24–48 hours. No bots, no auto-replies - a real person checks the queue and reviews every submission.</div>
-      </div>
-    </div>
-    <div class="next-step">
-      <span class="ns-num">2</span>
-      <div>
-        <div class="ns-title">We search for your match</div>
-        <div class="ns-sub">If a buyer or seller lines up with your game, price, and window, we connect you directly. First in, first matched.</div>
-      </div>
-    </div>
-    <div class="next-step">
-      <span class="ns-num">3</span>
-      <div>
-        <div class="ns-title">We reach out to coordinate</div>
-        <div class="ns-sub">Expect an email to set up the local exchange. No payment changes hands until you've inspected the item in person and you're comfortable.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="meetup-cta">
-    <p><strong>While you wait</strong> - read our Safe Meetup Guide so you're ready when your match comes in. Knowing where to meet and what to check makes everything smoother.</p>
-    <a href="meetup.html">📍 Read the Safe Meetup Guide</a>
-  </div>
-
-  <div class="share-box">
-    <p>Know someone else with Switch games? The more people in the pool, the faster everyone gets matched.</p>
-    <button class="share-btn" onclick="copyLink()">📋 Copy CartridgeBond Link</button>
-    <div class="copied" id="copiedMsg">✓ Copied! Send it to a friend.</div>
-  </div>
-
-  <a href="index.html" class="back-btn">Submit Another Game →</a>
-
-</div>
-
-<footer style="background:#111;padding:24px 20px;text-align:center;border-top:1px solid rgba(34,197,94,0.12);">
-  <div style="margin-bottom:12px;"><a href="index.html" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a></div>
-  <div style="font-size:11px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px;">
-    <a href="blog/index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Blog</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="prices.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Game Values</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="faq.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">FAQ</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="meetup.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Safe Meetup Guide</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="terms.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Terms</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="privacy.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Privacy</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="waitlist.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Not in Milwaukee?</a>
-  </div>
-  <div style="font-size:11px;color:rgba(255,255,255,0.2);">&#169; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
-</footer>
-
 <script>
-function copyLink() {
-  var url = window.location.origin + '/index.html?utm_source=referral&utm_medium=thankyou';
-  var btn = document.querySelector('.share-btn');
-  var msg = document.getElementById('copiedMsg');
-
-  function showConfirm() {
-    msg.style.display = 'block';
-    if (btn) btn.textContent = '✓ Copied!';
-    setTimeout(function() {
-      msg.style.display = 'none';
-      if (btn) btn.textContent = '📋 Copy CartridgeBond Link';
-    }, 3000);
-  }
-
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(url).then(showConfirm).catch(fallback);
-  } else { fallback(); }
-
-  function fallback() {
-    var ta = document.createElement('textarea');
-    ta.value = url; ta.style.position='fixed'; ta.style.opacity='0';
-    document.body.appendChild(ta); ta.focus(); ta.select();
-    try { document.execCommand('copy'); showConfirm(); }
-    catch(e) { alert('Copy this link: ' + url); }
-    document.body.removeChild(ta);
-  }
-}
+function toggleMobileMenu(){document.getElementById('navMobileMenu').classList.toggle('open');document.getElementById('navHamburger').classList.toggle('open');}
+function closeMobileMenu(){document.getElementById('navMobileMenu').classList.remove('open');document.getElementById('navHamburger').classList.remove('open');}
 </script>
 </body>
 </html>

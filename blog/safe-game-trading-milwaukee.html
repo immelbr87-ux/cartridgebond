@@ -71,66 +71,31 @@
   .footer-links a:hover { color:var(--green); }
   .footer-sep { color:rgba(255,255,255,0.15); font-size:11px; }
   .footer-copy { font-size:11px; color:rgba(255,255,255,0.2); }
-  /* STICKY NAV */
-  .site-nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    background: #0a1a10;
-    border-bottom: 1px solid rgba(34,197,94,0.2);
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-  }
-  .site-nav::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px);
-    background-size: 24px 24px;
-    pointer-events: none;
-  }
-  .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    position: relative;
-    z-index: 1;
-    line-height: 1;
-  }
-  .nav-logo .cartridge { color: rgba(255,255,255,0.9); }
-  .nav-logo .bond { color: #22c55e; }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    position: relative;
-    z-index: 1;
-  }
-  .nav-links a {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    text-decoration: none;
-    transition: color .15s;
-  }
-  .nav-links a:hover { color: #22c55e; }
-  .nav-links .nav-cta {
-    background: #16a34a;
-    color: white !important;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 11px;
-  }
-  .nav-links .nav-cta:hover { background: #14532d !important; }
+    /* STICKY NAV */
+  .site-nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.2); height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
+  .site-nav::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px); background-size:24px 24px; pointer-events:none; }
+  .nav-logo { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; position:relative; z-index:1; line-height:1; flex-shrink:0; }
+  .nav-logo .cartridge { color:rgba(255,255,255,0.9); }
+  .nav-logo .bond { color:#22c55e; }
+  .nav-links { display:flex; align-items:center; gap:18px; position:relative; z-index:1; }
+  .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; transition:color .15s; white-space:nowrap; }
+  .nav-links a:hover { color:#22c55e; }
+  .nav-links .nav-cta { background:#16a34a; color:white !important; padding:7px 14px; border-radius:6px; font-size:12px; }
+  .nav-links .nav-cta:hover { background:#14532d !important; }
+  .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; background:none; border:none; cursor:pointer; padding:4px; position:relative; z-index:2; flex-shrink:0; }
+  .nav-hamburger span { display:block; width:20px; height:2px; background:rgba(255,255,255,0.6); border-radius:2px; transition:all .2s; }
+  .nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity:0; }
+  .nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .nav-mobile-menu { display:none; position:fixed; top:48px; left:0; right:0; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.25); z-index:999; padding:8px 0; }
+  .nav-mobile-menu.open { display:block; }
+  .nav-mobile-menu a { display:block; padding:12px 20px; font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,0.6); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.05); }
+  .nav-mobile-menu a:last-child { border-bottom:none; }
+  .nav-mobile-right { display:flex; align-items:center; gap:10px; position:relative; z-index:2; }
+  .nav-mobile-cta { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:#16a34a; color:white !important; padding:6px 11px; border-radius:6px; text-decoration:none; white-space:nowrap; }
+  @media (max-width:560px) { .nav-desktop-links { display:none !important; } .nav-hamburger { display:flex !important; } .nav-mobile-cta { display:block !important; } }
+  @media (min-width:561px) { .nav-mobile-right { display:none !important; } .nav-mobile-menu { display:none !important; } }
+
 </style>
 </head>
 <body>
@@ -141,9 +106,9 @@
     <span class="cartridge">Cartridge</span><span class="bond">Bond</span>
   </a>
   <div class="nav-links">
-    <a href="index.html">Blog</a>
-    <a href="../../prices.html">Game Values</a>
-    <a href="../../faq.html">FAQ</a>
+    <a class="nav-text-link" href="index.html">Blog</a>
+    <a class="nav-text-link" href="../../prices.html">Game Values</a>
+    <a class="nav-text-link" href="../../faq.html">FAQ</a>
     <a href="../../index.html#formInner" class="nav-cta">Buy / Sell Now</a>
   </div>
 </nav>
@@ -192,11 +157,11 @@
 <footer style="background:#111;padding:24px 20px;text-align:center;border-top:1px solid rgba(34,197,94,0.12);">
   <div style="margin-bottom:12px;"><a href="../../index.html" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a></div>
   <div style="font-size:11px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px;">
-    <a href="../../blog/index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Blog</a>
+    <a class="nav-text-link" href="../../blog/index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Blog</a>
     <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="../../prices.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Game Values</a>
+    <a class="nav-text-link" href="../../prices.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Game Values</a>
     <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="../../faq.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">FAQ</a>
+    <a class="nav-text-link" href="../../faq.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">FAQ</a>
     <span style="color:rgba(255,255,255,0.15);">·</span>
     <a href="../../meetup.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Safe Meetup Guide</a>
     <span style="color:rgba(255,255,255,0.15);">·</span>
