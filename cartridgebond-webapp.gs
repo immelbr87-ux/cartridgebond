@@ -38,9 +38,46 @@ var CONFIG = {
 // ─── WEB APP ENTRY POINT ──────────────────────────────────────
 
 function doGet(e) {
+  // Status lookup for status.html page
+  if (e && e.parameter && e.parameter.action === 'status') {
+    var email = (e.parameter.email || '').trim().toLowerCase();
+    var result = getStatusByEmail(email);
+    return ContentService
+      .createTextOutput(JSON.stringify(result))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   return ContentService
     .createTextOutput(JSON.stringify({ status: 'CartridgeBond API live' }))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+function getStatusByEmail(email) {
+  if (!email) return { submissions: [] };
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(CONFIG.sheetName);
+    if (!sheet) return { submissions: [] };
+    var data = sheet.getDataRange().getValues();
+    var found = [];
+
+    for (var i = 1; i < data.length; i++) {
+      var rowEmail = String(data[i][2] || '').trim().toLowerCase();
+      if (rowEmail === email) {
+        found.push({
+          date:     data[i][0] ? new Date(data[i][0]).toLocaleDateString() : '',
+          role:     String(data[i][5] || ''),
+          game:     String(data[i][6] || ''),
+          price:    String(data[i][7] || ''),
+          timeline: String(data[i][9] || ''),
+          status:   String(data[i][13] || 'Under Review'),
+        });
+      }
+    }
+    return { submissions: found };
+  } catch(err) {
+    Logger.log('Status lookup error: ' + err);
+    return { submissions: [] };
+  }
 }
 
 function doPost(e) {
@@ -105,11 +142,34 @@ function doPost(e) {
 
 function notifyAdmin(data) {
   try {
-    var subject = '[New] ' + (data.role || 'Submission') + ' - ' + (data.game || '?') + ' (' + (data.zip || '?') + ')';
-    var body = 'Name: ' + data.name + '\nEmail: ' + data.email + '\nRole: ' + data.role
-             + '\nGame: ' + data.game + '\nPrice: ' + data.price + '\nZip: ' + data.zip
-             + '\nTimeline: ' + data.timeline + '\nNotes: ' + data.notes;
-    GmailApp.sendEmail(CONFIG.adminEmail, subject, body);
+    var role  = (data.role  || 'Submission').replace(' Used', '');
+    var game  = (data.game  || 'Unknown game').split(' | ')[0]; // first game only in subject
+    var zip   = (data.zip   || '?????');
+    var price = (data.resale_price || data.price || '?');
+
+    var subject = '[CB] ' + role + ': ' + game + ' - $' + price.replace('$','') + ' (' + zip + ')';
+
+    var body = [
+      'NEW CARTRIDGEBOND SUBMISSION',
+      '==============================',
+      'Name:      ' + (data.name     || '-'),
+      'Email:     ' + (data.email    || '-'),
+      'Phone:     ' + (data.phone    || '-'),
+      'Zip:       ' + (data.zip      || '-'),
+      'Role:      ' + (data.role     || '-'),
+      'Game(s):   ' + (data.game     || '-'),
+      'Price(s):  ' + (price),
+      'Timeline:  ' + (data.timeline || '-'),
+      'Condition: ' + (data.condition|| 'A1'),
+      'Notes:     ' + (data.notes    || 'none'),
+      '==============================',
+      'Reply directly to this email to contact the submitter.',
+      'Open Sheet: https://docs.google.com/spreadsheets',
+    ].join('\n');
+
+    GmailApp.sendEmail(CONFIG.adminEmail, subject, body, {
+      replyTo: data.email || CONFIG.adminEmail
+    });
   } catch(err) {
     Logger.log('Admin notify error: ' + err);
   }
