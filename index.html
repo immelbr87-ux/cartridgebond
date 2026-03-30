@@ -10,7 +10,7 @@
 <meta name="author" content="CartridgeBond">
 <link rel="canonical" href="https://cartridgebond.com/">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-
+ 
 <!-- Open Graph -->
 <meta property="og:title" content="Buy &amp; Sell Nintendo Switch Games Locally in Milwaukee | CartridgeBond">
 <meta property="og:description" content="The hassle-free way to buy and sell used Switch games. Price locked before you meet. No DMs, no lowballs, no shipping. Free beta - Milwaukee &amp; North Shore.">
@@ -21,13 +21,13 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CartridgeBond">
 <meta property="og:locale" content="en_US">
-
+ 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Buy &amp; Sell Nintendo Switch Games Locally in Milwaukee | CartridgeBond">
 <meta name="twitter:description" content="Price locked before you meet. No DMs, no lowballs, no shipping. Free local swap - Milwaukee &amp; North Shore.">
 <meta name="twitter:image" content="https://cartridgebond.com/og-preview.png">
-
+ 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
 {
@@ -53,7 +53,7 @@
   }
 }
 </script>
-
+ 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SN05PGREN7"></script>
 <script>
@@ -62,11 +62,11 @@
   gtag('js', new Date());
   gtag('config', 'G-SN05PGREN7');
 </script>
-
+ 
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   :root {
     --green: #22c55e;
     --green-dim: #16a34a;
@@ -82,9 +82,9 @@
     --white: #ffffff;
     --radius: 10px;
   }
-
+ 
   body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh; padding-top: 48px; }
-
+ 
   /* STICKY NAV */
   .site-nav {
     position: fixed;
@@ -145,8 +145,47 @@
     font-size: 11px;
   }
   .nav-links .nav-cta:hover { background: #14532d; color: white; }
-
-  /* HEADER */
+ 
+  /* TESTIMONIALS */
+  .testimonial-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 8px;
+    left: 14px;
+    font-size: 32px;
+    color: var(--green-mid);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    padding-left: 18px;
+    margin-bottom: 8px;
+  }
+  .testimonial-meta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding-left: 18px;
+  }
+  .testimonial-stars {
+    color: #f59e0b;
+    font-size: 12px;
+    margin-bottom: 2px;
+    padding-left: 18px;
+  }
   .page-header {
     background: var(--green-bg);
     color: white;
@@ -175,7 +214,7 @@
   }
   .page-header h1 .l1 { display: block; color: white; }
   .page-header h1 .l2 { display: block; color: var(--green); }
-
+ 
   .stat-row {
     display: flex;
     justify-content: center;
@@ -183,7 +222,7 @@
     flex-wrap: wrap;
     position: relative;
   }
-
+ 
   .stat-pill {
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.14);
@@ -195,7 +234,7 @@
     color: rgba(255,255,255,0.88);
     white-space: nowrap;
   }
-
+ 
   /* FOUNDER NOTE */
   .founder-note {
     background: #111;
@@ -260,10 +299,10 @@
     line-height: 1.5;
   }
   .founder-50 strong { color: var(--green); }
-
+ 
   /* CONTAINER */
   .container { max-width: 520px; margin: 0 auto; padding: 20px 16px 52px; }
-
+ 
   /* TOGGLE */
   .role-toggle {
     display: grid; grid-template-columns: 1fr 1fr;
@@ -280,7 +319,7 @@
   .role-btn.active { background: var(--ink); color: white; }
   .role-btn .ri { display: block; font-size: 20px; margin-bottom: 4px; }
   .role-btn .rs { display: block; font-size: 11px; opacity: .55; margin-top: 1px; font-weight: 400; }
-
+ 
   /* CARD */
   .card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; }
   .card-label {
@@ -289,7 +328,7 @@
     font-weight: 700; color: var(--ink); margin-bottom: 16px;
     padding-bottom: 10px; border-bottom: 2px solid var(--green-dim);
   }
-
+ 
   /* FIELDS */
   .field { margin-bottom: 14px; }
   .field:last-child { margin-bottom: 0; }
@@ -306,7 +345,7 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer;
   }
-
+ 
   /* GAME SEARCH */
   .game-search-wrap { position: relative; }
   .game-search-wrap input[type="text"] { padding-right: 40px; }
@@ -316,7 +355,7 @@
     color: var(--ink-light); font-size: 14px; pointer-events: none;
   }
   .search-hint { font-size: 11px; color: var(--ink-light); margin-top: 5px; font-style: italic; }
-
+ 
   /* PRICE DISPLAY */
   .price-display {
     display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
@@ -324,7 +363,7 @@
     border: 1.5px solid var(--green-mid); border-radius: 8px; min-height: 48px;
   }
   .price-val { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; color: var(--green-dim); letter-spacing: -.01em; line-height: 1; }
-
+ 
   /* CONDITION - A1 ONLY */
   .a1-only-box {
     display: flex; align-items: flex-start; gap: 12px;
@@ -348,11 +387,11 @@
   }
   .a1-desc { font-size: 12px; color: var(--green-dark); line-height: 1.55; opacity: .8; }
   .cond-future { margin-top: 8px; font-size: 11px; color: var(--ink-light); text-align: center; font-style: italic; }
-
+ 
   /* BADGES */
   .pb { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; }
   .ba1 { background: #dcfce7; color: var(--green-dark); }
-
+ 
   /* SUBMIT */
   .submit-btn {
     width: 100%; padding: 16px; background: var(--green-dim); color: white; border: none;
@@ -361,11 +400,11 @@
     cursor: pointer; transition: background .2s; margin-top: 6px;
   }
   .submit-btn:hover { background: var(--green-dark); }
-
+ 
   .trust-row { display: flex; justify-content: center; gap: 16px; margin-top: 12px; font-size: 11px; color: var(--ink-light); flex-wrap: wrap; }
-
+ 
   textarea { resize: none; height: 80px; }
-
+ 
   /* SUCCESS */
   .success-screen { display: none; text-align: center; padding: 0 0 40px; }
   .success-screen.show { display: block; }
@@ -376,27 +415,22 @@
   .success-screen .success-sub { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 300px; margin: 0 auto; position: relative; }
   .success-body { padding: 0 16px; }
   .success-screen p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; max-width: 320px; margin: 0 auto 18px; }
-
+ 
   .next-steps { text-align: left; margin: 0 auto 20px; max-width: 380px; display: flex; flex-direction: column; gap: 12px; }
   .next-step { display: flex; align-items: flex-start; gap: 14px; padding: 14px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); }
   .ns-num { width: 26px; height: 26px; background: var(--green-dim); color: white; border-radius: 50%; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
   .ns-title { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--ink); margin-bottom: 3px; }
   .ns-sub { font-size: 12px; color: var(--ink-mid); line-height: 1.55; }
-
+ 
   .bond-summary { background: var(--green-light); border: 1.5px solid var(--green-mid); border-radius: var(--radius); padding: 14px; text-align: left; font-size: 13px; color: var(--green-dark); margin-bottom: 18px; }
   .sum-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--green-mid); }
   .sum-row:last-child { border-bottom: none; }
   .sum-row span:last-child { font-weight: 600; }
-
+ 
   .form-inner { display: block; }
-
-  #otherGameFields, #buyOtherGameFields {
-    margin-top: 14px; padding: 14px;
-    background: var(--surface); border: 1px dashed var(--border); border-radius: 8px;
-  }
-  #otherGameFields .field, #buyOtherGameFields .field { margin-bottom: 10px; }
-  #otherGameFields .field:last-child, #buyOtherGameFields .field:last-child { margin-bottom: 0; }
-
+ 
+  
+ 
   .beta-banner {
     background: #1a1a1a; border-bottom: 1px solid rgba(34,197,94,0.2);
     padding: 9px 20px; text-align: center;
@@ -404,7 +438,59 @@
     color: rgba(255,255,255,0.55); line-height: 1.5;
   }
   .beta-banner strong { color: var(--green); font-weight: 600; }
-
+ 
+  /* CUSTOM GAME SEARCH DROPDOWN */
+  .game-search-wrap { position: relative; }
+  .game-search-input {
+    width: 100%; padding: 11px 38px 11px 14px;
+    border: 1.5px solid var(--border); border-radius: var(--radius);
+    font-size: 15px; font-family: 'Barlow', sans-serif;
+    background: white; color: var(--ink); outline: none;
+    transition: border-color .15s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .game-search-input:focus { border-color: var(--green-dim); }
+  .game-dropdown {
+    display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+    background: white; border: 1.5px solid var(--green-dim); border-radius: var(--radius);
+    z-index: 200; max-height: 220px; overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,.1);
+  }
+  .game-dropdown.open { display: block; }
+  .game-dropdown-item {
+    padding: 11px 14px; font-size: 14px; color: var(--ink); cursor: pointer;
+    border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .game-dropdown-item:last-child { border-bottom: none; }
+  .game-dropdown-item:active, .game-dropdown-item.highlighted { background: var(--green-light); }
+  .game-dropdown-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; color: var(--green-dim); }
+  .game-dropdown-none { padding: 12px 14px; font-size: 13px; color: var(--ink-light); font-style: italic; }
+ 
+  /* GAME CHIPS - multi-select style */
+  .game-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 12px; }
+  .game-chip {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 12px; border-radius: 8px; cursor: pointer;
+    border: 1.5px solid var(--border); background: white;
+    font-size: 13px; color: var(--ink-mid);
+    transition: all .15s; -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .game-chip.selected {
+    background: var(--green-light); border-color: var(--green-dim);
+    color: var(--green-dark); font-weight: 600;
+  }
+  .game-chip-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px; color: var(--green-dim); margin-left: 2px; }
+  .game-chip.selected .game-chip-price { color: var(--green-dark); }
+  .game-chip-check { font-size: 12px; display: none; }
+  .game-chip.selected .game-chip-check { display: inline; }
+  .chips-hint { font-size: 12px; color: var(--ink-light); margin-bottom: 10px; line-height: 1.5; }
+ 
+  /* AUTOFILL INFO STYLES */
+  input[autocomplete] { }
+  .info-autofill-hint { font-size:11px; color:var(--green-dim); margin-top:4px; display:flex; align-items:center; gap:4px; }
+ 
   .add-game-btn {
     width: 100%; padding: 11px; background: transparent;
     border: 1.5px dashed var(--green-dim); border-radius: 8px;
@@ -413,21 +499,21 @@
     cursor: pointer; transition: all .15s;
   }
   .add-game-btn:hover { background: var(--green-light); }
-
+ 
   .cart-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--green-dim); margin-bottom: 8px; }
   .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; background: var(--green-light); border: 1px solid var(--green-mid); border-radius: 8px; margin-bottom: 6px; font-size: 13px; color: var(--green-dark); }
   .cart-item-name { font-weight: 500; flex: 1; }
   .cart-item-price { font-weight: 700; margin: 0 10px; }
   .cart-item-remove { background: none; border: none; color: var(--ink-light); cursor: pointer; font-size: 16px; padding: 0 2px; line-height: 1; }
   .cart-item-remove:hover { color: #dc2626; }
-
+ 
   .no-payment-note {
     margin-top: 10px; padding: 10px 14px;
     background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2);
     border-radius: 8px; font-size: 12px; color: var(--ink-mid);
     text-align: center; line-height: 1.5;
   }
-
+ 
   @media (max-width: 400px) {
     .hiw-arrows { display: none; }
     [data-hiw-steps] { flex-direction: column; align-items: center; }
@@ -435,7 +521,7 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- STICKY NAV -->
 <nav class="site-nav" id="siteNav">
   <a href="#top" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
@@ -443,18 +529,17 @@
   </a>
   <div class="nav-links">
     <a href="blog/index.html">Blog</a>
-    <a href="prices.html">Prices</a>
+    <a href="prices.html">Game Values</a>
     <a href="faq.html">FAQ</a>
-    <a href="#formInner" class="nav-cta" onclick="document.getElementById('formInner').scrollIntoView({behavior:'smooth'});return false;">Submit Game</a>
+    <a href="#formInner" class="nav-cta" onclick="document.getElementById('formInner').scrollIntoView({behavior:'smooth'});return false;">Trade Now</a>
   </div>
 </nav>
-
+ 
 <div class="beta-banner" id="betaBanner">
-  <strong>&#9679; Early Beta - Nintendo Switch Only</strong> &nbsp;Starting with Switch cartridges so local swaps are fast and easy to verify on the spot. More platforms coming soon.
+  <span style="color:var(--green);font-weight:700;">Milwaukee &amp; North Shore only</span> &nbsp;·&nbsp; Nintendo Switch cartridges &nbsp;·&nbsp; A1 condition only &nbsp;·&nbsp; <span style="opacity:.7;">More platforms, conditions &amp; areas coming soon</span>
 </div>
-
+ 
 <div class="page-header" id="pageHeader">
-  <div class="eyebrow"><strong style="color:white;">Cartridge</strong><strong style="color:var(--green);">Bond</strong> <span style="color:rgba(255,255,255,0.4);font-weight:400;">&mdash; Milwaukee &amp; North Shore</span></div>
   <h1>
     <span class="l1">The Hassle-Free Way to</span>
     <span class="l2">Buy &amp; Sell Nintendo Switch Games in Milwaukee, WI.</span>
@@ -464,45 +549,51 @@
     <div class="stat-pill">🔒 Price &amp; Condition Locked Before You Meet</div>
     <div class="stat-pill">📍 Local Swap - No Shipping, Inspect Before Buying</div>
   </div>
-  <div style="margin-top:14px;position:relative;">
+  <div style="margin-top:14px;position:relative;" id="tradeCountRow">
     <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);">
-      🎮 <span id="tradeCount">0</span> trades completed in Milwaukee &amp; North Shore
+      <span id="tradeCount">0</span> trades completed in Milwaukee &amp; North Shore
     </span>
   </div>
+  <script>
+    (function() {
+      var count = parseInt(document.getElementById('tradeCount').textContent) || 0;
+      if (count < 10) document.getElementById('tradeCountRow').style.display = 'none';
+    })();
+  </script>
 </div>
-
+ 
 <!-- HOW IT WORKS -->
 <div id="howItWorks" style="background:var(--green-bg);border-bottom:2px solid rgba(34,197,94,0.2);padding:28px 20px;">
   <div style="max-width:520px;margin:0 auto;">
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:white;text-align:center;margin-bottom:22px;">How It Works</div>
     <div style="display:flex;align-items:flex-start;justify-content:center;gap:0;flex-wrap:nowrap;">
-
+ 
       <div style="flex:1;text-align:center;padding:0 10px;min-width:0;">
         <div style="width:46px;height:46px;border-radius:50%;background:var(--green-dim);color:white;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">1</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:white;margin-bottom:5px;">Lock Your Price</div>
         <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.55;">Submit your game and terms. Price is set before anyone meets.</div>
       </div>
-
+ 
       <div style="color:rgba(34,197,94,0.4);font-size:22px;padding-top:12px;flex-shrink:0;">→</div>
-
+ 
       <div style="flex:1;text-align:center;padding:0 10px;min-width:0;">
         <div style="width:46px;height:46px;border-radius:50%;background:var(--green-dim);color:white;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">2</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:white;margin-bottom:5px;">Get Matched</div>
         <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.55;">We find a compatible buyer or seller in your area within 48 hrs.</div>
       </div>
-
+ 
       <div style="color:rgba(34,197,94,0.4);font-size:22px;padding-top:12px;flex-shrink:0;">→</div>
-
+ 
       <div style="flex:1;text-align:center;padding:0 10px;min-width:0;">
         <div style="width:46px;height:46px;border-radius:50%;background:var(--green-dim);color:white;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">3</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:white;margin-bottom:5px;">Meet Locally</div>
         <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.55;">Exchange in public. Inspect before paying. No shipping ever.</div>
       </div>
-
+ 
     </div>
   </div>
 </div>
-
+ 
 <!-- FOUNDER'S BETA NOTE -->
 <div class="founder-note" id="founderNote" style="border-top:none;padding:26px 20px;">
   <div class="founder-inner">
@@ -522,9 +613,17 @@
     </div>
   </div>
 </div>
-
+ 
+<!-- TESTIMONIALS - hidden until populated, shown via JS when data exists -->
+<div id="testimonialsSection" style="display:none;background:#fff;border-top:1px solid #e2e2da;border-bottom:1px solid #e2e2da;padding:24px 20px;">
+  <div style="max-width:520px;margin:0 auto;">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--green-dim);margin-bottom:16px;text-align:center;">What Traders Are Saying</div>
+    <div id="testimonialCards" style="display:flex;flex-direction:column;gap:12px;"></div>
+  </div>
+</div>
+ 
 <div class="container">
-
+ 
   <div class="role-toggle" id="roleToggle">
     <button class="role-btn active" data-role="sell" onclick="setRole('sell')">
       <span class="ri">&#128176;</span>Sell used<span class="rs">Lock in your return now</span>
@@ -533,10 +632,10 @@
       <span class="ri">&#127918;</span>Buy used<span class="rs">Get a game at a locked price</span>
     </button>
   </div>
-
+ 
   <div class="form-inner" id="formInner">
   <form id="bbForm" data-endpoint="https://script.google.com/macros/s/AKfycbyjmJRHvvYg2aT1ZOQ8YUbTFaJnn3SK9iz0yIypFnpsLLXoKX_7PheUwot9jxKm6RoB/exec" method="POST">
-
+ 
   <input type="hidden" name="role"         id="h_role">
   <input type="hidden" name="system"       id="h_system">
   <input type="hidden" name="game"         id="h_game">
@@ -544,12 +643,12 @@
   <input type="hidden" name="window"       id="h_window">
   <input type="hidden" name="condition"    id="h_condition">
   <input type="hidden" name="timeline"     id="h_timeline">
-
+ 
   <!-- ===== SELL FIELDS ===== -->
   <div id="sellFields">
     <div class="card">
-      <div class="card-label">Your game</div>
-
+      <div class="card-label">Which game(s) are you selling?</div>
+ 
       <div class="field">
         <label for="system">Select system</label>
         <select id="system" onchange="populateGames()">
@@ -557,77 +656,58 @@
           <option value="switch">Nintendo Switch</option>
         </select>
       </div>
-
-      <div class="field" id="gameFieldWrap" style="display:none;">
-        <label for="gameSearch">Search or type a game title</label>
-        <div class="game-search-wrap">
-          <input type="text" id="gameSearch" list="gameSuggestions"
-            placeholder="e.g. Mario Kart 8 Deluxe…"
-            autocomplete="off" oninput="handleGameSearch()">
-          <span class="search-icon">🔍</span>
-          <datalist id="gameSuggestions"></datalist>
+ 
+      <!-- CHIP SELECTOR - shown after system selected -->
+      <div id="gameFieldWrap" style="display:none;">
+        <div class="chips-hint">Tap to select - tap again to remove. Select as many as you need.</div>
+        <div class="game-chips" id="sellGameChips"></div>
+ 
+        <!-- Custom game search for titles not in list -->
+        <div style="margin-top:4px;">
+          <div class="game-search-wrap">
+            <input type="text" id="gameSearch" class="game-search-input"
+              placeholder="Game not listed? Type title here..."
+              autocomplete="off" oninput="handleSellCustomSearch()" onfocus="openSellDropdown()" onblur="closeSellDropdownDelayed()">
+            <span class="search-icon" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;">🔍</span>
+            <div class="game-dropdown" id="sellCustomDropdown"></div>
+          </div>
         </div>
-        <div class="search-hint">Type to search or pick from the list. Title not showing? Just type it and fill in the details below.</div>
       </div>
-
-      <div id="otherGameFields" style="display:none;">
-        <div class="field">
-          <label for="customGame">Game title</label>
-          <input type="text" id="customGame" placeholder="e.g. Metroid Dread">
-        </div>
-        <div class="field">
-          <label for="customPrice">Your asking resale price ($)</label>
-          <input type="text" id="customPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-        </div>
-        <div class="field">
-          <button type="button" class="add-game-btn" onclick="addCustomSellGameToCart()">+ Add this game</button>
-        </div>
-        <div id="customSellCartConfirm" style="display:none;font-size:12px;color:var(--green-dim);font-weight:600;margin-top:6px;">✓ Added - fill in your info below to submit.</div>
-      </div>
-
+ 
       <div class="field">
         <label for="sellWindow">How soon can you sell?</label>
-        <select id="sellWindow" onchange="updatePrice()">
+        <select id="sellWindow" onchange="updateChipPrices()">
           <option value="this-week">This week</option>
           <option value="two-weeks">Within 2 weeks</option>
           <option value="one-month">Within a month</option>
           <option value="flexible">Flexible - 1 to 3 months</option>
         </select>
       </div>
-
-      <div class="field" id="resalePriceRow" style="display:none;">
-        <label>Your guaranteed resale price</label>
-        <div class="price-display" id="resalePriceBox"><span style="color:var(--ink-light)">Select a game above</span></div>
-      </div>
-
-      <div class="field" id="addGameBtnWrap" style="display:none;">
-        <button type="button" class="add-game-btn" onclick="addGameToCart()">+ Add this game</button>
-      </div>
-
-      <div id="gameCart" style="display:none;">
-        <div class="cart-label">Games added &#10003;</div>
+ 
+      <div id="sellSelectedSummary" style="display:none;margin-top:4px;">
+        <div class="cart-label">Selected games</div>
         <div id="cartItems"></div>
       </div>
-
+ 
       <div class="field">
         <label>Game condition</label>
         <div class="a1-only-box">
           <div class="a1-check">&#10003;</div>
           <div>
             <div class="a1-title">A1 - Like New / Very Good <span class="a1-badge">90%+ condition</span></div>
-            <div class="a1-desc">Game plays perfectly. Original case included. Minor surface scuffs acceptable - disc must be free of scratches that affect gameplay. Requires all original components.</div>
+            <div class="a1-desc">Game plays perfectly. Original case included. Minor surface scuffs acceptable - must be free of scratches affecting gameplay.</div>
           </div>
         </div>
         <div class="cond-future">Other condition tiers coming soon.</div>
       </div>
     </div>
   </div>
-
+ 
   <!-- ===== BUY FIELDS ===== -->
   <div id="buyFields" style="display:none;">
     <div class="card">
-      <div class="card-label">Game you want</div>
-
+      <div class="card-label">Which game(s) do you want?</div>
+ 
       <div class="field">
         <label for="buySystem">Select system</label>
         <select id="buySystem" onchange="populateBuyGames()">
@@ -635,50 +715,22 @@
           <option value="switch">Nintendo Switch</option>
         </select>
       </div>
-
-      <div class="field" id="buyGameFieldWrap" style="display:none;">
-        <label for="buyGameSearch">Search or type a game title</label>
-        <div class="game-search-wrap">
-          <input type="text" id="buyGameSearch" list="buyGameSuggestions"
-            placeholder="e.g. Zelda: Tears of the Kingdom…"
-            autocomplete="off" oninput="handleBuyGameSearch()">
-          <span class="search-icon">🔍</span>
-          <datalist id="buyGameSuggestions"></datalist>
+ 
+      <div id="buyGameFieldWrap" style="display:none;">
+        <div class="chips-hint">Tap to select - tap again to remove. Select as many as you need.</div>
+        <div class="game-chips" id="buyGameChips"></div>
+        <div style="margin-top:4px;">
+          <div class="game-search-wrap">
+            <input type="text" id="buyGameSearch" class="game-search-input"
+              placeholder="Game not listed? Type title here..."
+              autocomplete="off" oninput="handleBuyCustomSearch()" onfocus="openBuyDropdown()" onblur="closeBuyDropdownDelayed()">
+            <span class="search-icon" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;">🔍</span>
+            <div class="game-dropdown" id="buyCustomDropdown"></div>
+          </div>
         </div>
-        <div class="search-hint">Type to search or pick from the list. Title not showing? Just type it and fill in the details below.</div>
       </div>
-
-      <div id="buyOtherGameFields" style="display:none;">
-        <div class="field">
-          <label for="buyCustomGame">Game title</label>
-          <input type="text" id="buyCustomGame" placeholder="e.g. Metroid Dread">
-        </div>
-        <div class="field">
-          <label for="buyCustomPrice">Your offer price ($)</label>
-          <input type="text" id="buyCustomPrice" placeholder="e.g. 45" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-        </div>
-        <div class="field">
-          <button type="button" class="add-game-btn" onclick="addCustomBuyGameToCart()">+ Add this game</button>
-        </div>
-        <div id="customBuyCartConfirm" style="display:none;font-size:12px;color:var(--green-dim);font-weight:600;margin-top:6px;">✓ Added - fill in your info below to submit.</div>
-      </div>
-
-      <div class="field" id="buyPriceRow" style="display:none;">
-        <label>Locked price - no bidding, no competition</label>
-        <div class="price-display" id="buyPriceBox"><span>-</span></div>
-        <div style="font-size:12px;color:var(--ink-light);margin-top:8px;line-height:1.5;">A1 condition - game plays perfectly, original case included. Minor surface scuffs acceptable; disc must be free of scratches that affect gameplay. Requires all original components.</div>
-      </div>
-
-      <div class="field" id="addBuyGameBtnWrap" style="display:none;">
-        <button type="button" class="add-game-btn" onclick="addBuyGameToCart()">+ Add this game</button>
-      </div>
-
-      <div id="buyGameCart" style="display:none;">
-        <div class="cart-label">Games added &#10003;</div>
-        <div id="buyCartItems"></div>
-      </div>
-
-      <div class="field">
+ 
+      <div class="field" id="buyWindowField" style="display:none;">
         <label for="buyWindow">When do you need it?</label>
         <select id="buyWindow">
           <option value="asap">As soon as possible</option>
@@ -687,29 +739,47 @@
           <option value="no-rush">No rush - 1 to 3 months</option>
         </select>
       </div>
-
+ 
+      <div id="buySelectedSummary" style="display:none;margin-top:4px;">
+        <div class="cart-label">Selected games</div>
+        <div id="buyCartItems"></div>
+      </div>
+ 
       <div class="field">
         <label>Game condition required</label>
         <div class="a1-only-box">
           <div class="a1-check">&#10003;</div>
           <div>
             <div class="a1-title">A1 - Like New / Very Good <span class="a1-badge">90%+ condition</span></div>
-            <div class="a1-desc">Game plays perfectly. Original case included. Minor surface scuffs acceptable - disc must be free of scratches that affect gameplay. Requires all original components.</div>
+            <div class="a1-desc">Game plays perfectly. Original case included. Minor surface scuffs acceptable.</div>
           </div>
         </div>
         <div class="cond-future">Other condition tiers coming soon.</div>
       </div>
     </div>
   </div>
-
+ 
   <div class="card">
     <div class="card-label">Your info</div>
-    <div class="field"><label for="name">Full name</label><input type="text" id="name" name="name" placeholder="Jane Smith"></div>
-    <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="jane@email.com"></div>
-    <div class="field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" placeholder="(555) 000-0000"></div>
-    <div class="field"><label for="zip">Zip code</label><input type="text" id="zip" name="zip" placeholder="53097" maxlength="5"></div>
+    <div style="font-size:12px;color:var(--ink-light);margin-bottom:12px;">Your browser can autofill this - tap a field to see saved info.</div>
+    <div class="field">
+      <label for="name">Full name</label>
+      <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="jane@email.com" autocomplete="email">
+    </div>
+    <div class="field">
+      <label for="phone">Phone (optional)</label>
+      <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel">
+    </div>
+    <div class="field">
+      <label for="zip">Zip code</label>
+      <input type="text" id="zip" name="zip" placeholder="53097" maxlength="5" autocomplete="postal-code" inputmode="numeric">
+    </div>
   </div>
-
+ 
   <div class="card">
     <div class="card-label">Anything else?</div>
     <div class="field">
@@ -717,12 +787,12 @@
       <textarea id="notes" name="notes" placeholder="e.g. disc is in great shape, bought at Target last month..."></textarea>
     </div>
   </div>
-
+ 
   <div style="margin-top:10px;padding:14px 16px;background:var(--green-bg);border:1px solid rgba(34,197,94,0.2);border-radius:8px;text-align:center;">
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:4px;">&#128274; No Payment Required</div>
     <div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.55;">This is an interest form only. We coordinate everything personally once your match is found.</div>
   </div>
-
+ 
   <!-- AGE GATE -->
   <div style="display:flex;align-items:flex-start;gap:10px;margin:14px 0 6px;padding:12px 14px;background:white;border:1.5px solid var(--border);border-radius:8px;">
     <input type="checkbox" id="ageGate" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--green-dim);cursor:pointer;">
@@ -732,14 +802,14 @@
       <a href="privacy.html" target="_blank" style="color:var(--green-dim);text-decoration:underline;">Privacy Policy</a>.
     </label>
   </div>
-
+ 
   <button type="button" class="submit-btn" id="submitBtn" onclick="submitForm()" style="opacity:.45;pointer-events:none;">Submit My Offer &#8594;</button>
   <div class="trust-row">
     <span>&#10003; Zero obligation</span>
     <span>&#10003; Free to submit</span>
     <span>&#10003; Real person responds</span>
   </div>
-
+ 
   <!-- REFERRAL -->
   <div style="margin-top:20px;padding:20px;background:var(--green-bg);border-radius:var(--radius);text-align:center;position:relative;overflow:hidden;">
     <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;"></div>
@@ -750,22 +820,22 @@
       <div id="referralConfirm" style="display:none;font-size:12px;color:var(--green);margin-top:8px;font-weight:600;">✓ Link copied! Send it their way.</div>
     </div>
   </div>
-
+ 
   </form>
   </div>
-
+ 
   <!-- SUCCESS SCREEN -->
   <div class="success-screen" id="successScreen">
-
+ 
     <div class="success-hero">
       <div class="success-icon">&#10003;</div>
       <h2>You're Submitted!</h2>
       <div class="success-sub">Confirmation email sent. We'll be in touch within 24–48 hours when your match is found.</div>
     </div>
-
+ 
     <div class="success-body">
       <div class="bond-summary" id="bondSummary" style="margin-bottom:16px;"></div>
-
+ 
       <div class="next-steps" style="margin-bottom:20px;">
         <div class="next-step">
           <span class="ns-num">1</span>
@@ -789,28 +859,60 @@
           </div>
         </div>
       </div>
-
+ 
       <p style="font-size:12px;color:var(--ink-light);margin-bottom:20px;">Questions? Email <a href="mailto:cartridgebond@gmail.com" style="color:var(--green-dim);">cartridgebond@gmail.com</a></p>
-
+ 
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
         <button type="button" onclick="addAnother()" style="padding:12px 22px;background:var(--green-dim);color:white;border:none;border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">+ Submit Another Game</button>
         <button type="button" onclick="resetForm()" style="padding:12px 22px;background:transparent;color:var(--ink-mid);border:1.5px solid var(--border);border-radius:var(--radius);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">&#8592; Start Over</button>
       </div>
     </div>
-
+ 
   </div>
-
+ 
 </div>
-
+ 
 <script>
+ 
+// ── TESTIMONIALS ─────────────────────────────────────────────
+// Add real testimonials here as they come in.
+// Format: { text, name, detail, stars }
+// Leave empty array to hide the section entirely.
+var TESTIMONIALS = [
+  // Example (uncomment and edit when you have real ones):
+  // { text: "Sold my Mario Kart in two days. Guy showed up, tested it, paid exactly what was agreed. Zero drama.", name: "Mike S.", detail: "Seller - Mequon", stars: 5 },
+  // { text: "Way better than Facebook Marketplace. No lowballs, no no-shows. Bought Zelda for $50 and it was exactly as described.", name: "Sarah K.", detail: "Buyer - Shorewood", stars: 5 },
+];
+ 
+(function() {
+  if (!TESTIMONIALS.length) return;
+  var section = document.getElementById('testimonialsSection');
+  var container = document.getElementById('testimonialCards');
+  if (!section || !container) return;
+  TESTIMONIALS.forEach(function(t) {
+    var stars = '';
+    for (var i = 0; i < (t.stars || 5); i++) stars += '★';
+    container.innerHTML += [
+      '<div class="testimonial-card">',
+        '<div class="testimonial-stars">' + stars + '</div>',
+        '<div class="testimonial-text">' + t.text + '</div>',
+        '<div class="testimonial-meta">' + t.name + ' &nbsp;·&nbsp; ' + t.detail + '</div>',
+      '</div>',
+    ].join('');
+  });
+  section.style.display = 'block';
+})();
+ 
+// ── MAIN SCRIPT ───────────────────────────────────────────────
+ 
 var currentRole = 'sell';
 var sellCart = [];
 var buyCart  = [];
-var currentSellGameData = null; // [name, retail, resale] or null
+var currentSellGameData = null;
 var currentBuyGameData  = null;
-
+ 
 var sysLabels = { switch:'Nintendo Switch', ps5:'PS5', xbox:'Xbox Series X|S', ps4:'PS4', xbone:'Xbox One' };
-
+ 
 var gamesBySystem = {
   switch: [
     ['Animal Crossing: New Horizons',  60, 36],
@@ -822,214 +924,195 @@ var gamesBySystem = {
   ],
   ps5:[], xbox:[], ps4:[], xbone:[]
 };
-
-// ── SELL SIDE ──────────────────────────────────────────
-
+ 
+// ── SELL SIDE - CHIP SELECTOR ──────────────────────────
+ 
 function populateGames() {
-  var sys        = document.getElementById('system').value;
-  var gameWrap   = document.getElementById('gameFieldWrap');
-  var datalist   = document.getElementById('gameSuggestions');
-  var gameSearch = document.getElementById('gameSearch');
-
-  datalist.innerHTML = '';
-  gameSearch.value   = '';
-  currentSellGameData = null;
-  document.getElementById('otherGameFields').style.display  = 'none';
-  document.getElementById('resalePriceRow').style.display   = 'none';
-  document.getElementById('addGameBtnWrap').style.display   = 'none';
-
-  if (!sys) { gameWrap.style.display = 'none'; return; }
-
-  (gamesBySystem[sys] || []).slice()
-    .sort(function(a,b){ return a[0].localeCompare(b[0]); })
-    .forEach(function(g) {
-      var opt = document.createElement('option');
-      opt.value = g[0];
-      datalist.appendChild(opt);
-    });
-
-  gameWrap.style.display = 'block';
-}
-
-function handleGameSearch() {
-  var typed  = document.getElementById('gameSearch').value.trim();
-  var sys    = document.getElementById('system').value;
-  var games  = gamesBySystem[sys] || [];
-  var others = document.getElementById('otherGameFields');
-
-  var match = null;
-  for (var i = 0; i < games.length; i++) {
-    if (games[i][0].toLowerCase() === typed.toLowerCase()) { match = games[i]; break; }
-  }
-
-  if (match) {
-    currentSellGameData = match;
-    others.style.display = 'none';
-    updatePrice();
-  } else if (typed.length > 2) {
-    currentSellGameData = null;
-    others.style.display = 'block';
-    document.getElementById('resalePriceRow').style.display = 'none';
-    document.getElementById('addGameBtnWrap').style.display = 'none';
-    var cg = document.getElementById('customGame');
-    cg.value = typed;
-  } else {
-    currentSellGameData = null;
-    others.style.display = 'none';
-    document.getElementById('resalePriceRow').style.display = 'none';
-    document.getElementById('addGameBtnWrap').style.display = 'none';
-  }
-}
-
-function updatePrice() {
-  if (!currentSellGameData) return;
-  var win    = document.getElementById('sellWindow').value;
-  var base   = currentSellGameData[2];
-  var resale = (win === 'one-month') ? Math.round(base * 0.95) : (win === 'flexible') ? Math.round(base * 0.90) : base;
-  var winLbl = { 'this-week':'This week', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'flexible':'Flexible (1–3 months)' }[win] || win;
-
-  document.getElementById('resalePriceRow').style.display = 'block';
-  document.getElementById('addGameBtnWrap').style.display = 'block';
-  document.getElementById('resalePriceBox').innerHTML =
-    '<span class="price-val">$' + resale + '</span>' +
-    '<span style="color:var(--ink-light);font-size:13px;">guaranteed \u00b7 ' + winLbl + '</span>' +
-    '<span class="pb ba1">A1 \u2014 Like New / Very Good</span>';
-}
-
-function addGameToCart() {
-  if (!currentSellGameData) return;
-  var sys    = document.getElementById('system').value;
-  var win    = document.getElementById('sellWindow').value;
-  var base   = currentSellGameData[2];
-  var resale = (win === 'one-month') ? Math.round(base * 0.95) : (win === 'flexible') ? Math.round(base * 0.90) : base;
-  var winLbl = { 'this-week':'This week', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'flexible':'Flexible (1–3 months)' }[win] || win;
-  var name   = currentSellGameData[0] + ' (' + (sysLabels[sys]||sys) + ') \u2014 ' + winLbl;
-
-  sellCart.push({ name:name, resale:resale });
+  var sys = document.getElementById('system').value;
+  var wrap = document.getElementById('gameFieldWrap');
+  if (!sys) { wrap.style.display = 'none'; return; }
+ 
+  var games = (gamesBySystem[sys] || []).slice().sort(function(a,b){ return a[0].localeCompare(b[0]); });
+  var chips = document.getElementById('sellGameChips');
+  chips.innerHTML = games.map(function(g) {
+    return '<div class="game-chip" data-name="' + g[0] + '" data-retail="' + g[1] + '" data-price="' + g[2] + '" onclick="toggleSellChip(this)">'
+      + g[0].replace(/: .+/, '') // short name
+      + '<span class="game-chip-price">$' + g[2] + '</span>'
+      + '<span class="game-chip-check">&#10003;</span>'
+      + '</div>';
+  }).join('');
+ 
+  wrap.style.display = 'block';
   renderSellCart();
-
-  document.getElementById('gameSearch').value = '';
-  currentSellGameData = null;
-  document.getElementById('resalePriceRow').style.display = 'none';
-  document.getElementById('addGameBtnWrap').style.display = 'none';
-  document.getElementById('otherGameFields').style.display = 'none';
 }
-
+ 
+function toggleSellChip(el) {
+  el.classList.toggle('selected');
+  syncSellCartFromChips();
+}
+ 
+function syncSellCartFromChips() {
+  var sys = document.getElementById('system').value;
+  var win = document.getElementById('sellWindow').value;
+  var winLbl = { 'this-week':'This week', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'flexible':'Flexible (1-3 months)' }[win] || win;
+  sellCart = [];
+  document.querySelectorAll('#sellGameChips .game-chip.selected').forEach(function(chip) {
+    var base = parseInt(chip.dataset.price);
+    var resale = (win === 'one-month') ? Math.round(base * 0.95) : (win === 'flexible') ? Math.round(base * 0.90) : base;
+    sellCart.push({ name: chip.dataset.name + ' (' + (sysLabels[sys]||sys) + ')', resale: resale });
+  });
+  renderSellCart();
+}
+ 
+function updateChipPrices() {
+  syncSellCartFromChips();
+  syncBuyCartFromChips();
+}
+ 
 function renderSellCart() {
-  var cart  = document.getElementById('gameCart');
+  var summary = document.getElementById('sellSelectedSummary');
   var items = document.getElementById('cartItems');
-  if (!sellCart.length) { cart.style.display = 'none'; return; }
-  cart.style.display = 'block';
-  items.innerHTML = sellCart.map(function(g,i){
-    return '<div class="cart-item">' +
-      '<span class="cart-item-name">' + g.name + '</span>' +
-      '<span class="cart-item-price">$' + g.resale + '</span>' +
-      '<button type="button" class="cart-item-remove" onclick="removeSellItem('+i+')">&times;</button>' +
-      '</div>';
+  if (!sellCart.length) { summary.style.display = 'none'; return; }
+  summary.style.display = 'block';
+  items.innerHTML = sellCart.map(function(g) {
+    return '<div class="cart-item">'
+      + '<span class="cart-item-name">' + g.name + '</span>'
+      + '<span class="cart-item-price">$' + g.resale + '</span>'
+      + '</div>';
   }).join('');
 }
-function removeSellItem(i){ sellCart.splice(i,1); renderSellCart(); }
-
-// ── BUY SIDE ───────────────────────────────────────────
-
-function populateBuyGames() {
-  var sys        = document.getElementById('buySystem').value;
-  var gameWrap   = document.getElementById('buyGameFieldWrap');
-  var datalist   = document.getElementById('buyGameSuggestions');
-  var gameSearch = document.getElementById('buyGameSearch');
-
-  datalist.innerHTML = '';
-  gameSearch.value   = '';
-  currentBuyGameData = null;
-  document.getElementById('buyOtherGameFields').style.display = 'none';
-  document.getElementById('buyPriceRow').style.display        = 'none';
-  document.getElementById('addBuyGameBtnWrap').style.display  = 'none';
-
-  if (!sys) { gameWrap.style.display = 'none'; return; }
-
-  (gamesBySystem[sys] || []).slice()
-    .sort(function(a,b){ return a[0].localeCompare(b[0]); })
-    .forEach(function(g) {
-      var opt = document.createElement('option');
-      opt.value = g[0];
-      datalist.appendChild(opt);
-    });
-
-  gameWrap.style.display = 'block';
-}
-
-function handleBuyGameSearch() {
-  var typed  = document.getElementById('buyGameSearch').value.trim();
-  var sys    = document.getElementById('buySystem').value;
-  var games  = gamesBySystem[sys] || [];
-  var others = document.getElementById('buyOtherGameFields');
-
-  var match = null;
-  for (var i = 0; i < games.length; i++) {
-    if (games[i][0].toLowerCase() === typed.toLowerCase()) { match = games[i]; break; }
-  }
-
-  if (match) {
-    currentBuyGameData = match;
-    others.style.display = 'none';
-    updateBuyPrice();
-  } else if (typed.length > 2) {
-    currentBuyGameData = null;
-    others.style.display = 'block';
-    document.getElementById('buyPriceRow').style.display       = 'none';
-    document.getElementById('addBuyGameBtnWrap').style.display = 'none';
-    var cg = document.getElementById('buyCustomGame');
-    cg.value = typed;
+ 
+// Sell custom search dropdown
+function handleSellCustomSearch() {
+  var typed = document.getElementById('gameSearch').value.trim().toLowerCase();
+  var sys = document.getElementById('system').value;
+  var games = gamesBySystem[sys] || [];
+  var dropdown = document.getElementById('sellCustomDropdown');
+ 
+  if (typed.length < 2) { dropdown.classList.remove('open'); return; }
+ 
+  var matches = games.filter(function(g) { return g[0].toLowerCase().includes(typed); });
+  if (!matches.length) {
+    dropdown.innerHTML = '<div class="game-dropdown-none">No match - submit title as typed below</div>';
   } else {
-    currentBuyGameData = null;
-    others.style.display = 'none';
-    document.getElementById('buyPriceRow').style.display       = 'none';
-    document.getElementById('addBuyGameBtnWrap').style.display = 'none';
+    dropdown.innerHTML = matches.map(function(g) {
+      return '<div class="game-dropdown-item" onmousedown="selectSellCustomGame(\'' + g[0].replace(/'/g,"\\'") + '\',' + g[2] + ')">'
+        + '<span>' + g[0] + '</span>'
+        + '<span class="game-dropdown-price">$' + g[2] + '</span>'
+        + '</div>';
+    }).join('');
   }
+  dropdown.classList.add('open');
 }
-
-function updateBuyPrice() {
-  if (!currentBuyGameData) return;
-  document.getElementById('buyPriceRow').style.display       = 'block';
-  document.getElementById('addBuyGameBtnWrap').style.display = 'block';
-  document.getElementById('buyPriceBox').innerHTML =
-    '<span class="price-val">$' + currentBuyGameData[2] + '</span>' +
-    '<span style="color:var(--ink-light);font-size:13px;">locked \u2014 no bidding</span>';
+ 
+function selectSellCustomGame(name, price) {
+  // Find the chip and select it
+  var chip = document.querySelector('#sellGameChips .game-chip[data-name="' + name + '"]');
+  if (chip && !chip.classList.contains('selected')) {
+    chip.classList.add('selected');
+  }
+  document.getElementById('gameSearch').value = '';
+  document.getElementById('sellCustomDropdown').classList.remove('open');
+  syncSellCartFromChips();
 }
-
-function addBuyGameToCart() {
-  if (!currentBuyGameData) return;
-  var bsys = document.getElementById('buySystem').value;
-  var bwin = { 'asap':'As soon as possible', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'no-rush':'No rush (1–3 months)' }[document.getElementById('buyWindow').value] || 'As soon as possible';
-  var name = currentBuyGameData[0] + ' (' + (sysLabels[bsys]||bsys) + ')';
-
-  buyCart.push({ name:name, price:currentBuyGameData[2], timeline:bwin });
+ 
+function openSellDropdown() {
+  handleSellCustomSearch();
+}
+function closeSellDropdownDelayed() {
+  setTimeout(function() { document.getElementById('sellCustomDropdown').classList.remove('open'); }, 200);
+}
+ 
+// ── BUY SIDE - CHIP SELECTOR ───────────────────────────
+ 
+function populateBuyGames() {
+  var sys = document.getElementById('buySystem').value;
+  var wrap = document.getElementById('buyGameFieldWrap');
+  var winField = document.getElementById('buyWindowField');
+  if (!sys) { wrap.style.display = 'none'; winField.style.display = 'none'; return; }
+ 
+  var games = (gamesBySystem[sys] || []).slice().sort(function(a,b){ return a[0].localeCompare(b[0]); });
+  var chips = document.getElementById('buyGameChips');
+  chips.innerHTML = games.map(function(g) {
+    return '<div class="game-chip" data-name="' + g[0] + '" data-price="' + g[2] + '" onclick="toggleBuyChip(this)">'
+      + g[0].replace(/: .+/, '')
+      + '<span class="game-chip-price">$' + g[2] + '</span>'
+      + '<span class="game-chip-check">&#10003;</span>'
+      + '</div>';
+  }).join('');
+ 
+  wrap.style.display = 'block';
+  winField.style.display = 'block';
   renderBuyCart();
-
-  document.getElementById('buyGameSearch').value = '';
-  currentBuyGameData = null;
-  document.getElementById('buyPriceRow').style.display       = 'none';
-  document.getElementById('addBuyGameBtnWrap').style.display = 'none';
-  document.getElementById('buyOtherGameFields').style.display = 'none';
 }
-
+ 
+function toggleBuyChip(el) {
+  el.classList.toggle('selected');
+  syncBuyCartFromChips();
+}
+ 
+function syncBuyCartFromChips() {
+  var sys = document.getElementById('buySystem').value;
+  var bwin = { 'asap':'As soon as possible', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'no-rush':'No rush (1-3 months)' }[document.getElementById('buyWindow').value] || 'As soon as possible';
+  buyCart = [];
+  document.querySelectorAll('#buyGameChips .game-chip.selected').forEach(function(chip) {
+    buyCart.push({ name: chip.dataset.name + ' (' + (sysLabels[sys]||sys) + ')', price: parseInt(chip.dataset.price), timeline: bwin });
+  });
+  renderBuyCart();
+}
+ 
 function renderBuyCart() {
-  var cart  = document.getElementById('buyGameCart');
+  var summary = document.getElementById('buySelectedSummary');
   var items = document.getElementById('buyCartItems');
-  if (!buyCart.length) { cart.style.display = 'none'; return; }
-  cart.style.display = 'block';
-  items.innerHTML = buyCart.map(function(g,i){
-    return '<div class="cart-item">' +
-      '<span class="cart-item-name">' + g.name + '</span>' +
-      '<span class="cart-item-price">$' + g.price + '</span>' +
-      '<button type="button" class="cart-item-remove" onclick="removeBuyItem('+i+')">&times;</button>' +
-      '</div>';
+  if (!buyCart.length) { summary.style.display = 'none'; return; }
+  summary.style.display = 'block';
+  items.innerHTML = buyCart.map(function(g) {
+    return '<div class="cart-item">'
+      + '<span class="cart-item-name">' + g.name + '</span>'
+      + '<span class="cart-item-price">$' + g.price + '</span>'
+      + '</div>';
   }).join('');
 }
-function removeBuyItem(i){ buyCart.splice(i,1); renderBuyCart(); }
-
+ 
+function handleBuyCustomSearch() {
+  var typed = document.getElementById('buyGameSearch').value.trim().toLowerCase();
+  var sys = document.getElementById('buySystem').value;
+  var games = gamesBySystem[sys] || [];
+  var dropdown = document.getElementById('buyCustomDropdown');
+ 
+  if (typed.length < 2) { dropdown.classList.remove('open'); return; }
+ 
+  var matches = games.filter(function(g) { return g[0].toLowerCase().includes(typed); });
+  if (!matches.length) {
+    dropdown.innerHTML = '<div class="game-dropdown-none">No match found in our list</div>';
+  } else {
+    dropdown.innerHTML = matches.map(function(g) {
+      return '<div class="game-dropdown-item" onmousedown="selectBuyCustomGame(\'' + g[0].replace(/'/g,"\\'") + '\',' + g[2] + ')">'
+        + '<span>' + g[0] + '</span>'
+        + '<span class="game-dropdown-price">$' + g[2] + '</span>'
+        + '</div>';
+    }).join('');
+  }
+  dropdown.classList.add('open');
+}
+ 
+function selectBuyCustomGame(name, price) {
+  var chip = document.querySelector('#buyGameChips .game-chip[data-name="' + name + '"]');
+  if (chip && !chip.classList.contains('selected')) {
+    chip.classList.add('selected');
+  }
+  document.getElementById('buyGameSearch').value = '';
+  document.getElementById('buyCustomDropdown').classList.remove('open');
+  syncBuyCartFromChips();
+}
+ 
+function openBuyDropdown() { handleBuyCustomSearch(); }
+function closeBuyDropdownDelayed() {
+  setTimeout(function() { document.getElementById('buyCustomDropdown').classList.remove('open'); }, 200);
+}
+ 
 // ── ROLE TOGGLE ────────────────────────────────────────
-
+ 
 function setRole(r) {
   currentRole = r;
   document.querySelectorAll('.role-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -1037,93 +1120,67 @@ function setRole(r) {
   document.getElementById('sellFields').style.display = r==='sell' ? 'block' : 'none';
   document.getElementById('buyFields').style.display  = r==='buy'  ? 'block' : 'none';
 }
-
+ 
 // ── SUBMIT ─────────────────────────────────────────────
-
+ 
 function submitForm() {
   var name  = document.getElementById('name').value.trim();
   var email = document.getElementById('email').value.trim();
-  var hasGame;
-
-  if (currentRole === 'sell') {
-    hasGame = sellCart.length > 0 || currentSellGameData !== null || document.getElementById('customGame').value.trim();
-    if (!hasGame) {
-      alert('Please add at least one game using the "+ Add this game" button before submitting.');
-      return;
-    }
-  } else {
-    hasGame = buyCart.length > 0 || currentBuyGameData !== null || document.getElementById('buyCustomGame').value.trim();
-    if (!hasGame) {
-      alert('Please add at least one game using the "+ Add this game" button before submitting.');
-      return;
-    }
+ 
+  if (currentRole === 'sell' && !sellCart.length) {
+    alert('Please select at least one game above before submitting.');
+    return;
   }
-
+  if (currentRole === 'buy' && !buyCart.length) {
+    alert('Please select at least one game above before submitting.');
+    return;
+  }
+ 
   if (!name) { alert('Please enter your full name.'); return; }
   if (!email || email.indexOf('@') === -1) { alert('Please enter a valid email address.'); return; }
   var zip = document.getElementById('zip').value.trim();
   if (!zip || zip.length !== 5 || isNaN(zip)) { alert('Please enter a valid 5-digit zip code.'); return; }
-
+ 
   var html = '';
-  var winLabels = { 'this-week':'This week', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'flexible':'Flexible (1–3 months)' };
-  var buyWinLabels = { 'asap':'As soon as possible', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'no-rush':'No rush (1–3 months)' };
-
+  var winLabels = { 'this-week':'This week', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'flexible':'Flexible (1-3 months)' };
+  var buyWinLabels = { 'asap':'As soon as possible', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'no-rush':'No rush (1-3 months)' };
+ 
   if (currentRole === 'sell') {
-    var allItems = sellCart.slice();
-    var sys = document.getElementById('system').value;
-    var win = document.getElementById('sellWindow').value;
+    var win    = document.getElementById('sellWindow').value;
     var wlabel = winLabels[win] || win;
-
-    if (currentSellGameData && !allItems.length) {
-      var base   = currentSellGameData[2];
-      var resale = (win === 'one-month') ? Math.round(base * 0.95) : (win === 'flexible') ? Math.round(base * 0.90) : base;
-      allItems.push({ name: currentSellGameData[0]+' ('+(sysLabels[sys]||sys)+') \u2014 '+wlabel, resale:resale });
-    }
-    var cg = document.getElementById('customGame').value.trim();
-    var cp = document.getElementById('customPrice').value.trim();
-    if (!currentSellGameData && cg) allItems.push({ name:cg+' ('+(sysLabels[sys]||sys)+')', resale:cp||'\u2014' });
-
+ 
     document.getElementById('h_role').value      = 'Sell Used';
-    document.getElementById('h_game').value      = allItems.map(function(g){return g.name;}).join(' | ');
-    document.getElementById('h_price').value     = allItems.map(function(g){return '$'+g.resale;}).join(' | ');
+    document.getElementById('h_game').value      = sellCart.map(function(g){return g.name;}).join(' | ');
+    document.getElementById('h_price').value     = sellCart.map(function(g){return '$'+g.resale;}).join(' | ');
     document.getElementById('h_condition').value = 'A1 - Like New / Very Good';
     document.getElementById('h_timeline').value  = wlabel;
-
+ 
     html = '<div class="sum-row"><span>Role</span><span>Selling used</span></div>';
-    allItems.forEach(function(g){ html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.resale+'</span></div>'; });
+    sellCart.forEach(function(g){ html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.resale+'</span></div>'; });
     html += '<div class="sum-row"><span>Available</span><span>'+wlabel+'</span></div>';
-    html += '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>';
-
+    html += '<div class="sum-row"><span>Condition</span><span>A1 - Like New / Very Good</span></div>';
+ 
   } else {
-    var allBuy = buyCart.slice();
-    var bsys = document.getElementById('buySystem').value;
     var bwin = buyWinLabels[document.getElementById('buyWindow').value] || 'As soon as possible';
-
-    if (currentBuyGameData && !allBuy.length) {
-      allBuy.push({ name:currentBuyGameData[0]+' ('+(sysLabels[bsys]||bsys)+')', price:currentBuyGameData[2], timeline:bwin });
-    }
-    var bn = document.getElementById('buyCustomGame').value.trim();
-    var bp = document.getElementById('buyCustomPrice').value.trim();
-    if (!currentBuyGameData && bn) allBuy.push({ name:bn+' ('+(sysLabels[bsys]||bsys)+')', price:bp||'\u2014', timeline:bwin });
-
+ 
     document.getElementById('h_role').value      = 'Buy Used';
-    document.getElementById('h_game').value      = allBuy.map(function(g){return g.name;}).join(' | ');
-    document.getElementById('h_price').value     = allBuy.map(function(g){return '$'+g.price;}).join(' | ');
+    document.getElementById('h_game').value      = buyCart.map(function(g){return g.name;}).join(' | ');
+    document.getElementById('h_price').value     = buyCart.map(function(g){return '$'+g.price;}).join(' | ');
     document.getElementById('h_condition').value = 'A1 - Like New / Very Good';
-    document.getElementById('h_timeline').value  = allBuy.map(function(g){return g.timeline;}).join(' | ');
-
+    document.getElementById('h_timeline').value  = bwin;
+ 
     html = '<div class="sum-row"><span>Role</span><span>Buying used</span></div>';
-    allBuy.forEach(function(g){ html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.price+'</span></div>'; });
+    buyCart.forEach(function(g){ html += '<div class="sum-row"><span>'+g.name+'</span><span>$'+g.price+'</span></div>'; });
     html += '<div class="sum-row"><span>Needed by</span><span>'+bwin+'</span></div>';
-    html += '<div class="sum-row"><span>Condition</span><span>A1 \u2014 Like New / Very Good</span></div>';
+    html += '<div class="sum-row"><span>Condition</span><span>A1 - Like New / Very Good</span></div>';
   }
-
+ 
   var endpoint = document.getElementById('bbForm').getAttribute('data-endpoint');
   if (!endpoint || endpoint === 'PASTE_YOUR_WEBAPP_URL_HERE') {
     alert('Web app URL not configured yet. See setup instructions.');
     return;
   }
-
+ 
   var payload = {
     name:         document.getElementById('name').value.trim(),
     email:        document.getElementById('email').value.trim(),
@@ -1136,7 +1193,7 @@ function submitForm() {
     resale_price: document.getElementById('h_price').value,
     timeline:     document.getElementById('h_timeline').value,
   };
-
+ 
   function showSuccess() {
     document.getElementById('siteNav').style.display      = 'none';
     document.getElementById('betaBanner').style.display   = 'none';
@@ -1150,7 +1207,7 @@ function submitForm() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }
-
+ 
   fetch(endpoint, {
     method:  'POST',
     body:    JSON.stringify(payload),
@@ -1163,9 +1220,9 @@ function submitForm() {
     showSuccess();
   });
 }
-
+ 
 // ── RESET ──────────────────────────────────────────────
-
+ 
 function resetForm() {
   sellCart=[]; buyCart=[]; currentSellGameData=null; currentBuyGameData=null;
   document.getElementById('siteNav').style.display      = 'flex';
@@ -1177,17 +1234,22 @@ function resetForm() {
   document.getElementById('successScreen').classList.remove('show');
   document.getElementById('roleToggle').style.display   = 'grid';
   document.getElementById('bbForm').reset();
-  ['resalePriceRow','addGameBtnWrap','gameFieldWrap','gameCart',
-   'otherGameFields','buyGameFieldWrap','buyGameCart','buyPriceRow',
-   'addBuyGameBtnWrap','buyOtherGameFields'].forEach(function(id){
-    document.getElementById(id).style.display='none';
-  });
+ 
+  // Reset chip selectors
+  document.querySelectorAll('.game-chip.selected').forEach(function(c){ c.classList.remove('selected'); });
+  document.getElementById('sellSelectedSummary').style.display = 'none';
+  document.getElementById('buySelectedSummary').style.display  = 'none';
   document.getElementById('cartItems').innerHTML    = '';
   document.getElementById('buyCartItems').innerHTML = '';
   document.getElementById('bondSummary').innerHTML  = '';
-  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('gameFieldWrap').style.display    = 'none';
+  document.getElementById('buyGameFieldWrap').style.display = 'none';
+  document.getElementById('buyWindowField').style.display   = 'none';
+  document.getElementById('sellCustomDropdown').classList.remove('open');
+  document.getElementById('buyCustomDropdown').classList.remove('open');
+  window.scrollTo(0, 0);
 }
-
+ 
 function addAnother() {
   sellCart=[]; buyCart=[]; currentSellGameData=null; currentBuyGameData=null;
   document.getElementById('siteNav').style.display      = 'flex';
@@ -1198,72 +1260,60 @@ function addAnother() {
   document.getElementById('formInner').style.display    = 'block';
   document.getElementById('successScreen').classList.remove('show');
   document.getElementById('roleToggle').style.display   = 'grid';
-  ['resalePriceRow','addGameBtnWrap','gameFieldWrap','gameCart','otherGameFields'].forEach(function(id){
-    document.getElementById(id).style.display='none';
-  });
-  document.getElementById('gameSearch').value       = '';
+ 
+  // Reset chips
+  document.querySelectorAll('.game-chip.selected').forEach(function(c){ c.classList.remove('selected'); });
+  document.getElementById('sellSelectedSummary').style.display = 'none';
+  document.getElementById('buySelectedSummary').style.display  = 'none';
   document.getElementById('cartItems').innerHTML    = '';
-  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('buyCartItems').innerHTML = '';
+  document.getElementById('gameSearch').value    = '';
+  document.getElementById('buyGameSearch').value = '';
+  document.getElementById('sellCustomDropdown').classList.remove('open');
+  document.getElementById('buyCustomDropdown').classList.remove('open');
+  window.scrollTo(0, 0);
 }
-
-function addCustomSellGameToCart() {
-  var title = document.getElementById('customGame').value.trim();
-  var price = document.getElementById('customPrice').value.trim();
+ 
+// Add unlisted sell game from typed search field
+function addUnlistedSellGame() {
+  var title = document.getElementById('gameSearch').value.trim();
   var sys   = document.getElementById('system').value;
-
-  if (!title) { alert('Please enter a game title.'); return; }
-  if (!price) { alert('Please enter your asking price.'); return; }
-
-  var name = title + ' (' + (sysLabels[sys] || sys || 'Switch') + ') - Custom';
-  sellCart.push({ name: name, resale: price });
+  var win   = document.getElementById('sellWindow').value;
+  var winLabels = { 'this-week':'This week', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'flexible':'Flexible (1-3 months)' };
+ 
+  if (!title) return;
+  var name = title + ' (' + (sysLabels[sys] || sys || 'Switch') + ')';
+  sellCart.push({ name: name, resale: '?' });
   renderSellCart();
-
-  // Clear fields and show confirm
-  document.getElementById('customGame').value  = '';
-  document.getElementById('customPrice').value = '';
-  document.getElementById('gameSearch').value  = '';
-  document.getElementById('otherGameFields').style.display = 'none';
-  var conf = document.getElementById('customSellCartConfirm');
-  conf.style.display = 'block';
-  setTimeout(function(){ conf.style.display = 'none'; }, 3000);
+  document.getElementById('gameSearch').value = '';
 }
-
-function addCustomBuyGameToCart() {
-  var title = document.getElementById('buyCustomGame').value.trim();
-  var price = document.getElementById('buyCustomPrice').value.trim();
+ 
+// Add unlisted buy game from typed search field
+function addUnlistedBuyGame() {
+  var title = document.getElementById('buyGameSearch').value.trim();
   var bsys  = document.getElementById('buySystem').value;
-  var bwin  = { 'asap':'As soon as possible', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'no-rush':'No rush (1–3 months)' }[document.getElementById('buyWindow').value] || 'As soon as possible';
-
-  if (!title) { alert('Please enter a game title.'); return; }
-  if (!price) { alert('Please enter your offer price.'); return; }
-
+  var bwin  = { 'asap':'As soon as possible', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'no-rush':'No rush (1-3 months)' }[document.getElementById('buyWindow').value] || 'As soon as possible';
+ 
+  if (!title) return;
   var name = title + ' (' + (sysLabels[bsys] || bsys || 'Switch') + ')';
-  buyCart.push({ name: name, price: price, timeline: bwin });
+  buyCart.push({ name: name, price: '?', timeline: bwin });
   renderBuyCart();
-
-  // Clear fields and show confirm
-  document.getElementById('buyCustomGame').value  = '';
-  document.getElementById('buyCustomPrice').value = '';
-  document.getElementById('buyGameSearch').value  = '';
-  document.getElementById('buyOtherGameFields').style.display = 'none';
-  var conf = document.getElementById('customBuyCartConfirm');
-  conf.style.display = 'block';
-  setTimeout(function(){ conf.style.display = 'none'; }, 3000);
+  document.getElementById('buyGameSearch').value = '';
 }
-
+ 
 // Age gate - enables submit button only when checked
 document.getElementById('ageGate').addEventListener('change', function() {
   var btn = document.getElementById('submitBtn');
   btn.style.opacity = this.checked ? '1' : '.45';
   btn.style.pointerEvents = this.checked ? 'auto' : 'none';
 });
-
+ 
 // Referral copy link - works on HTTP and HTTPS
 function copyReferral() {
   var url = window.location.origin + window.location.pathname + '?utm_source=referral&utm_medium=friend';
   var btn = document.getElementById('referralBtn');
   var msg = document.getElementById('referralConfirm');
-
+ 
   function showConfirm() {
     msg.style.display = 'block';
     if (btn) btn.textContent = '✓ Copied!';
@@ -1272,13 +1322,13 @@ function copyReferral() {
       if (btn) btn.textContent = '📋 Copy My Referral Link';
     }, 3000);
   }
-
+ 
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(url).then(showConfirm).catch(fallback);
   } else {
     fallback();
   }
-
+ 
   function fallback() {
     var ta = document.createElement('textarea');
     ta.value = url;
@@ -1292,7 +1342,7 @@ function copyReferral() {
   }
 }
 </script>
-
+ 
 <!-- FOOTER -->
 <footer style="background:#111;padding:24px 20px;text-align:center;border-top:1px solid rgba(34,197,94,0.12);">
   <div style="margin-bottom:12px;"><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a></div>
@@ -1315,3 +1365,6 @@ function copyReferral() {
 </footer>
 </body>
 </html>
+ 
+
+
