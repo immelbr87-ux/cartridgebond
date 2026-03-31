@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Your Trade Status | CartridgeBond Milwaukee</title>
+<meta name="description" content="Check the status of your CartridgeBond buy or sell submission. Enter your email to see where your trade stands.">
+<meta name="robots" content="noindex">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SN05PGREN7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SN05PGREN7');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #22c55e; --green-dim: #16a34a; --green-dark: #14532d;
+    --green-bg: #0d2318; --green-light: #dcfce7; --green-mid: #86efac;
+    --ink: #0f0f0f; --ink-mid: #3a3a3a; --ink-light: #777;
+    --border: #e2e2da; --surface: #f8f8f5; --white: #ffffff; --radius: 10px;
+  }
+  body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh; padding-top: 48px; padding-top: 48px; }
+
+  /* STICKY NAV */
+  .site-nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.2); height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
+  .site-nav::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px); background-size:24px 24px; pointer-events:none; }
+  .nav-logo { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; position:relative; z-index:1; flex-shrink:0; }
+  .nav-logo .cartridge { color:rgba(255,255,255,0.9); }
+  .nav-logo .bond { color:#22c55e; }
+  .nav-links { display:flex; align-items:center; gap:16px; position:relative; z-index:1; }
+  .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; transition:color .15s; white-space:nowrap; }
+  .nav-links a:hover { color:#22c55e; }
+  .nav-links .nav-cta { background:#16a34a; color:white !important; padding:6px 12px; border-radius:6px; font-size:11px; }
+  .nav-links .nav-cta:hover { background:#14532d !important; }
+  .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; background:none; border:none; cursor:pointer; padding:4px; position:relative; z-index:2; flex-shrink:0; }
+  .nav-hamburger span { display:block; width:20px; height:2px; background:rgba(255,255,255,0.6); border-radius:2px; transition:all .2s; }
+  .nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity:0; }
+  .nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .nav-mobile-menu { display:none; position:fixed; top:48px; left:0; right:0; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.25); z-index:999; padding:8px 0; }
+  .nav-mobile-menu.open { display:block; }
+  .nav-mobile-menu a { display:block; padding:12px 20px; font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,0.6); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.05); }
+  .nav-mobile-menu a:last-child { border-bottom:none; }
+  .nav-mobile-right { display:flex; align-items:center; gap:10px; position:relative; z-index:2; }
+  .nav-mobile-cta { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:#16a34a; color:white !important; padding:6px 11px; border-radius:6px; text-decoration:none; white-space:nowrap; }
+  @media (max-width:560px) { .nav-desktop-links { display:none !important; } .nav-hamburger { display:flex !important; } .nav-mobile-cta { display:block !important; } }
+  @media (min-width:561px) { .nav-mobile-right { display:none !important; } .nav-mobile-menu { display:none !important; } }
+  
+  .site-nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.2); height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
+  .site-nav::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px); background-size:24px 24px; pointer-events:none; }
+  .nav-logo { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; position:relative; z-index:1; }
+  .nav-logo .cartridge { color:rgba(255,255,255,0.9); }
+  .nav-logo .bond { color:#22c55e; }
+  .nav-links { display:flex; align-items:center; gap:18px; position:relative; z-index:1; }
+  .nav-links a { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; }
+  .nav-links .nav-cta { background:#16a34a; color:white !important; padding:6px 12px; border-radius:6px; }
+
+  .page-header { background: var(--green-bg); padding: 28px 20px 24px; text-align: center; position: relative; overflow: hidden; }
+  .page-header::before { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px); background-size:32px 32px; pointer-events:none; }
+  .page-header h1 { font-family:'Barlow Condensed',sans-serif; font-size:32px; font-weight:700; color:white; position:relative; margin-bottom:8px; }
+  .page-header p { font-size:14px; color:rgba(255,255,255,0.5); position:relative; line-height:1.6; }
+
+  .container { max-width: 480px; margin: 0 auto; padding: 32px 16px 60px; }
+
+  .card { background:white; border:1.5px solid var(--border); border-radius:var(--radius); padding:24px; margin-bottom:20px; }
+  .card-label { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--green-dim); margin-bottom:14px; }
+
+  .field { margin-bottom:14px; }
+  .field label { display:block; font-size:13px; font-weight:600; color:var(--ink-mid); margin-bottom:6px; }
+  .field input { width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:var(--radius); font-size:15px; font-family:'Barlow',sans-serif; outline:none; transition:border-color .15s; }
+  .field input:focus { border-color:var(--green-dim); }
+
+  .check-btn {
+    width:100%; padding:14px; background:var(--green-dim); color:white; border:none;
+    border-radius:var(--radius); font-family:'Barlow Condensed',sans-serif;
+    font-size:18px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    cursor:pointer; transition:background .2s;
+  }
+  .check-btn:hover { background:var(--green-dark); }
+
+  /* Status results */
+  #resultsArea { display:none; }
+  .status-card { background:white; border:1.5px solid var(--border); border-radius:var(--radius); padding:18px 20px; margin-bottom:12px; }
+  .status-badge { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:20px; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; }
+  .status-pending { background:#fef3c7; color:#92400e; }
+  .status-matched { background:var(--green-light); color:var(--green-dark); }
+  .status-dot { width:7px; height:7px; border-radius:50%; background:currentColor; }
+  .status-game { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+  .status-detail { font-size:13px; color:var(--ink-mid); line-height:1.6; }
+  .status-price { font-weight:700; color:var(--green-dim); }
+
+  .no-results { text-align:center; padding:32px 20px; }
+  .no-results h3 { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+  .no-results p { font-size:14px; color:var(--ink-mid); line-height:1.7; margin-bottom:16px; }
+  .no-results a { display:inline-block; padding:11px 22px; background:var(--green-dim); color:white; text-decoration:none; border-radius:8px; font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+
+  .loading { text-align:center; padding:24px; font-size:14px; color:var(--ink-mid); }
+  .error-msg { background:#fef2f2; border:1.5px solid #fca5a5; border-radius:var(--radius); padding:14px; font-size:13px; color:#991b1b; }
+
+  footer { background:#111; padding:22px 20px; text-align:center; border-top:1px solid rgba(34,197,94,0.12); }
+  .footer-brand { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px; }
+  .footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:6px 16px; margin-bottom:10px; }
+  .footer-links a { color:rgba(255,255,255,0.4); text-decoration:none; font-size:11px; }
+  .footer-links a:hover { color:var(--green); }
+  .footer-sep { color:rgba(255,255,255,0.15); }
+  .footer-copy { font-size:11px; color:rgba(255,255,255,0.2); }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo"><span class="cartridge">Cartridge</span><span class="bond">Bond</span></a>
+  <div class="nav-links">
+    <a href="blog/index.html">Blog</a>
+    <a href="prices.html">Game Values</a>
+    <a href="faq.html">FAQ</a>
+    <a href="index.html" class="nav-cta">Buy / Sell Now</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>Check Your Trade Status</h1>
+  <p>Enter the email you submitted with and we'll show you where things stand.</p>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <div class="card-label">Your Submission</div>
+    <div class="field">
+      <label for="statusEmail">Email address</label>
+      <input type="email" id="statusEmail" placeholder="you@email.com" autocomplete="email"
+        onkeydown="if(event.key==='Enter') checkStatus()">
+    </div>
+    <button class="check-btn" onclick="checkStatus()">Check My Status &rarr;</button>
+  </div>
+
+  <div id="loadingArea" class="loading" style="display:none;">Looking up your submissions...</div>
+  <div id="errorArea" style="display:none;"></div>
+  <div id="resultsArea"></div>
+
+</div>
+
+<footer style="background:#111;padding:24px 20px;text-align:center;border-top:1px solid rgba(34,197,94,0.12);">
+  <div style="margin-bottom:12px;"><a href="index.html" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a></div>
+  <div style="font-size:11px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px;">
+    <a href="blog/index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Blog</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="prices.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Game Values</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="faq.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">FAQ</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="meetup.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Safe Meetup Guide</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="terms.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Terms</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="privacy.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Privacy</a>
+    <span style="color:rgba(255,255,255,0.15);">·</span>
+    <a href="waitlist.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Not in Milwaukee?</a>
+  </div>
+  <div style="font-size:11px;color:rgba(255,255,255,0.2);">&#169; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
+</footer>
+
+<script>
+// IMPORTANT: Replace this URL with your Apps Script Web App URL
+// It can be the same URL as your form endpoint
+var STATUS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyjmJRHvvYg2aT1ZOQ8YUbTFaJnn3SK9iz0yIypFnpsLLXoKX_7PheUwot9jxKm6RoB/exec';
+
+function checkStatus() {
+  var email = document.getElementById('statusEmail').value.trim().toLowerCase();
+  if (!email || email.indexOf('@') === -1) {
+    document.getElementById('errorArea').style.display = 'block';
+    document.getElementById('errorArea').innerHTML = '<div class="error-msg">Please enter a valid email address.</div>';
+    return;
+  }
+
+  document.getElementById('errorArea').style.display   = 'none';
+  document.getElementById('resultsArea').style.display = 'none';
+  document.getElementById('loadingArea').style.display = 'block';
+
+  fetch(STATUS_ENDPOINT + '?action=status&email=' + encodeURIComponent(email))
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      document.getElementById('loadingArea').style.display = 'none';
+      renderResults(data, email);
+    })
+    .catch(function(err) {
+      document.getElementById('loadingArea').style.display = 'none';
+      document.getElementById('errorArea').style.display   = 'block';
+      document.getElementById('errorArea').innerHTML = '<div class="error-msg">Could not connect. Please try again in a moment or email <a href="mailto:cartridgebond@gmail.com" style="color:#991b1b;">cartridgebond@gmail.com</a> directly.</div>';
+    });
+}
+
+function renderResults(data, email) {
+  var area = document.getElementById('resultsArea');
+  area.style.display = 'block';
+
+  if (!data || !data.submissions || !data.submissions.length) {
+    area.innerHTML = '<div class="no-results">'
+      + '<h3>No submissions found</h3>'
+      + '<p>We don\'t have a submission on file for <strong>' + email + '</strong>. Double-check the email you used when submitting, or submit a new request below.</p>'
+      + '<a href="index.html">Submit a Game &rarr;</a>'
+      + '</div>';
+    return;
+  }
+
+  var html = '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--green-dim);margin-bottom:12px;">'
+    + data.submissions.length + ' submission' + (data.submissions.length > 1 ? 's' : '') + ' found</div>';
+
+  data.submissions.forEach(function(s) {
+    var isMatched = (s.status || '').toLowerCase() === 'matched';
+    var badgeClass = isMatched ? 'status-matched' : 'status-pending';
+    var badgeText  = isMatched ? 'Matched' : 'Under Review';
+
+    html += '<div class="status-card">'
+      + '<div class="status-badge ' + badgeClass + '"><span class="status-dot"></span>' + badgeText + '</div>'
+      + '<div class="status-game">' + (s.game || 'Unknown game') + '</div>'
+      + '<div class="status-detail">'
+      + '<span class="status-price">' + (s.price || '-') + '</span>'
+      + (s.role ? ' &nbsp;·&nbsp; ' + s.role : '')
+      + (s.timeline ? ' &nbsp;·&nbsp; ' + s.timeline : '')
+      + '</div>'
+      + (isMatched
+          ? '<div style="margin-top:10px;padding:10px 12px;background:var(--green-light);border-radius:8px;font-size:13px;color:var(--green-dark);">Check your email - we sent you your match details. Questions? Reply to that email.</div>'
+          : '<div style="margin-top:10px;font-size:12px;color:var(--ink-light);">Submitted ' + (s.date || '') + ' - we review within 24-48 hours and will email you when matched.</div>')
+      + '</div>';
+  });
+
+  html += '<p style="font-size:12px;color:var(--ink-light);margin-top:16px;text-align:center;">Questions? Email <a href="mailto:cartridgebond@gmail.com" style="color:var(--green-dim);">cartridgebond@gmail.com</a></p>';
+
+  area.innerHTML = html;
+}
+</script>
+
+</body>
+</html>

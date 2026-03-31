@@ -653,20 +653,19 @@ function closeMobileMenu() {
 </script>
 
 <div class="beta-banner" id="betaBanner">
-  <span style="color:var(--green);font-weight:700;">Milwaukee &amp; North Shore only</span> &nbsp;·&nbsp; Nintendo Switch cartridges &nbsp;·&nbsp; A1 condition only &nbsp;·&nbsp; <span style="opacity:.7;">More platforms, conditions &amp; areas coming soon</span>
+  <span style="color:var(--green);font-weight:700;">Milwaukee &amp; North Shore only</span> &nbsp;·&nbsp; Nintendo Switch &nbsp;·&nbsp; A1 condition &nbsp;·&nbsp; <span style="opacity:.7;">More coming soon</span>
 </div>
 
 <div class="page-header" id="pageHeader">
   <h1>
-    <span class="l1">The Hassle-Free Way to</span>
-    <span class="l2">Buy &amp; Sell Nintendo Switch Games in Milwaukee, WI.</span>
+    <span class="l1">Buy &amp; Sell Nintendo Switch Games</span>
+    <span class="l2">Price locked before you meet. No haggling. Local only.</span>
   </h1>
-  <div class="stat-row">
-    <div class="stat-pill">⚡ Skip the Marketplace Hassle (No DMs)</div>
-    <div class="stat-pill">🔒 Price &amp; Condition Locked Before You Meet</div>
-    <div class="stat-pill">📍 Local Swap - No Shipping, Inspect Before Buying</div>
+  <div style="display:flex;justify-content:center;gap:10px;margin-top:16px;flex-wrap:wrap;position:relative;">
+    <a href="#formInner" onclick="document.getElementById('formInner').scrollIntoView({behavior:'smooth'});return false;" style="display:inline-block;padding:13px 28px;background:var(--green-dim);color:white;text-decoration:none;border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">Get Matched Free &rarr;</a>
   </div>
-  <div style="margin-top:14px;position:relative;" id="tradeCountRow">
+  <div style="margin-top:14px;position:relative;font-size:12px;color:rgba(255,255,255,0.4);">No fees during beta &nbsp;·&nbsp; Milwaukee &amp; North Shore &nbsp;·&nbsp; Free to submit</div>
+  <div style="margin-top:10px;position:relative;" id="tradeCountRow">
     <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);">
       <span id="tradeCount">0</span> trades completed in Milwaukee &amp; North Shore
     </span>
@@ -895,6 +894,25 @@ function closeMobileMenu() {
       <label for="zip">Zip code</label>
       <input type="text" id="zip" name="zip" placeholder="53097" maxlength="5" autocomplete="postal-code" inputmode="numeric">
     </div>
+    <div class="field">
+      <label for="meetupPref">Preferred meetup area <span style="font-weight:400;color:var(--ink-light);">(optional)</span></label>
+      <select id="meetupPref" name="meetupPref">
+        <option value="">- No preference, anywhere public -</option>
+        <option value="Mequon">Mequon area</option>
+        <option value="Thiensville">Thiensville area</option>
+        <option value="Glendale">Glendale area</option>
+        <option value="Shorewood">Shorewood area</option>
+        <option value="Whitefish Bay">Whitefish Bay area</option>
+        <option value="Fox Point">Fox Point area</option>
+        <option value="Bayside">Bayside area</option>
+        <option value="Brown Deer">Brown Deer area</option>
+        <option value="Milwaukee - East Side">Milwaukee - East Side</option>
+        <option value="Milwaukee - Downtown">Milwaukee - Downtown</option>
+        <option value="Milwaukee - North">Milwaukee - North</option>
+        <option value="Other">Other / Flexible</option>
+      </select>
+      <div style="font-size:11px;color:var(--ink-light);margin-top:5px;">We use this to find matches near you. All meetups are public places.</div>
+    </div>
   </div>
 
   <div class="card">
@@ -920,7 +938,7 @@ function closeMobileMenu() {
     </label>
   </div>
 
-  <button type="button" class="submit-btn" id="submitBtn" onclick="submitForm()" style="opacity:.45;pointer-events:none;">Submit My Offer &#8594;</button>
+  <button type="button" class="submit-btn" id="submitBtn" onclick="showConfirmModal()" style="opacity:.45;pointer-events:none;">Review &amp; Lock In &rarr;</button>
   <div class="trust-row">
     <span>&#10003; Zero obligation</span>
     <span>&#10003; Free to submit</span>
@@ -939,6 +957,25 @@ function closeMobileMenu() {
   </div>
 
   </form>
+
+  <!-- LOCK-IN CONFIRMATION MODAL -->
+  <div id="confirmModal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;padding:20px;">
+    <div style="background:white;border-radius:14px;max-width:400px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+      <div style="background:var(--green-bg);padding:22px 24px 18px;text-align:center;position:relative;">
+        <div style="font-size:28px;margin-bottom:8px;">🔒</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:white;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;">Lock In Your Terms?</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">Once submitted, your price and condition are committed. We'll find your match based on exactly what you entered.</div>
+      </div>
+      <div style="padding:20px 24px;">
+        <div id="confirmSummary" style="background:var(--surface);border:1.5px solid var(--border);border-radius:8px;padding:14px;margin-bottom:18px;font-size:13px;color:var(--ink-mid);line-height:1.8;"></div>
+        <div style="font-size:12px;color:var(--ink-light);margin-bottom:16px;line-height:1.6;">
+          No payment is required now. You can cancel before any meetup by emailing us. Zero obligation until cash changes hands.
+        </div>
+        <button onclick="confirmAndSubmit()" style="width:100%;padding:14px;background:var(--green-dim);color:white;border:none;border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-bottom:10px;">Yes, Lock It In &rarr;</button>
+        <button onclick="closeConfirmModal()" style="width:100%;padding:12px;background:transparent;color:var(--ink-light);border:1.5px solid var(--border);border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;">Go Back &amp; Edit</button>
+      </div>
+    </div>
+  </div>
   </div>
 
   <!-- SUCCESS SCREEN -->
@@ -1243,20 +1280,7 @@ function setRole(r) {
 function submitForm() {
   var name  = document.getElementById('name').value.trim();
   var email = document.getElementById('email').value.trim();
-
-  if (currentRole === 'sell' && !sellCart.length) {
-    alert('Please select at least one game above before submitting.');
-    return;
-  }
-  if (currentRole === 'buy' && !buyCart.length) {
-    alert('Please select at least one game above before submitting.');
-    return;
-  }
-
-  if (!name) { alert('Please enter your full name.'); return; }
-  if (!email || email.indexOf('@') === -1) { alert('Please enter a valid email address.'); return; }
-  var zip = document.getElementById('zip').value.trim();
-  if (!zip || zip.length !== 5 || isNaN(zip)) { alert('Please enter a valid 5-digit zip code.'); return; }
+  var zip   = document.getElementById('zip').value.trim();
 
   var html = '';
   var winLabels = { 'this-week':'This week', 'two-weeks':'Within 2 weeks', 'one-month':'Within a month', 'flexible':'Flexible (1-3 months)' };
@@ -1303,6 +1327,7 @@ function submitForm() {
     email:        document.getElementById('email').value.trim(),
     phone:        document.getElementById('phone').value.trim(),
     zip:          document.getElementById('zip').value.trim(),
+    meetupPref:   document.getElementById('meetupPref').value.trim(),
     notes:        document.getElementById('notes').value.trim(),
     role:         document.getElementById('h_role').value,
     condition:    document.getElementById('h_condition').value,
@@ -1311,7 +1336,50 @@ function submitForm() {
     timeline:     document.getElementById('h_timeline').value,
   };
 
-  function showSuccess() {
+  function showConfirmModal() {
+  // Run validation first
+  var name  = document.getElementById('name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var zip   = document.getElementById('zip').value.trim();
+
+  if (currentRole === 'sell' && !sellCart.length) { alert('Please select at least one game before submitting.'); return; }
+  if (currentRole === 'buy'  && !buyCart.length)  { alert('Please select at least one game before submitting.'); return; }
+  if (!name)  { alert('Please enter your full name.'); return; }
+  if (!email || email.indexOf('@') === -1) { alert('Please enter a valid email address.'); return; }
+  if (!zip || zip.length !== 5 || isNaN(zip)) { alert('Please enter a valid 5-digit zip code.'); return; }
+  if (!document.getElementById('ageGate').checked) { alert('Please confirm you agree to the Terms of Service.'); return; }
+
+  // Build summary for modal
+  var lines = [];
+  if (currentRole === 'sell') {
+    lines.push('<strong>Selling:</strong>');
+    sellCart.forEach(function(g) { lines.push('&nbsp;&nbsp;' + g.name + ' &mdash; <strong style="color:var(--green-dim);">$' + g.resale + '</strong>'); });
+    var win = document.getElementById('sellWindow');
+    lines.push('<strong>Available:</strong> ' + win.options[win.selectedIndex].text);
+  } else {
+    lines.push('<strong>Buying:</strong>');
+    buyCart.forEach(function(g) { lines.push('&nbsp;&nbsp;' + g.name + ' &mdash; <strong style="color:var(--green-dim);">$' + g.price + '</strong>'); });
+    var bwin = document.getElementById('buyWindow');
+    lines.push('<strong>Needed:</strong> ' + bwin.options[bwin.selectedIndex].text);
+  }
+  var pref = document.getElementById('meetupPref').value;
+  if (pref) lines.push('<strong>Meetup area:</strong> ' + pref);
+  lines.push('<strong>Your zip:</strong> ' + zip);
+
+  document.getElementById('confirmSummary').innerHTML = lines.join('<br>');
+  document.getElementById('confirmModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeConfirmModal() {
+  document.getElementById('confirmModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function confirmAndSubmit() {
+  closeConfirmModal();
+  submitForm();
+}
     document.getElementById('siteNav').style.display      = 'none';
     document.getElementById('betaBanner').style.display   = 'none';
     document.getElementById('pageHeader').style.display   = 'none';
@@ -1328,9 +1396,16 @@ function submitForm() {
   fetch(endpoint, {
     method:  'POST',
     body:    JSON.stringify(payload),
-    mode:    'no-cors', // Apps Script doesn't handle preflight - skip it
+    mode:    'no-cors',
   })
   .then(function() {
+    // Fire GA conversion event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'form_submit', {
+        event_category: 'engagement',
+        event_label: currentRole === 'sell' ? 'sell_submission' : 'buy_submission',
+      });
+    }
     showSuccess();
   })
   .catch(function() {

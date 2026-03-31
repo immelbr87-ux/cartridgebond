@@ -92,46 +92,69 @@ function doPost(e) {
 
     // Write row to sheet
     var row = [
-      new Date(),           // A - Timestamp
-      data.name      || '', // B - Name
-      data.email     || '', // C - Email
-      data.phone     || '', // D - Phone
-      data.zip       || '', // E - Zip
-      data.role      || '', // F - Role
-      data.game      || '', // G - Game(s)
-      data.price     || '', // H - Price(s)
-      data.condition || '', // I - Condition
-      data.timeline  || '', // J - Timeline
-      data.notes     || '', // K - Notes
-      data.formType  || '', // L - Form Type
-      data.city      || '', // M - City
+      new Date(),                // A - Timestamp
+      data.name        || '',    // B - Name
+      data.email       || '',    // C - Email
+      data.phone       || '',    // D - Phone
+      data.zip         || '',    // E - Zip
+      data.role        || '',    // F - Role
+      data.game        || '',    // G - Game(s)
+      data.resale_price|| data.price || '', // H - Price(s)
+      data.condition   || '',    // I - Condition
+      data.timeline    || '',    // J - Timeline
+      data.notes       || '',    // K - Notes
+      data.formType    || '',    // L - Form Type
+      data.city        || '',    // M - City
+      '',                        // N - Status (blank = Under Review)
+      '',                        // O - Matched With Row
+      '',                        // P - Founder Status
+      '',                        // Q - Match Email Sent
+      '',                        // R - Follow-Up Sent
+      '',                        // S - No-Show Flag
+      '',                        // T - Rating
+      data.meetupPref  || '',    // U - Meetup Preference
     ];
     sheet.appendRow(row);
 
-    // Send confirmation email
     var firstName = (data.name || 'there').trim().split(' ')[0];
     var role      = (data.role || '').toLowerCase();
-    var emailHtml = '';
 
-    if (role.includes('sell')) {
-      emailHtml = buildSellerConfirmEmail(firstName, data);
-      GmailApp.sendEmail(data.email, 'Got your listing - CartridgeBond', '', {
-        name: CONFIG.senderName, replyTo: CONFIG.adminEmail, htmlBody: emailHtml,
-      });
-    } else if (role.includes('buy')) {
-      emailHtml = buildBuyerConfirmEmail(firstName, data);
-      GmailApp.sendEmail(data.email, 'Got your request - CartridgeBond', '', {
-        name: CONFIG.senderName, replyTo: CONFIG.adminEmail, htmlBody: emailHtml,
-      });
-    } else if (role.includes('waitlist') || data.formType === 'waitlist') {
-      emailHtml = buildWaitlistConfirmEmail(firstName, data);
-      GmailApp.sendEmail(data.email, "You're on the waitlist - CartridgeBond", '', {
-        name: CONFIG.senderName, replyTo: CONFIG.adminEmail, htmlBody: emailHtml,
-      });
+    // Dedup guard - check if this email+game was submitted in the last 60 seconds
+    var allRows = sheet.getDataRange().getValues();
+    var now = new Date();
+    var isDuplicate = false;
+    for (var d = Math.max(1, allRows.length - 5); d < allRows.length; d++) {
+      var rowTime  = allRows[d][0] ? new Date(allRows[d][0]) : null;
+      var rowEmail = String(allRows[d][2] || '').trim().toLowerCase();
+      var rowGame  = String(allRows[d][6] || '').trim().toLowerCase();
+      if (rowTime && rowEmail === (data.email||'').toLowerCase() && rowGame === (data.game||'').toLowerCase()) {
+        var secondsAgo = (now - rowTime) / 1000;
+        if (secondsAgo < 60 && secondsAgo > 0) { isDuplicate = true; break; }
+      }
     }
 
-    // Notify admin
-    notifyAdmin(data);
+    if (!isDuplicate) {
+      var emailHtml = '';
+      if (role.includes('sell')) {
+        emailHtml = buildSellerConfirmEmail(firstName, data);
+        GmailApp.sendEmail(data.email, 'Got your listing - CartridgeBond', '', {
+          name: CONFIG.senderName, replyTo: CONFIG.adminEmail, htmlBody: emailHtml,
+        });
+      } else if (role.includes('buy')) {
+        emailHtml = buildBuyerConfirmEmail(firstName, data);
+        GmailApp.sendEmail(data.email, 'Got your request - CartridgeBond', '', {
+          name: CONFIG.senderName, replyTo: CONFIG.adminEmail, htmlBody: emailHtml,
+        });
+      } else if (role.includes('waitlist') || data.formType === 'waitlist') {
+        emailHtml = buildWaitlistConfirmEmail(firstName, data);
+        GmailApp.sendEmail(data.email, "You're on the waitlist - CartridgeBond", '', {
+          name: CONFIG.senderName, replyTo: CONFIG.adminEmail, htmlBody: emailHtml,
+        });
+      }
+      notifyAdmin(data);
+    } else {
+      Logger.log('Duplicate submission suppressed for: ' + data.email);
+    }
 
   } catch(err) {
     Logger.log('doPost error: ' + err);
