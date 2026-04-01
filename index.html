@@ -51,7 +51,7 @@
     --border: #e2e2da; --surface: #f8f8f5; --white: #ffffff; --radius: 10px;
   }
   body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh; padding-top: 48px; }
- 
+
   /* STICKY NAV */
   .site-nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:#0a1a10; border-bottom:1px solid rgba(34,197,94,0.2); height:48px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
   .site-nav::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px); background-size:24px 24px; pointer-events:none; }
@@ -76,7 +76,7 @@
   .nav-mobile-cta { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:#16a34a; color:white!important; padding:6px 11px; border-radius:6px; text-decoration:none; white-space:nowrap; }
   @media(max-width:560px) { .nav-desktop-links { display:none!important; } .nav-hamburger { display:flex!important; } .nav-mobile-cta { display:block!important; } }
   @media(min-width:561px) { .nav-mobile-right { display:none!important; } .nav-mobile-menu { display:none!important; } }
- 
+
   /* PAGE */
   .page-header { background:var(--green-bg); color:white; padding:28px 20px 24px; text-align:center; position:relative; overflow:hidden; }
   .page-header::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px); background-size:32px 32px; pointer-events:none; }
@@ -96,7 +96,7 @@
   .free-tag { display:inline-block; background:rgba(34,197,94,0.15); border:1px solid rgba(34,197,94,0.3); color:var(--green); font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:1px 7px; border-radius:10px; margin:0 2px; vertical-align:middle; }
   .founder-50 { margin-top:10px; padding:8px 12px; background:rgba(34,197,94,0.07); border:1px solid rgba(34,197,94,0.18); border-radius:8px; font-size:12px; color:rgba(255,255,255,0.5); line-height:1.5; }
   .founder-50 strong { color:var(--green); }
- 
+
   /* FORM */
   .container { max-width:520px; margin:0 auto; padding:20px 16px 52px; }
   .role-toggle { display:grid; grid-template-columns:1fr 1fr; border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; margin-bottom:18px; background:var(--white); }
@@ -114,7 +114,7 @@
   select:focus, input:focus, textarea:focus { border-color:var(--green-dim); background:white; }
   select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; cursor:pointer; }
   textarea { resize:none; height:80px; }
- 
+
   /* GAME CHIPS */
   .game-chips { display:flex; flex-wrap:wrap; gap:8px; margin:4px 0 12px; }
   .game-chip { display:flex; align-items:center; gap:6px; padding:8px 12px; border-radius:8px; cursor:pointer; border:1.5px solid var(--border); background:white; font-size:13px; color:var(--ink-mid); transition:all .15s; -webkit-tap-highlight-color:transparent; user-select:none; }
@@ -124,7 +124,7 @@
   .game-chip-check { font-size:12px; display:none; }
   .game-chip.selected .game-chip-check { display:inline; }
   .chips-hint { font-size:12px; color:var(--ink-light); margin-bottom:10px; line-height:1.5; }
- 
+
   /* CUSTOM DROPDOWN */
   .game-search-wrap { position:relative; }
   .game-search-input { width:100%; padding:11px 38px 11px 14px; border:1.5px solid var(--border); border-radius:var(--radius); font-size:15px; font-family:'Barlow',sans-serif; background:white; color:var(--ink); outline:none; transition:border-color .15s; -webkit-appearance:none; }
@@ -136,7 +136,7 @@
   .game-dropdown-item:active { background:var(--green-light); }
   .game-dropdown-price { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:13px; color:var(--green-dim); }
   .game-dropdown-none { padding:12px 14px; font-size:13px; color:var(--ink-light); font-style:italic; }
- 
+
   /* CONDITION */
   .a1-only-box { display:flex; align-items:flex-start; gap:12px; padding:14px; background:var(--green-light); border:1.5px solid var(--green-mid); border-radius:8px; }
   .a1-check { width:28px; height:28px; background:var(--green-dim); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:14px; font-weight:700; flex-shrink:0; margin-top:1px; }
@@ -144,19 +144,19 @@
   .a1-badge { font-size:10px; font-weight:700; background:var(--green-dim); color:white; padding:2px 8px; border-radius:10px; letter-spacing:.05em; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; }
   .a1-desc { font-size:12px; color:var(--green-dark); line-height:1.55; opacity:.8; }
   .cond-future { margin-top:8px; font-size:11px; color:var(--ink-light); text-align:center; font-style:italic; }
- 
+
   /* CART */
   .cart-label { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--green-dim); margin-bottom:8px; }
   .cart-item { display:flex; justify-content:space-between; align-items:center; padding:9px 12px; background:var(--green-light); border:1px solid var(--green-mid); border-radius:8px; margin-bottom:6px; font-size:13px; color:var(--green-dark); }
   .cart-item-name { font-weight:500; flex:1; }
   .cart-item-price { font-weight:700; margin:0 10px; }
- 
+
   /* SUBMIT */
   .submit-btn { width:100%; padding:16px; background:var(--green-dim); color:white; border:none; border-radius:var(--radius); font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; transition:background .2s; margin-top:6px; }
   .submit-btn:hover { background:var(--green-dark); }
   .trust-row { display:flex; justify-content:center; gap:16px; margin-top:12px; font-size:11px; color:var(--ink-light); flex-wrap:wrap; }
   .form-inner { display:block; }
- 
+
   /* SUCCESS */
   .success-screen { display:none; text-align:center; padding:0 0 40px; }
   .success-screen.show { display:block; }
@@ -175,7 +175,7 @@
   .sum-row { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--green-mid); }
   .sum-row:last-child { border-bottom:none; }
   .sum-row span:last-child { font-weight:600; }
- 
+
   /* TESTIMONIALS */
   .testimonial-card { background:var(--surface); border:1.5px solid var(--border); border-radius:var(--radius); padding:14px 16px; position:relative; }
   .testimonial-card::before { content:'"';' position:absolute; top:8px; left:14px; font-size:32px; color:var(--green-mid); font-family:Georgia,serif; line-height:1; }
@@ -185,7 +185,7 @@
 </style>
 </head>
 <body>
- 
+
 <!-- STICKY NAV -->
 <nav class="site-nav" id="siteNav">
   <a href="#top" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
@@ -211,11 +211,11 @@
   <a href="meetup.html" onclick="closeMobileMenu()">Safe Meetup Guide</a>
   <a href="waitlist.html" onclick="closeMobileMenu()">Not in Milwaukee?</a>
 </div>
- 
+
 <div class="beta-banner" id="betaBanner">
   <span style="color:var(--green);font-weight:700;">Milwaukee &amp; North Shore only</span> &nbsp;&middot;&nbsp; Nintendo Switch &nbsp;&middot;&nbsp; A1 condition &nbsp;&middot;&nbsp; <span style="opacity:.7;">More coming soon</span>
 </div>
- 
+
 <div class="page-header" id="pageHeader">
   <h1>
     <span class="l1">Buy &amp; Sell Nintendo Switch Games</span>
@@ -237,7 +237,7 @@
     })();
   </script>
 </div>
- 
+
 <!-- HOW IT WORKS -->
 <div id="howItWorks" style="background:var(--green-bg);border-bottom:2px solid rgba(34,197,94,0.2);padding:28px 20px;">
   <div style="max-width:520px;margin:0 auto;">
@@ -263,7 +263,7 @@
     </div>
   </div>
 </div>
- 
+
 <!-- FOUNDER NOTE -->
 <div class="founder-note" id="founderNote" style="border-top:none;padding:26px 20px;">
   <div class="founder-inner">
@@ -283,7 +283,7 @@
     </div>
   </div>
 </div>
- 
+
 <!-- TESTIMONIALS -->
 <div id="testimonialsSection" style="display:none;background:#fff;border-top:1px solid #e2e2da;border-bottom:1px solid #e2e2da;padding:24px 20px;">
   <div style="max-width:520px;margin:0 auto;">
@@ -291,9 +291,9 @@
     <div id="testimonialCards" style="display:flex;flex-direction:column;gap:12px;"></div>
   </div>
 </div>
- 
+
 <div class="container">
- 
+
   <div class="role-toggle" id="roleToggle">
     <button class="role-btn active" data-role="sell" onclick="setRole('sell')">
       <span class="ri">&#128176;</span>Sell used<span class="rs">Lock in your return now</span>
@@ -302,16 +302,16 @@
       <span class="ri">&#127918;</span>Buy used<span class="rs">Get a game at a locked price</span>
     </button>
   </div>
- 
+
   <div class="form-inner" id="formInner">
-  <form id="bbForm" data-endpoint="https://script.google.com/macros/s/AKfycbyjmJRHvvYg2aT1ZOQ8YUbTFaJnn3SK9iz0yIypFnpsLLXoKX_7PheUwot9jxKm6RoB/exec" method="POST">
- 
+  <form id="bbForm" data-endpoint="https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec" method="POST">
+
   <input type="hidden" id="h_role">
   <input type="hidden" id="h_game">
   <input type="hidden" id="h_price">
   <input type="hidden" id="h_condition">
   <input type="hidden" id="h_timeline">
- 
+
   <!-- SELL -->
   <div id="sellFields">
     <div class="card">
@@ -360,7 +360,7 @@
       </div>
     </div>
   </div>
- 
+
   <!-- BUY -->
   <div id="buyFields" style="display:none;">
     <div class="card">
@@ -409,7 +409,7 @@
       </div>
     </div>
   </div>
- 
+
   <!-- YOUR INFO -->
   <div class="card">
     <div class="card-label">Your info</div>
@@ -438,7 +438,7 @@
       <div style="font-size:11px;color:var(--ink-light);margin-top:5px;">We use this to find matches near you. All meetups are public places.</div>
     </div>
   </div>
- 
+
   <div class="card">
     <div class="card-label">Anything else?</div>
     <div class="field">
@@ -446,12 +446,12 @@
       <textarea id="notes" name="notes" placeholder="e.g. disc is in great shape, bought at Target last month..."></textarea>
     </div>
   </div>
- 
+
   <div style="margin-top:10px;padding:14px 16px;background:var(--green-bg);border:1px solid rgba(34,197,94,0.2);border-radius:8px;text-align:center;">
     <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:4px;">&#128274; No Payment Required</div>
     <div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.55;">This is an interest form only. We coordinate everything once your match is found.</div>
   </div>
- 
+
   <div style="display:flex;align-items:flex-start;gap:10px;margin:14px 0 6px;padding:12px 14px;background:white;border:1.5px solid var(--border);border-radius:8px;">
     <input type="checkbox" id="ageGate" style="width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--green-dim);cursor:pointer;">
     <label for="ageGate" style="font-size:13px;color:var(--ink-mid);line-height:1.5;cursor:pointer;margin:0;">
@@ -460,14 +460,14 @@
       <a href="privacy.html" target="_blank" style="color:var(--green-dim);text-decoration:underline;">Privacy Policy</a>.
     </label>
   </div>
- 
+
   <button type="button" class="submit-btn" id="submitBtn" onclick="showConfirmModal()" style="opacity:.45;pointer-events:none;">Review &amp; Lock In &rarr;</button>
   <div class="trust-row">
     <span>&#10003; Zero obligation</span>
     <span>&#10003; Free to submit</span>
     <span>&#10003; Real person responds</span>
   </div>
- 
+
   <div style="margin-top:20px;padding:20px;background:var(--green-bg);border-radius:var(--radius);text-align:center;position:relative;overflow:hidden;">
     <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;"></div>
     <div style="position:relative;">
@@ -477,9 +477,9 @@
       <div id="referralConfirm" style="display:none;font-size:12px;color:var(--green);margin-top:8px;font-weight:600;">&#10003; Link copied! Send it their way.</div>
     </div>
   </div>
- 
+
   </form>
- 
+
   <!-- LOCK-IN MODAL -->
   <div id="confirmModal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;padding:20px;">
     <div style="background:white;border-radius:14px;max-width:400px;width:100%;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
@@ -497,7 +497,7 @@
     </div>
   </div>
   </div>
- 
+
   <!-- SUCCESS SCREEN -->
   <div class="success-screen" id="successScreen">
     <div class="success-hero">
@@ -519,10 +519,10 @@
       </div>
     </div>
   </div>
- 
+
 </div>
 <script>
- 
+
 var TESTIMONIALS = [];
 (function() {
   if (!TESTIMONIALS.length) return;
@@ -536,7 +536,7 @@ var TESTIMONIALS = [];
   });
   section.style.display = 'block';
 })();
- 
+
 var currentRole = 'sell';
 var sellCart = [];
 var buyCart  = [];
@@ -554,7 +554,7 @@ var gamesBySystem = {
   ],
   ps5:[], xbox:[], ps4:[], xbone:[]
 };
- 
+
 function populateGames() {
   var sys = document.getElementById('system').value;
   var wrap = document.getElementById('gameFieldWrap');
@@ -567,9 +567,9 @@ function populateGames() {
   wrap.style.display = 'block';
   renderSellCart();
 }
- 
+
 function toggleSellChip(el) { el.classList.toggle('selected'); syncSellCartFromChips(); }
- 
+
 function syncSellCartFromChips() {
   var sys = document.getElementById('system').value;
   var win = document.getElementById('sellWindow').value;
@@ -582,9 +582,9 @@ function syncSellCartFromChips() {
   });
   renderSellCart();
 }
- 
+
 function updateChipPrices() { syncSellCartFromChips(); syncBuyCartFromChips(); }
- 
+
 function renderSellCart() {
   var summary = document.getElementById('sellSelectedSummary');
   var items = document.getElementById('cartItems');
@@ -594,7 +594,7 @@ function renderSellCart() {
     return '<div class="cart-item"><span class="cart-item-name">' + g.name + '</span><span class="cart-item-price">$' + g.resale + '</span></div>';
   }).join('');
 }
- 
+
 function handleSellCustomSearch() {
   var typed = document.getElementById('gameSearch').value.trim().toLowerCase();
   var sys = document.getElementById('system').value;
@@ -607,7 +607,7 @@ function handleSellCustomSearch() {
     : matches.map(function(g) { return '<div class="game-dropdown-item" onmousedown="selectSellCustomGame(\'' + g[0].replace(/'/g,"\\'") + '\',' + g[2] + ')"><span>' + g[0] + '</span><span class="game-dropdown-price">$' + g[2] + '</span></div>'; }).join('');
   dropdown.classList.add('open');
 }
- 
+
 function selectSellCustomGame(name, price) {
   var chip = document.querySelector('#sellGameChips .game-chip[data-name="' + name + '"]');
   if (chip && !chip.classList.contains('selected')) chip.classList.add('selected');
@@ -617,7 +617,7 @@ function selectSellCustomGame(name, price) {
 }
 function openSellDropdown() { handleSellCustomSearch(); }
 function closeSellDropdownDelayed() { setTimeout(function() { document.getElementById('sellCustomDropdown').classList.remove('open'); }, 200); }
- 
+
 function populateBuyGames() {
   var sys = document.getElementById('buySystem').value;
   var wrap = document.getElementById('buyGameFieldWrap');
@@ -632,9 +632,9 @@ function populateBuyGames() {
   winField.style.display = 'block';
   renderBuyCart();
 }
- 
+
 function toggleBuyChip(el) { el.classList.toggle('selected'); syncBuyCartFromChips(); }
- 
+
 function syncBuyCartFromChips() {
   var sys = document.getElementById('buySystem').value;
   var bwin = {'asap':'As soon as possible','two-weeks':'Within 2 weeks','one-month':'Within a month','no-rush':'No rush (1-3 months)'}[document.getElementById('buyWindow').value] || 'As soon as possible';
@@ -644,7 +644,7 @@ function syncBuyCartFromChips() {
   });
   renderBuyCart();
 }
- 
+
 function renderBuyCart() {
   var summary = document.getElementById('buySelectedSummary');
   var items = document.getElementById('buyCartItems');
@@ -654,7 +654,7 @@ function renderBuyCart() {
     return '<div class="cart-item"><span class="cart-item-name">' + g.name + '</span><span class="cart-item-price">$' + g.price + '</span></div>';
   }).join('');
 }
- 
+
 function handleBuyCustomSearch() {
   var typed = document.getElementById('buyGameSearch').value.trim().toLowerCase();
   var sys = document.getElementById('buySystem').value;
@@ -667,7 +667,7 @@ function handleBuyCustomSearch() {
     : matches.map(function(g) { return '<div class="game-dropdown-item" onmousedown="selectBuyCustomGame(\'' + g[0].replace(/'/g,"\\'") + '\',' + g[2] + ')"><span>' + g[0] + '</span><span class="game-dropdown-price">$' + g[2] + '</span></div>'; }).join('');
   dropdown.classList.add('open');
 }
- 
+
 function selectBuyCustomGame(name, price) {
   var chip = document.querySelector('#buyGameChips .game-chip[data-name="' + name + '"]');
   if (chip && !chip.classList.contains('selected')) chip.classList.add('selected');
@@ -677,7 +677,7 @@ function selectBuyCustomGame(name, price) {
 }
 function openBuyDropdown() { handleBuyCustomSearch(); }
 function closeBuyDropdownDelayed() { setTimeout(function() { document.getElementById('buyCustomDropdown').classList.remove('open'); }, 200); }
- 
+
 function setRole(r) {
   currentRole = r;
   document.querySelectorAll('.role-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -685,7 +685,7 @@ function setRole(r) {
   document.getElementById('sellFields').style.display = r==='sell' ? 'block' : 'none';
   document.getElementById('buyFields').style.display  = r==='buy'  ? 'block' : 'none';
 }
- 
+
 function showConfirmModal() {
   var name  = document.getElementById('name').value.trim();
   var email = document.getElementById('email').value.trim();
@@ -715,19 +715,19 @@ function showConfirmModal() {
   document.getElementById('confirmModal').style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
- 
+
 function closeConfirmModal() {
   document.getElementById('confirmModal').style.display = 'none';
   document.body.style.overflow = '';
 }
- 
+
 function confirmAndSubmit() { closeConfirmModal(); submitForm(); }
- 
+
 function submitForm() {
   var html = '';
   var winLabels    = {'this-week':'This week','two-weeks':'Within 2 weeks','one-month':'Within a month','flexible':'Flexible (1-3 months)'};
   var buyWinLabels = {'asap':'As soon as possible','two-weeks':'Within 2 weeks','one-month':'Within a month','no-rush':'No rush (1-3 months)'};
- 
+
   if (currentRole === 'sell') {
     var win = document.getElementById('sellWindow').value;
     var wlabel = winLabels[win] || win;
@@ -752,10 +752,10 @@ function submitForm() {
     html += '<div class="sum-row"><span>Needed by</span><span>'+bwin+'</span></div>';
     html += '<div class="sum-row"><span>Condition</span><span>A1 - Like New</span></div>';
   }
- 
+
   var endpoint = document.getElementById('bbForm').getAttribute('data-endpoint');
   if (!endpoint || endpoint === 'PASTE_YOUR_WEBAPP_URL_HERE') { alert('Web app URL not configured.'); return; }
- 
+
   var payload = {
     name:         document.getElementById('name').value.trim(),
     email:        document.getElementById('email').value.trim(),
@@ -769,7 +769,7 @@ function submitForm() {
     resale_price: document.getElementById('h_price').value,
     timeline:     document.getElementById('h_timeline').value,
   };
- 
+
   fetch(endpoint, { method:'POST', body:JSON.stringify(payload), mode:'no-cors' })
   .then(function() {
     if (typeof gtag !== 'undefined') gtag('event','form_submit',{event_category:'engagement',event_label:currentRole==='sell'?'sell_submission':'buy_submission'});
@@ -777,7 +777,7 @@ function submitForm() {
   })
   .catch(function() { showSuccess(html); });
 }
- 
+
 function showSuccess(html) {
   document.getElementById('siteNav').style.display      = 'none';
   document.getElementById('betaBanner').style.display   = 'none';
@@ -791,7 +791,7 @@ function showSuccess(html) {
   window.scrollTo(0, 0);
   document.body.scrollTop = 0;
 }
- 
+
 function resetForm() {
   sellCart=[]; buyCart=[]; currentSellGameData=null; currentBuyGameData=null;
   document.getElementById('siteNav').style.display      = 'flex';
@@ -816,7 +816,7 @@ function resetForm() {
   document.getElementById('buyCustomDropdown').classList.remove('open');
   window.scrollTo(0, 0);
 }
- 
+
 function addAnother() {
   sellCart=[]; buyCart=[]; currentSellGameData=null; currentBuyGameData=null;
   document.getElementById('siteNav').style.display      = 'flex';
@@ -836,13 +836,13 @@ function addAnother() {
   document.getElementById('buyGameSearch').value = '';
   window.scrollTo(0, 0);
 }
- 
+
 document.getElementById('ageGate').addEventListener('change', function() {
   var btn = document.getElementById('submitBtn');
   btn.style.opacity = this.checked ? '1' : '.45';
   btn.style.pointerEvents = this.checked ? 'auto' : 'none';
 });
- 
+
 function copyReferral() {
   var url = window.location.origin + window.location.pathname + '?utm_source=referral&utm_medium=friend';
   var btn = document.getElementById('referralBtn');
@@ -863,7 +863,7 @@ function copyReferral() {
     document.body.removeChild(ta);
   }
 }
- 
+
 function toggleMobileMenu() {
   document.getElementById('navMobileMenu').classList.toggle('open');
   document.getElementById('navHamburger').classList.toggle('open');
@@ -872,9 +872,9 @@ function closeMobileMenu() {
   document.getElementById('navMobileMenu').classList.remove('open');
   document.getElementById('navHamburger').classList.remove('open');
 }
- 
+
 </script>
- 
+
 <footer style="background:#111;padding:24px 20px;text-align:center;border-top:1px solid rgba(34,197,94,0.12);">
   <div style="margin-bottom:12px;"><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a></div>
   <div style="font-size:11px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin-bottom:12px;">
