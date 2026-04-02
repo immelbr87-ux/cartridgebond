@@ -770,12 +770,22 @@ function submitForm() {
     timeline:     document.getElementById('h_timeline').value,
   };
  
+  // Post to Apps Script (sheet write + HTML emails)
   fetch(endpoint, { method:'POST', body:JSON.stringify(payload), mode:'no-cors' })
-  .then(function() {
-    if (typeof gtag !== 'undefined') gtag('event','form_submit',{event_category:'engagement',event_label:currentRole==='sell'?'sell_submission':'buy_submission'});
-    showSuccess(html);
-  })
-  .catch(function() { showSuccess(html); });
+  .catch(function(err) { Logger && Logger.log && Logger.log(err); });
+ 
+  // ALSO post to FormSubmit as backup (plain email to admin, zero config needed)
+  var fsData = new FormData();
+  Object.keys(payload).forEach(function(k){ fsData.append(k, payload[k]); });
+  fsData.append('_subject', '[CB] New submission - ' + payload.game);
+  fsData.append('_template', 'table');
+  fsData.append('_captcha', 'false');
+  fetch('https://formsubmit.co/cartridgebond@gmail.com', { method:'POST', body:fsData })
+  .catch(function(){});
+ 
+  // Track and show success immediately - don't wait for either response
+  if (typeof gtag !== 'undefined') gtag('event','form_submit',{event_category:'engagement',event_label:currentRole==='sell'?'sell_submission':'buy_submission'});
+  showSuccess(html);
 }
  
 function showSuccess(html) {
@@ -896,6 +906,12 @@ function closeMobileMenu() {
 </footer>
 </body>
 </html>
+ 
+ 
+ 
+ 
+ 
+
 
 
 
