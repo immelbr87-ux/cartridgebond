@@ -95,13 +95,12 @@
   .section-label::after{content:'';flex:1;max-width:48px;height:1px;background:var(--green);opacity:.4;}
   h2{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);letter-spacing:2px;line-height:1;}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#252525;border-radius:var(--radius);overflow:hidden;}
-  .step{background:#181818;padding:48px 40px;position:relative;transition:background .3s;}
+  .step{background:#181818;padding:28px 32px;position:relative;transition:background .3s;}
   .step:hover{background:#1e1e1e;}
-  .step-num{font-family:var(--font-display);font-size:80px;color:var(--border);line-height:1;margin-bottom:24px;transition:color .3s;}
-  .step:hover .step-num{color:rgba(0,232,122,.15);}
-  .step-icon{width:48px;height:48px;background:var(--green-glow);border:1px solid rgba(0,232,122,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;}
-  .step h3{font-family:var(--font-display);font-size:28px;letter-spacing:1.5px;color:var(--white);margin-bottom:12px;}
-  .step p{color:var(--muted);font-size:15px;line-height:1.6;font-weight:300;}
+  .step-num{display:none;}
+  .step-icon{width:44px;height:44px;background:var(--green-glow);border:1px solid rgba(0,232,122,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px;}
+  .step h3{font-family:var(--font-display);font-size:24px;letter-spacing:1.5px;color:var(--white);margin-bottom:8px;}
+  .step p{color:var(--white);font-size:14px;line-height:1.6;font-weight:300;}
   .step-connector{position:absolute;right:-14px;top:50%;transform:translateY(-50%);width:28px;height:28px;background:var(--black);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;font-size:12px;color:var(--green);}
   @media(max-width:768px){.steps{grid-template-columns:1fr;}.step-connector{display:none;}}
 
@@ -282,7 +281,7 @@
   <div class="hero-grid"></div>
   <div class="hero-badge"><div class="badge-dot"></div>Free Beta &middot; Milwaukee &amp; North Shore</div>
   <h1><span class="line1">BUY &amp; SELL</span><span class="line2">SWITCH GAMES</span></h1>
-  <p class="hero-sub"><strong>Price locked before you meet.</strong> No haggling, no shipping, no strangers from the internet. Local only &mdash; always free during beta.</p>
+  <p class="hero-sub"><strong>Price locked before you meet.</strong> No haggling, no shipping, no strangers from the internet. Local only - always free during beta.</p>
   <div class="hero-actions">
     <a href="#form" class="btn-primary" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'});return false;">Buy / Sell Now <span class="btn-arrow">&rarr;</span></a>
     <div class="hero-trust">
@@ -303,54 +302,28 @@
 
 <!-- HOW IT WORKS -->
 <section id="how" style="background:#0a0a0a;">
-  <div class="how-section">
-    <div class="how-header reveal">
+  <div style="padding:64px 24px 56px;max-width:1100px;margin:0 auto;">
+    <div class="how-header reveal" style="margin-bottom:40px;">
       <div class="section-label">Process</div>
-      <h2>HOW IT<br>WORKS</h2>
+      <h2>HOW IT WORKS</h2>
     </div>
     <div class="steps reveal">
       <div class="step">
-        <div class="step-num">01</div>
         <div class="step-icon">&#128274;</div>
         <h3>LOCK YOUR PRICE</h3>
-        <p>Submit your game and set your terms. The price is agreed upon before anyone meets &mdash; zero negotiation at the door.</p>
+        <p style="color:var(--white);">Submit your game and set your terms. Price agreed before anyone meets - zero negotiation at the door.</p>
         <div class="step-connector">&rarr;</div>
       </div>
       <div class="step">
-        <div class="step-num">02</div>
         <div class="step-icon">&#127919;</div>
         <h3>GET MATCHED</h3>
-        <p>We find a compatible buyer or seller in your area within 48 hours. A real person reviews every submission &mdash; no bots.</p>
+        <p style="color:var(--white);">We find a compatible buyer or seller in your area within 48 hours. A real person reviews every submission.</p>
         <div class="step-connector">&rarr;</div>
       </div>
       <div class="step">
-        <div class="step-num">03</div>
         <div class="step-icon">&#129309;</div>
         <h3>MEET LOCALLY</h3>
-        <p>Exchange in a public place. Inspect the game before paying. No shipping ever &mdash; Milwaukee &amp; North Shore only.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOUNDER NOTE -->
-<section class="founder-section">
-  <div class="founder-inner reveal">
-    <div class="founder-left">
-      <div class="founder-avatar">&#127918;</div>
-      <div class="founder-name">Chip Beauford</div>
-      <div class="founder-title">Founder, CartridgeBond</div>
-    </div>
-    <div class="founder-right">
-      <blockquote>"CartridgeBond is in free beta right now. NO FEES &mdash; we connect buyers and sellers directly, no escrow, no platform cut, no middleman taking a slice."</blockquote>
-      <p>You lock in your terms, we find your match, you meet locally. That's it. Every submission is reviewed by a real person &mdash; no bots, no auto-matches, just us.</p>
-      <p>Fees and escrow are coming down the road. Getting in now means you trade in the free era.</p>
-      <div class="founder-perk">
-        <div style="font-size:20px;">&#127942;</div>
-        <div>
-          <div class="founder-perk-text">First <span>25 users</span> trade free for life</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:2px;">Even after we introduce fees. You're early &mdash; that matters.</div>
-        </div>
+        <p style="color:var(--white);">Exchange in a public place. Inspect the game before paying. No shipping - Milwaukee &amp; North Shore only.</p>
       </div>
     </div>
   </div>
@@ -400,7 +373,7 @@
         </div>
         <div id="gameFieldWrap" style="display:none;">
           <label class="form-label">Which game(s) are you selling?</label>
-          <div class="chips-hint">Tap to select &mdash; tap again to remove.</div>
+          <div class="chips-hint">Tap to select - tap again to remove.</div>
           <div class="game-chips" id="sellGameChips"></div>
           <div class="game-search-wrap">
             <input type="text" id="gameSearch" class="game-search-input" placeholder="Game not listed? Type title here..." autocomplete="off" oninput="handleSellCustomSearch()" onfocus="openSellDropdown()" onblur="closeSellDropdownDelayed()">
@@ -417,7 +390,7 @@
             <option value="this-week">This week</option>
             <option value="two-weeks">Within 2 weeks</option>
             <option value="one-month">Within a month</option>
-            <option value="flexible">Flexible &mdash; 1 to 3 months</option>
+            <option value="flexible">Flexible - 1 to 3 months</option>
           </select>
         </div>
         <div class="form-group">
@@ -425,8 +398,8 @@
           <div class="condition-card">
             <div class="condition-badge">A1 &#10003;</div>
             <div>
-              <div class="condition-title">Like New / Very Good &mdash; 90%+ Condition</div>
-              <div class="condition-desc">Game plays perfectly. Original case included. Minor surface scuffs acceptable &mdash; must be free of scratches affecting gameplay.</div>
+              <div class="condition-title">Like New / Very Good - 90%+ Condition</div>
+              <div class="condition-desc">Game plays perfectly. Original case included. Minor surface scuffs acceptable - must be free of scratches affecting gameplay.</div>
             </div>
           </div>
           <div style="font-size:12px;color:var(--muted2);margin-top:8px;font-family:var(--font-mono);">Other condition tiers coming soon</div>
@@ -444,7 +417,7 @@
         </div>
         <div id="buyGameFieldWrap" style="display:none;">
           <label class="form-label">Which game(s) do you want?</label>
-          <div class="chips-hint">Tap to select &mdash; tap again to remove.</div>
+          <div class="chips-hint">Tap to select - tap again to remove.</div>
           <div class="game-chips" id="buyGameChips"></div>
           <div class="game-search-wrap">
             <input type="text" id="buyGameSearch" class="game-search-input" placeholder="Game not listed? Type title here..." autocomplete="off" oninput="handleBuyCustomSearch()" onfocus="openBuyDropdown()" onblur="closeBuyDropdownDelayed()">
@@ -461,7 +434,7 @@
             <option value="asap">As soon as possible</option>
             <option value="two-weeks">Within 2 weeks</option>
             <option value="one-month">Within a month</option>
-            <option value="no-rush">No rush &mdash; 1 to 3 months</option>
+            <option value="no-rush">No rush - 1 to 3 months</option>
           </select>
         </div>
         <div class="form-group">
@@ -469,7 +442,7 @@
           <div class="condition-card">
             <div class="condition-badge">A1 &#10003;</div>
             <div>
-              <div class="condition-title">Like New / Very Good &mdash; 90%+ Condition</div>
+              <div class="condition-title">Like New / Very Good - 90%+ Condition</div>
               <div class="condition-desc">Game plays perfectly. Original case included. Minor surface scuffs acceptable.</div>
             </div>
           </div>
@@ -480,7 +453,7 @@
 
       <!-- CONTACT INFO -->
       <div class="form-section-title">Your info</div>
-      <p style="font-size:13px;color:var(--muted2);margin-bottom:20px;">Your browser can autofill this &mdash; tap a field to see saved info.</p>
+      <p style="font-size:13px;color:var(--muted2);margin-bottom:20px;">Your browser can autofill this - tap a field to see saved info.</p>
 
       <div class="form-group">
         <label class="form-label">Full Name</label>
@@ -557,7 +530,7 @@
     <div class="success-state" id="successScreen">
       <div class="success-icon-wrap">&#10003;</div>
       <h3>YOU'RE LOCKED IN</h3>
-      <p>A real person will reach out within 48 hours with your match. Check your email &mdash; and welcome to CartridgeBond.</p>
+      <p>A real person will reach out within 48 hours with your match. Check your email - and welcome to CartridgeBond.</p>
       <div id="bondSummary" style="margin:20px 0;text-align:left;background:#111;border:1px solid var(--border);border-radius:8px;padding:16px;font-size:13px;color:var(--muted);line-height:1.9;"></div>
       <div class="success-actions">
         <button class="success-btn success-btn-primary" onclick="addAnother()">+ Submit Another</button>
@@ -585,6 +558,29 @@
   </div>
 </div>
 
+<!-- FOUNDER NOTE -->
+<section class="founder-section">
+  <div class="founder-inner reveal">
+    <div class="founder-left">
+      <div class="founder-avatar">&#127918;</div>
+      <div class="founder-name">Chip Beauford</div>
+      <div class="founder-title">Founder, CartridgeBond</div>
+    </div>
+    <div class="founder-right">
+      <blockquote>"CartridgeBond is in free beta right now. NO FEES - we connect buyers and sellers directly, no escrow, no platform cut, no middleman taking a slice."</blockquote>
+      <p>You lock in your terms, we find your match, you meet locally. That's it. Every submission is reviewed by a real person - no bots, no auto-matches, just us.</p>
+      <p>Fees and escrow are coming down the road. Getting in now means you trade in the free era.</p>
+      <div class="founder-perk">
+        <div style="font-size:20px;">&#127942;</div>
+        <div>
+          <div class="founder-perk-text">First <span>25 users</span> trade free for life</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">Even after we introduce fees. You're early - that matters.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- REFERRAL -->
 <section class="referral-section">
   <div class="referral-inner reveal">
@@ -610,7 +606,7 @@
     <li><a href="privacy.html">Privacy</a></li>
     <li><a href="waitlist.html">Not in Milwaukee?</a></li>
   </ul>
-  <div class="footer-copy">&copy; 2026 CartridgeBond. A connection platform only &mdash; not a party to any transaction.</div>
+  <div class="footer-copy">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
 </footer>
 
 <script>
@@ -796,12 +792,12 @@ function showConfirmModal(){
   var lines=[];
   if(currentRole==='sell'){
     lines.push('<strong>Selling:</strong>');
-    sellCart.forEach(function(g){lines.push('&nbsp;&nbsp;'+g.name+' &mdash; <strong style="color:var(--green);">$'+g.resale+'</strong>');});
+    sellCart.forEach(function(g){lines.push('&nbsp;&nbsp;'+g.name+' - <strong style="color:var(--green);">$'+g.resale+'</strong>');});
     var winEl=document.getElementById('sellWindow');
     lines.push('<strong>Available:</strong> '+winEl.options[winEl.selectedIndex].text);
   }else{
     lines.push('<strong>Buying:</strong>');
-    buyCart.forEach(function(g){lines.push('&nbsp;&nbsp;'+g.name+' &mdash; <strong style="color:var(--green);">$'+g.price+'</strong>');});
+    buyCart.forEach(function(g){lines.push('&nbsp;&nbsp;'+g.name+' - <strong style="color:var(--green);">$'+g.price+'</strong>');});
     var bwinEl=document.getElementById('buyWindow');
     lines.push('<strong>Needed:</strong> '+bwinEl.options[bwinEl.selectedIndex].text);
   }
@@ -833,7 +829,7 @@ function submitForm(){
     document.getElementById('h_condition').value='A1 - Like New / Very Good';
     document.getElementById('h_timeline').value=wlabel;
     html='<div style="margin-bottom:6px;"><strong style="color:var(--green);">Selling</strong></div>';
-    sellCart.forEach(function(g){html+='<div>'+g.name+' &mdash; $'+g.resale+'</div>';});
+    sellCart.forEach(function(g){html+='<div>'+g.name+' - $'+g.resale+'</div>';});
     html+='<div style="color:var(--muted);font-size:12px;margin-top:8px;">Available: '+wlabel+' &middot; Condition: A1</div>';
   }else{
     var bwin=buyWinLabels[document.getElementById('buyWindow').value]||'As soon as possible';
@@ -843,7 +839,7 @@ function submitForm(){
     document.getElementById('h_condition').value='A1 - Like New / Very Good';
     document.getElementById('h_timeline').value=bwin;
     html='<div style="margin-bottom:6px;"><strong style="color:var(--green);">Buying</strong></div>';
-    buyCart.forEach(function(g){html+='<div>'+g.name+' &mdash; $'+g.price+'</div>';});
+    buyCart.forEach(function(g){html+='<div>'+g.name+' - $'+g.price+'</div>';});
     html+='<div style="color:var(--muted);font-size:12px;margin-top:8px;">Needed: '+bwin+' &middot; Condition: A1</div>';
   }
 
