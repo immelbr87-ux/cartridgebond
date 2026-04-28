@@ -3,275 +3,434 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Check Your Trade Status | CartridgeBond Milwaukee</title>
-<meta name="description" content="Check the status of your CartridgeBond buy or sell submission. Enter your email to see where your trade stands.">
-<meta name="robots" content="noindex">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SN05PGREN7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-SN05PGREN7');
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<title>Submission Status | CartridgeBond</title>
+<meta name="description" content="Check the status of your CartridgeBond submission. Active, matched, or complete.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Submission Status | CartridgeBond">
+<meta property="og:description" content="Check the status of your CartridgeBond Nintendo Switch trade submission.">
+<meta property="og:url" content="https://www.cartridgebond.com/status.html">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --green: #22c55e; --green-dim: #16a34a; --green-dark: #14532d;
-    --green-bg: #0d2318; --green-light: #dcfce7; --green-mid: #86efac;
-    --ink: #0f0f0f; --ink-mid: #3a3a3a; --ink-light: #777;
-    --border: #e2e2da; --surface: #f8f8f5; --white: #ffffff; --radius: 10px;
-  }
-  body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); min-height: 100vh;  padding-top:48px; padding-top: 48px; padding-top: 48px; }
+:root {
+  --bg: #0a0a0a;
+  --bg-card: #141414;
+  --bg-card-2: #1a1a1a;
+  --border: #262626;
+  --border-strong: #333333;
+  --text: #f5f5f5;
+  --text-muted: #a3a3a3;
+  --text-dim: #666666;
+  --accent: #39ff14;
+  --accent-dim: rgba(57, 255, 20, 0.15);
+  --accent-glow: rgba(57, 255, 20, 0.4);
+  --warn: #ffb800;
+  --warn-dim: rgba(255, 184, 0, 0.15);
+  --success: #39ff14;
+  --success-dim: rgba(57, 255, 20, 0.15);
+}
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .page-header { background: var(--green-bg); padding: 28px 20px 24px; text-align: center; position: relative; overflow: hidden; }
-  .page-header::before { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px); background-size:32px 32px; pointer-events:none; }
-  .page-header h1 { font-family:'Barlow Condensed',sans-serif; font-size:32px; font-weight:700; color:white; position:relative; margin-bottom:8px; }
-  .page-header p { font-size:14px; color:rgba(255,255,255,0.5); position:relative; line-height:1.6; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
 
-  .container { max-width: 480px; margin: 0 auto; padding: 32px 16px 60px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-  .card { background:white; border:1.5px solid var(--border); border-radius:var(--radius); padding:24px; margin-bottom:20px; }
-  .card-label { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--green-dim); margin-bottom:14px; }
+.nav {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .field { margin-bottom:14px; }
-  .field label { display:block; font-size:13px; font-weight:600; color:var(--ink-mid); margin-bottom:6px; }
-  .field input { width:100%; padding:11px 14px; border:1.5px solid var(--border); border-radius:var(--radius); font-size:15px; font-family:'Barlow',sans-serif; outline:none; transition:border-color .15s; }
-  .field input:focus { border-color:var(--green-dim); }
+.nav-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
 
-  .check-btn {
-    width:100%; padding:14px; background:var(--green-dim); color:white; border:none;
-    border-radius:var(--radius); font-family:'Barlow Condensed',sans-serif;
-    font-size:18px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
-    cursor:pointer; transition:background .2s;
-  }
-  .check-btn:hover { background:var(--green-dark); }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.nav-links a:hover { color: var(--accent); text-decoration: none; }
 
-  /* Status results */
-  #resultsArea { display:none; }
-  .status-card { background:white; border:1.5px solid var(--border); border-radius:var(--radius); padding:18px 20px; margin-bottom:12px; }
-  .status-badge { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:20px; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; }
-  .status-pending { background:#fef3c7; color:#92400e; }
-  .status-matched { background:var(--green-light); color:var(--green-dark); }
-  .status-dot { width:7px; height:7px; border-radius:50%; background:currentColor; }
-  .status-game { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:700; color:var(--ink); margin-bottom:4px; }
-  .status-detail { font-size:13px; color:var(--ink-mid); line-height:1.6; }
-  .status-price { font-weight:700; color:var(--green-dim); }
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
 
-  .no-results { text-align:center; padding:32px 20px; }
-  .no-results h3 { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:700; color:var(--ink); margin-bottom:8px; }
-  .no-results p { font-size:14px; color:var(--ink-mid); line-height:1.7; margin-bottom:16px; }
-  .no-results a { display:inline-block; padding:11px 22px; background:var(--green-dim); color:white; text-decoration:none; border-radius:8px; font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+.back-link {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
 
-  .loading { text-align:center; padding:24px; font-size:14px; color:var(--ink-mid); }
-  .error-msg { background:#fef2f2; border:1.5px solid #fca5a5; border-radius:var(--radius); padding:14px; font-size:13px; color:#991b1b; }
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
 
-  footer { background:#111; padding:22px 20px; text-align:center; border-top:1px solid rgba(34,197,94,0.12); }
-  .footer-brand { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px; }
-  .footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:6px 16px; margin-bottom:10px; }
-  .footer-links a { color:rgba(255,255,255,0.4); text-decoration:none; font-size:11px; }
-  .footer-links a:hover { color:var(--green); }
-  .footer-sep { color:rgba(255,255,255,0.15); }
-  .footer-copy { font-size:11px; color:rgba(255,255,255,0.2); }
-  /* ── STICKY NAV ── */
-  .site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:#0a1a10;border-bottom:1px solid rgba(34,197,94,0.2);height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;}
-  .site-nav::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(34,197,94,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.05) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;}
-  .nav-logo{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;position:relative;z-index:1;flex-shrink:0;line-height:1;}
-  .nav-logo .cartridge{color:rgba(255,255,255,0.9);}
-  .nav-logo .bond{color:#22c55e;}
-  .nav-desktop-links{display:flex;align-items:center;gap:16px;position:relative;z-index:1;}
-  .nav-desktop-links a{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .15s;white-space:nowrap;}
-  .nav-desktop-links a:hover{color:#22c55e;}
-  .nav-desktop-links .nav-cta{background:#16a34a;color:white!important;padding:6px 13px;border-radius:6px;}
-  .nav-desktop-links .nav-cta:hover{background:#14532d!important;}
-  .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:4px;position:relative;z-index:2;flex-shrink:0;}
-  .nav-hamburger span{display:block;width:20px;height:2px;background:rgba(255,255,255,0.6);border-radius:2px;transition:all .2s;}
-  .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-  .nav-hamburger.open span:nth-child(2){opacity:0;}
-  .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-  .nav-mobile-menu{display:none;position:fixed;top:48px;left:0;right:0;background:#0a1a10;border-bottom:1px solid rgba(34,197,94,0.25);z-index:999;padding:8px 0;}
-  .nav-mobile-menu.open{display:block;}
-  .nav-mobile-menu a{display:block;padding:13px 20px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.06);}
-  .nav-mobile-menu a:last-child{border-bottom:none;}
-  .nav-mobile-right{display:flex;align-items:center;gap:10px;position:relative;z-index:2;}
-  .nav-mobile-cta{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#16a34a;color:white!important;padding:6px 11px;border-radius:6px;text-decoration:none;white-space:nowrap;}
-  @media(max-width:560px){.nav-desktop-links{display:none!important;}.nav-hamburger{display:flex!important;}.nav-mobile-cta{display:block!important;}}
-  @media(min-width:561px){.nav-mobile-right{display:none!important;}.nav-mobile-menu{display:none!important;}}
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+}
+
+.lookup-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.lookup-card h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.25rem;
+}
+
+.form-group { margin-bottom: 1.25rem; }
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input[type="email"], input[type="text"] {
+  width: 100%;
+  background: var(--bg-card-2);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.15s;
+}
+
+input[type="email"]:focus, input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.btn {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: all 0.15s;
+  width: 100%;
+}
+
+.btn:hover { box-shadow: 0 0 24px var(--accent-glow); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+.btn-secondary:hover { border-color: var(--accent); box-shadow: none; }
+
+/* Status result */
+.result {
+  display: none;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid;
+  margin-top: 1.5rem;
+}
+.result.show { display: block; }
+.result.error { border-color: #b91c1c; background: rgba(185,28,28,0.08); }
+.result.info { border-color: var(--border-strong); background: var(--bg-card-2); }
+
+.result h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.result p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* Status guide */
+.guide-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.status-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.status-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.status-icon.active { background: var(--warn-dim); color: var(--warn); }
+.status-icon.matched { background: var(--accent-dim); color: var(--accent); }
+.status-icon.complete { background: var(--accent-dim); color: var(--accent); }
+
+.status-content { flex: 1; }
+.status-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+.status-content p { color: var(--text-muted); font-size: 0.92rem; }
+.status-content .what-next {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+.status-content .what-next strong { color: var(--text); }
+
+.help-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2.5rem;
+  text-align: center;
+}
+.help-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+.help-card p { color: var(--text-muted); margin-bottom: 1rem; }
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+.footer a { color: var(--text-muted); margin: 0 0.5rem; }
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .container { padding: 2rem 1.25rem 4rem; }
+  .lookup-card, .status-card { padding: 1.25rem; }
+}
 </style>
 </head>
 <body>
 
-<!-- STICKY NAV -->
-<nav class="site-nav" id="siteNav">
-  <a href="index.html" class="nav-logo"><span class="cartridge">Cartridge</span><span class="bond">Bond</span></a>
-  <div class="nav-desktop-links">
-    <a href="blog/index.html">Blog</a>
-    <a href="prices.html">Game Values</a>
-    <a href="faq.html">FAQ</a>
-    <a href="index.html#formInner" class="nav-cta">Buy / Sell Now</a>
-  </div>
-  <div class="nav-mobile-right">
-    <a href="index.html#formInner" class="nav-mobile-cta" onclick="closeMobileMenu()">Buy / Sell Now</a>
-    <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+<nav class="nav">
+  <a href="/index.html" class="nav-brand">CARTRIDGEBOND</a>
+  <div class="nav-links">
+    <a href="/index.html#how">How It Works</a>
+    <a href="/prices.html">Game Values</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/index.html#form">Buy / Sell</a>
   </div>
 </nav>
-<div class="nav-mobile-menu" id="navMobileMenu">
-  <a href="blog/index.html" onclick="closeMobileMenu()">Blog</a>
-  <a href="prices.html" onclick="closeMobileMenu()">Game Values</a>
-  <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
-  <a href="meetup.html" onclick="closeMobileMenu()">Safe Meetup Guide</a>
-  <a href="waitlist.html" onclick="closeMobileMenu()">Not in Milwaukee?</a>
-</div>
-<script>
-function toggleMobileMenu(){var m=document.getElementById('navMobileMenu'),b=document.getElementById('navHamburger');m.classList.toggle('open');b.classList.toggle('open');}
-function closeMobileMenu(){var m=document.getElementById('navMobileMenu'),b=document.getElementById('navHamburger');m.classList.remove('open');b.classList.remove('open');}
-</script>
-
-<div class="page-header">
-  <h1>Check Your Trade Status</h1>
-  <p>Enter the email you submitted with and we'll show you where things stand.</p>
-</div>
 
 <div class="container">
+  <a href="/index.html" class="back-link">← Back to CartridgeBond</a>
 
-  <div class="card">
-    <div class="card-label">Your Submission</div>
-    <div class="field">
-      <label for="statusEmail">Email address</label>
-      <input type="email" id="statusEmail" placeholder="you@email.com" autocomplete="email"
-        onkeydown="if(event.key==='Enter') checkStatus()">
-    </div>
-    <button class="check-btn" onclick="checkStatus()">Check My Status &rarr;</button>
+  <h1>SUBMISSION STATUS</h1>
+  <p class="subtitle">Check where your trade stands. Enter the email you used to submit.</p>
+
+  <div class="lookup-card">
+    <h2>LOOK UP YOUR SUBMISSION</h2>
+    <form id="statusForm" onsubmit="return false;">
+      <div class="form-group">
+        <label for="emailInput">Email</label>
+        <input type="email" id="emailInput" placeholder="you@example.com" required autocomplete="email">
+      </div>
+      <button type="button" class="btn" id="lookupBtn" onclick="checkStatus()">Check Status</button>
+    </form>
+
+    <div id="resultBox" class="result"></div>
   </div>
 
-  <div id="loadingArea" class="loading" style="display:none;">Looking up your submissions...</div>
-  <div id="errorArea" style="display:none;"></div>
-  <div id="resultsArea"></div>
+  <section class="guide-section">
+    <h2>WHAT EACH STATUS MEANS</h2>
 
+    <div class="status-card">
+      <div class="status-icon active">🔄</div>
+      <div class="status-content">
+        <h3>ACTIVE</h3>
+        <p>Your submission is in our system and we're looking for a match. Real person reviews every submission within 24 hours.</p>
+        <div class="what-next">
+          <strong>What to do:</strong> Nothing yet. We'll email you the moment a match is found. Most matches happen within 48 hours.
+        </div>
+      </div>
+    </div>
+
+    <div class="status-card">
+      <div class="status-icon matched">🎯</div>
+      <div class="status-content">
+        <h3>MATCHED</h3>
+        <p>We found a compatible buyer or seller. You should have received an email with their first name and contact info.</p>
+        <div class="what-next">
+          <strong>What to do:</strong> Reply to that email to coordinate a meetup. Use a public location. Inspect the game before paying. See our <a href="/meetup.html">Safe Meetup Guide</a>.
+        </div>
+      </div>
+    </div>
+
+    <div class="status-card">
+      <div class="status-icon complete">✓</div>
+      <div class="status-content">
+        <h3>COMPLETE</h3>
+        <p>Trade confirmed by both parties. You're done.</p>
+        <div class="what-next">
+          <strong>What to do:</strong> If this was your first trade and you were one of the first 25 users, your founder badge is locked in. Tell a friend - the more people, the faster the next match.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="help-card">
+    <h3>CAN'T FIND YOUR SUBMISSION?</h3>
+    <p>It might still be processing. We review every submission manually within 24 hours.</p>
+    <p>If it has been longer than that, email us and we'll track it down personally.</p>
+    <a href="mailto:cartridgebond@gmail.com" class="btn btn-secondary" style="display:inline-block;width:auto;text-decoration:none;margin-top:0.5rem;">Email cartridgebond@gmail.com</a>
+  </div>
 </div>
 
-<footer style="background:#111;padding:24px 20px;text-align:center;border-top:1px solid rgba(34,197,94,0.12);">
-  <div style="margin-bottom:12px;"><a href="index.html" style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;"><strong style="color:white;">Cartridge</strong><strong style="color:#22c55e;">Bond</strong></a></div>
-  <div style="font-size:11px;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 14px;margin-bottom:10px;">
-    <a href="blog/index.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Blog</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="prices.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Game Values</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="faq.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">FAQ</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="meetup.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Safe Meetup Guide</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="terms.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Terms</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="privacy.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Privacy</a>
-    <span style="color:rgba(255,255,255,0.15);">·</span>
-    <a href="waitlist.html" style="color:rgba(255,255,255,0.4);text-decoration:none;">Not in Milwaukee?</a>
-  </div>
-  <div style="font-size:11px;color:rgba(255,255,255,0.2);">&#169; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
+<footer class="footer">
+  <a href="/index.html">Home</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/meetup.html">Safe Meetup</a>
+  <a href="/terms.html">Terms</a>
+  <a href="/privacy.html">Privacy</a>
+  <p style="margin-top:1rem;">© 2026 CartridgeBond. A connection platform only.</p>
 </footer>
 
 <script>
-// IMPORTANT: Replace this URL with your Apps Script Web App URL
-// It can be the same URL as your form endpoint
-var STATUS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec';
+// Status lookup endpoint - update this once Apps Script doGet is deployed
+const STATUS_ENDPOINT = ''; // e.g. 'https://script.google.com/macros/s/.../exec'
 
-function checkStatus() {
-  var email = document.getElementById('statusEmail').value.trim().toLowerCase();
-  if (!email || email.indexOf('@') === -1) {
-    document.getElementById('errorArea').style.display = 'block';
-    document.getElementById('errorArea').innerHTML = '<div class="error-msg">Please enter a valid email address.</div>';
+async function checkStatus() {
+  const emailInput = document.getElementById('emailInput');
+  const resultBox = document.getElementById('resultBox');
+  const btn = document.getElementById('lookupBtn');
+
+  const email = emailInput.value.trim().toLowerCase();
+  if (!email || !email.includes('@')) {
+    showResult('error', 'Invalid email', 'Please enter a valid email address.');
     return;
   }
 
-  document.getElementById('errorArea').style.display   = 'none';
-  document.getElementById('resultsArea').style.display = 'none';
-  document.getElementById('loadingArea').style.display = 'block';
+  btn.disabled = true;
+  btn.textContent = 'Checking...';
 
-  fetch(STATUS_ENDPOINT + '?action=status&email=' + encodeURIComponent(email))
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
-      document.getElementById('loadingArea').style.display = 'none';
-      renderResults(data, email);
-    })
-    .catch(function(err) {
-      document.getElementById('loadingArea').style.display = 'none';
-      document.getElementById('errorArea').style.display   = 'block';
-      document.getElementById('errorArea').innerHTML = '<div class="error-msg">Could not connect. Please try again in a moment or email <a href="mailto:cartridgebond@gmail.com" style="color:#991b1b;">cartridgebond@gmail.com</a> directly.</div>';
-    });
+  // Honeypot check (anti-bot)
+  if (document.getElementById('hp_field') && document.getElementById('hp_field').value) {
+    return; // bot caught
+  }
+
+  try {
+    if (!STATUS_ENDPOINT) {
+      // Endpoint not yet configured - show graceful fallback
+      showResult('info',
+        'Status check coming soon',
+        'We are finalizing the live status lookup. In the meantime, check the email you used to submit - we send updates there as your submission moves from Active to Matched to Complete. If it has been more than 48 hours, email cartridgebond@gmail.com and we will respond within a day.'
+      );
+      return;
+    }
+
+    const url = STATUS_ENDPOINT + '?email=' + encodeURIComponent(email);
+    const resp = await fetch(url, { method: 'GET' });
+    if (!resp.ok) throw new Error('Lookup failed');
+    const data = await resp.json();
+
+    if (!data.found) {
+      showResult('info',
+        'No submission found',
+        'We could not find a submission for that email. It may still be processing - we review every submission manually within 24 hours. If it has been longer, email cartridgebond@gmail.com.'
+      );
+    } else {
+      showResult('info',
+        'Status: ' + (data.status || 'Active').toUpperCase(),
+        (data.message || 'Your submission is being processed. Check your email for updates.')
+      );
+    }
+  } catch (err) {
+    showResult('error',
+      'Something went wrong',
+      'We had trouble looking that up. Please email cartridgebond@gmail.com and we will respond within a day.'
+    );
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Check Status';
+  }
 }
 
-function renderResults(data, email) {
-  var area = document.getElementById('resultsArea');
-  area.style.display = 'block';
+function showResult(type, title, message) {
+  const resultBox = document.getElementById('resultBox');
+  resultBox.className = 'result show ' + type;
+  resultBox.innerHTML = '<h3>' + title + '</h3><p>' + message + '</p>';
+}
 
-  if (!data || !data.submissions || !data.submissions.length) {
-    area.innerHTML = '<div class="no-results">'
-      + '<h3>No submissions found</h3>'
-      + '<p>We don\'t have a submission on file for <strong>' + email + '</strong>. Double-check the email you used when submitting, or submit a new request below.</p>'
-      + '<a href="index.html">Submit a Game &rarr;</a>'
-      + '</div>';
-    return;
-  }
-
-  var html = '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--green-dim);margin-bottom:12px;">'
-    + data.submissions.length + ' submission' + (data.submissions.length > 1 ? 's' : '') + ' found</div>';
-
-  data.submissions.forEach(function(s) {
-    var isMatched = (s.status || '').toLowerCase() === 'matched';
-    var badgeClass = isMatched ? 'status-matched' : 'status-pending';
-    var badgeText  = isMatched ? 'Matched' : 'Under Review';
-
-    html += '<div class="status-card">'
-      + '<div class="status-badge ' + badgeClass + '"><span class="status-dot"></span>' + badgeText + '</div>'
-      + '<div class="status-game">' + (s.game || 'Unknown game') + '</div>'
-      + '<div class="status-detail">'
-      + '<span class="status-price">' + (s.price || '-') + '</span>'
-      + (s.role ? ' &nbsp;·&nbsp; ' + s.role : '')
-      + (s.timeline ? ' &nbsp;·&nbsp; ' + s.timeline : '')
-      + '</div>'
-      + (isMatched
-          ? '<div style="margin-top:10px;padding:10px 12px;background:var(--green-light);border-radius:8px;font-size:13px;color:var(--green-dark);">Check your email - we sent you your match details. Questions? Reply to that email.</div>'
-          : '<div style="margin-top:10px;font-size:12px;color:var(--ink-light);">Submitted ' + (s.date || '') + ' - we review within 24-48 hours and will email you when matched.</div>')
-      + '</div>';
-  });
-
-  html += '<p style="font-size:12px;color:var(--ink-light);margin-top:16px;text-align:center;">Questions? Email <a href="mailto:cartridgebond@gmail.com" style="color:var(--green-dim);">cartridgebond@gmail.com</a></p>';
-
-  area.innerHTML = html;
+// Pre-fill email from URL parameter (for confirmation emails to link back)
+const params = new URLSearchParams(window.location.search);
+if (params.get('email')) {
+  document.getElementById('emailInput').value = params.get('email');
+}
+if (params.get('check') === '1') {
+  // Auto-trigger lookup if email present
+  setTimeout(checkStatus, 300);
 }
 </script>
 

@@ -1,0 +1,256 @@
+{
+  "lastUpdated": "2026-04-28",
+  "priceSource": "Estimates - verify against PriceCharting Complete prices before launch",
+  "games": [
+    {
+      "title": "The Legend of Zelda: Tears of the Kingdom",
+      "shortTitle": "Zelda: TOTK",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 50,
+      "gameStopTradeIn": 28,
+      "ebayNetLow": 37,
+      "ebayNetHigh": 41,
+      "tier": "premium"
+    },
+    {
+      "title": "The Legend of Zelda: Breath of the Wild",
+      "shortTitle": "Zelda: BOTW",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 42,
+      "gameStopTradeIn": 22,
+      "ebayNetLow": 30,
+      "ebayNetHigh": 34,
+      "tier": "premium"
+    },
+    {
+      "title": "Mario Kart 8 Deluxe",
+      "shortTitle": "Mario Kart 8 Deluxe",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 43,
+      "gameStopTradeIn": 22,
+      "ebayNetLow": 31,
+      "ebayNetHigh": 34,
+      "tier": "premium"
+    },
+    {
+      "title": "Super Smash Bros. Ultimate",
+      "shortTitle": "Smash Bros Ultimate",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 43,
+      "gameStopTradeIn": 20,
+      "ebayNetLow": 29,
+      "ebayNetHigh": 33,
+      "tier": "premium"
+    },
+    {
+      "title": "Super Mario Odyssey",
+      "shortTitle": "Mario Odyssey",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 38,
+      "gameStopTradeIn": 18,
+      "ebayNetLow": 26,
+      "ebayNetHigh": 30,
+      "tier": "standard"
+    },
+    {
+      "title": "Super Mario Bros. Wonder",
+      "shortTitle": "Mario Wonder",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 45,
+      "gameStopTradeIn": 25,
+      "ebayNetLow": 32,
+      "ebayNetHigh": 36,
+      "tier": "premium"
+    },
+    {
+      "title": "Super Mario 3D World + Bowser's Fury",
+      "shortTitle": "Mario 3D World",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 38,
+      "gameStopTradeIn": 18,
+      "ebayNetLow": 26,
+      "ebayNetHigh": 30,
+      "tier": "standard"
+    },
+    {
+      "title": "Mario Party Superstars",
+      "shortTitle": "Mario Party Superstars",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 38,
+      "gameStopTradeIn": 18,
+      "ebayNetLow": 26,
+      "ebayNetHigh": 30,
+      "tier": "standard"
+    },
+    {
+      "title": "Super Mario Party Jamboree",
+      "shortTitle": "Mario Party Jamboree",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 45,
+      "gameStopTradeIn": 25,
+      "ebayNetLow": 32,
+      "ebayNetHigh": 36,
+      "tier": "premium"
+    },
+    {
+      "title": "Animal Crossing: New Horizons",
+      "shortTitle": "Animal Crossing NH",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 36,
+      "gameStopTradeIn": 16,
+      "ebayNetLow": 23,
+      "ebayNetHigh": 27,
+      "tier": "standard"
+    },
+    {
+      "title": "Pokemon Scarlet",
+      "shortTitle": "Pokemon Scarlet",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 39,
+      "gameStopTradeIn": 18,
+      "ebayNetLow": 26,
+      "ebayNetHigh": 29,
+      "tier": "standard"
+    },
+    {
+      "title": "Pokemon Violet",
+      "shortTitle": "Pokemon Violet",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 39,
+      "gameStopTradeIn": 18,
+      "ebayNetLow": 26,
+      "ebayNetHigh": 29,
+      "tier": "standard"
+    },
+    {
+      "title": "Pokemon Sword",
+      "shortTitle": "Pokemon Sword",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 32,
+      "gameStopTradeIn": 14,
+      "ebayNetLow": 21,
+      "ebayNetHigh": 25,
+      "tier": "standard"
+    },
+    {
+      "title": "Pokemon Shield",
+      "shortTitle": "Pokemon Shield",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 32,
+      "gameStopTradeIn": 14,
+      "ebayNetLow": 21,
+      "ebayNetHigh": 25,
+      "tier": "standard"
+    },
+    {
+      "title": "Pokemon Legends: Arceus",
+      "shortTitle": "Pokemon Legends Arceus",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 36,
+      "gameStopTradeIn": 16,
+      "ebayNetLow": 24,
+      "ebayNetHigh": 28,
+      "tier": "standard"
+    },
+    {
+      "title": "Pokemon Brilliant Diamond",
+      "shortTitle": "Pokemon BD",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 34,
+      "gameStopTradeIn": 15,
+      "ebayNetLow": 22,
+      "ebayNetHigh": 26,
+      "tier": "standard"
+    },
+    {
+      "title": "Pokemon Shining Pearl",
+      "shortTitle": "Pokemon SP",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 34,
+      "gameStopTradeIn": 15,
+      "ebayNetLow": 22,
+      "ebayNetHigh": 26,
+      "tier": "standard"
+    },
+    {
+      "title": "Splatoon 3",
+      "shortTitle": "Splatoon 3",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 38,
+      "gameStopTradeIn": 18,
+      "ebayNetLow": 26,
+      "ebayNetHigh": 30,
+      "tier": "standard"
+    },
+    {
+      "title": "Splatoon 2",
+      "shortTitle": "Splatoon 2",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 28,
+      "gameStopTradeIn": 12,
+      "ebayNetLow": 18,
+      "ebayNetHigh": 22,
+      "tier": "value"
+    },
+    {
+      "title": "Luigi's Mansion 3",
+      "shortTitle": "Luigi's Mansion 3",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 38,
+      "gameStopTradeIn": 18,
+      "ebayNetLow": 26,
+      "ebayNetHigh": 30,
+      "tier": "standard"
+    },
+    {
+      "title": "Kirby and the Forgotten Land",
+      "shortTitle": "Kirby Forgotten Land",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 38,
+      "gameStopTradeIn": 18,
+      "ebayNetLow": 26,
+      "ebayNetHigh": 30,
+      "tier": "standard"
+    },
+    {
+      "title": "Metroid Dread",
+      "shortTitle": "Metroid Dread",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 36,
+      "gameStopTradeIn": 16,
+      "ebayNetLow": 24,
+      "ebayNetHigh": 28,
+      "tier": "standard"
+    },
+    {
+      "title": "Donkey Kong Country: Tropical Freeze",
+      "shortTitle": "DKC Tropical Freeze",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 42,
+      "gameStopTradeIn": 22,
+      "ebayNetLow": 30,
+      "ebayNetHigh": 34,
+      "tier": "premium"
+    },
+    {
+      "title": "Mario + Rabbids Sparks of Hope",
+      "shortTitle": "Mario + Rabbids Sparks",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 28,
+      "gameStopTradeIn": 12,
+      "ebayNetLow": 18,
+      "ebayNetHigh": 22,
+      "tier": "value"
+    },
+    {
+      "title": "Fire Emblem Engage",
+      "shortTitle": "Fire Emblem Engage",
+      "platform": "Nintendo Switch",
+      "cartridgeBondPrice": 36,
+      "gameStopTradeIn": 16,
+      "ebayNetLow": 24,
+      "ebayNetHigh": 28,
+      "tier": "standard"
+    }
+  ]
+}
