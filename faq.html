@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ - How CartridgeBond Works | Milwaukee Nintendo Switch Trading</title>
-<meta name="description" content="Answers to common questions about CartridgeBond - how we match buyers and sellers of used Nintendo Switch games in Milwaukee.">
+<title>FAQ - How CartridgeBond Works | Milwaukee Beta</title>
+<meta name="description" content="Everything you need to know about buying and selling Nintendo Switch games on CartridgeBond. Currently in Milwaukee beta with national launch coming soon.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://cartridgebond.com/faq.html">
+<meta property="og:title" content="CartridgeBond FAQ">
+<meta property="og:description" content="How matching, pricing, and meetups work. Milwaukee beta - national launch coming soon.">
+<meta property="og:url" content="https://cartridgebond.com/faq.html">
+<meta property="og:type" content="website">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SN05PGREN7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SN05PGREN7');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
@@ -73,10 +77,25 @@
   .cta-box p{color:var(--muted);font-size:15px;margin-bottom:20px;font-weight:300;}
   .cta-box a{display:inline-block;padding:14px 32px;background:var(--green);color:var(--black);text-decoration:none;border-radius:8px;font-weight:700;font-size:16px;transition:background .2s;}
   .cta-box a:hover{background:#00ff88;}
+  /* MAINTENANCE BANNER */
+  .cb-banner{position:fixed;top:0;left:0;right:0;z-index:101;display:none;align-items:center;justify-content:center;gap:16px;padding:10px 48px;background:rgba(255,184,0,0.12);border-bottom:1px solid rgba(255,184,0,0.4);color:#ffb800;font-size:13px;line-height:1.4;font-weight:500;}
+  .cb-banner.show{display:flex;}
+  .cb-banner.type-warn{background:rgba(255,71,87,0.12);border-color:rgba(255,71,87,0.4);color:#ff4757;}
+  .cb-banner.type-success{background:rgba(0,232,122,0.1);border-color:rgba(0,232,122,0.3);color:var(--green);}
+  .cb-banner-msg{flex:1;max-width:900px;}
+  .cb-banner-msg strong{margin-right:8px;font-weight:600;}
+  .cb-banner-close{background:none;border:none;color:inherit;cursor:pointer;font-size:18px;padding:0 4px;line-height:1;opacity:.7;transition:opacity .15s;}
+  .cb-banner-close:hover{opacity:1;}
+  @media(max-width:680px){.cb-banner{padding:8px 16px;font-size:12px;}}
 
 </style>
 </head>
 <body>
+<!-- MAINTENANCE BANNER (config-driven) -->
+<div id="cbBanner" class="cb-banner" role="alert" aria-live="polite">
+  <div class="cb-banner-msg" id="cbBannerMsg"></div>
+  <button class="cb-banner-close" id="cbBannerClose" aria-label="Dismiss">&times;</button>
+</div>
 <nav id="siteNav">
   <a href="index.html" class="nav-logo"><span>Cartridge</span><span>Bond</span></a>
   <ul class="nav-desktop">
@@ -84,6 +103,7 @@
     <li><a href="prices.html">Game Values</a></li>
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="faq.html">FAQ</a></li>
+    <li><a href="status.html">Check Status</a></li>
     <li><a href="index.html#form" class="nav-cta-link">Buy / Sell Now</a></li>
   </ul>
   <div class="nav-mobile-right">
@@ -96,6 +116,7 @@
   <a href="prices.html" onclick="closeMobileMenu()">Game Values</a>
   <a href="blog/index.html" onclick="closeMobileMenu()">Blog</a>
   <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
+  <a href="status.html" onclick="closeMobileMenu()">Check Status</a>
   <a href="meetup.html" onclick="closeMobileMenu()">Safe Meetup Guide</a>
   <a href="waitlist.html" onclick="closeMobileMenu()">Not in Milwaukee?</a>
 </div>
@@ -112,7 +133,13 @@ function closeMobileMenu(){document.getElementById('navMobileMenu').classList.re
         <span class="faq-q-text">What exactly does CartridgeBond do?</span>
         <span class="faq-arrow">&#8964;</span>
       </button>
-      <div class="faq-a">CartridgeBond matches local Nintendo Switch game buyers and sellers in Milwaukee and the North Shore. You submit what you have or want, lock in your price and condition terms, and we find someone compatible in your area. No shipping, no strangers from across the country.</div>
+      <div class="faq-a">CartridgeBond matches Nintendo Switch game buyers and sellers with prices locked in before anyone meets. We are launching in Milwaukee and the North Shore so we can prove the model with local meetups, then opening nationally with shipping and escrow shortly after. You submit what you have or want, lock in your price and condition, and we find a compatible match.</div>
+    </div>    <div class="faq-item">
+      <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+        <span class="faq-q-text">When will CartridgeBond be available outside Milwaukee?</span>
+        <span class="faq-arrow">&#8964;</span>
+      </button>
+      <div class="faq-a">Soon. The Milwaukee beta is how we prove the model - locked pricing, real matches, real trades - without the complexity of shipping and escrow. Once we have a track record we are opening nationally with full shipping support and escrow protection. If you are outside Milwaukee, join the <a href="waitlist.html">waitlist</a> and we will email you the moment we expand to your area.</div>
     </div>    <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
         <span class="faq-q-text">How is this different from Facebook Marketplace?</span>
@@ -130,7 +157,7 @@ function closeMobileMenu(){document.getElementById('navMobileMenu').classList.re
         <span class="faq-q-text">How long does matching take?</span>
         <span class="faq-arrow">&#8964;</span>
       </button>
-      <div class="faq-a">We review submissions within 24 hours. How quickly you get matched depends on local demand. Mario Kart and Zelda move fastest. If no immediate match exists, your submission stays active until we find one.</div>
+      <div class="faq-a">We review submissions within 24 hours. How quickly you get matched depends on local demand. Mario Kart and Zelda move fastest. If no immediate match exists, your submission stays active until we find one. You can <a href="status.html">check your status anytime</a> using the email you submitted with.</div>
     </div>  </div>
   <div class="faq-group">
     <div class="group-label">Pricing</div>
@@ -139,7 +166,7 @@ function closeMobileMenu(){document.getElementById('navMobileMenu').classList.re
         <span class="faq-q-text">How are prices set?</span>
         <span class="faq-arrow">&#8964;</span>
       </button>
-      <div class="faq-a">Prices are based on current secondary market rates in Milwaukee - what games actually sell for between private parties locally, not GameStop trade-in values. Sellers lock in their price at submission and it does not change at the meetup.</div>
+      <div class="faq-a">Prices are based on current secondary market rates - what games actually sell for between private parties locally and on eBay (sold listings, not asking prices). We cross-reference Wisconsin eBay sold data, PriceCharting Complete-condition values, and observed local activity. Sellers lock in their price at submission and it does not change at the meetup.</div>
     </div>    <div class="faq-item">
       <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
         <span class="faq-q-text">Is CartridgeBond free?</span>
@@ -151,7 +178,7 @@ function closeMobileMenu(){document.getElementById('navMobileMenu').classList.re
         <span class="faq-q-text">Can I set my own price?</span>
         <span class="faq-arrow">&#8964;</span>
       </button>
-      <div class="faq-a">Yes. For games not in our standard list, use the search field to type any title and set your own price. For our six listed titles we use reference prices based on Milwaukee market data, which adjust slightly based on your sell timeline.</div>
+      <div class="faq-a">Yes. For games not in our standard list, use the search field to type any title and set your own price. For our listed titles we use reference prices based on market data, which adjust slightly based on your sell timeline.</div>
     </div>  </div>
   <div class="faq-group">
     <div class="group-label">Condition &amp; Games</div>
@@ -166,7 +193,7 @@ function closeMobileMenu(){document.getElementById('navMobileMenu').classList.re
         <span class="faq-q-text">What games do you support?</span>
         <span class="faq-arrow">&#8964;</span>
       </button>
-      <div class="faq-a">Currently: Mario Kart 8 Deluxe, Zelda: Tears of the Kingdom, Super Smash Bros. Ultimate, Pokemon Scarlet, Pokemon Violet, and Animal Crossing: New Horizons - all Nintendo Switch. More titles and platforms are coming. Unlisted games can be submitted using the custom search field.</div>
+      <div class="faq-a">We currently support 25+ Nintendo Switch titles including Mario Kart 8 Deluxe, both Zelda titles, Smash Bros Ultimate, all main-line Pokemon games, Animal Crossing, Splatoon, Mario Party, and more - see the full list on the <a href="prices.html">Game Values page</a>. Unlisted games can be submitted using the custom search field on the form. More platforms are coming as we expand.</div>
     </div>  </div>
   <div class="faq-group">
     <div class="group-label">Safety &amp; Meetups</div>
@@ -202,6 +229,7 @@ function closeMobileMenu(){document.getElementById('navMobileMenu').classList.re
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="prices.html">Game Values</a></li>
     <li><a href="faq.html">FAQ</a></li>
+    <li><a href="status.html">Check Status</a></li>
     <li><a href="meetup.html">Safe Meetup Guide</a></li>
     <li><a href="terms.html">Terms</a></li>
     <li><a href="privacy.html">Privacy</a></li>
@@ -209,6 +237,45 @@ function closeMobileMenu(){document.getElementById('navMobileMenu').classList.re
   </ul>
   <div class="footer-copy">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
 </footer>
+
+<script>
+// ── MAINTENANCE BANNER ────────────────────────────────────────
+(function(){
+  fetch('config.json?v='+Date.now())
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(cfg){
+      if(!cfg||!cfg.maintenanceBanner||!cfg.maintenanceBanner.enabled)return;
+      var b=cfg.maintenanceBanner;
+      if(b.dismissible!==false&&sessionStorage.getItem('cbBannerDismissed')==='1')return;
+      var el=document.getElementById('cbBanner');
+      if(!el)return;
+      document.getElementById('cbBannerMsg').innerHTML=b.message||'';
+      el.className='cb-banner show'+(b.type?' type-'+b.type:'');
+      var nav=document.querySelector('nav');
+      var mobileNav=document.getElementById('navMobileMenu');
+      var origBodyPad=parseInt(getComputedStyle(document.body).paddingTop)||0;
+      var origMobileTop=mobileNav?parseInt(getComputedStyle(mobileNav).top)||65:65;
+      function applyOffset(){
+        var h=el.offsetHeight;
+        if(nav)nav.style.top=h+'px';
+        document.body.style.paddingTop=(origBodyPad+h)+'px';
+        if(mobileNav)mobileNav.style.top=(origMobileTop+h)+'px';
+      }
+      applyOffset();
+      window.addEventListener('resize',applyOffset);
+      var close=document.getElementById('cbBannerClose');
+      if(b.dismissible===false){close.style.display='none';}
+      else{close.onclick=function(){
+        el.classList.remove('show');
+        if(nav)nav.style.top='';
+        document.body.style.paddingTop='';
+        if(mobileNav)mobileNav.style.top='';
+        sessionStorage.setItem('cbBannerDismissed','1');
+      };}
+    })
+    .catch(function(){});
+})();
+</script>
 
 </body>
 </html>

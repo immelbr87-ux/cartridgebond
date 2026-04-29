@@ -5,5 +5,12 @@
   "betaLabel": "Milwaukee Beta",
   "nationalLaunchTarget": "Summer 2026",
   "lastUpdated": "2026-04-28",
-  "supportEmail": "cartridgebond@gmail.com"
+  "supportEmail": "cartridgebond@gmail.com",
+  "statusEndpoint": "",
+  "maintenanceBanner": {
+    "enabled": false,
+    "message": "Heads up: We're updating our system right now - submissions may be delayed. Existing matches are unaffected.",
+    "type": "info",
+    "dismissible": true
+  }
 }

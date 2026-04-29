@@ -3,14 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buy &amp; Sell Nintendo Switch Games Locally in Milwaukee | CartridgeBond</title>
-<meta name="description" content="CartridgeBond is the hassle-free way to buy and sell used Nintendo Switch games in Milwaukee and the North Shore. Price locked before you meet. No DMs, no lowballs, no shipping.">
+<title>Buy &amp; Sell Nintendo Switch Games | CartridgeBond - Milwaukee Beta</title>
+<meta name="description" content="The dedicated platform for buying and selling Nintendo Switch games. Lock in your terms once - no DMs, no haggling, no flakiness. Currently in Milwaukee beta with national launch coming soon.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://cartridgebond.com/">
-<meta property="og:title" content="Buy &amp; Sell Nintendo Switch Games Locally | CartridgeBond Milwaukee">
-<meta property="og:description" content="Price locked before you meet. No haggling, no shipping. Free beta - Milwaukee &amp; North Shore.">
+<meta property="og:title" content="CartridgeBond - Buy &amp; Sell Switch Games">
+<meta property="og:description" content="Lock in your terms. We handle the rest. The dedicated platform for Switch games. Milwaukee beta - national launch coming soon.">
 <meta property="og:url" content="https://cartridgebond.com/">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CartridgeBond - Buy &amp; Sell Switch Games">
+<meta name="twitter:description" content="Lock in your terms. We handle the rest. Milwaukee beta - national launch coming soon.">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"CartridgeBond","description":"Buy and sell used Nintendo Switch games locally in Milwaukee.","url":"https://cartridgebond.com","areaServed":[{"@type":"City","name":"Milwaukee"},{"@type":"City","name":"Mequon"}],"serviceType":"Used Video Game Marketplace","priceRange":"Free","contactPoint":{"@type":"ContactPoint","email":"cartridgebond@gmail.com"}}
 </script>
@@ -241,6 +244,17 @@
   .footer-copy{font-size:11px;color:var(--muted2);width:100%;text-align:center;margin-top:8px;padding-top:20px;border-top:1px solid var(--border);}
   @media(max-width:600px){footer{padding:32px 20px;}.stats-bar{gap:32px;padding:24px;}}
 
+  /* MAINTENANCE BANNER */
+  .cb-banner{position:fixed;top:0;left:0;right:0;z-index:101;display:none;align-items:center;justify-content:center;gap:16px;padding:10px 48px;background:rgba(255,184,0,0.12);border-bottom:1px solid rgba(255,184,0,0.4);color:#ffb800;font-size:13px;line-height:1.4;font-weight:500;}
+  .cb-banner.show{display:flex;}
+  .cb-banner.type-warn{background:rgba(255,71,87,0.12);border-color:rgba(255,71,87,0.4);color:#ff4757;}
+  .cb-banner.type-success{background:rgba(0,232,122,0.1);border-color:rgba(0,232,122,0.3);color:var(--green);}
+  .cb-banner-msg{flex:1;max-width:900px;}
+  .cb-banner-msg strong{margin-right:8px;font-weight:600;}
+  .cb-banner-close{background:none;border:none;color:inherit;cursor:pointer;font-size:18px;padding:0 4px;line-height:1;opacity:.7;transition:opacity .15s;}
+  .cb-banner-close:hover{opacity:1;}
+  @media(max-width:680px){.cb-banner{padding:8px 16px;font-size:12px;}}
+
   /* ANIMATIONS */
   @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
@@ -248,6 +262,12 @@
 </style>
 </head>
 <body>
+
+<!-- MAINTENANCE BANNER (config-driven) -->
+<div id="cbBanner" class="cb-banner" role="alert" aria-live="polite">
+  <div class="cb-banner-msg" id="cbBannerMsg"></div>
+  <button class="cb-banner-close" id="cbBannerClose" aria-label="Dismiss">&times;</button>
+</div>
 
 <!-- NAV -->
 <nav id="siteNav">
@@ -257,6 +277,7 @@
     <li><a href="prices.html">Game Values</a></li>
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="faq.html">FAQ</a></li>
+    <li><a href="status.html">Check Status</a></li>
     <li><a href="#form" class="nav-cta" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'});return false;">Buy / Sell Now</a></li>
   </ul>
   <div class="nav-mobile-cta-wrap">
@@ -271,6 +292,7 @@
   <a href="prices.html" onclick="closeMobileMenu()">Game Values</a>
   <a href="blog/index.html" onclick="closeMobileMenu()">Blog</a>
   <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
+  <a href="status.html" onclick="closeMobileMenu()">Check Status</a>
   <a href="meetup.html" onclick="closeMobileMenu()">Safe Meetup Guide</a>
   <a href="waitlist.html" onclick="closeMobileMenu()">Not in Milwaukee?</a>
 </div>
@@ -279,13 +301,13 @@
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
-  <div class="hero-badge"><div class="badge-dot"></div>Free Beta &middot; Milwaukee &amp; North Shore</div>
+  <div class="hero-badge"><div class="badge-dot"></div>Milwaukee Beta &middot; National Launch Coming Soon</div>
   <h1><span class="line1">BUY &amp; SELL</span><span class="line2">SWITCH GAMES</span></h1>
-  <p class="hero-sub"><strong>Price locked before you meet.</strong> No haggling, no shipping, no strangers from the internet. Local only - always free during beta.</p>
+  <p class="hero-sub"><strong>Lock in your terms. We handle the rest.</strong> The dedicated platform for buying and selling Switch games - no DMs, no haggling, no flakiness. Milwaukee beta - national launch with shipping, escrow, and condition guarantees coming soon.</p>
   <div class="hero-actions">
     <a href="#form" class="btn-primary" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'});return false;">Buy / Sell Now <span class="btn-arrow">&rarr;</span></a>
     <div class="hero-trust">
-      <span>No fees right now</span>
+      <span>$0 platform fees during beta</span>
       <span>Real person responds</span>
       <span>Matched within 48 hrs</span>
     </div>
@@ -295,9 +317,9 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat"><div class="stat-num">$0</div><div class="stat-label">Platform fees (beta)</div></div>
-  <div class="stat"><div class="stat-num">48hr</div><div class="stat-label">Match turnaround</div></div>
-  <div class="stat"><div class="stat-num">A1</div><div class="stat-label">Condition standard</div></div>
-  <div class="stat"><div class="stat-num">25</div><div class="stat-label">Founder spots left</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Haggling</div></div>
+  <div class="stat"><div class="stat-num">A1</div><div class="stat-label">Condition standard (beta)</div></div>
+  <div class="stat"><div class="stat-num"><span id="founderCount">25</span></div><div class="stat-label">Founder spots left</div></div>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -322,8 +344,8 @@
       </div>
       <div class="step">
         <div class="step-icon">&#129309;</div>
-        <h3>MEET LOCALLY</h3>
-        <p style="color:var(--white);">Exchange in a public place. Inspect the game before paying. No shipping - Milwaukee &amp; North Shore only.</p>
+        <h3>EXCHANGE</h3>
+        <p style="color:var(--white);">Meet locally in a public place. Inspect the game before paying. Milwaukee beta now - shipping and escrow coming as we expand nationally.</p>
       </div>
     </div>
   </div>
@@ -339,6 +361,9 @@
     </div>
 
     <div id="formContainer" class="reveal">
+
+      <!-- Honeypot anti-bot -->
+      <input type="text" id="hp_field" name="hp_field" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;height:0;width:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <!-- Hidden fields -->
       <input type="hidden" id="h_role">
@@ -519,6 +544,11 @@
         Review &amp; Lock In <span>&rarr;</span>
       </button>
 
+      <div id="errorState" style="display:none;padding:16px 20px;border-radius:8px;background:rgba(239,68,68,0.1);border:1px solid #ef4444;color:#fca5a5;margin-top:12px;font-size:14px;line-height:1.55;">
+        <strong style="color:#fff;display:block;margin-bottom:4px;">Something went wrong</strong>
+        We could not submit your request. Please try again, or email <a href="mailto:cartridgebond@gmail.com" style="color:var(--green);">cartridgebond@gmail.com</a> and we will respond within a day.
+      </div>
+
       <div class="submit-trust">
         <span>Zero obligation</span>
         <span>Free to submit</span>
@@ -530,7 +560,7 @@
     <div class="success-state" id="successScreen">
       <div class="success-icon-wrap">&#10003;</div>
       <h3>YOU'RE LOCKED IN</h3>
-      <p>A real person will reach out within 48 hours with your match. Check your email - and welcome to CartridgeBond.</p>
+      <p>A real person will reach out within 48 hours with your match. Check your email - and welcome to CartridgeBond. You can also <a href="status.html" style="color:var(--green);">check your status</a> any time.</p>
       <div id="bondSummary" style="margin:20px 0;text-align:left;background:#111;border:1px solid var(--border);border-radius:8px;padding:16px;font-size:13px;color:var(--muted);line-height:1.9;"></div>
       <div class="success-actions">
         <button class="success-btn success-btn-primary" onclick="addAnother()">+ Submit Another</button>
@@ -567,9 +597,9 @@
       <div class="founder-title">Founder, CartridgeBond</div>
     </div>
     <div class="founder-right">
-      <blockquote>"CartridgeBond is in free beta right now. NO FEES - we connect buyers and sellers directly, no escrow, no platform cut, no middleman taking a slice."</blockquote>
-      <p>You lock in your terms, we find your match, you meet locally. That's it. Every submission is reviewed by a real person - no bots, no auto-matches, just us.</p>
-      <p>Fees and escrow are coming down the road. Getting in now means you trade in the free era.</p>
+      <blockquote>"I got tired of selling Switch games on Facebook Marketplace. CartridgeBond is what I wish had existed - a real platform with locked-in terms, not another inbox to babysit."</blockquote>
+      <p>You set your terms once, we find your match, the deal closes on what you committed to. No DMs back and forth. No negotiation at the door. No flakiness.</p>
+      <p>We are in beta and reviewing submissions manually today - that helps us build smart matching before we automate it. Shipping and escrow are coming as we expand nationally. The first 25 users trade free for life, even after we introduce platform fees.</p>
       <div class="founder-perk">
         <div style="font-size:20px;">&#127942;</div>
         <div>
@@ -601,6 +631,7 @@
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="prices.html">Game Values</a></li>
     <li><a href="faq.html">FAQ</a></li>
+    <li><a href="status.html">Check Status</a></li>
     <li><a href="meetup.html">Safe Meetup Guide</a></li>
     <li><a href="terms.html">Terms</a></li>
     <li><a href="privacy.html">Privacy</a></li>
@@ -633,16 +664,53 @@ var buyCart  = [];
 
 var sysLabels = {switch:'Nintendo Switch',ps5:'PS5',xbox:'Xbox Series X|S'};
 
-var gamesBySystem = {
-  switch: [
-    ['Animal Crossing: New Horizons', 60, 36],
-    ['Mario Kart 8 Deluxe',           60, 43],
-    ['Pokemon Scarlet',               60, 39],
-    ['Pokemon Violet',                60, 39],
-    ['Super Smash Bros. Ultimate',    60, 43],
-    ['Zelda: Tears of the Kingdom',   70, 50],
-  ],
-};
+// Games loaded dynamically from /games.json
+var gamesBySystem = { switch: [] };
+var GAMES_LOADED = false;
+
+// Honeypot check helper
+function isBot(){ var hp=document.getElementById('hp_field'); return hp && hp.value; }
+
+// ── CONFIG + GAMES LOADER ─────────────────────────────────────
+function loadConfig(){
+  fetch('config.json?v='+Date.now())
+    .then(function(r){return r.ok ? r.json() : null;})
+    .then(function(cfg){
+      if(!cfg) return;
+      var el = document.getElementById('founderCount');
+      if(el && typeof cfg.founderSpotsLeft === 'number') el.textContent = cfg.founderSpotsLeft;
+    })
+    .catch(function(){});
+}
+
+function loadGames(){
+  return fetch('games.json?v='+Date.now())
+    .then(function(r){return r.ok ? r.json() : null;})
+    .then(function(data){
+      if(!data || !data.games) throw new Error('no games');
+      // Convert games.json format to internal [name, cap, cb-price] format
+      gamesBySystem.switch = data.games.map(function(g){
+        return [g.title, Math.round(g.cartridgeBondPrice*1.4), g.cartridgeBondPrice];
+      });
+      GAMES_LOADED = true;
+    })
+    .catch(function(){
+      // Fallback to original hardcoded list if catalog fails
+      gamesBySystem.switch = [
+        ['Animal Crossing: New Horizons', 60, 36],
+        ['Mario Kart 8 Deluxe',           60, 43],
+        ['Pokemon Scarlet',               60, 39],
+        ['Pokemon Violet',                60, 39],
+        ['Super Smash Bros. Ultimate',    60, 43],
+        ['Zelda: Tears of the Kingdom',   70, 50]
+      ];
+      GAMES_LOADED = true;
+    });
+}
+
+// Initialize
+loadConfig();
+loadGames();
 
 // ── SELL SIDE ─────────────────────────────────────────────────
 function populateGames(){
@@ -816,6 +884,13 @@ function confirmAndSubmit(){closeConfirmModal();submitForm();}
 
 // ── SUBMIT ────────────────────────────────────────────────────
 function submitForm(){
+  // Honeypot - silently exit if bot
+  if(isBot()){ showSuccess(''); return; }
+
+  // Hide any previous error
+  var errBox = document.getElementById('errorState');
+  if(errBox) errBox.style.display = 'none';
+
   var html='';
   var winLabels={'this-week':'This week','two-weeks':'Within 2 weeks','one-month':'Within a month','flexible':'Flexible (1-3 months)'};
   var buyWinLabels={'asap':'As soon as possible','two-weeks':'Within 2 weeks','one-month':'Within a month','no-rush':'No rush (1-3 months)'};
@@ -857,8 +932,13 @@ function submitForm(){
     timeline:document.getElementById('h_timeline').value,
   };
 
+  var appsScriptOk = false;
+  var formSubmitOk = false;
+
   // Apps Script
-  fetch('https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec',{method:'POST',body:JSON.stringify(payload),mode:'no-cors'}).catch(function(){});
+  var appsScriptPromise = fetch('https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec',{method:'POST',body:JSON.stringify(payload),mode:'no-cors'})
+    .then(function(){appsScriptOk = true;})
+    .catch(function(){});
 
   // FormSubmit backup
   var fsData=new FormData();
@@ -867,11 +947,36 @@ function submitForm(){
   fsData.append('_template','table');
   fsData.append('_captcha','false');
   fsData.append('_replyto',payload.email);
-  fsData.append('_autoresponse','Hey '+payload.name.split(' ')[0]+' - your CartridgeBond submission is confirmed! We received your listing for '+payload.game+' and will be in touch within 48 hours when we find your match. Questions? Reply to this email. - CartridgeBond');
-  fetch('https://formsubmit.co/cartridgebond@gmail.com',{method:'POST',body:fsData}).catch(function(){});
+  fsData.append('_autoresponse','Hey '+payload.name.split(' ')[0]+' - your CartridgeBond submission is confirmed! We received your listing for '+payload.game+' and will be in touch within 48 hours when we find your match. Check your status anytime at https://cartridgebond.com/status.html?email='+encodeURIComponent(payload.email)+'. Questions? Reply to this email. - CartridgeBond');
+  var formSubmitPromise = fetch('https://formsubmit.co/cartridgebond@gmail.com',{method:'POST',body:fsData})
+    .then(function(r){if(r.ok || r.type==='opaque') formSubmitOk = true;})
+    .catch(function(){});
 
-  if(typeof gtag!=='undefined')gtag('event','form_submit',{event_category:'engagement',event_label:currentRole==='sell'?'sell_submission':'buy_submission'});
-  showSuccess(html);
+  // Wait briefly to know if at least one path worked
+  Promise.all([appsScriptPromise, formSubmitPromise]).then(function(){
+    // Apps Script no-cors always "succeeds" silently, so we mostly trust it.
+    // If FormSubmit clearly failed AND Apps Script gave no signal, show error.
+    // In practice, no-cors makes both look successful unless network drops entirely.
+    if(typeof gtag!=='undefined')gtag('event','form_submit',{event_category:'engagement',event_label:currentRole==='sell'?'sell_submission':'buy_submission'});
+    showSuccess(html);
+  }).catch(function(){
+    showError();
+  });
+
+  // Network safety net: if neither resolves in 8s, show error
+  setTimeout(function(){
+    if(!appsScriptOk && !formSubmitOk && document.getElementById('successScreen').style.display !== 'block'){
+      showError();
+    }
+  }, 8000);
+}
+
+function showError(){
+  var err = document.getElementById('errorState');
+  if(err){
+    err.style.display = 'block';
+    err.scrollIntoView({behavior:'smooth', block:'center'});
+  }
 }
 
 function showSuccess(html){
@@ -885,6 +990,7 @@ function resetForm(){
   sellCart=[];buyCart=[];
   document.getElementById('formContainer').style.display='block';
   document.getElementById('successScreen').style.display='none';
+  var err=document.getElementById('errorState'); if(err) err.style.display='none';
   document.getElementById('name').value='';
   document.getElementById('email').value='';
   document.getElementById('phone').value='';
@@ -917,6 +1023,42 @@ function copyRef(){
   btn.textContent='Copied!';
   setTimeout(function(){btn.textContent='Copy Link';},2000);
 }
+// ── MAINTENANCE BANNER ────────────────────────────────────────
+(function(){
+  fetch('config.json?v='+Date.now())
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(cfg){
+      if(!cfg||!cfg.maintenanceBanner||!cfg.maintenanceBanner.enabled)return;
+      var b=cfg.maintenanceBanner;
+      if(b.dismissible!==false&&sessionStorage.getItem('cbBannerDismissed')==='1')return;
+      var el=document.getElementById('cbBanner');
+      if(!el)return;
+      document.getElementById('cbBannerMsg').innerHTML=b.message||'';
+      el.className='cb-banner show'+(b.type?' type-'+b.type:'');
+      var nav=document.querySelector('nav');
+      var mobileNav=document.getElementById('navMobileMenu');
+      var origBodyPad=parseInt(getComputedStyle(document.body).paddingTop)||0;
+      var origMobileTop=mobileNav?parseInt(getComputedStyle(mobileNav).top)||65:65;
+      function applyOffset(){
+        var h=el.offsetHeight;
+        if(nav)nav.style.top=h+'px';
+        document.body.style.paddingTop=(origBodyPad+h)+'px';
+        if(mobileNav)mobileNav.style.top=(origMobileTop+h)+'px';
+      }
+      applyOffset();
+      window.addEventListener('resize',applyOffset);
+      var close=document.getElementById('cbBannerClose');
+      if(b.dismissible===false){close.style.display='none';}
+      else{close.onclick=function(){
+        el.classList.remove('show');
+        if(nav)nav.style.top='';
+        document.body.style.paddingTop='';
+        if(mobileNav)mobileNav.style.top='';
+        sessionStorage.setItem('cbBannerDismissed','1');
+      };}
+    })
+    .catch(function(){});
+})();
 
 </script>
 </body>

@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nintendo Switch Game Values - What Your Game Is Worth | CartridgeBond Milwaukee</title>
-<meta name="description" content="Current resale values for Nintendo Switch games in Milwaukee. Compare CartridgeBond prices vs GameStop trade-in and eBay.">
+<title>Nintendo Switch Game Values - What Your Game Is Worth | CartridgeBond</title>
+<meta name="description" content="Current market values for 25+ Nintendo Switch games. Compare CartridgeBond locked-in prices against GameStop trade-in and eBay net.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://cartridgebond.com/prices.html">
+<meta property="og:title" content="Nintendo Switch Game Values | CartridgeBond">
+<meta property="og:description" content="What your Switch games are actually worth. Compare CartridgeBond, GameStop, and eBay net prices.">
+<meta property="og:url" content="https://cartridgebond.com/prices.html">
+<meta property="og:type" content="website">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SN05PGREN7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SN05PGREN7');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
@@ -77,10 +81,25 @@
   .cta-box p{color:var(--muted);font-size:15px;margin-bottom:20px;font-weight:300;}
   .cta-btn{display:inline-block;padding:14px 32px;background:var(--green);color:var(--black);text-decoration:none;border-radius:8px;font-weight:700;font-size:16px;transition:background .2s;}
   .cta-btn:hover{background:#00ff88;}
+  /* MAINTENANCE BANNER */
+  .cb-banner{position:fixed;top:0;left:0;right:0;z-index:101;display:none;align-items:center;justify-content:center;gap:16px;padding:10px 48px;background:rgba(255,184,0,0.12);border-bottom:1px solid rgba(255,184,0,0.4);color:#ffb800;font-size:13px;line-height:1.4;font-weight:500;}
+  .cb-banner.show{display:flex;}
+  .cb-banner.type-warn{background:rgba(255,71,87,0.12);border-color:rgba(255,71,87,0.4);color:#ff4757;}
+  .cb-banner.type-success{background:rgba(0,232,122,0.1);border-color:rgba(0,232,122,0.3);color:var(--green);}
+  .cb-banner-msg{flex:1;max-width:900px;}
+  .cb-banner-msg strong{margin-right:8px;font-weight:600;}
+  .cb-banner-close{background:none;border:none;color:inherit;cursor:pointer;font-size:18px;padding:0 4px;line-height:1;opacity:.7;transition:opacity .15s;}
+  .cb-banner-close:hover{opacity:1;}
+  @media(max-width:680px){.cb-banner{padding:8px 16px;font-size:12px;}}
 
 </style>
 </head>
 <body>
+<!-- MAINTENANCE BANNER (config-driven) -->
+<div id="cbBanner" class="cb-banner" role="alert" aria-live="polite">
+  <div class="cb-banner-msg" id="cbBannerMsg"></div>
+  <button class="cb-banner-close" id="cbBannerClose" aria-label="Dismiss">&times;</button>
+</div>
 <nav id="siteNav">
   <a href="index.html" class="nav-logo"><span>Cartridge</span><span>Bond</span></a>
   <ul class="nav-desktop">
@@ -88,6 +107,7 @@
     <li><a href="prices.html">Game Values</a></li>
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="faq.html">FAQ</a></li>
+    <li><a href="status.html">Check Status</a></li>
     <li><a href="index.html#form" class="nav-cta-link">Buy / Sell Now</a></li>
   </ul>
   <div class="nav-mobile-right">
@@ -100,6 +120,7 @@
   <a href="prices.html" onclick="closeMobileMenu()">Game Values</a>
   <a href="blog/index.html" onclick="closeMobileMenu()">Blog</a>
   <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
+  <a href="status.html" onclick="closeMobileMenu()">Check Status</a>
   <a href="meetup.html" onclick="closeMobileMenu()">Safe Meetup Guide</a>
   <a href="waitlist.html" onclick="closeMobileMenu()">Not in Milwaukee?</a>
 </div>
@@ -107,73 +128,85 @@
 function toggleMobileMenu(){document.getElementById('navMobileMenu').classList.toggle('open');document.getElementById('navHamburger').classList.toggle('open');}
 function closeMobileMenu(){document.getElementById('navMobileMenu').classList.remove('open');document.getElementById('navHamburger').classList.remove('open');}
 </script>
-<div class="page-hero"><a href="index.html" class="back">&larr; Back to CartridgeBond</a><h1>GAME VALUES</h1><p class="sub">Current Milwaukee market rates for Nintendo Switch games in A1 condition.</p></div>
+<div class="page-hero"><a href="index.html" class="back">&larr; Back to CartridgeBond</a><h1>GAME VALUES</h1><p class="sub">Market rates for Nintendo Switch games in A1 condition. Updated regularly as we expand nationally.</p></div>
 <div class="container">
-  <p class="intro">These prices reflect what Nintendo Switch games actually sell for in private local sales in Milwaukee and the North Shore - not GameStop trade-in values. CartridgeBond locks these prices in before you meet, so what you see is exactly what you get.</p>
+  <p class="intro">These prices reflect what Nintendo Switch games actually sell for in private sales and on eBay (sold listings, not asking prices) - not GameStop trade-in values. CartridgeBond locks these prices in before you meet, so what you see is exactly what you get.</p>
+
   <div class="section-label">Current Reference Prices - A1 Condition</div>
-  <div class="game-card">
-    <div class="game-card-top">
-      <div class="game-name">Zelda: Tears of the Kingdom</div>
-      <div><div class="game-cb-price">$50</div><div class="game-cb-label">CartridgeBond</div></div>
-    </div>
-    <div class="price-compare">
-      <div class="price-col"><div class="price-col-label">GameStop Pays</div><div class="price-col-val val-bad">$28</div></div>
-      <div class="price-col"><div class="price-col-label">eBay Net</div><div class="price-col-val val-mid">$37-41</div></div>
-      <div class="price-col"><div class="price-col-label">CartridgeBond</div><div class="price-col-val val-good">$50</div></div>
-    </div>
-  </div>  <div class="game-card">
-    <div class="game-card-top">
-      <div class="game-name">Mario Kart 8 Deluxe</div>
-      <div><div class="game-cb-price">$43</div><div class="game-cb-label">CartridgeBond</div></div>
-    </div>
-    <div class="price-compare">
-      <div class="price-col"><div class="price-col-label">GameStop Pays</div><div class="price-col-val val-bad">$22</div></div>
-      <div class="price-col"><div class="price-col-label">eBay Net</div><div class="price-col-val val-mid">$31-34</div></div>
-      <div class="price-col"><div class="price-col-label">CartridgeBond</div><div class="price-col-val val-good">$43</div></div>
-    </div>
-  </div>  <div class="game-card">
-    <div class="game-card-top">
-      <div class="game-name">Super Smash Bros. Ultimate</div>
-      <div><div class="game-cb-price">$43</div><div class="game-cb-label">CartridgeBond</div></div>
-    </div>
-    <div class="price-compare">
-      <div class="price-col"><div class="price-col-label">GameStop Pays</div><div class="price-col-val val-bad">$20</div></div>
-      <div class="price-col"><div class="price-col-label">eBay Net</div><div class="price-col-val val-mid">$29-33</div></div>
-      <div class="price-col"><div class="price-col-label">CartridgeBond</div><div class="price-col-val val-good">$43</div></div>
-    </div>
-  </div>  <div class="game-card">
-    <div class="game-card-top">
-      <div class="game-name">Pokemon Scarlet / Violet</div>
-      <div><div class="game-cb-price">$39</div><div class="game-cb-label">CartridgeBond</div></div>
-    </div>
-    <div class="price-compare">
-      <div class="price-col"><div class="price-col-label">GameStop Pays</div><div class="price-col-val val-bad">$18</div></div>
-      <div class="price-col"><div class="price-col-label">eBay Net</div><div class="price-col-val val-mid">$26-29</div></div>
-      <div class="price-col"><div class="price-col-label">CartridgeBond</div><div class="price-col-val val-good">$39</div></div>
-    </div>
-  </div>  <div class="game-card">
-    <div class="game-card-top">
-      <div class="game-name">Animal Crossing: New Horizons</div>
-      <div><div class="game-cb-price">$36</div><div class="game-cb-label">CartridgeBond</div></div>
-    </div>
-    <div class="price-compare">
-      <div class="price-col"><div class="price-col-label">GameStop Pays</div><div class="price-col-val val-bad">$16</div></div>
-      <div class="price-col"><div class="price-col-label">eBay Net</div><div class="price-col-val val-mid">$23-27</div></div>
-      <div class="price-col"><div class="price-col-label">CartridgeBond</div><div class="price-col-val val-good">$36</div></div>
-    </div>
-  </div>  <div class="disclaimer">Prices based on observed Milwaukee-area private sale activity and Wisconsin eBay sold listings. GameStop figures reflect current in-store trade-in values. eBay net reflects 13% seller fee plus shipping. All prices are for A1 condition - original case, plays perfectly. Updated periodically.</div>
+
+  <input type="text" id="gameSearch" placeholder="Search 25+ titles..." style="width:100%;background:#181818;border:1.5px solid var(--border);border-radius:var(--radius-sm);color:#f5f5f0;font-family:var(--font-body);font-size:15px;padding:14px 16px;margin-bottom:16px;outline:none;transition:border-color .2s;-webkit-appearance:none;" oninput="filterGames(this.value)">
+
+  <div id="gameGrid">
+    <div style="text-align:center;padding:32px;color:var(--muted);font-family:var(--font-mono);font-size:13px;">Loading game values...</div>
+  </div>
+
+  <div class="disclaimer" id="priceDisclaimer">Prices based on Milwaukee-area private sale activity, Wisconsin eBay sold listings, and PriceCharting Complete-condition data. GameStop figures reflect current in-store trade-in values. eBay net reflects 13% seller fee plus shipping. All prices are for A1 condition - original case, plays perfectly. Last updated: <span id="lastUpdated">2026-04-28</span>.</div>
   <div class="cta-box">
     <h3>READY TO TRADE?</h3>
     <p>Lock in your price before the meetup. Free during beta.</p>
     <a href="index.html#form" class="cta-btn">Submit Your Game &rarr;</a>
   </div>
 </div>
+
+<script>
+var ALL_GAMES = [];
+
+function escapeHtml(s){
+  var div = document.createElement('div');
+  div.textContent = s;
+  return div.innerHTML;
+}
+
+function renderGames(list){
+  var grid = document.getElementById('gameGrid');
+  if(!list.length){
+    grid.innerHTML = '<div style="text-align:center;padding:32px;color:var(--muted);background:#181818;border:1.5px dashed var(--border);border-radius:var(--radius);font-size:14px;">No matches. Try a different search - or submit any game using the form on the home page.</div>';
+    return;
+  }
+  grid.innerHTML = list.map(function(g){
+    return '<div class="game-card">'+
+      '<div class="game-card-top">'+
+        '<div class="game-name">'+escapeHtml(g.shortTitle)+'</div>'+
+        '<div><div class="game-cb-price">$'+g.cartridgeBondPrice+'</div><div class="game-cb-label">CartridgeBond</div></div>'+
+      '</div>'+
+      '<div class="price-compare">'+
+        '<div class="price-col"><div class="price-col-label">GameStop Pays</div><div class="price-col-val val-bad">$'+g.gameStopTradeIn+'</div></div>'+
+        '<div class="price-col"><div class="price-col-label">eBay Net</div><div class="price-col-val val-mid">$'+g.ebayNetLow+'-'+g.ebayNetHigh+'</div></div>'+
+        '<div class="price-col"><div class="price-col-label">CartridgeBond</div><div class="price-col-val val-good">$'+g.cartridgeBondPrice+'</div></div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+function filterGames(q){
+  q = (q || '').toLowerCase().trim();
+  if(!q){ renderGames(ALL_GAMES); return; }
+  var filtered = ALL_GAMES.filter(function(g){
+    return g.title.toLowerCase().indexOf(q) !== -1 ||
+           g.shortTitle.toLowerCase().indexOf(q) !== -1;
+  });
+  renderGames(filtered);
+}
+
+fetch('games.json?v='+Date.now())
+  .then(function(r){ if(!r.ok) throw new Error(); return r.json(); })
+  .then(function(data){
+    ALL_GAMES = data.games || [];
+    if(data.lastUpdated) document.getElementById('lastUpdated').textContent = data.lastUpdated;
+    renderGames(ALL_GAMES);
+  })
+  .catch(function(){
+    document.getElementById('gameGrid').innerHTML =
+      '<div style="text-align:center;padding:32px;color:#fca5a5;background:rgba(239,68,68,0.08);border:1px solid #ef4444;border-radius:var(--radius);font-size:14px;">Could not load game values. Try refreshing or <a href="mailto:cartridgebond@gmail.com" style="color:var(--green);">email us</a>.</div>';
+  });
+</script>
 <footer>
   <a href="index.html" class="footer-logo"><span>Cartridge</span><span>Bond</span></a>
   <ul class="footer-links">
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="prices.html">Game Values</a></li>
     <li><a href="faq.html">FAQ</a></li>
+    <li><a href="status.html">Check Status</a></li>
     <li><a href="meetup.html">Safe Meetup Guide</a></li>
     <li><a href="terms.html">Terms</a></li>
     <li><a href="privacy.html">Privacy</a></li>
@@ -181,6 +214,45 @@ function closeMobileMenu(){document.getElementById('navMobileMenu').classList.re
   </ul>
   <div class="footer-copy">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
 </footer>
+
+<script>
+// ── MAINTENANCE BANNER ────────────────────────────────────────
+(function(){
+  fetch('config.json?v='+Date.now())
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(cfg){
+      if(!cfg||!cfg.maintenanceBanner||!cfg.maintenanceBanner.enabled)return;
+      var b=cfg.maintenanceBanner;
+      if(b.dismissible!==false&&sessionStorage.getItem('cbBannerDismissed')==='1')return;
+      var el=document.getElementById('cbBanner');
+      if(!el)return;
+      document.getElementById('cbBannerMsg').innerHTML=b.message||'';
+      el.className='cb-banner show'+(b.type?' type-'+b.type:'');
+      var nav=document.querySelector('nav');
+      var mobileNav=document.getElementById('navMobileMenu');
+      var origBodyPad=parseInt(getComputedStyle(document.body).paddingTop)||0;
+      var origMobileTop=mobileNav?parseInt(getComputedStyle(mobileNav).top)||65:65;
+      function applyOffset(){
+        var h=el.offsetHeight;
+        if(nav)nav.style.top=h+'px';
+        document.body.style.paddingTop=(origBodyPad+h)+'px';
+        if(mobileNav)mobileNav.style.top=(origMobileTop+h)+'px';
+      }
+      applyOffset();
+      window.addEventListener('resize',applyOffset);
+      var close=document.getElementById('cbBannerClose');
+      if(b.dismissible===false){close.style.display='none';}
+      else{close.onclick=function(){
+        el.classList.remove('show');
+        if(nav)nav.style.top='';
+        document.body.style.paddingTop='';
+        if(mobileNav)mobileNav.style.top='';
+        sessionStorage.setItem('cbBannerDismissed','1');
+      };}
+    })
+    .catch(function(){});
+})();
+</script>
 
 </body>
 </html>
