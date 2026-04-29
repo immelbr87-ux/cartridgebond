@@ -278,10 +278,12 @@
     <li><a href="blog/index.html">Blog</a></li>
     <li><a href="faq.html">FAQ</a></li>
     <li><a href="status.html">Check Status</a></li>
-    <li><a href="#form" class="nav-cta" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'});return false;">Buy / Sell Now</a></li>
+    <li><a href="dashboard.html" class="nav-cta nav-dashboard-link" id="navDashboardLink" style="display:none;">Dashboard</a></li>
+    <li><a href="#form" class="nav-cta nav-buysell-link" id="navBuySellLink" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'});return false;">Buy / Sell Now</a></li>
   </ul>
   <div class="nav-mobile-cta-wrap">
-    <a href="#form" class="nav-mobile-cta-btn" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'});closeMobileMenu();return false;">Buy / Sell Now</a>
+    <a href="dashboard.html" class="nav-mobile-cta-btn" id="navMobileDashboardLink" style="display:none;">Dashboard</a>
+    <a href="#form" class="nav-mobile-cta-btn" id="navMobileBuySellLink" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'});closeMobileMenu();return false;">Buy / Sell Now</a>
     <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -476,6 +478,24 @@
 
       <div class="form-divider"></div>
 
+      <!-- LOGGED-IN ACCOUNT PILL (shown only when user is signed in) -->
+      <div id="accountPill" style="display:none;margin-bottom:24px;background:linear-gradient(180deg,rgba(0,232,122,.06) 0%,rgba(0,232,122,.02) 100%);border:1px solid rgba(0,232,122,.25);border-radius:14px;padding:18px 20px;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div id="accountAvatar" style="width:42px;height:42px;border-radius:50%;background:rgba(0,232,122,.15);border:1.5px solid rgba(0,232,122,.4);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:20px;color:var(--green);flex-shrink:0;overflow:hidden;">
+            <img id="accountAvatarImg" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;">
+            <span id="accountAvatarInitial">C</span>
+          </div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:12px;font-family:var(--font-mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:2px;">Submitting as</div>
+            <div id="accountName" style="font-size:15px;font-weight:600;color:var(--white);line-height:1.2;">Loading...</div>
+            <div id="accountEmail" style="font-size:12px;color:var(--muted);margin-top:1px;"></div>
+          </div>
+          <a href="dashboard.html#settings" style="font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--border);border-radius:100px;padding:6px 12px;flex-shrink:0;transition:all .15s;" onmouseover="this.style.borderColor='var(--green)';this.style.color='var(--green)';" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)';">Edit profile</a>
+        </div>
+      </div>
+
+      <!-- PERSONAL INFO SECTION (hidden when logged in) -->
+      <div id="personalInfoSection">
       <!-- CONTACT INFO -->
       <div class="form-section-title">Your info</div>
       <p style="font-size:13px;color:var(--muted2);margin-bottom:20px;">Your browser can autofill this - tap a field to see saved info.</p>
@@ -519,6 +539,7 @@
           </select>
         </div>
       </div>
+      </div><!-- /personalInfoSection -->
 
       <div class="form-group">
         <label class="form-label">Notes / Questions <span style="color:var(--muted2);font-size:11px;">(optional)</span></label>
@@ -670,6 +691,98 @@ var GAMES_LOADED = false;
 
 // Honeypot check helper
 function isBot(){ var hp=document.getElementById('hp_field'); return hp && hp.value; }
+
+// ── AUTH STATE ────────────────────────────────────────────────
+// Detects logged-in users via localStorage tokens set by login.html.
+// Streamlines the form when a user is signed in - no need to retype name/email/zip.
+var BOND_USER = null;
+
+function getAuthState(){
+  try {
+    var token = localStorage.getItem('bond_token');
+    var userJson = localStorage.getItem('bond_user');
+    if(!token || !userJson) return 'anonymous';
+    var u = JSON.parse(userJson);
+    if(!u || !u.email) return 'anonymous';
+    BOND_USER = u;
+    return 'logged-in';
+  } catch(e) { return 'anonymous'; }
+}
+
+function applyAuthState(){
+  var state = getAuthState();
+  if(state !== 'logged-in' || !BOND_USER) return;
+
+  // Show account pill
+  var pill = document.getElementById('accountPill');
+  if(pill) pill.style.display = 'block';
+
+  // Populate avatar
+  var initial = (BOND_USER.name || BOND_USER.email || 'B')[0].toUpperCase();
+  var initialEl = document.getElementById('accountAvatarInitial');
+  if(initialEl) initialEl.textContent = initial;
+  if(BOND_USER.picture){
+    var imgEl = document.getElementById('accountAvatarImg');
+    if(imgEl){
+      imgEl.src = BOND_USER.picture;
+      imgEl.style.display = 'block';
+      if(initialEl) initialEl.style.display = 'none';
+    }
+  }
+
+  // Populate name + email
+  var nameEl = document.getElementById('accountName');
+  if(nameEl) nameEl.textContent = BOND_USER.name || BOND_USER.email;
+  var emailEl = document.getElementById('accountEmail');
+  if(emailEl) emailEl.textContent = BOND_USER.email || '';
+
+  // Hide personal info form section - we have it on the account
+  var pis = document.getElementById('personalInfoSection');
+  if(pis) pis.style.display = 'none';
+
+  // Pre-fill hidden form fields silently so submitForm() still works
+  var fields = {
+    name: BOND_USER.name || '',
+    email: BOND_USER.email || '',
+    phone: BOND_USER.phone || '',
+    zip: BOND_USER.zip || '',
+    meetupPref: BOND_USER.meetupPref || ''
+  };
+  Object.keys(fields).forEach(function(k){
+    var el = document.getElementById(k);
+    if(el) el.value = fields[k];
+  });
+
+  // Update submit button copy for logged-in state
+  var btn = document.getElementById('submitBtn');
+  if(btn){
+    btn.innerHTML = 'Lock in this Bond <span>&rarr;</span>';
+  }
+
+  // Auto-check the age gate since they have an account
+  var gate = document.getElementById('ageGate');
+  if(gate) gate.checked = true;
+
+  // Swap nav CTAs: hide "Buy / Sell Now", show "Dashboard"
+  var nbsd = document.getElementById('navDashboardLink');
+  var nbsb = document.getElementById('navBuySellLink');
+  if(nbsd) nbsd.style.display = '';
+  if(nbsb) nbsb.style.display = 'none';
+  var nmd = document.getElementById('navMobileDashboardLink');
+  var nmb = document.getElementById('navMobileBuySellLink');
+  if(nmd) nmd.style.display = '';
+  if(nmb) nmb.style.display = 'none';
+
+  // Trigger any state-update logic the form uses
+  if(typeof updateSubmitButton === 'function') updateSubmitButton();
+}
+
+// Run as soon as DOM is parsed
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', applyAuthState);
+} else {
+  applyAuthState();
+}
 
 // ── CONFIG + GAMES LOADER ─────────────────────────────────────
 function loadConfig(){
@@ -932,6 +1045,15 @@ function submitForm(){
     timeline:document.getElementById('h_timeline').value,
   };
 
+  // Attach auth token if user is signed in - backend uses this to skip
+  // duplicate account creation and attach the Bond directly to their userId.
+  var bondToken = localStorage.getItem('bond_token');
+  if(bondToken){
+    payload.action = 'submitListing';
+    payload.token = bondToken;
+    if(BOND_USER && BOND_USER.userId) payload.userId = BOND_USER.userId;
+  }
+
   var appsScriptOk = false;
   var formSubmitOk = false;
 
@@ -984,6 +1106,14 @@ function showSuccess(html){
   document.getElementById('successScreen').style.display='block';
   document.getElementById('bondSummary').innerHTML=html;
   document.getElementById('successScreen').scrollIntoView({behavior:'smooth',block:'center'});
+
+  // For logged-in users, auto-redirect to dashboard after a short delay
+  // (gives them a moment to see the confirmation before whisking them away)
+  if(BOND_USER){
+    setTimeout(function(){
+      window.location.href = 'dashboard.html?from=submit';
+    }, 2400);
+  }
 }
 
 function resetForm(){
