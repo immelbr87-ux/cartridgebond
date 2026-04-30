@@ -10,7 +10,8 @@
       "gameStopTradeIn": 28,
       "ebayNetLow": 37,
       "ebayNetHigh": 41,
-      "tier": "premium"
+      "tier": "premium",
+      "retailPrice": 69.99
     },
     {
       "title": "The Legend of Zelda: Breath of the Wild",
@@ -20,7 +21,8 @@
       "gameStopTradeIn": 22,
       "ebayNetLow": 30,
       "ebayNetHigh": 34,
-      "tier": "premium"
+      "tier": "premium",
+      "retailPrice": 59.99
     },
     {
       "title": "Mario Kart 8 Deluxe",
@@ -30,7 +32,8 @@
       "gameStopTradeIn": 22,
       "ebayNetLow": 31,
       "ebayNetHigh": 34,
-      "tier": "premium"
+      "tier": "premium",
+      "retailPrice": 59.99
     },
     {
       "title": "Super Smash Bros. Ultimate",
@@ -40,7 +43,8 @@
       "gameStopTradeIn": 20,
       "ebayNetLow": 29,
       "ebayNetHigh": 33,
-      "tier": "premium"
+      "tier": "premium",
+      "retailPrice": 59.99
     },
     {
       "title": "Super Mario Odyssey",
@@ -50,7 +54,8 @@
       "gameStopTradeIn": 18,
       "ebayNetLow": 26,
       "ebayNetHigh": 30,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Super Mario Bros. Wonder",
@@ -60,7 +65,8 @@
       "gameStopTradeIn": 25,
       "ebayNetLow": 32,
       "ebayNetHigh": 36,
-      "tier": "premium"
+      "tier": "premium",
+      "retailPrice": 59.99
     },
     {
       "title": "Super Mario 3D World + Bowser's Fury",
@@ -70,7 +76,8 @@
       "gameStopTradeIn": 18,
       "ebayNetLow": 26,
       "ebayNetHigh": 30,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Mario Party Superstars",
@@ -80,7 +87,8 @@
       "gameStopTradeIn": 18,
       "ebayNetLow": 26,
       "ebayNetHigh": 30,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Super Mario Party Jamboree",
@@ -90,7 +98,8 @@
       "gameStopTradeIn": 25,
       "ebayNetLow": 32,
       "ebayNetHigh": 36,
-      "tier": "premium"
+      "tier": "premium",
+      "retailPrice": 59.99
     },
     {
       "title": "Animal Crossing: New Horizons",
@@ -100,7 +109,8 @@
       "gameStopTradeIn": 16,
       "ebayNetLow": 23,
       "ebayNetHigh": 27,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Pokemon Scarlet",
@@ -110,7 +120,8 @@
       "gameStopTradeIn": 18,
       "ebayNetLow": 26,
       "ebayNetHigh": 29,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Pokemon Violet",
@@ -120,7 +131,8 @@
       "gameStopTradeIn": 18,
       "ebayNetLow": 26,
       "ebayNetHigh": 29,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Pokemon Sword",
@@ -130,7 +142,8 @@
       "gameStopTradeIn": 14,
       "ebayNetLow": 21,
       "ebayNetHigh": 25,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Pokemon Shield",
@@ -140,7 +153,8 @@
       "gameStopTradeIn": 14,
       "ebayNetLow": 21,
       "ebayNetHigh": 25,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Pokemon Legends: Arceus",
@@ -150,7 +164,8 @@
       "gameStopTradeIn": 16,
       "ebayNetLow": 24,
       "ebayNetHigh": 28,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Pokemon Brilliant Diamond",
@@ -160,7 +175,8 @@
       "gameStopTradeIn": 15,
       "ebayNetLow": 22,
       "ebayNetHigh": 26,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Pokemon Shining Pearl",
@@ -170,7 +186,8 @@
       "gameStopTradeIn": 15,
       "ebayNetLow": 22,
       "ebayNetHigh": 26,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Splatoon 3",
@@ -180,7 +197,8 @@
       "gameStopTradeIn": 18,
       "ebayNetLow": 26,
       "ebayNetHigh": 30,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Splatoon 2",
@@ -190,7 +208,8 @@
       "gameStopTradeIn": 12,
       "ebayNetLow": 18,
       "ebayNetHigh": 22,
-      "tier": "value"
+      "tier": "value",
+      "retailPrice": 59.99
     },
     {
       "title": "Luigi's Mansion 3",
@@ -200,7 +219,8 @@
       "gameStopTradeIn": 18,
       "ebayNetLow": 26,
       "ebayNetHigh": 30,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Kirby and the Forgotten Land",
@@ -210,7 +230,8 @@
       "gameStopTradeIn": 18,
       "ebayNetLow": 26,
       "ebayNetHigh": 30,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Metroid Dread",
@@ -220,7 +241,8 @@
       "gameStopTradeIn": 16,
       "ebayNetLow": 24,
       "ebayNetHigh": 28,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     },
     {
       "title": "Donkey Kong Country: Tropical Freeze",
@@ -230,7 +252,8 @@
       "gameStopTradeIn": 22,
       "ebayNetLow": 30,
       "ebayNetHigh": 34,
-      "tier": "premium"
+      "tier": "premium",
+      "retailPrice": 59.99
     },
     {
       "title": "Mario + Rabbids Sparks of Hope",
@@ -240,7 +263,8 @@
       "gameStopTradeIn": 12,
       "ebayNetLow": 18,
       "ebayNetHigh": 22,
-      "tier": "value"
+      "tier": "value",
+      "retailPrice": 59.99
     },
     {
       "title": "Fire Emblem Engage",
@@ -250,7 +274,8 @@
       "gameStopTradeIn": 16,
       "ebayNetLow": 24,
       "ebayNetHigh": 28,
-      "tier": "standard"
+      "tier": "standard",
+      "retailPrice": 59.99
     }
   ]
 }
