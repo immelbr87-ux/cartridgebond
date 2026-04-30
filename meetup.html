@@ -2,168 +2,238 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Safe Meetup Guide for Local Game Trades | CartridgeBond Milwaukee</title>
-<meta name="description" content="How to safely buy or sell used Nintendo Switch games locally in Milwaukee. Best public meetup spots, what to inspect before paying, and tips to avoid no-shows.">
-<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+
+<title>Safe Meetup Guide | CartridgeBond - How to Trade Safely</title>
+<meta name="description" content="How to safely meet up for a CartridgeBond Switch game trade. Public locations, inspection checklist, and what to do if something feels off.">
+<meta name="theme-color" content="#f7f7f4">
 <link rel="canonical" href="https://cartridgebond.com/meetup.html">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SN05PGREN7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SN05PGREN7');</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --bg:#f7f7f4;--bg-2:#efeeea;--bg-3:#e8e7e1;--card:#ffffff;--card-2:#fbfbf7;
+  --line:#e2e2dc;--line-2:#cfcfc7;--line-3:#a8a89e;
+  --text:#0a0a0a;--text-2:#2a2a26;--muted:#6b6b62;--muted-2:#9a9a90;--muted-3:#c0c0b5;
+  --accent:#22c55e;--accent-2:#16a34a;--accent-3:#15803d;--accent-4:#166534;
+  --accent-soft:#dcfce7;--accent-soft-2:#f0fdf4;
+  --dark:#0a1f12;--dark-2:#0e2a18;
+  --warn:#f59e0b;--warn-soft:#fef3c7;
+  --body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;background:var(--bg);-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;font-weight:400;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--accent);color:#fff;}
 
-  :root{--black:#0a0a0a;--dark:#111111;--card:#181818;--border:#252525;--green:#00e87a;--green-dim:#00b85f;--green-glow:rgba(0,232,122,0.12);--white:#f5f5f0;--muted:#888;--muted2:#555;--font-display:'Bebas Neue',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--radius:12px;--radius-sm:8px;}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;background:#0a0a0a;}
-  body{background:#0a0a0a;color:#f5f5f0;font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden;padding-top:65px;}
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(10,10,10,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-  .nav-logo{font-family:var(--font-display);font-size:26px;letter-spacing:2px;text-decoration:none;}
-  .nav-logo span:first-child{color:var(--white);}
-  .nav-logo span:last-child{color:var(--green);}
-  .nav-desktop{display:flex;align-items:center;gap:28px;list-style:none;}
-  .nav-desktop a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.5px;transition:color .2s;}
-  .nav-desktop a:hover{color:var(--white);}
-  .nav-cta-link{background:var(--green)!important;color:var(--black)!important;padding:9px 22px;border-radius:6px;font-weight:700!important;font-size:13px!important;}
-  .nav-cta-link:hover{background:#00ff88!important;color:var(--black)!important;}
-  .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0;}
-  .nav-hamburger span{display:block;width:20px;height:2px;background:rgba(255,255,255,0.6);border-radius:2px;transition:all .2s;}
-  .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-  .nav-hamburger.open span:nth-child(2){opacity:0;}
-  .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-  .nav-mobile-menu{display:none;position:fixed;top:65px;left:0;right:0;background:#111;border-bottom:1px solid var(--border);z-index:99;padding:8px 0;}
-  .nav-mobile-menu.open{display:block;}
-  .nav-mobile-menu a{display:block;padding:14px 24px;font-size:16px;font-weight:500;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);}
-  .nav-mobile-menu a:last-child{border-bottom:none;}
-  .nav-mobile-right{display:none;align-items:center;gap:10px;}
-  .nav-mobile-cta-btn{background:var(--green);color:var(--black)!important;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;}
-  @media(max-width:680px){nav{padding:14px 20px;}.nav-desktop{display:none!important;}.nav-hamburger{display:flex!important;}.nav-mobile-right{display:flex!important;}}
-  .page-hero{background:#111;border-bottom:1px solid var(--border);padding:56px 48px 48px;}
-  .page-hero .back{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--green);text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;opacity:.8;}
-  .page-hero .back:hover{opacity:1;}
-  .page-hero h1{font-family:var(--font-display);font-size:clamp(48px,7vw,80px);letter-spacing:3px;color:var(--white);line-height:1;margin-bottom:12px;}
-  .page-hero .sub{font-size:16px;color:var(--muted);font-weight:300;max-width:560px;}
-  .container{max-width:780px;margin:0 auto;padding:56px 24px 80px;}
-  footer{background:#0a0a0a;border-top:1px solid var(--border);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
-  .footer-logo{font-family:var(--font-display);font-size:22px;letter-spacing:2px;text-decoration:none;}
-  .footer-logo span:first-child{color:var(--white);}
-  .footer-logo span:last-child{color:var(--green);}
-  .footer-links{display:flex;flex-wrap:wrap;gap:16px;list-style:none;}
-  .footer-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s;}
-  .footer-links a:hover{color:var(--white);}
-  .footer-copy{font-size:11px;color:var(--muted2);width:100%;text-align:center;margin-top:8px;padding-top:20px;border-top:1px solid var(--border);}
-  @media(max-width:600px){.page-hero{padding:40px 20px 32px;}footer{padding:32px 20px;}}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(247,247,244,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);}
+.brand{display:flex;align-items:center;gap:0;font-weight:800;font-size:21px;letter-spacing:-.5px;color:var(--text);font-family:var(--body);}
+.brand .b1{color:var(--text);}
+.brand .b2{color:var(--accent-3);}
+.nav-cta-row{display:flex;align-items:center;gap:6px;}
+.nav-cta{background:var(--accent);color:#fff;padding:9px 14px;border-radius:100px;font-weight:600;font-size:13.5px;letter-spacing:-.1px;white-space:nowrap;transition:all .15s;}
+.nav-cta:hover{background:var(--accent-2);}
+.nav-menu-btn{width:38px;height:38px;border:1.5px solid var(--line-2);border-radius:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--card);transition:border-color .15s;}
+.nav-menu-btn:hover{border-color:var(--text);}
+.nav-menu-btn span{display:block;width:14px;height:1.5px;background:var(--text);border-radius:2px;}
+.nav-menu-btn span:nth-child(2){width:10px;}
+.nav-menu{position:absolute;top:62px;right:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;min-width:230px;box-shadow:0 18px 40px rgba(20,40,5,.08);display:none;z-index:200;}
+.nav-menu.open{display:block;animation:menuIn .18s ease both;}
+@keyframes menuIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+.nav-menu a{display:flex;align-items:center;gap:12px;padding:11px 14px;font-size:14.5px;color:var(--text);font-weight:500;border-radius:9px;transition:background .12s;}
+.nav-menu a:hover{background:var(--bg-2);}
+.nav-menu a span.icon{width:20px;height:20px;color:var(--muted);flex-shrink:0;}
+.nav-menu hr{border:none;border-top:1px solid var(--line);margin:8px 4px;}
+.nav-menu .menu-cta{background:var(--dark);color:#fff;font-weight:600;justify-content:center;}
+@media(min-width:560px){.nav-cta{padding:9px 18px;font-size:14px;}.nav-cta-row{gap:8px;}}
 
+/* PAGE HERO */
+.page-hero{padding:64px 20px 32px;text-align:center;}
+.page-hero-inner{max-width:760px;margin:0 auto;}
+.page-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent-3);font-weight:600;margin-bottom:16px;display:inline-block;}
+.page-hero h1{font-family:var(--body);font-size:40px;font-weight:800;line-height:1.04;letter-spacing:-1.6px;margin-bottom:16px;color:var(--text);}
+.page-hero h1 .accent{color:var(--accent-3);}
+.page-hero p{font-size:17px;color:var(--text-2);line-height:1.55;}
+@media(min-width:840px){.page-hero{padding:96px 32px 56px;}.page-hero h1{font-size:60px;letter-spacing:-2.4px;}.page-hero p{font-size:19px;}}
 
-  .disclaimer-box{background:#1a1200;border:1.5px solid #4a3000;border-radius:var(--radius);padding:20px 24px;margin-bottom:40px;}
-  .disclaimer-box p{font-size:14px;line-height:1.75;color:#c8a050;}
-  .section-label{font-family:var(--font-mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-  .section-label::after{content:'';flex:1;max-width:48px;height:1px;background:var(--green);opacity:.4;}
-  .rule-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:40px;}
-  .rule-card{background:#181818;border:1.5px solid var(--border);border-radius:var(--radius);padding:20px 24px;display:flex;gap:18px;align-items:flex-start;transition:border-color .2s;}
-  .rule-card:hover{border-color:#333;}
-  .rule-icon{font-size:24px;flex-shrink:0;margin-top:2px;}
-  .rule-title{font-family:var(--font-display);font-size:20px;letter-spacing:1px;color:var(--white);margin-bottom:6px;}
-  .rule-body{font-size:14px;line-height:1.7;color:var(--muted);font-weight:300;}
-  .rule-body strong{color:var(--white);font-weight:500;}
-  .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:40px;}
-  @media(max-width:560px){.location-grid{grid-template-columns:1fr;}}
-  .location-card{background:rgba(0,232,122,0.05);border:1.5px solid rgba(0,232,122,0.2);border-radius:var(--radius);padding:16px 20px;}
-  .location-name{font-family:var(--font-display);font-size:17px;letter-spacing:1px;color:var(--green);margin-bottom:4px;}
-  .location-sub{font-size:13px;color:var(--muted);line-height:1.5;font-weight:300;}
-  .inspect-steps{display:flex;flex-direction:column;gap:10px;margin-bottom:40px;}
-  .inspect-step{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;background:#181818;border:1.5px solid var(--border);border-radius:var(--radius);}
-  .step-num{width:30px;height:30px;background:var(--green);color:var(--black);border-radius:50%;font-family:var(--font-display);font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-  .step-title{font-family:var(--font-display);font-size:18px;letter-spacing:1px;color:var(--white);margin-bottom:4px;}
-  .step-body{font-size:14px;color:var(--muted);line-height:1.6;font-weight:300;}
-  .cta-box{background:#141414;border:1.5px solid rgba(0,232,122,0.2);border-radius:var(--radius);padding:40px;text-align:center;margin-top:8px;}
-  .cta-box h3{font-family:var(--font-display);font-size:32px;letter-spacing:2px;color:var(--white);margin-bottom:10px;}
-  .cta-box p{color:var(--muted);font-size:15px;margin-bottom:20px;font-weight:300;}
-  .cta-btn{display:inline-block;padding:14px 32px;background:var(--green);color:var(--black);text-decoration:none;border-radius:8px;font-weight:700;font-size:16px;}
-  .cta-btn:hover{background:#00ff88;}
+/* CONTENT */
+.content-section{padding:32px 20px 64px;}
+.content-inner{max-width:880px;margin:0 auto;}
+.content-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 24px;margin-bottom:18px;}
+.content-card h2{font-family:var(--body);font-size:22px;font-weight:800;letter-spacing:-.6px;line-height:1.15;margin-bottom:12px;color:var(--text);}
+.content-card h3{font-family:var(--body);font-size:16.5px;font-weight:700;letter-spacing:-.3px;line-height:1.25;margin:22px 0 8px;color:var(--text);}
+.content-card h3:first-child{margin-top:0;}
+.content-card p{font-size:15px;color:var(--text-2);line-height:1.7;margin-bottom:12px;}
+.content-card p:last-child{margin-bottom:0;}
+.content-card ul,.content-card ol{margin:0 0 14px 22px;}
+.content-card ul li,.content-card ol li{font-size:15px;color:var(--text-2);line-height:1.7;margin-bottom:6px;}
+.content-card a{color:var(--accent-3);font-weight:600;}
+.content-card strong{color:var(--text);font-weight:700;}
+.content-card hr{border:none;border-top:1px solid var(--line);margin:18px 0;}
+.content-meta{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px;}
+@media(min-width:840px){.content-section{padding:32px 32px 80px;}.content-card{padding:36px 36px;}.content-card h2{font-size:26px;}.content-card p,.content-card li{font-size:15.5px;}}
+
+/* CTA CARD */
+.cta-card{background:var(--bg-2);border-radius:18px;padding:32px 22px;text-align:center;margin-top:24px;}
+.cta-card h3{font-family:var(--body);font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:8px;color:var(--text);}
+.cta-card p{font-size:14.5px;color:var(--muted);margin-bottom:18px;}
+.cta-card .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:13px 24px;border-radius:100px;font-size:15px;font-weight:600;}
+.cta-card .btn:hover{background:var(--accent-2);}
+
+/* FOOTER */
+footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--line);}
+.footer-inner{max-width:1100px;margin:0 auto;}
+.footer-top{display:flex;flex-direction:column;gap:28px;margin-bottom:24px;}
+.footer-brand{display:flex;align-items:center;gap:0;font-weight:800;font-size:18px;letter-spacing:-.5px;color:var(--text);font-family:var(--body);}
+.footer-brand .b1{color:var(--text);}
+.footer-brand .b2{color:var(--accent-3);}
+.footer-tagline{font-size:13px;color:var(--muted);margin-top:6px;max-width:300px;line-height:1.5;}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.footer-col{display:flex;flex-direction:column;gap:10px;}
+.footer-col-head{font-family:var(--mono);font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted-2);margin-bottom:4px;}
+.footer-col a{font-size:13.5px;color:var(--text-2);transition:color .12s;}
+.footer-col a:hover{color:var(--text);}
+.footer-bottom{padding-top:20px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);text-align:center;line-height:1.5;}
+@media(min-width:840px){footer{padding:56px 32px 28px;}.footer-top{flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:32px;margin-bottom:36px;}.footer-cols{grid-template-columns:repeat(3,auto);gap:64px;}.footer-bottom{text-align:left;}}
 
 </style>
+
 </head>
 <body>
-<nav id="siteNav">
-  <a href="index.html" class="nav-logo"><span>Cartridge</span><span>Bond</span></a>
-  <ul class="nav-desktop">
-    <li><a href="index.html#how">How It Works</a></li>
-    <li><a href="prices.html">Game Values</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="index.html#form" class="nav-cta-link">Buy / Sell Now</a></li>
-  </ul>
-  <div class="nav-mobile-right">
-    <a href="index.html#form" class="nav-mobile-cta-btn" onclick="closeMobileMenu()">Buy / Sell Now</a>
-    <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+
+<nav>
+  <a href="index.html" class="brand"><span class="b1">Cartridge</span><span class="b2">Bond</span></a>
+  <div class="nav-cta-row">
+    <a href="index.html#widget" class="nav-cta">Buy / Sell Now</a>
+    <button class="nav-menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span></button>
+  </div>
+  <div class="nav-menu" id="navMenu">
+    <a href="prices.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Game prices</a>
+    <a href="index.html#how"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 4M12 17h.01"/></svg>How it works</a>
+    <a href="faq.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>FAQ</a>
+    <a href="blog/index.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/></svg>Blog</a>
+    <a href="status.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Check status</a>
+    <hr>
+    <a href="login.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>Sign in</a>
+    <a href="index.html#widget" class="menu-cta">Buy / Sell Now</a>
   </div>
 </nav>
-<div class="nav-mobile-menu" id="navMobileMenu">
-  <a href="index.html#how" onclick="closeMobileMenu()">How It Works</a>
-  <a href="prices.html" onclick="closeMobileMenu()">Game Values</a>
-  <a href="blog/index.html" onclick="closeMobileMenu()">Blog</a>
-  <a href="faq.html" onclick="closeMobileMenu()">FAQ</a>
-  <a href="meetup.html" onclick="closeMobileMenu()">Safe Meetup Guide</a>
-  <a href="waitlist.html" onclick="closeMobileMenu()">Not in Milwaukee?</a>
-</div>
-<script>
-function toggleMobileMenu(){document.getElementById('navMobileMenu').classList.toggle('open');document.getElementById('navHamburger').classList.toggle('open');}
-function closeMobileMenu(){document.getElementById('navMobileMenu').classList.remove('open');document.getElementById('navHamburger').classList.remove('open');}
-</script>
-<div class="page-hero"><a href="index.html" class="back">&larr; Back to CartridgeBond</a><h1>SAFE MEETUP<br>GUIDE</h1><p class="sub">Read this before your first exchange. Your safety is your responsibility - we're here to help.</p></div>
-<div class="container">
-  <div class="disclaimer-box">
-    <p><strong style="color:#e8b050;">Important:</strong> CartridgeBond connects buyers and sellers but is not present at meetups, does not supervise exchanges, and is not responsible for your personal safety or the outcome of any transaction. Meeting a stranger always carries risk. These guidelines are designed to minimize that risk - but following them does not guarantee safety. Use your judgment.</p>
-  </div>
 
-  <div class="section-label">The Rules</div>
-  <div class="rule-grid">
-    <div class="rule-card"><div class="rule-icon">&#128205;</div><div><div class="rule-title">MEET IN A PUBLIC PLACE</div><div class="rule-body">Coffee shops, libraries, grocery store parking lots, and police station lobbies are ideal. <strong>Never meet at someone's home</strong> for a first exchange - public visibility is your best protection.</div></div></div>
-    <div class="rule-card"><div class="rule-icon">&#128065;&#65039;</div><div><div class="rule-title">INSPECT BEFORE YOU PAY</div><div class="rule-body">Never hand over money before testing the cartridge. Insert it into a Switch and confirm the game launches. <strong>Check the case for damage.</strong> A1 means it plays perfectly and the original case is included.</div></div></div>
-    <div class="rule-card"><div class="rule-icon">&#128274;</div><div><div class="rule-title">PRICE IS ALREADY SET</div><div class="rule-body">Both parties committed to the price when they submitted. There should be no negotiation at the meetup. If someone tries to change the price at the door, you are within your rights to walk away.</div></div></div>
-    <div class="rule-card"><div class="rule-icon">&#9200;&#65039;</div><div><div class="rule-title">CONFIRM THE MORNING OF</div><div class="rule-body">Send a quick text or email the morning of the meetup to confirm. This is the single biggest way to prevent no-shows. If you don't hear back, don't drive across town.</div></div></div>
-    <div class="rule-card"><div class="rule-icon">&#128242;</div><div><div class="rule-title">TELL SOMEONE WHERE YOU'RE GOING</div><div class="rule-body">Let a friend or family member know where you're meeting and when you'll be back. Share the other person's first name if you have it.</div></div></div>
-    <div class="rule-card"><div class="rule-icon">&#128176;</div><div><div class="rule-title">AGREE ON PAYMENT IN ADVANCE</div><div class="rule-body">Decide before you leave the house whether you're using cash or Venmo. If using Venmo, confirm the transaction is complete before handing over the game.</div></div></div>
-  </div>
+<main>
 
-  <div class="section-label">Good Meetup Spots in Milwaukee</div>
-  <div class="location-grid">
-    <div class="location-card"><div class="location-name">Coffee Shops</div><div class="location-sub">Starbucks and local cafes in Mequon, Shorewood, and Whitefish Bay are solid. Busy, well-lit, staff present.</div></div>
-    <div class="location-card"><div class="location-name">Public Libraries</div><div class="location-sub">Mequon Public Library, Shorewood Library, and Milwaukee Central Library are all great options.</div></div>
-    <div class="location-card"><div class="location-name">Police Station Lobbies</div><div class="location-sub">Many Milwaukee-area departments actively encourage using their lobby for online transaction meetups.</div></div>
-    <div class="location-card"><div class="location-name">Grocery Parking Lots</div><div class="location-sub">Well-trafficked stores during daylight hours. Plenty of foot traffic and cameras.</div></div>
-    <div class="location-card"><div class="location-name">Target / Best Buy</div><div class="location-sub">Good visibility and busy during the day. Convenient if the buyer wants to test on a display unit.</div></div>
-    <div class="location-card"><div class="location-name">Community Centers</div><div class="location-sub">Public parks and community centers work well during daylight hours in good weather.</div></div>
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Safety guide</div>
+    <h1>How to <span class="accent">trade safely.</span></h1>
+    <p>Five rules for a safe, smooth meetup. Public spots, inspection checklist, and what to do if something feels off.</p>
   </div>
+</section>
 
-  <div class="section-label">What to Check at the Meetup</div>
-  <div class="inspect-steps">
-    <div class="inspect-step"><div class="step-num">1</div><div><div class="step-title">CHECK THE CASE</div><div class="step-body">Is the original case present? Is the cover art intact? Minor scuffs are acceptable - cracks or missing cases are not A1 and you are not obligated to proceed.</div></div></div>
-    <div class="inspect-step"><div class="step-num">2</div><div><div class="step-title">CHECK THE CARTRIDGE</div><div class="step-body">Look at the cartridge pins. They should be clean and gold-colored. Any corrosion or damage is a red flag.</div></div></div>
-    <div class="inspect-step"><div class="step-num">3</div><div><div class="step-title">INSERT AND LAUNCH</div><div class="step-body">Put the cartridge in a Switch and confirm the game loads to the title screen. This confirms the cartridge is authentic and functional.</div></div></div>
-    <div class="inspect-step"><div class="step-num">4</div><div><div class="step-title">PAY AND CONFIRM</div><div class="step-body">If everything checks out, complete payment. Keep the game in hand until Venmo payment is confirmed if paying digitally.</div></div></div>
-    <div class="inspect-step"><div class="step-num">5</div><div><div class="step-title">REPORT ANY ISSUES</div><div class="step-body">If something was misrepresented, email <a href="mailto:cartridgebond@gmail.com" style="color:var(--green);">cartridgebond@gmail.com</a> right away. We track this and it affects future matching.</div></div></div>
-  </div>
+<section class="content-section">
+  <div class="content-inner">
 
-  <div class="cta-box">
-    <h3>READY TO GET MATCHED?</h3>
-    <p>Free beta - Milwaukee and North Shore only.</p>
-    <a href="index.html#form" class="cta-btn">Buy / Sell Now &rarr;</a>
+    <div class="content-card">
+      <h2>Pick a public, well-lit spot</h2>
+      <p>The simplest rule: trade only at busy public places during daylight hours. Good options:</p>
+      <ul>
+        <li><strong>Police station parking lots</strong> - many have designated "internet sale safe zones." This is the safest option, full stop.</li>
+        <li><strong>Public library entrances</strong> - cameras, daylight foot traffic, plenty of staff around.</li>
+        <li><strong>Busy coffee shops</strong> - Starbucks, Colectivo, etc. Bonus: indoor seating if you want to test the cartridge in a Switch you bring.</li>
+        <li><strong>Grocery store entrances</strong> - Sendik's, Pick 'n Save, Festival - cameras and constant foot traffic.</li>
+      </ul>
+      <p>Avoid: residential addresses (yours or theirs), parking garages, late-night anywhere.</p>
+    </div>
+
+    <div class="content-card">
+      <h2>Inspect before you pay</h2>
+      <h3>For buyers</h3>
+      <ul>
+        <li>Verify the cartridge is in the original case</li>
+        <li>Check the cartridge contacts for damage or corrosion</li>
+        <li>If you brought a Switch, boot the game and confirm it loads</li>
+        <li>Confirm the price matches what was locked in your CartridgeBond email</li>
+      </ul>
+      <h3>For sellers</h3>
+      <ul>
+        <li>Count the cash before handing the cartridge over</li>
+        <li>If accepting digital payment, confirm the transfer hits your bank before leaving</li>
+        <li>Don't accept partial payment with a "rest later" arrangement</li>
+      </ul>
+    </div>
+
+    <div class="content-card">
+      <h2>Bring backup if you can</h2>
+      <p>Tell someone where you're going and when you expect to be back. Better yet, bring a friend or family member. Trades take 5 minutes - it's worth the small inconvenience for the safety upgrade.</p>
+    </div>
+
+    <div class="content-card">
+      <h2>Use the price we locked</h2>
+      <p>The whole point of CartridgeBond is that the price doesn't change. If your counterparty tries to renegotiate at the meetup, walk away and email us. We'll re-match you and ban the bad actor. Locked prices are the deal.</p>
+    </div>
+
+    <div class="content-card">
+      <h2>If something feels off, leave</h2>
+      <p>Trust your gut. If the meetup spot looks different than expected, the person seems agitated, or anything feels wrong - just leave. Email us and we'll find a different match. Your safety matters more than any single trade.</p>
+    </div>
+
+    <div class="cta-card">
+      <h3>Ready to lock in your first trade?</h3>
+      <p>Submit in 60 seconds. We'll find your match.</p>
+      <a href="index.html#widget" class="btn">Buy / Sell Now -&gt;</a>
+    </div>
+
   </div>
-</div>
+</section>
+
+</main>
+
 <footer>
-  <a href="index.html" class="footer-logo"><span>Cartridge</span><span>Bond</span></a>
-  <ul class="footer-links">
-    <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="prices.html">Game Values</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="meetup.html">Safe Meetup Guide</a></li>
-    <li><a href="terms.html">Terms</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
-    <li><a href="waitlist.html">Not in Milwaukee?</a></li>
-  </ul>
-  <div class="footer-copy">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-brand"><span class="b1">Cartridge</span><span class="b2">Bond</span></a>
+        <p class="footer-tagline">The future of game resale. Beta in Milwaukee. National soon.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <div class="footer-col-head">Platform</div>
+          <a href="index.html#how">How it works</a>
+          <a href="prices.html">Game prices</a>
+          <a href="status.html">Check status</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-head">Resources</div>
+          <a href="faq.html">FAQ</a>
+          <a href="blog/index.html">Blog</a>
+          <a href="meetup.html">Safe meetup</a>
+          <a href="waitlist.html">Outside Milwaukee?</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-head">Legal</div>
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="mailto:cartridgebond@gmail.com">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 CartridgeBond - A connection platform only - not a party to any transaction</div>
+  </div>
 </footer>
+
+<script>
+function toggleMenu(){document.getElementById('navMenu').classList.toggle('open');}
+document.addEventListener('click',function(e){var m=document.getElementById('navMenu'),b=document.getElementById('menuBtn');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target))m.classList.remove('open');});
+
+</script>
 
 </body>
 </html>

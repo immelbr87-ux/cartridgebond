@@ -195,7 +195,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .btn-primary:hover .btn-arrow{transform:translateX(3px);}
 
 /* ============== HERO WIDGET ============== */
-.widget{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:8px;box-shadow:0 18px 50px rgba(20,40,5,.06);}
+.widget{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:8px;box-shadow:0 18px 50px rgba(20,40,5,.06);scroll-margin-top:80px;}
 .widget-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--bg-2);border-radius:14px;padding:4px;margin-bottom:8px;}
 .widget-tab{padding:11px 16px;border-radius:10px;font-size:14px;font-weight:600;color:var(--muted);transition:all .15s;cursor:pointer;}
 .widget-tab.active{background:var(--accent);color:#fff;box-shadow:0 1px 3px rgba(34,197,94,.25);}
@@ -567,8 +567,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <span class="b1">Cartridge</span><span class="b2">Bond</span>
   </a>
   <div class="nav-cta-row">
-    <a href="login.html" class="nav-signin">Sign in</a>
-    <a href="#widget" class="nav-cta">Buy / Sell Now</a>
+    <a href="index.html#widget" class="nav-cta">Buy / Sell Now</a>
     <button class="nav-menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span>
     </button>
@@ -1445,7 +1444,7 @@ function startSubmission(){
   } catch(e){}
 
   // Smooth scroll widget into view
-  document.querySelector('.widget').scrollIntoView({behavior:'smooth', block:'start'});
+  var w=document.querySelector('.widget');var r=w.getBoundingClientRect();window.scrollTo({top:window.scrollY+r.top-72,behavior:'smooth'});
 }
 
 function backToWidget(){
@@ -1553,7 +1552,7 @@ function showSubmissionSuccess(name){
       'Thanks ' + firstName + ' - a real person will reach out within 48 hours with your match. Check your email for confirmation.';
   }
 
-  document.querySelector('.widget').scrollIntoView({behavior:'smooth', block:'start'});
+  var w=document.querySelector('.widget');var r=w.getBoundingClientRect();window.scrollTo({top:window.scrollY+r.top-72,behavior:'smooth'});
 }
 
 function resetWidget(){
