@@ -3,14 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The future of game resale | CartridgeBond</title>
-<meta name="description" content="Lock in prices, skip the haggling, and trade on your timeline. The dedicated platform for buying and selling Switch games. Milwaukee beta.">
-<meta name="theme-color" content="#f7f7f4">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
 
-<meta property="og:title" content="CartridgeBond - The future of game resale">
-<meta property="og:description" content="Lock in prices, skip the haggling, and trade on your timeline. From your first listing to your hundredth.">
+<title>Buy & Sell Used Nintendo Switch Games | CartridgeBond</title>
+<meta name="description" content="The dedicated platform to buy and sell used Nintendo Switch games. Locked-in pricing, no haggling, no fees during beta. Get more than GameStop trade-in. Safer than Facebook Marketplace.">
+<meta name="keywords" content="sell nintendo switch games, buy used switch games, used switch games for sale, switch game trade-in value, sell my switch games, preowned nintendo switch games, switch game prices, sell video games online, gamestop trade in alternative, switch games milwaukee">
+<meta name="theme-color" content="#f7f7f4">
+<meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: dark)">
+
+<link rel="canonical" href="https://cartridgebond.com/">
+
+<meta property="og:title" content="Buy &amp; Sell Used Nintendo Switch Games | CartridgeBond">
+<meta property="og:description" content="The dedicated platform for used Switch games. Lock in pricing, skip the haggling, get more than GameStop trade-in. $0 fees during beta.">
 <meta property="og:url" content="https://cartridgebond.com/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="CartridgeBond">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Buy &amp; Sell Used Nintendo Switch Games | CartridgeBond">
+<meta name="twitter:description" content="Lock in pricing. Skip the haggling. Get more than GameStop trade-in. $0 fees during beta.">
+
+<!-- JSON-LD: WebApplication schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CartridgeBond",
+  "url": "https://cartridgebond.com",
+  "description": "The dedicated platform to buy and sell used Nintendo Switch games. Locked-in pricing, no haggling, no platform fees during beta.",
+  "applicationCategory": "MarketplaceApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free during beta. First 25 founders trade free for life."
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Milwaukee, WI"
+  }
+}
+</script>
+
+<!-- JSON-LD: FAQPage schema for rich snippets in Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where can I sell my Nintendo Switch games for the most money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CartridgeBond consistently nets sellers more than GameStop trade-in (which averages 30-40% of resale value), more than eBay after 13% fees and shipping, and more reliably than Facebook Marketplace where lowballs and ghosting are common. Our locked-in pricing means the price you see at submission is what you walk away with - no surprises."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does CartridgeBond pricing work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We research every Nintendo Switch title against eBay sold listings (not asking prices), PriceCharting Complete-condition values, and active local market data. Both the buyer and seller commit to the price before anyone meets, so there is no door-side negotiation or haggling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to buy used Nintendo Switch games online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On CartridgeBond, every listing meets our A1 condition standard - like new, original case, plays perfectly. During the Milwaukee beta, all transactions happen at safe public meetup spots. National launch will add escrow protection and trusted shipping for buyer security."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a Bond on CartridgeBond?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Bond is a locked-in trade with a flexible timeline. Most marketplaces force you to buy or sell now. With The Bond, you can commit today to a transaction in 30, 60, or 90 days - locking in a guaranteed buyback price when you purchase, or pre-arranging the resale before you finish playing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much are my Switch games worth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most popular Nintendo Switch titles like Mario Kart 8 Deluxe, Zelda: Tears of the Kingdom, and Super Smash Bros Ultimate hold strong resale value - typically 60-80% of new retail price in A1 condition. Use the price tool on our homepage to see real-time CartridgeBond pricing for any title."
+      }
+    }
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,12 +155,13 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .brand{display:flex;align-items:center;gap:0;font-weight:800;font-size:21px;letter-spacing:-.5px;color:var(--text);font-family:var(--body);}
 .brand .b1{color:var(--text);}
 .brand .b2{color:var(--accent-3);}
-.nav-cta-row{display:flex;align-items:center;gap:8px;}
-.nav-signin{padding:9px 14px;font-weight:500;font-size:14px;color:var(--text-2);transition:color .15s;display:none;}
+.nav-cta-row{display:flex;align-items:center;gap:6px;}
+.nav-signin{padding:8px 10px;font-weight:500;font-size:13.5px;color:var(--text-2);transition:color .15s;}
 .nav-signin:hover{color:var(--accent-3);}
-@media(min-width:560px){.nav-signin{display:inline-block;}}
-.nav-cta{background:var(--accent);color:#fff;padding:9px 18px;border-radius:100px;font-weight:600;font-size:14px;letter-spacing:-.1px;transition:all .15s;}
+@media(min-width:560px){.nav-signin{padding:9px 14px;font-size:14px;}.nav-cta-row{gap:8px;}}
+.nav-cta{background:var(--accent);color:#fff;padding:9px 14px;border-radius:100px;font-weight:600;font-size:13.5px;letter-spacing:-.1px;transition:all .15s;white-space:nowrap;}
 .nav-cta:hover{background:var(--accent-2);}
+@media(min-width:560px){.nav-cta{padding:9px 18px;font-size:14px;}}
 .nav-menu-btn{width:38px;height:38px;border:1.5px solid var(--line-2);border-radius:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--card);transition:border-color .15s;}
 .nav-menu-btn:hover{border-color:var(--text);}
 .nav-menu-btn span{display:block;width:14px;height:1.5px;background:var(--text);border-radius:2px;}
@@ -353,6 +439,39 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .widget.in-details .widget-tabs,.widget.in-details .widget-row,.widget.in-details .widget-meta,.widget.in-details .widget-age,.widget.in-details .widget-cta{display:none;}
 .widget.in-success .widget-tabs,.widget.in-success .widget-row,.widget.in-success .widget-meta,.widget.in-success .widget-age,.widget.in-success .widget-cta,.widget.in-success .widget-details{display:none;}
 
+/* ============== SEO Q&A SECTION ============== */
+.seoqa{padding:64px 20px;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.seoqa-inner{max-width:880px;margin:0 auto;}
+.seoqa-head{margin-bottom:36px;}
+.seoqa-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent-3);font-weight:600;margin-bottom:12px;}
+.seoqa-head h2{font-family:var(--body);font-size:30px;font-weight:800;letter-spacing:-1.2px;line-height:1.1;color:var(--text);margin-bottom:10px;}
+.seoqa-head p{font-size:15px;color:var(--muted);line-height:1.55;max-width:600px;}
+.seoqa-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
+.seoqa-item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .2s;}
+.seoqa-item:hover{border-color:var(--line-3);}
+.seoqa-item.open{border-color:var(--accent);background:linear-gradient(180deg,rgba(34,197,94,.025) 0%,var(--card) 100%);}
+.seoqa-q{width:100%;text-align:left;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px;cursor:pointer;background:transparent;border:none;}
+.seoqa-q-text{font-size:15.5px;font-weight:700;color:var(--text);line-height:1.35;letter-spacing:-.2px;}
+.seoqa-arrow{color:var(--accent-3);font-size:20px;flex-shrink:0;transition:transform .25s;font-weight:300;}
+.seoqa-item.open .seoqa-arrow{transform:rotate(45deg);}
+.seoqa-a{max-height:0;overflow:hidden;transition:max-height .3s;color:var(--text-2);font-size:14.5px;line-height:1.65;padding:0 20px;}
+.seoqa-item.open .seoqa-a{max-height:500px;padding-bottom:20px;}
+.seoqa-a a{color:var(--accent-3);font-weight:600;}
+.seoqa-a p{margin-bottom:10px;}
+.seoqa-a p:last-child{margin-bottom:0;}
+.seoqa-foot{text-align:center;}
+.seoqa-foot a{display:inline-flex;align-items:center;gap:8px;color:var(--text-2);font-size:14px;font-weight:600;padding:11px 22px;border:1.5px solid var(--line-2);border-radius:100px;transition:all .2s;}
+.seoqa-foot a:hover{color:var(--accent-3);border-color:var(--accent);}
+@media(min-width:840px){
+  .seoqa{padding:96px 32px;}
+  .seoqa-head h2{font-size:42px;letter-spacing:-1.6px;}
+  .seoqa-head p{font-size:17px;}
+  .seoqa-q{padding:22px 24px;}
+  .seoqa-q-text{font-size:16.5px;}
+  .seoqa-a{font-size:15.5px;padding:0 24px;}
+  .seoqa-item.open .seoqa-a{padding-bottom:22px;}
+}
+
 /* ============== FOUNDER SECTION ============== */
 .founder{padding:64px 20px;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
 .founder-inner{max-width:920px;margin:0 auto;}
@@ -485,6 +604,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 </nav>
 
 <!-- HERO -->
+<main>
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
@@ -492,8 +612,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         <span class="hero-eyebrow-dot"></span>
         Now in Milwaukee Beta
       </div>
-      <h1>The future of <span class="accent">game resale.</span></h1>
-      <p class="hero-sub">Lock in prices, skip the haggling, and trade on your timeline. <strong>From your first listing to your hundredth</strong> - A1 quality, every time.</p>
+      <h1>The future of <span class="accent">Switch game resale.</span></h1>
+      <p class="hero-sub">Buy and sell <strong>used Nintendo Switch games</strong> with locked-in prices, no haggling, and trades on your timeline. <strong>From your first listing to your hundredth</strong> - A1 quality, every time.</p>
       <div class="hero-proof">
         <div class="hero-proof-item">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
@@ -733,8 +853,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <div class="benefit-content">
-          <h3>Save time, list in seconds</h3>
-          <p>No photos, no descriptions, no marketplace babysitting. Add a title, lock in a price, done.</p>
+          <h3>Sell Switch games in seconds</h3>
+          <p>No photos, no descriptions, no marketplace babysitting. Pick your game, lock the price, done in under a minute.</p>
         </div>
       </div>
       <div class="benefit">
@@ -742,8 +862,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
         </div>
         <div class="benefit-content">
-          <h3>A1 quality only</h3>
-          <p>Every trade meets our condition standard. Like new, original case, plays perfectly. No surprises at the meetup.</p>
+          <h3>Safer than buying used online</h3>
+          <p>Every Switch game meets our A1 condition standard. Like new, original case, plays perfectly. No mystery condition, no surprises.</p>
         </div>
       </div>
       <div class="benefit">
@@ -751,8 +871,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg>
         </div>
         <div class="benefit-content">
-          <h3>Prices locked. No back and forth.</h3>
-          <p>Buy or sell now, or set a future timeline. Both parties commit before anyone meets.</p>
+          <h3>Locked-in prices, no haggling</h3>
+          <p>Get more than GameStop trade-in. Skip the eBay fees. Both buyer and seller commit to the price before anyone meets.</p>
         </div>
       </div>
     </div>
@@ -776,8 +896,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
   <div class="compare-inner">
     <div class="compare-head">
       <div class="compare-eyebrow">Price comparison</div>
-      <h2>You'll get more on CartridgeBond.</h2>
-      <p>Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms.</p>
+      <h2>Sell your Switch games for more.</h2>
+      <p>Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms - CartridgeBond beats GameStop trade-in, eBay after fees, and the unpredictability of Facebook Marketplace.</p>
     </div>
 
     <div class="compare-widget">
@@ -854,6 +974,110 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
   </div>
 </section>
 
+<!-- SEO Q&A SECTION -->
+<section class="seoqa reveal">
+  <div class="seoqa-inner">
+    <div class="seoqa-head">
+      <div class="seoqa-eyebrow">Common questions</div>
+      <h2>Selling and buying Switch games, answered.</h2>
+      <p>Real answers to what people actually search for - pricing, safety, alternatives to GameStop and Facebook Marketplace, and how it all works.</p>
+    </div>
+    <div class="seoqa-list">
+
+      <div class="seoqa-item">
+        <button class="seoqa-q" onclick="toggleSeoqa(this)">
+          <span class="seoqa-q-text">Where can I sell my Nintendo Switch games for the most money?</span>
+          <span class="seoqa-arrow">+</span>
+        </button>
+        <div class="seoqa-a">
+          <p>CartridgeBond consistently nets sellers more than GameStop trade-in (which averages 30-40% of resale value) and more than eBay after the 13% seller fee plus shipping. We also remove the Facebook Marketplace headaches - lowballs, ghosts, "is it still available" messages, and door-side renegotiation.</p>
+          <p>Our pricing is researched against eBay sold listings, PriceCharting Complete-condition values, and observed local activity. Sellers lock in their price at submission and that's the price they walk away with.</p>
+        </div>
+      </div>
+
+      <div class="seoqa-item">
+        <button class="seoqa-q" onclick="toggleSeoqa(this)">
+          <span class="seoqa-q-text">How much are my used Nintendo Switch games worth?</span>
+          <span class="seoqa-arrow">+</span>
+        </button>
+        <div class="seoqa-a">
+          <p>Most popular Nintendo Switch titles hold strong resale value - typically 60-80% of new retail price in A1 condition. Hits like Mario Kart 8 Deluxe ($43), Zelda: Tears of the Kingdom ($50), and Super Smash Bros Ultimate ($43) have particularly stable demand.</p>
+          <p>Use the price tool at the top of this page to see what any specific Switch title is worth on CartridgeBond. We update pricing as the secondary market moves.</p>
+        </div>
+      </div>
+
+      <div class="seoqa-item">
+        <button class="seoqa-q" onclick="toggleSeoqa(this)">
+          <span class="seoqa-q-text">Is it safe to buy used Switch games online?</span>
+          <span class="seoqa-arrow">+</span>
+        </button>
+        <div class="seoqa-a">
+          <p>On CartridgeBond, every listing meets our A1 condition standard - the cartridge plays perfectly, the original case is included, and there are no deep scratches or condition surprises. We vet every submission manually during the Milwaukee beta.</p>
+          <p>Local trades happen at safe public meetup spots - libraries, coffee shops, police station parking lots. National launch will add escrow protection and trusted shipping for full buyer protection.</p>
+        </div>
+      </div>
+
+      <div class="seoqa-item">
+        <button class="seoqa-q" onclick="toggleSeoqa(this)">
+          <span class="seoqa-q-text">CartridgeBond vs GameStop trade-in: which is better?</span>
+          <span class="seoqa-arrow">+</span>
+        </button>
+        <div class="seoqa-a">
+          <p>GameStop trade-in is fast and convenient, but you typically receive 30-40% of resale value - and only as store credit unless you take a further haircut for cash. A Mario Kart 8 Deluxe that nets $43 on CartridgeBond is worth roughly $22 in GameStop trade credit.</p>
+          <p>CartridgeBond takes a couple of days for the full match cycle, but you walk away with significantly more cash for the same game in the same condition.</p>
+        </div>
+      </div>
+
+      <div class="seoqa-item">
+        <button class="seoqa-q" onclick="toggleSeoqa(this)">
+          <span class="seoqa-q-text">CartridgeBond vs Facebook Marketplace: what's the difference?</span>
+          <span class="seoqa-arrow">+</span>
+        </button>
+        <div class="seoqa-a">
+          <p>Facebook Marketplace works, but it comes with hidden costs: lowball offers, the "is this still available" message spam, buyers who ghost the meetup, door-side renegotiation, and no condition standards. The time you spend babysitting an inbox often dwarfs the cash difference.</p>
+          <p>CartridgeBond eliminates all of that. Submit your game once, we find a vetted match, and both parties commit to the price before the meetup. No DMs, no haggling, no flakiness.</p>
+        </div>
+      </div>
+
+      <div class="seoqa-item">
+        <button class="seoqa-q" onclick="toggleSeoqa(this)">
+          <span class="seoqa-q-text">What is The Bond and how does it work?</span>
+          <span class="seoqa-arrow">+</span>
+        </button>
+        <div class="seoqa-a">
+          <p>The Bond is our timeline feature. Most marketplaces force you to sell now or buy now. The Bond lets you commit today to a transaction in 30, 60, or 90 days.</p>
+          <p>As a buyer, you can lock in a guaranteed buyback price the moment you purchase - knowing exactly what your "true cost of play" will be. As a seller, you can pre-arrange the resale before you've even finished playing. Researched pricing makes it possible.</p>
+        </div>
+      </div>
+
+      <div class="seoqa-item">
+        <button class="seoqa-q" onclick="toggleSeoqa(this)">
+          <span class="seoqa-q-text">Where can I sell Switch games near Milwaukee?</span>
+          <span class="seoqa-arrow">+</span>
+        </button>
+        <div class="seoqa-a">
+          <p>CartridgeBond is currently in Milwaukee Beta - we serve Mequon, Glendale, Whitefish Bay, Shorewood, Bayside, Fox Point, Brown Deer, Thiensville, and the wider Milwaukee metro area for safe local meetup trades.</p>
+          <p>Outside Milwaukee? Join the <a href="waitlist.html">waitlist</a> - we'll let you know when we open your area with full shipping support.</p>
+        </div>
+      </div>
+
+      <div class="seoqa-item">
+        <button class="seoqa-q" onclick="toggleSeoqa(this)">
+          <span class="seoqa-q-text">Are there any fees to use CartridgeBond?</span>
+          <span class="seoqa-arrow">+</span>
+        </button>
+        <div class="seoqa-a">
+          <p>$0 platform fees during beta. The first 25 founders to complete a trade get free trades for life - even after we introduce platform fees. We give 30 days notice before any fee changes.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="seoqa-foot">
+      <a href="faq.html">See all FAQs <span style="font-size:14px;">-&gt;</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- FOUNDER SECTION -->
 <section class="founder reveal">
   <div class="founder-inner">
@@ -907,6 +1131,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <a href="#widget" class="btn-primary" style="display:inline-flex;">Buy / Sell Now <span class="btn-arrow">-&gt;</span></a>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -1035,6 +1261,11 @@ function toggleAccordion(rowId){
       if(inp) inp.focus();
     }, 200);
   }
+}
+
+// SEO Q&A accordion (independent of widget accordions)
+function toggleSeoqa(btn){
+  btn.parentElement.classList.toggle('open');
 }
 
 // ── MODE TOGGLE ──
