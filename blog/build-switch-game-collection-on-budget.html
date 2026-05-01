@@ -160,6 +160,19 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 .post-related-item:hover{border-color:var(--accent);transform:translateX(2px);}
 .post-related-cat{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-3);font-weight:600;margin-bottom:5px;}
 .post-related-title{font-size:14.5px;font-weight:700;color:var(--text);letter-spacing:-.2px;line-height:1.3;}
+
+/* Responsive tables in post body */
+.post-body .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--card);border:1px solid var(--line);border-radius:14px;margin:24px 0;}
+.post-body table{width:100%;min-width:520px;border-collapse:collapse;background:var(--card);}
+.post-body table th{padding:13px 14px;text-align:left;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);background:var(--bg-2);border-bottom:1px solid var(--line);white-space:nowrap;}
+.post-body table td{padding:13px 14px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--text-2);white-space:nowrap;}
+.post-body table tr:last-child td{border-bottom:none;}
+.post-body table tr:first-child td{font-weight:600;}
+.post-body table strong{color:var(--accent-3);font-weight:700;}
+.post-body .table-scroll-hint{padding:9px 14px;background:var(--bg-2);border-top:1px solid var(--line);font-size:11px;color:var(--muted);text-align:center;font-weight:500;}
+@media(min-width:680px){.post-body .table-scroll-hint{display:none;}}
+@media(max-width:600px){.post-body table th,.post-body table td{padding:10px;font-size:12.5px;}}
+
 </style>
 </head>
 <body>
@@ -214,7 +227,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
   </div>
   <div class="section">
     <h2>Budget Build: A Strong 5-Game Starter Collection for Under $180</h2>
-    <table class="price-table">
+    <div class="table-scroll"><table class="price-table">
   <thead><tr><th>Game</th><th>Local Used Price</th><th>New Price</th><th>Savings</th></tr></thead>
   <tbody>
     <tr><td>Mario Kart 8 Deluxe</td><td class="price-good">$43</td><td>$60</td><td>$17</td></tr>
@@ -224,7 +237,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <tr><td>Pokemon Scarlet or Violet</td><td class="price-good">$39</td><td>$60</td><td>$21</td></tr>
     <tr><td><strong>Total</strong></td><td><strong>$211</strong></td><td><strong>$310</strong></td><td><strong>$99</strong></td></tr>
   </tbody>
-</table><p>That's nearly $100 saved on five games - and all five are resellable when you're done, recovering more of your investment.</p>
+</table></div><div class="table-scroll-hint">Swipe to see all columns &rarr;</div><p>That's nearly $100 saved on five games - and all five are resellable when you're done, recovering more of your investment.</p>
   </div>
 
   <div class="author-box">
@@ -241,15 +254,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <a href="../index.html" class="cta-btn">Submit Your Game →</a>
   </div>
 
-</div>
-  
-
-  <div class="cta-inline">
-    <h3>READY TO TRADE?</h3>
-    <p>Lock in your price before the meetup. Free during beta in Milwaukee &amp; North Shore.</p>
-    <a href="../index.html#form">Buy / Sell Now &rarr;</a>
-  </div>
-</article>
+</div></article>
 
 <div class="post-after">
 
@@ -263,7 +268,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <div class="post-author-avatar">🎮</div>
     <div class="post-author-info">
       <div class="post-author-name">Chip Beauford</div>
-      <div class="post-author-bio">Founder of CartridgeBond. Twin dad. 10+ years in eCommerce digital merchandising. Built CartridgeBond after spending too many hours researching the Snoo resale market.</div>
+      <div class="post-author-bio">Founder of CartridgeBond. Twin dad. 10+ years in eCommerce digital merchandising. Built CartridgeBond after spending too many hours researching the Switch resale market.</div>
     </div>
   </div>
 

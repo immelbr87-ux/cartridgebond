@@ -160,6 +160,19 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 .post-related-item:hover{border-color:var(--accent);transform:translateX(2px);}
 .post-related-cat{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-3);font-weight:600;margin-bottom:5px;}
 .post-related-title{font-size:14.5px;font-weight:700;color:var(--text);letter-spacing:-.2px;line-height:1.3;}
+
+/* Responsive tables in post body */
+.post-body .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--card);border:1px solid var(--line);border-radius:14px;margin:24px 0;}
+.post-body table{width:100%;min-width:520px;border-collapse:collapse;background:var(--card);}
+.post-body table th{padding:13px 14px;text-align:left;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);background:var(--bg-2);border-bottom:1px solid var(--line);white-space:nowrap;}
+.post-body table td{padding:13px 14px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--text-2);white-space:nowrap;}
+.post-body table tr:last-child td{border-bottom:none;}
+.post-body table tr:first-child td{font-weight:600;}
+.post-body table strong{color:var(--accent-3);font-weight:700;}
+.post-body .table-scroll-hint{padding:9px 14px;background:var(--bg-2);border-top:1px solid var(--line);font-size:11px;color:var(--muted);text-align:center;font-weight:500;}
+@media(min-width:680px){.post-body .table-scroll-hint{display:none;}}
+@media(max-width:600px){.post-body table th,.post-body table td{padding:10px;font-size:12.5px;}}
+
 </style>
 </head>
 <body>
@@ -234,7 +247,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
   <div class="section">
     <h2>Quick Reference: CartridgeBond vs The Alternatives</h2>
     <p>Since you're here, here's the honest comparison that most people want upfront:</p>
-<table class="price-table">
+<div class="table-scroll"><table class="price-table">
   <thead><tr><th>Platform</th><th>Net $ (Mario Kart)</th><th>Fees</th><th>Hassle Level</th><th>Meetup Negotiation</th></tr></thead>
   <tbody>
     <tr><td><strong>CartridgeBond</strong></td><td class="price-good">$43</td><td>Free (beta)</td><td>Low</td><td>None - pre-locked</td></tr>
@@ -243,7 +256,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <tr><td>Craigslist</td><td>$30-40</td><td>None</td><td>High</td><td>Common</td></tr>
     <tr><td>GameStop</td><td class="price-bad">$22</td><td>N/A</td><td>None</td><td>None</td></tr>
   </tbody>
-</table>
+</table></div><div class="table-scroll-hint">Swipe to see all columns &rarr;</div>
 <p>We're not the right fit for every situation - read our <a href="cartridgebond-vs-other-marketplaces.html" style="color:var(--green-dim);">full platform comparison</a> for the honest breakdown. But for popular Switch titles in Milwaukee, the case is clear.</p>
   </div>
 
@@ -261,15 +274,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <a href="../index.html" class="cta-btn">Submit Your Game →</a>
   </div>
 
-</div>
-  
-
-  <div class="cta-inline">
-    <h3>READY TO TRADE?</h3>
-    <p>Lock in your price before the meetup. Free during beta in Milwaukee &amp; North Shore.</p>
-    <a href="../index.html#form">Buy / Sell Now &rarr;</a>
-  </div>
-</article>
+</div></article>
 
 <div class="post-after">
 
@@ -283,7 +288,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <div class="post-author-avatar">🎮</div>
     <div class="post-author-info">
       <div class="post-author-name">Chip Beauford</div>
-      <div class="post-author-bio">Founder of CartridgeBond. Twin dad. 10+ years in eCommerce digital merchandising. Built CartridgeBond after spending too many hours researching the Snoo resale market.</div>
+      <div class="post-author-bio">Founder of CartridgeBond. Twin dad. 10+ years in eCommerce digital merchandising. Built CartridgeBond after spending too many hours researching the Switch resale market.</div>
     </div>
   </div>
 
