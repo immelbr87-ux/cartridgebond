@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+
+<title>Rate your Bond | CartridgeBond</title>
+<meta name="description" content="Rate your CartridgeBond trade after meetup. Help future traders by sharing your experience.">
+<meta name="theme-color" content="#f7f7f4">
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f7f7f4;--bg-2:#efeeea;--bg-3:#e8e7e1;--card:#ffffff;--card-2:#fbfbf7;
+  --line:#e2e2dc;--line-2:#cfcfc7;--line-3:#a8a89e;
+  --text:#0a0a0a;--text-2:#2a2a26;--muted:#6b6b62;--muted-2:#9a9a90;
+  --accent:#22c55e;--accent-2:#16a34a;--accent-3:#15803d;--accent-4:#166534;
+  --accent-soft:#dcfce7;--accent-soft-2:#f0fdf4;
+  --gold:#f59e0b;--gold-soft:#fef3c7;
+  --red:#ef4444;--red-soft:#fee2e2;
+  --dark:#0a1f12;
+  --body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{background:var(--bg);-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;font-weight:400;min-height:100vh;display:flex;flex-direction:column;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--accent);color:#fff;}
+
+nav{padding:18px 22px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);}
+.brand{display:flex;align-items:center;gap:0;font-weight:800;font-size:21px;letter-spacing:-.5px;color:var(--text);}
+.brand .b1{color:var(--text);}
+.brand .b2{color:var(--accent-3);}
+
+main{flex:1;padding:32px 20px 60px;}
+.wrap{max-width:520px;margin:0 auto;}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent-3);font-weight:600;margin-bottom:12px;text-align:center;}
+.page-title{font-family:var(--body);font-size:32px;font-weight:800;letter-spacing:-1.2px;line-height:1.1;color:var(--text);text-align:center;margin-bottom:10px;}
+.page-title .accent{color:var(--accent-3);}
+.page-sub{text-align:center;font-size:15px;color:var(--muted);margin-bottom:28px;line-height:1.55;}
+
+.trade-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px;}
+.trade-game{font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.3px;margin-bottom:4px;}
+.trade-meta{font-size:13px;color:var(--muted);margin-bottom:14px;}
+.trade-partner{display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid var(--line);}
+.partner-avatar{width:42px;height:42px;border-radius:50%;background:var(--accent-soft);color:var(--accent-3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0;border:1.5px solid var(--accent);}
+.partner-name{font-size:14px;font-weight:700;color:var(--text);}
+.partner-role{font-size:12px;color:var(--muted);}
+
+.rating-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:14px;}
+.rating-group{margin-bottom:18px;}
+.rating-group:last-child{margin-bottom:0;}
+.rating-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.rating-label-text{font-size:13px;color:var(--text);font-weight:600;letter-spacing:-.1px;}
+.rating-label-help{font-size:11.5px;color:var(--muted-2);font-weight:500;}
+.stars-row{display:flex;gap:6px;}
+.star{width:36px;height:36px;cursor:pointer;color:var(--line-2);transition:color .12s,transform .1s;background:none;border:none;padding:0;}
+.star:hover{transform:scale(1.08);}
+.star.active{color:var(--gold);}
+.star svg{width:100%;height:100%;}
+.rating-value{display:none;font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:600;margin-top:6px;letter-spacing:.5px;}
+.rating-group.has-value .rating-value{display:block;}
+
+.comment-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px;}
+.comment-card label{display:block;font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.3px;text-transform:uppercase;margin-bottom:8px;}
+.comment-card textarea{width:100%;background:var(--bg-2);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14.5px;font-family:var(--body);min-height:90px;resize:vertical;outline:none;transition:border-color .15s;color:var(--text);}
+.comment-card textarea:focus{border-color:var(--accent);background:var(--card);}
+.comment-help{font-size:11.5px;color:var(--muted-2);margin-top:6px;}
+
+.recommend-row{display:flex;align-items:center;gap:10px;padding:14px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;cursor:pointer;margin-bottom:18px;}
+.recommend-row input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;}
+.recommend-row label{font-size:14px;color:var(--text);font-weight:500;cursor:pointer;flex:1;}
+
+.submit-btn{width:100%;background:var(--accent);color:#fff;font-size:16px;font-weight:600;padding:15px;border-radius:13px;letter-spacing:-.1px;transition:all .15s;}
+.submit-btn:hover{background:var(--accent-2);transform:translateY(-1px);}
+.submit-btn:disabled{background:var(--line-2);color:var(--muted);cursor:not-allowed;transform:none;}
+
+.skip-link{display:block;text-align:center;margin-top:14px;font-size:13px;color:var(--muted);font-weight:500;}
+.skip-link:hover{color:var(--text);}
+
+/* Loading state */
+.loading-state{padding:80px 22px;text-align:center;}
+.spinner{width:36px;height:36px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 16px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-text{font-size:14px;color:var(--muted);}
+
+/* Error state */
+.error-state{display:none;padding:48px 22px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:18px;}
+.error-state.show{display:block;}
+.error-icon{width:48px;height:48px;background:var(--red-soft);color:var(--red);border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.error-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.error-body{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:18px;}
+
+/* Success state */
+.success-state{display:none;padding:48px 22px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:18px;}
+.success-state.show{display:block;}
+.success-icon{width:64px;height:64px;background:var(--accent);color:#fff;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;}
+.success-icon svg{width:32px;height:32px;}
+.success-title{font-size:24px;font-weight:800;color:var(--text);letter-spacing:-.6px;margin-bottom:8px;}
+.success-body{font-size:14.5px;color:var(--muted);line-height:1.55;margin-bottom:24px;max-width:340px;margin-left:auto;margin-right:auto;}
+.success-actions{display:flex;flex-direction:column;gap:10px;max-width:280px;margin:0 auto;}
+.success-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;padding:13px 22px;border-radius:11px;font-size:14.5px;font-weight:600;}
+.success-btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--text);border:1.5px solid var(--line-2);padding:11px 22px;border-radius:11px;font-size:14.5px;font-weight:600;}
+
+footer{padding:24px 20px;text-align:center;font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);background:var(--bg-2);}
+footer a{color:var(--text-2);font-weight:500;}
+
+@media(min-width:560px){
+  .page-title{font-size:36px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand"><span class="b1">Cartridge</span><span class="b2">Bond</span></a>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <!-- LOADING STATE -->
+    <div class="loading-state" id="loadingState">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading your trade...</div>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div class="error-state" id="errorState">
+      <div class="error-icon">!</div>
+      <div class="error-title">Trade not found</div>
+      <div class="error-body" id="errorBody">We couldn't find this trade. Make sure the link is correct, or contact support.</div>
+      <a href="dashboard.html" class="success-btn-primary">Go to dashboard</a>
+    </div>
+
+    <!-- MAIN FORM -->
+    <div id="ratingForm" style="display:none;">
+      <div class="eyebrow">Rate your Bond</div>
+      <h1 class="page-title">How did it <span class="accent">go?</span></h1>
+      <p class="page-sub">Your rating helps build trust on CartridgeBond. It only takes 30 seconds.</p>
+
+      <div class="trade-card">
+        <div class="trade-game" id="tradeGame">--</div>
+        <div class="trade-meta" id="tradeMeta">--</div>
+        <div class="trade-partner">
+          <div class="partner-avatar" id="partnerAvatar">?</div>
+          <div>
+            <div class="partner-name" id="partnerName">--</div>
+            <div class="partner-role" id="partnerRole">--</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rating-card">
+        <div class="rating-group" data-group="communication">
+          <div class="rating-label">
+            <span class="rating-label-text">Communication</span>
+            <span class="rating-label-help">Did they respond promptly?</span>
+          </div>
+          <div class="stars-row" data-stars="communication"></div>
+          <div class="rating-value"></div>
+        </div>
+
+        <div class="rating-group" data-group="punctuality">
+          <div class="rating-label">
+            <span class="rating-label-text">Punctuality</span>
+            <span class="rating-label-help">Were they on time?</span>
+          </div>
+          <div class="stars-row" data-stars="punctuality"></div>
+          <div class="rating-value"></div>
+        </div>
+
+        <div class="rating-group" data-group="condition">
+          <div class="rating-label">
+            <span class="rating-label-text">Condition accuracy</span>
+            <span class="rating-label-help">Did the game match A1 standard?</span>
+          </div>
+          <div class="stars-row" data-stars="condition"></div>
+          <div class="rating-value"></div>
+        </div>
+
+        <div class="rating-group" data-group="overall">
+          <div class="rating-label">
+            <span class="rating-label-text">Overall</span>
+            <span class="rating-label-help">Would you trade with them again?</span>
+          </div>
+          <div class="stars-row" data-stars="overall"></div>
+          <div class="rating-value"></div>
+        </div>
+      </div>
+
+      <div class="comment-card">
+        <label for="comment">Comment (optional)</label>
+        <textarea id="comment" placeholder="What went well? What could improve?"></textarea>
+        <div class="comment-help">Visible on counterparty's profile. Keep it constructive.</div>
+      </div>
+
+      <div class="recommend-row">
+        <input type="checkbox" id="recommend" checked>
+        <label for="recommend">I'd recommend trading with this person again</label>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" onclick="submitRating()" disabled>Submit rating</button>
+      <a href="dashboard.html" class="skip-link">Skip and review later -&gt;</a>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-state" id="successState">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <div class="success-title">Rating submitted</div>
+      <div class="success-body">Thanks for the feedback. Your counterparty will be notified, and your reputation just got a tiny bit stronger.</div>
+      <div class="success-actions">
+        <a href="dashboard.html" class="success-btn-primary">Go to dashboard</a>
+        <a href="index.html#widget" class="success-btn-secondary">Lock in another Bond</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  &copy; 2026 CartridgeBond &nbsp;·&nbsp; <a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a>
+</footer>
+
+<script>
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec';
+var ratings = { communication:0, punctuality:0, condition:0, overall:0 };
+var TRADE_ID = null;
+var TRADE_DATA = null;
+
+document.addEventListener('DOMContentLoaded', function(){
+  var q = new URLSearchParams(window.location.search);
+  TRADE_ID = q.get('id');
+  if(!TRADE_ID){
+    showError('No trade ID provided. The rating link should look like /rate.html?id=...');
+    return;
+  }
+  initStars();
+  loadTrade();
+});
+
+function loadTrade(){
+  // Try to fetch trade details from Apps Script (action=getTrade)
+  // For now, since that endpoint doesn't exist yet, we use placeholder data
+  // and let the user proceed to rate.
+
+  // Hide loading, show form with placeholder if Apps Script doesn't return
+  setTimeout(function(){
+    fetch(GAS_URL + '?action=getTrade&id=' + encodeURIComponent(TRADE_ID))
+      .then(function(r){ return r.json(); })
+      .catch(function(){ return null; })
+      .then(function(data){
+        if(data && data.trade){
+          TRADE_DATA = data.trade;
+        } else {
+          // Fallback - read whatever we have from URL params
+          var q = new URLSearchParams(window.location.search);
+          TRADE_DATA = {
+            game: q.get('game') || 'Your trade',
+            partner: q.get('partner') || 'Counterparty',
+            role: q.get('role') || 'Trade',
+            price: q.get('price') || ''
+          };
+        }
+        renderTrade();
+      });
+  }, 400);
+}
+
+function renderTrade(){
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('ratingForm').style.display = 'block';
+  document.getElementById('tradeGame').textContent = TRADE_DATA.game || 'Trade';
+  var meta = (TRADE_DATA.role || '') + (TRADE_DATA.price ? ' · ' + TRADE_DATA.price : '') + (TRADE_DATA.date ? ' · ' + TRADE_DATA.date : '');
+  document.getElementById('tradeMeta').textContent = meta || 'Completed trade';
+  document.getElementById('partnerName').textContent = TRADE_DATA.partner || 'Counterparty';
+  document.getElementById('partnerRole').textContent = (TRADE_DATA.partnerRole || '') || 'Other party';
+  var initial = ((TRADE_DATA.partner || 'C')[0] || 'C').toUpperCase();
+  document.getElementById('partnerAvatar').textContent = initial;
+}
+
+function showError(msg){
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('errorBody').textContent = msg;
+  document.getElementById('errorState').classList.add('show');
+}
+
+function initStars(){
+  var rows = document.querySelectorAll('[data-stars]');
+  rows.forEach(function(row){
+    var key = row.getAttribute('data-stars');
+    row.innerHTML = '';
+    for(var i=1; i<=5; i++){
+      (function(rating){
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'star';
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+        btn.onclick = function(){ setRating(key, rating, row); };
+        row.appendChild(btn);
+      })(i);
+    }
+  });
+}
+
+function setRating(key, value, row){
+  ratings[key] = value;
+  var stars = row.querySelectorAll('.star');
+  stars.forEach(function(s, idx){
+    s.classList.toggle('active', idx < value);
+  });
+  // Update label below
+  var group = row.closest('.rating-group');
+  group.classList.add('has-value');
+  var labels = ['', 'Poor', 'Fair', 'Good', 'Very good', 'Excellent'];
+  group.querySelector('.rating-value').textContent = labels[value] + ' (' + value + '/5)';
+  updateSubmitButton();
+}
+
+function updateSubmitButton(){
+  // Enable when all 4 ratings have values
+  var allRated = Object.keys(ratings).every(function(k){ return ratings[k] > 0; });
+  document.getElementById('submitBtn').disabled = !allRated;
+}
+
+function submitRating(){
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  var comment = document.getElementById('comment').value.trim();
+  var recommend = document.getElementById('recommend').checked;
+  var token = localStorage.getItem('bond_token') || '';
+  var email = localStorage.getItem('bond_email') || '';
+
+  var payload = {
+    action: 'submitRating',
+    tradeId: TRADE_ID,
+    token: token,
+    raterEmail: email,
+    ratings: ratings,
+    comment: comment,
+    recommend: recommend
+  };
+
+  // Apps Script (when endpoint exists)
+  fetch(GAS_URL, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    mode: 'no-cors'
+  }).catch(function(){});
+
+  // FormSubmit fallback so we always capture the rating
+  var fs = new FormData();
+  fs.append('tradeId', TRADE_ID);
+  fs.append('rater', email || 'anonymous');
+  fs.append('communication', ratings.communication);
+  fs.append('punctuality', ratings.punctuality);
+  fs.append('condition', ratings.condition);
+  fs.append('overall', ratings.overall);
+  fs.append('recommend', recommend ? 'yes' : 'no');
+  fs.append('comment', comment);
+  fs.append('_subject', '[CB] Rating: ' + (TRADE_DATA && TRADE_DATA.game || 'Trade') + ' (' + ratings.overall + '/5)');
+  fs.append('_captcha', 'false');
+
+  fetch('https://formsubmit.co/cartridgebond@gmail.com', { method:'POST', body:fs })
+    .finally(function(){ showSuccess(); });
+}
+
+function showSuccess(){
+  document.getElementById('ratingForm').style.display = 'none';
+  document.getElementById('successState').classList.add('show');
+}
+</script>
+
+</body>
+</html>
