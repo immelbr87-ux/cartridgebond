@@ -639,7 +639,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         <span class="hero-eyebrow-dot"></span>
         Now in Milwaukee Beta
       </div>
-      <h1>The future of <span class="accent">Switch game resale.</span></h1>
+      <h1>The future of <span class="accent">Nintendo Switch game resale.</span></h1>
       <p class="hero-sub">Buy and sell <strong>used Nintendo Switch games</strong> with locked-in prices, no haggling, and trades on your timeline. <strong>From your first listing to your hundredth</strong> - A1 quality, every time.</p>
       <div class="hero-proof">
         <div class="hero-proof-item">
@@ -648,11 +648,11 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         </div>
         <div class="hero-proof-item">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-          Matched in 48hrs
+          A1 condition only
         </div>
         <div class="hero-proof-item">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-          A1 only
+          No marketplace hassle
         </div>
       </div>
     </div>
@@ -695,7 +695,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         <button class="widget-row-summary" onclick="toggleAccordion('conditionRow')">
           <div class="widget-row-side">
             <div class="widget-label">Condition</div>
-            <div class="widget-value">A1 / Like new</div>
+            <div class="widget-value">A1 / Like New</div>
           </div>
           <span class="widget-chip">
             <span>What's this?</span>
@@ -708,7 +708,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
               <div class="condition-card">
                 <div class="condition-card-head">
                   <div class="condition-badge">A1</div>
-                  <div class="condition-name">Like new / Very good</div>
+                  <div class="condition-name">Like New / Very good</div>
                 </div>
                 <div class="condition-desc">Plays perfectly. Original case included. Minor surface scuffs OK.</div>
                 <div class="condition-checks">
@@ -741,7 +741,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
       <div class="widget-row" id="timelineRow">
         <button class="widget-row-summary" onclick="toggleAccordion('timelineRow')">
           <div class="widget-row-side">
-            <div class="widget-label" id="priceLabel">You'll get (locked)</div>
+            <div class="widget-label" id="priceLabel">Price / Time Frame</div>
             <div class="widget-value" id="priceValue">$--</div>
           </div>
           <span class="widget-chip">
@@ -890,7 +890,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         </div>
         <div class="benefit-content">
           <h3>Safer than buying used online</h3>
-          <p>Every Switch game meets our A1 condition standard. Like new, original case, plays perfectly. No mystery condition, no surprises.</p>
+          <p>Every Switch game meets our A1 condition standard. Like New, original case, plays perfectly. No mystery condition, no surprises.</p>
         </div>
       </div>
       <div class="benefit">
@@ -1346,7 +1346,7 @@ function setMode(mode){
   CURRENT_MODE = mode;
   document.getElementById('tabSell').classList.toggle('active', mode === 'sell');
   document.getElementById('tabBuy').classList.toggle('active', mode === 'buy');
-  document.getElementById('priceLabel').textContent = mode === 'sell' ? "You'll get (locked)" : "You'll pay (locked)";
+  document.getElementById('priceLabel').textContent = 'Price / Time Frame';
   document.getElementById('gameRowLabel').textContent = mode === 'sell' ? 'Your game' : 'Game you want';
 
   // Hide condition photos in buy mode (buyer doesn't have the game)
@@ -1424,9 +1424,7 @@ function setTimeline(days, label){
 
   // Update labels
   if(days > 0){
-    document.getElementById('priceLabel').textContent = CURRENT_MODE === 'sell'
-      ? "You'll get in " + days + "d (locked)"
-      : "You'll pay in " + days + "d (locked)";
+    document.getElementById('priceLabel').textContent = 'Price / Time Frame';
     var explainer = document.getElementById('bondExplainer');
     explainer.classList.add('show');
     explainer.classList.remove('mode-sell', 'mode-buy');
@@ -1434,7 +1432,7 @@ function setTimeline(days, label){
     // Update day numbers
     document.querySelectorAll('.bond-days').forEach(function(el){ el.textContent = days; });
   } else {
-    document.getElementById('priceLabel').textContent = CURRENT_MODE === 'sell' ? "You'll get (locked)" : "You'll pay (locked)";
+    document.getElementById('priceLabel').textContent = 'Price / Time Frame';
     document.getElementById('bondExplainer').classList.remove('show');
   }
 
@@ -1642,7 +1640,7 @@ function resetWidget(){
   document.getElementById('gameChipText').textContent = 'Browse';
   document.getElementById('gameRow').classList.add('empty');
   document.getElementById('priceValue').textContent = '$--';
-  document.getElementById('priceLabel').textContent = CURRENT_MODE === 'sell' ? "You'll get (locked)" : "You'll pay (locked)";
+  document.getElementById('priceLabel').textContent = 'Price / Time Frame';
   document.getElementById('timelineChipText').textContent = 'Now';
   document.querySelectorAll('.timeline-pill').forEach(function(p){
     p.classList.toggle('active', parseInt(p.getAttribute('data-days'), 10) === 0);
