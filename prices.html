@@ -6,6 +6,17 @@
 <meta name="color-scheme" content="light only">
 <meta name="supported-color-schemes" content="light">
 
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER_REPLACE_ME"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PLACEHOLDER_REPLACE_ME');
+</script>
+<!-- End Google Analytics 4 -->
+
+
 <title>Switch Game Prices | CartridgeBond - What Your Games Are Worth</title>
 <meta name="description" content="Live Nintendo Switch game resale prices on CartridgeBond. Compare to eBay and GameStop trade-in. Updated weekly from real market data.">
 <meta name="theme-color" content="#f7f7f4">
@@ -106,17 +117,22 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 @media(min-width:840px){footer{padding:56px 32px 28px;}.footer-top{flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:32px;margin-bottom:36px;}.footer-cols{grid-template-columns:repeat(3,auto);gap:64px;}.footer-bottom{text-align:left;}}
 
 .prices-table-wrap{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;}
-.prices-table{width:100%;border-collapse:collapse;}
-.prices-table th{padding:14px 14px;text-align:left;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);background:var(--bg-2);border-bottom:1px solid var(--line);}
+.prices-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.prices-table{width:100%;min-width:560px;border-collapse:collapse;}
+.prices-table th{padding:14px 14px;text-align:left;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);background:var(--bg-2);border-bottom:1px solid var(--line);white-space:nowrap;}
 .prices-table th.cb{color:var(--accent-3);background:var(--accent-soft-2);}
-.prices-table td{padding:14px;border-bottom:1px solid var(--line);font-size:14px;color:var(--text-2);}
+.prices-table td{padding:14px;border-bottom:1px solid var(--line);font-size:14px;color:var(--text-2);white-space:nowrap;}
 .prices-table tr:last-child td{border-bottom:none;}
 .prices-table tr:hover td{background:var(--bg-2);}
 .prices-table tr:hover td.g-cb{background:var(--accent-soft-2);}
-.prices-table .g-name{font-weight:600;color:var(--text);}
+.prices-table .g-name{font-weight:600;color:var(--text);position:sticky;left:0;background:var(--card);z-index:1;}
+.prices-table tr:hover .g-name{background:var(--bg-2);}
 .prices-table .g-cb{color:var(--accent-3);font-weight:700;background:rgba(34,197,94,.04);}
 .prices-table .g-ebay,.prices-table .g-gs{font-family:var(--mono);font-size:13px;color:var(--muted);}
-@media(max-width:600px){.prices-table th,.prices-table td{padding:11px 8px;font-size:12.5px;}.prices-table .g-name{font-size:13px;}}
+.prices-scroll-hint{padding:10px 16px;background:var(--bg-2);border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);text-align:center;font-weight:500;display:flex;align-items:center;justify-content:center;gap:8px;}
+.prices-scroll-hint svg{width:14px;height:14px;}
+@media(min-width:680px){.prices-scroll-hint{display:none;}.prices-table .g-name{position:static;}}
+@media(max-width:600px){.prices-table th,.prices-table td{padding:11px 10px;font-size:12.5px;}.prices-table .g-name{font-size:13px;}}
 
 </style>
 
@@ -165,6 +181,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     </div>
 
     <div class="prices-table-wrap">
+      <div class="prices-table-scroll">
       <table class="prices-table">
         <thead>
           <tr>
@@ -327,6 +344,11 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         </tr>
         </tbody>
       </table>
+      </div>
+      <div class="prices-scroll-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M5 12l4-4M5 12l4 4M19 12l-4-4M19 12l-4 4"/></svg>
+        Swipe to compare across platforms
+      </div>
     </div>
 
     <div class="content-card" style="margin-top:24px;">

@@ -6,6 +6,17 @@
 <meta name="color-scheme" content="light only">
 <meta name="supported-color-schemes" content="light">
 
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER_REPLACE_ME"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PLACEHOLDER_REPLACE_ME');
+</script>
+<!-- End Google Analytics 4 -->
+
+
 <title>Buy & Sell Used Nintendo Switch Games | CartridgeBond</title>
 <meta name="description" content="The dedicated platform to buy and sell used Nintendo Switch games. Locked-in pricing, no haggling, no fees during beta. Get more than GameStop trade-in. Safer than Facebook Marketplace.">
 <meta name="keywords" content="sell nintendo switch games, buy used switch games, used switch games for sale, switch game trade-in value, sell my switch games, preowned nintendo switch games, switch game prices, sell video games online, gamestop trade in alternative, switch games milwaukee">
@@ -182,9 +193,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:6px 12px;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:24px;}
 .hero-eyebrow-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulseDot 2s ease infinite;}
 @keyframes pulseDot{0%,100%{opacity:1;}50%{opacity:.5;}}
-.hero h1{font-family:var(--body);font-size:44px;font-weight:800;line-height:1.04;letter-spacing:-1.8px;margin-bottom:18px;color:var(--text);}
+.hero h1{font-family:var(--body);font-size:34px;font-weight:800;line-height:1.08;letter-spacing:-1.4px;margin-bottom:16px;color:var(--text);}
 .hero h1 .accent{color:var(--accent-3);}
-.hero-sub{font-size:17px;color:var(--text-2);line-height:1.55;margin-bottom:28px;font-weight:400;max-width:560px;}
+.hero-sub{font-size:16px;color:var(--text-2);line-height:1.55;margin-bottom:24px;font-weight:400;max-width:560px;}
 .hero-sub strong{color:var(--text);font-weight:600;}
 .hero-cta-row{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;}
 .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;padding:15px 24px;border-radius:100px;letter-spacing:-.1px;transition:all .15s;border:none;}
@@ -299,12 +310,12 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 @media(min-width:840px){
   .hero{padding:80px 32px 56px;}
   .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
-  .hero h1{font-size:72px;letter-spacing:-3px;}
-  .hero-sub{font-size:19px;margin-bottom:36px;}
+  .hero h1{font-size:52px;letter-spacing:-2.2px;}
+  .hero-sub{font-size:18px;margin-bottom:32px;}
   .hero-cta-row{flex-direction:row;}
   .btn-primary,.btn-secondary{padding:14px 26px;}
 }
-@media(min-width:1100px){.hero h1{font-size:88px;}}
+@media(min-width:1100px){.hero h1{font-size:64px;letter-spacing:-2.5px;}}
 
 /* ============== BENEFITS ============== */
 .benefits{padding:48px 20px;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -912,14 +923,14 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <div class="howitworks-head">
       <div class="howitworks-eyebrow">How it works</div>
       <h2>Three steps. <span class="accent">No haggling.</span></h2>
-      <p>Most marketplaces are an inbox to babysit. CartridgeBond is a process. Here's the whole flow.</p>
+      <p>Most marketplaces are an inbox to babysit. CartridgeBond is a streamlined process. Here's the whole flow.</p>
     </div>
     <div class="howitworks-grid">
       <div class="howstep">
         <div class="howstep-num">1</div>
         <div class="howstep-content">
           <h3>Pick your game and lock the price</h3>
-          <p>Search for any Switch title, see our researched market price, choose your timeline (now or up to 90 days out), and confirm condition. Takes 60 seconds.</p>
+          <p>Search for any Nintendo Switch title, see our researched market price, choose your timeline (now or up to 90 days out), and confirm condition. Takes 60 seconds.</p>
           <div class="howstep-detail">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
             Price researched against eBay sold &amp; PriceCharting
@@ -1156,7 +1167,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
   <div class="founder-inner">
     <div class="founder-card">
       <div class="founder-eyebrow">From the founder</div>
-      <div class="founder-quote">I got tired of selling Switch games on Facebook Marketplace. CartridgeBond is what I wish had existed - a real platform with locked-in terms, not another inbox to babysit.</div>
+      <div class="founder-quote">I got tired of the hassle that comes with Facebook Marketplace. CartridgeBond is what I wish had existed - an easy platform with locked-in terms, not another inbox to babysit.</div>
       <div class="founder-byline">
         <div class="founder-avatar">🎮</div>
         <div>
@@ -1164,8 +1175,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <div class="founder-role">Founder, CartridgeBond</div>
         </div>
       </div>
-      <p class="founder-body">You set your terms once, we find your match, the deal closes on what you committed to. No DMs back and forth. No negotiation at the door. No flakiness.</p>
-      <p class="founder-body">We are in beta and reviewing submissions manually today - that helps us build smart matching before we automate it. Shipping and escrow are coming as we expand nationally.</p>
+      <p class="founder-body">You set your terms once, we find your match, and the deal closes on what you committed to. No DMs back and forth. No negotiation at the door. No flakiness. This is the ultimate easy-button for resale.</p>
+      <p class="founder-body" style="background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-top:18px;font-size:14px;"><strong style="color:var(--accent-3);">Beta status:</strong> CartridgeBond is currently in Milwaukee-area beta with Nintendo Switch titles only. Expanding catalog (more games, more systems), shipping nationwide, and escrow protection are all on the roadmap. Lock in early - the first 25 traders get free trades for life.</p>
       <div class="founder-perk">
         <div class="founder-perk-icon">🏆</div>
         <div>
