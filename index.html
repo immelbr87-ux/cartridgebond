@@ -18,7 +18,7 @@
 
 
 <title>Buy & Sell Used Nintendo Switch Games | CartridgeBond</title>
-<meta name="description" content="The dedicated platform to buy and sell used Nintendo Switch games. Locked-in pricing, no haggling, no fees during beta. Get more than GameStop trade-in. Safer than Facebook Marketplace.">
+<meta name="description" content="Buy and sell used Nintendo Switch games at locked-in prices. $0 fees during beta. More than GameStop trade-in. Safer than Facebook Marketplace.">
 <meta name="keywords" content="sell nintendo switch games, buy used switch games, used switch games for sale, switch game trade-in value, sell my switch games, preowned nintendo switch games, switch game prices, sell video games online, gamestop trade in alternative, switch games milwaukee">
 <meta name="theme-color" content="#f7f7f4">
 <meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
@@ -597,6 +597,41 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.show{opacity:1;transform:none;}
 </style>
+
+<!-- Organization schema for branded SERP and Knowledge Panel -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CartridgeBond",
+  "alternateName": "Cartridge Bond",
+  "url": "https://cartridgebond.com",
+  "logo": "https://cartridgebond.com/logo.png",
+  "description": "The dedicated platform to buy and sell used Nintendo Switch games with locked-in prices, no haggling, and trades on your timeline.",
+  "foundingDate": "2026",
+  "founder": {
+    "@type": "Person",
+    "name": "Chip Beauford"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mequon",
+    "addressRegion": "WI",
+    "postalCode": "53092",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Milwaukee, WI metro area"
+  },
+  "sameAs": [
+    "https://twitter.com/cartridgebond",
+    "https://instagram.com/cartridgebond",
+    "https://facebook.com/cartridgebond"
+  ]
+}
+</script>
+
 </head>
 <body>
 
@@ -612,9 +647,18 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     </button>
   </div>
   <div class="nav-menu" id="navMenu">
-    <a href="prices.html">
+    <a href="#widget" onclick="setNavMode('buy')">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
+      Buy A1 used games
+    </a>
+    <a href="#widget" onclick="setNavMode('sell')">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      Game prices
+      Sell A1 used games
+    </a>
+    <hr>
+    <a href="prices.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
+      Used game prices
     </a>
     <a href="#how">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 4M12 17h.01"/></svg>
@@ -1322,6 +1366,10 @@ function copyLink(){
 
 // ── NAV MENU ──
 function toggleMenu(){ document.getElementById('navMenu').classList.toggle('open'); }
+function setNavMode(mode){
+  document.getElementById('navMenu').classList.remove('open');
+  setMode(mode);
+}
 document.addEventListener('click', function(e){
   var menu = document.getElementById('navMenu');
   var btn = document.getElementById('menuBtn');
