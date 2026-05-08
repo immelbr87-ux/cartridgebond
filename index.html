@@ -425,6 +425,8 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .widget-field label .opt{color:var(--muted-2);font-weight:500;text-transform:none;letter-spacing:0;}
 .widget-field input{width:100%;background:var(--bg-2);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;font-size:15px;color:var(--text);font-family:var(--body);outline:none;transition:border-color .15s;}
 .widget-field input:focus{border-color:var(--accent);background:var(--card);}
+.widget-field select{width:100%;background:var(--bg-2);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;font-size:15px;color:var(--text);font-family:var(--body);outline:none;transition:border-color .15s;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;cursor:pointer;}
+.widget-field select:focus{border-color:var(--accent);background-color:var(--card);}
 .widget-row-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .widget-details-cta{margin-top:14px;}
 .widget-details-cta button{width:100%;background:var(--accent);color:#fff;font-size:16px;font-weight:600;padding:16px;border-radius:14px;letter-spacing:-.1px;transition:all .15s;border:none;}
@@ -902,6 +904,20 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
               <input type="text" id="dZip" required autocomplete="postal-code" inputmode="numeric" maxlength="5" placeholder="53092">
             </div>
           </div>
+          <div class="widget-field">
+            <label>Preferred meetup location <span class="opt">optional</span></label>
+            <select id="dMeetupPref">
+              <option value="">No preference - I'm flexible</option>
+              <option value="Mequon - Library or Starbucks">Mequon area (Library, Starbucks)</option>
+              <option value="Glendale - Bayshore or library">Glendale (Bayshore, Library)</option>
+              <option value="Brookfield - Library or police station">Brookfield (Library, police station lobby)</option>
+              <option value="Wauwatosa - Mayfair or library">Wauwatosa (Mayfair, Library)</option>
+              <option value="Downtown Milwaukee">Downtown Milwaukee</option>
+              <option value="North Shore - flexible">North Shore - flexible</option>
+              <option value="West suburbs - flexible">West suburbs - flexible</option>
+              <option value="South suburbs - flexible">South suburbs - flexible</option>
+            </select>
+          </div>
           <input type="text" id="hp_field" name="hp_field" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;height:0;width:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="widget-details-cta">
             <button type="submit" id="detailsSubmitBtn">Lock it in <span style="display:inline-block;margin-left:6px;">-&gt;</span></button>
@@ -916,7 +932,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
         <div class="widget-success-title">You're locked in</div>
-        <div class="widget-success-body" id="successBody">A real person will reach out within 48 hours with your match. Check your email for confirmation.</div>
+        <div class="widget-success-body" id="successBody">Your Bond is locked in. We will email you the moment we find your match. Check your inbox for confirmation.</div>
         <div class="widget-success-actions">
           <button onclick="resetWidget()" class="widget-success-btn-secondary">Submit another</button>
           <a href="status.html" class="widget-success-btn-primary">Check status</a>
@@ -985,7 +1001,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         <div class="howstep-num">2</div>
         <div class="howstep-content">
           <h3>We match you within 48 hours</h3>
-          <p>A real person reviews every submission during beta. We find a compatible buyer or seller in your area at your locked price - no negotiation, no DMs.</p>
+          <p>Our auto-matcher pairs you with a compatible buyer or seller in your area at the same locked price - no negotiation, no DMs. Most matches happen within 48 hours.</p>
           <div class="howstep-detail">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
             Both parties commit before any meetup
@@ -1140,7 +1156,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <span class="seoqa-arrow">+</span>
         </button>
         <div class="seoqa-a">
-          <p>On CartridgeBond, every listing meets our A1 condition standard - the cartridge plays perfectly, the original case is included, and there are no deep scratches or condition surprises. We vet every submission manually during the Milwaukee beta.</p>
+          <p>On CartridgeBond, every listing meets our A1 condition standard - the cartridge plays perfectly, the original case is included, and there are no deep scratches or condition surprises. We hold every submission to the same A1 standard during the Milwaukee beta.</p>
           <p>Local trades happen at safe public meetup spots - libraries, coffee shops, police station parking lots. National launch will add escrow protection and trusted shipping for full buyer protection.</p>
         </div>
       </div>
@@ -1569,6 +1585,25 @@ function startSubmission(){
     }
   } catch(e){}
 
+  // Pre-fill from previous submission in this session (so user doesn't re-enter contact details for next bond)
+  try {
+    var storedContact = sessionStorage.getItem('cb_contact');
+    if (storedContact) {
+      var c = JSON.parse(storedContact);
+      // Only prefill empty fields - don't override what's already there from localStorage
+      var nameField = document.getElementById('dName');
+      var emailField = document.getElementById('dEmail');
+      var phoneField = document.getElementById('dPhone');
+      var zipField = document.getElementById('dZip');
+      var meetupField = document.getElementById('dMeetupPref');
+      if (nameField && !nameField.value && c.name) nameField.value = c.name;
+      if (emailField && !emailField.value && c.email) emailField.value = c.email;
+      if (phoneField && !phoneField.value && c.phone) phoneField.value = c.phone;
+      if (zipField && !zipField.value && c.zip) zipField.value = c.zip;
+      if (meetupField && !meetupField.value && c.meetupPref) meetupField.value = c.meetupPref;
+    }
+  } catch(e){}
+
   // Smooth scroll widget into view
   var w=document.querySelector('.widget');var r=w.getBoundingClientRect();window.scrollTo({top:window.scrollY+r.top-72,behavior:'smooth'});
 }
@@ -1608,10 +1643,23 @@ function submitForm(e){
   btn.disabled = true;
   btn.innerHTML = 'Locking in...';
 
+  // Save contact details for next submission (skip re-entry)
+  try {
+    sessionStorage.setItem('cb_contact', JSON.stringify({
+      name: name,
+      email: email,
+      phone: phone,
+      zip: zip,
+      meetupPref: document.getElementById('dMeetupPref') ? document.getElementById('dMeetupPref').value : ''
+    }));
+  } catch(e) { /* sessionStorage might be blocked - ignore */ }
+
   // Build payload
   var modeText = CURRENT_MODE === 'sell' ? 'Sell Used' : 'Buy Used';
   var timelineText = SELECTED_TIMELINE_DAYS === 0 ? 'ASAP' : ('In ' + SELECTED_TIMELINE_DAYS + ' days');
   var priceText = document.getElementById('priceValue').textContent;
+  var meetupPrefField = document.getElementById('dMeetupPref');
+  var meetupPref = meetupPrefField ? meetupPrefField.value.trim() : '';
 
   var payload = {
     name: name,
@@ -1624,36 +1672,32 @@ function submitForm(e){
     resale_price: priceText,
     timeline: timelineText,
     bond_days: SELECTED_TIMELINE_DAYS,
-    source: 'homepage-widget'
+    meetupPref: meetupPref,
+    source: 'homepage-widget',
+    formType: 'bond-submission'
   };
 
-  // Apps Script (existing endpoint, fire-and-forget)
-  fetch('https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec', {
+  // Submit to Apps Script (v4.0 endpoint - writes to Sheet, sends user + admin emails)
+  // Using no-cors so we can't read the response. We rely on a timeout to show success.
+  var submitDone = false;
+
+  function finishSubmission() {
+    if (submitDone) return;
+    submitDone = true;
+    showSubmissionSuccess(name);
+  }
+
+  fetch('https://script.google.com/macros/s/AKfycbyR6ilRq4FXjfEmG82F9CImWXuUNcpDErXhiZFEtafvSqM6qbguXMB4DoVBu2UjYew2/exec', {
     method: 'POST',
     body: JSON.stringify(payload),
     mode: 'no-cors'
-  }).catch(function(){});
+  })
+  .then(finishSubmission)
+  .catch(finishSubmission);
 
-  // FormSubmit backup (real visible confirmation)
-  var fsData = new FormData();
-  Object.keys(payload).forEach(function(k){ fsData.append(k, payload[k]); });
-  fsData.append('_subject', '[CB] ' + payload.role + ': ' + payload.game + ' (' + payload.zip + ')');
-  fsData.append('_template', 'table');
-  fsData.append('_captcha', 'false');
-  fsData.append('_replyto', email);
-  fsData.append('_autoresponse',
-    'Hey ' + name.split(' ')[0] + ' - your CartridgeBond submission is confirmed!\n\n' +
-    'You requested: ' + payload.role + ' ' + payload.game + ' (' + timelineText + ', ' + priceText + ').\n\n' +
-    'A real person will reach out within 48 hours when we find your match. ' +
-    'Check status anytime at https://cartridgebond.com/status.html?email=' + encodeURIComponent(email) + '\n\n' +
-    'Reply to this email with any questions.\n\n- CartridgeBond');
-
-  fetch('https://formsubmit.co/cartridgebond@gmail.com', { method: 'POST', body: fsData })
-    .then(function(){ showSubmissionSuccess(name); })
-    .catch(function(){
-      // Even on error, if Apps Script likely succeeded, treat as success
-      showSubmissionSuccess(name);
-    });
+  // Safety timeout: even if fetch hangs, show success after 6s
+  // (Apps Script almost certainly received the POST even if response failed)
+  setTimeout(finishSubmission, 6000);
 
   return false;
 }
@@ -1675,7 +1719,7 @@ function showSubmissionSuccess(name){
   var firstName = (name || '').split(' ')[0];
   if(firstName){
     document.getElementById('successBody').textContent =
-      'Thanks ' + firstName + ' - a real person will reach out within 48 hours with your match. Check your email for confirmation.';
+      'Thanks ' + firstName + ' - your Bond is locked in. We will email you the moment we find your match. Check your inbox for confirmation.';
   }
 
   var w=document.querySelector('.widget');var r=w.getBoundingClientRect();window.scrollTo({top:window.scrollY+r.top-72,behavior:'smooth'});
@@ -1686,8 +1730,8 @@ function resetWidget(){
   widget.classList.remove('in-details', 'in-success');
   document.getElementById('widgetDetails').classList.remove('show');
   document.getElementById('widgetSuccess').classList.remove('show');
-  document.getElementById('detailsForm').reset();
-  // Reset selection state
+
+  // Reset selection state (NOT contact details - those persist via sessionStorage)
   SELECTED_GAME = null;
   SELECTED_TIMELINE_DAYS = 0;
   document.getElementById('gameRowValue').innerHTML = '<span class="widget-value-empty">Pick a game</span>';
@@ -1701,6 +1745,14 @@ function resetWidget(){
   });
   document.getElementById('bondExplainer').classList.remove('show');
   document.getElementById('ageGate').checked = false;
+
+  // Reset the details submit button state (in case it's stuck on "Locking in...")
+  var detailsBtn = document.getElementById('detailsSubmitBtn');
+  if (detailsBtn) {
+    detailsBtn.disabled = false;
+    detailsBtn.innerHTML = 'Lock it in <span style="display:inline-block;margin-left:6px;">-&gt;</span>';
+  }
+
   updateSubmitButton();
 }
 

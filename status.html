@@ -187,7 +187,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 
     <div class="content-card" style="margin-top:24px;">
       <h2>What status means</h2>
-      <p><strong>Under review</strong> - We received your submission and a real person is verifying it. Usually under 12 hours.</p>
+      <p><strong>Under review</strong> - We received your submission and our auto-matcher is checking for compatible matches. Usually under 12 hours.</p>
       <p><strong>Active</strong> - Your listing is live and we're searching for a match.</p>
       <p><strong>Matched</strong> - We found your counterparty. Both parties get an email with meetup details.</p>
       <p><strong>Completed</strong> - Trade is closed. Don't forget to leave a rating!</p>
@@ -252,7 +252,7 @@ function checkStatus(e){
   var resultBox=document.getElementById('statusResult');
   resultBox.classList.remove('show');
   // Apps Script status endpoint
-  var endpoint='https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec?action=status&email='+encodeURIComponent(email);
+  var endpoint='https://script.google.com/macros/s/AKfycbyR6ilRq4FXjfEmG82F9CImWXuUNcpDErXhiZFEtafvSqM6qbguXMB4DoVBu2UjYew2/exec?action=status&email='+encodeURIComponent(email);
   fetch(endpoint)
     .then(function(r){return r.json();})
     .then(function(data){
