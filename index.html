@@ -93,7 +93,7 @@
       "name": "What is a Bond on CartridgeBond?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A Bond is a locked-in trade with a flexible timeline. Most marketplaces force you to buy or sell now. With The Bond, you can commit today to a transaction in 30, 60, or 90 days - locking in a guaranteed buyback price when you purchase, or pre-arranging the resale before you finish playing."
+        "text": "A Bond is a locked-in trade with a flexible timeline. Most marketplaces force you to buy or sell now. With The Bond, you can commit today to a transaction in 30, 60, or 90 days at the same locked price - no haggling later, no surprises. The Bond is your commitment to the deal, not a price prediction."
       }
     },
     {
@@ -1013,7 +1013,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <div class="feature-card">
       <div class="feature-eyebrow">The Bond</div>
       <h2>Trade on <span class="accent">your timeline,</span> not the marketplace's.</h2>
-      <p>Most platforms force you to sell now or buy now. <strong>The Bond</strong> lets you commit today to a trade in 30, 60, or 90 days - locking in a guaranteed buyback price the moment you purchase, or pre-arranging the resale before you've even finished playing.</p>
+      <p>Most platforms force you to sell now or buy now. <strong>The Bond</strong> lets you commit today to a trade in 30, 60, or 90 days at the same locked price - no surprises, no haggling later. You're committing to the trade, not predicting the future.</p>
       <a href="faq.html#bond" class="feature-cta">How The Bond works <span class="btn-arrow">-&gt;</span></a>
     </div>
   </div>
@@ -1025,7 +1025,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <div class="compare-head">
       <div class="compare-eyebrow">Price comparison</div>
       <h2>Sell your Switch games for more.</h2>
-      <p>Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms - CartridgeBond beats GameStop trade-in, eBay after fees, and the unpredictability of Facebook Marketplace.</p>
+      <p>Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms. CartridgeBond pays more than GameStop trade-in, more than eBay nets after fees and shipping, and removes the haggling and ghosting of Facebook Marketplace. <strong>Plus: 60 seconds to lock in</strong> vs hours of listing photos and weeks of waiting on eBay.</p>
     </div>
 
     <div class="compare-widget">
@@ -1173,8 +1173,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <span class="seoqa-arrow">+</span>
         </button>
         <div class="seoqa-a">
-          <p>The Bond is our timeline feature. Most marketplaces force you to sell now or buy now. The Bond lets you commit today to a transaction in 30, 60, or 90 days.</p>
-          <p>As a buyer, you can lock in a guaranteed buyback price the moment you purchase - knowing exactly what your "true cost of play" will be. As a seller, you can pre-arrange the resale before you've even finished playing. Researched pricing makes it possible.</p>
+          <p>The Bond is our timeline feature. Most marketplaces force you to sell now or buy now. The Bond lets you commit today to a transaction in 30, 60, or 90 days at the same locked price.</p>
+          <p>As a buyer, you can pre-arrange your trade before you finish playing - knowing the exact price you'll pay later. As a seller, you can pre-arrange the resale at today's locked price even if you don't ship for 90 days. Same price either way - what The Bond actually delivers is commitment and certainty, not price prediction.</p>
         </div>
       </div>
 
@@ -1195,7 +1195,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <span class="seoqa-arrow">+</span>
         </button>
         <div class="seoqa-a">
-          <p>$0 platform fees during beta. The first 25 founders to complete a trade get free trades for life - even after we introduce platform fees. We give 30 days notice before any fee changes.</p>
+          <p>$0 platform fees during beta - both buyers and sellers. After beta, sellers will continue to net the full locked price, and buyers will pay a small platform fee on top (think 3-5%). Sellers always get exactly what they were promised.</p>
+          <p>The first 25 founders to complete a trade get free trades for life on both sides - even after we introduce buyer-side fees. We give 30 days notice before any fee changes.</p>
         </div>
       </div>
 
@@ -1508,34 +1509,28 @@ function updatePriceDisplay(){
   var price = SELECTED_GAME.cartridgeBondPrice;
   var retail = SELECTED_GAME.retailPrice || 59.99;
 
-  // Depreciation factors - placeholder values (per-game data would replace this later)
-  // Used resale prices generally drift down over time
-  var depFactor = 1;
-  if(SELECTED_TIMELINE_DAYS === 30) depFactor = 0.92;
-  else if(SELECTED_TIMELINE_DAYS === 60) depFactor = 0.84;
-  else if(SELECTED_TIMELINE_DAYS === 90) depFactor = 0.75;
+  // Flat pricing across all timelines.
+  // The Bond is a commitment + condition contract, not a depreciation tool.
+  // Same locked price regardless of whether trade happens now or in 90 days.
+  // (See PRICING_STRATEGY.md for rationale.)
 
-  var futurePrice = Math.round(price * depFactor);
+  // Always show the locked price
+  document.getElementById('priceValue').textContent = '$' + price;
 
   if(SELECTED_TIMELINE_DAYS > 0){
-    document.getElementById('priceValue').textContent = '$' + futurePrice;
-
     if(CURRENT_MODE === 'sell'){
-      // SELLING: True cost of play = retail - sell price
-      var trueCost = (retail - futurePrice).toFixed(2);
+      // SELLING: True cost of play = retail - locked sell price
+      var trueCost = (retail - price).toFixed(2);
       document.getElementById('bondRetailSell').textContent = '$' + retail.toFixed(2);
-      document.getElementById('bondSellPrice').textContent = '$' + futurePrice;
+      document.getElementById('bondSellPrice').textContent = '$' + price;
       document.getElementById('bondTrueCost').textContent = '$' + trueCost;
     } else {
-      // BUYING: Save vs retail = retail - buy price (used)
-      var savings = (retail - futurePrice).toFixed(2);
+      // BUYING: Save vs retail = retail - locked buy price (used)
+      var savings = (retail - price).toFixed(2);
       document.getElementById('bondRetailBuy').textContent = '$' + retail.toFixed(2);
-      document.getElementById('bondBuyPrice').textContent = '$' + futurePrice;
+      document.getElementById('bondBuyPrice').textContent = '$' + price;
       document.getElementById('bondSavings').textContent = '$' + savings;
     }
-  } else {
-    // "Now" - no Bond breakdown, just show current price
-    document.getElementById('priceValue').textContent = '$' + price;
   }
 }
 
