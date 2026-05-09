@@ -6,17 +6,6 @@
 <meta name="color-scheme" content="light only">
 <meta name="supported-color-schemes" content="light">
 
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER_REPLACE_ME"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-PLACEHOLDER_REPLACE_ME');
-</script>
-<!-- End Google Analytics 4 -->
-
-
 <title>Rate your Bond | CartridgeBond</title>
 <meta name="description" content="Rate your CartridgeBond trade after meetup. Help future traders by sharing your experience.">
 <meta name="theme-color" content="#f7f7f4">
@@ -245,7 +234,7 @@ footer a{color:var(--text-2);font-weight:500;}
 </footer>
 
 <script>
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec';
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbyR6ilRq4FXjfEmG82F9CImWXuUNcpDErXhiZFEtafvSqM6qbguXMB4DoVBu2UjYew2/exec';
 var ratings = { communication:0, punctuality:0, condition:0, overall:0 };
 var TRADE_ID = null;
 var TRADE_DATA = null;
@@ -365,28 +354,25 @@ function submitRating(){
     recommend: recommend
   };
 
-  // Apps Script (when endpoint exists)
+  // Apps Script v4.0 (writes rating to Ratings sheet, increments review counts)
+  // Using no-cors so we can't read the response; rely on timeout to show success.
+  var submitDone = false;
+  function finishSubmission() {
+    if (submitDone) return;
+    submitDone = true;
+    showSuccess();
+  }
+
   fetch(GAS_URL, {
     method: 'POST',
     body: JSON.stringify(payload),
     mode: 'no-cors'
-  }).catch(function(){});
+  })
+  .then(finishSubmission)
+  .catch(finishSubmission);
 
-  // FormSubmit fallback so we always capture the rating
-  var fs = new FormData();
-  fs.append('tradeId', TRADE_ID);
-  fs.append('rater', email || 'anonymous');
-  fs.append('communication', ratings.communication);
-  fs.append('punctuality', ratings.punctuality);
-  fs.append('condition', ratings.condition);
-  fs.append('overall', ratings.overall);
-  fs.append('recommend', recommend ? 'yes' : 'no');
-  fs.append('comment', comment);
-  fs.append('_subject', '[CB] Rating: ' + (TRADE_DATA && TRADE_DATA.game || 'Trade') + ' (' + ratings.overall + '/5)');
-  fs.append('_captcha', 'false');
-
-  fetch('https://formsubmit.co/cartridgebond@gmail.com', { method:'POST', body:fs })
-    .finally(function(){ showSuccess(); });
+  // Safety timeout: even if fetch hangs, show success after 6s
+  setTimeout(finishSubmission, 6000);
 }
 
 function showSuccess(){

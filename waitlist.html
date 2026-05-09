@@ -6,17 +6,6 @@
 <meta name="color-scheme" content="light only">
 <meta name="supported-color-schemes" content="light">
 
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER_REPLACE_ME"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-PLACEHOLDER_REPLACE_ME');
-</script>
-<!-- End Google Analytics 4 -->
-
-
 <title>Join the Waitlist | CartridgeBond - Coming to Your City</title>
 <meta name="description" content="CartridgeBond is launching in Milwaukee with national rollout coming soon. Join the waitlist to get early access in your area.">
 <meta name="theme-color" content="#f7f7f4">
@@ -249,18 +238,28 @@ function submitWaitlist(e){
   var btn=document.getElementById('wlBtn');
   btn.disabled=true;btn.textContent='Submitting...';
   var data={name:name,email:email,city:city,zip:zip,formType:'waitlist',role:'waitlist'};
-  // Apps Script
-  fetch('https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec',{method:'POST',body:JSON.stringify(data),mode:'no-cors'}).catch(function(){});
-  // FormSubmit fallback
-  var fs=new FormData();
-  Object.keys(data).forEach(function(k){fs.append(k,data[k]);});
-  fs.append('_subject','[CB] Waitlist: '+city);
-  fs.append('_replyto',email);
-  fs.append('_captcha','false');
-  fetch('https://formsubmit.co/cartridgebond@gmail.com',{method:'POST',body:fs}).finally(function(){
+
+  // Apps Script v4.0 (writes to Sheet, sends admin email + user confirmation)
+  // Using no-cors so we can't read the response; rely on timeout to show success.
+  var submitDone = false;
+  function finishSubmission() {
+    if (submitDone) return;
+    submitDone = true;
     document.getElementById('waitlistForm').style.display='none';
     document.getElementById('wlSuccess').classList.add('show');
-  });
+  }
+
+  fetch('https://script.google.com/macros/s/AKfycbyR6ilRq4FXjfEmG82F9CImWXuUNcpDErXhiZFEtafvSqM6qbguXMB4DoVBu2UjYew2/exec',{
+    method:'POST',
+    body:JSON.stringify(data),
+    mode:'no-cors'
+  })
+  .then(finishSubmission)
+  .catch(finishSubmission);
+
+  // Safety timeout: even if fetch hangs, show success after 6s
+  setTimeout(finishSubmission, 6000);
+
   return false;
 }
 
