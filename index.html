@@ -6,19 +6,8 @@
 <meta name="color-scheme" content="light only">
 <meta name="supported-color-schemes" content="light">
 
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER_REPLACE_ME"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-PLACEHOLDER_REPLACE_ME');
-</script>
-<!-- End Google Analytics 4 -->
-
-
 <title>Buy & Sell Used Nintendo Switch Games | CartridgeBond</title>
-<meta name="description" content="Buy and sell used Nintendo Switch games at locked-in prices. $0 fees during beta. More than GameStop trade-in. Safer than Facebook Marketplace.">
+<meta name="description" content="The dedicated platform to buy and sell used Nintendo Switch games. Locked-in pricing, no haggling, no fees during beta. Get more than GameStop trade-in. Safer than Facebook Marketplace.">
 <meta name="keywords" content="sell nintendo switch games, buy used switch games, used switch games for sale, switch game trade-in value, sell my switch games, preowned nintendo switch games, switch game prices, sell video games online, gamestop trade in alternative, switch games milwaukee">
 <meta name="theme-color" content="#f7f7f4">
 <meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
@@ -93,7 +82,7 @@
       "name": "What is a Bond on CartridgeBond?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A Bond is a locked-in trade with a flexible timeline. Most marketplaces force you to buy or sell now. With The Bond, you can commit today to a transaction in 30, 60, or 90 days at the same locked price - no haggling later, no surprises. The Bond is your commitment to the deal, not a price prediction."
+        "text": "A Bond is a locked-in trade with a flexible timeline. Most marketplaces force you to buy or sell now. With The Bond, you can commit today to a transaction in 30, 60, or 90 days - locking in a guaranteed buyback price when you purchase, or pre-arranging the resale before you finish playing."
       }
     },
     {
@@ -193,9 +182,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:100px;padding:6px 12px;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:24px;}
 .hero-eyebrow-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulseDot 2s ease infinite;}
 @keyframes pulseDot{0%,100%{opacity:1;}50%{opacity:.5;}}
-.hero h1{font-family:var(--body);font-size:34px;font-weight:800;line-height:1.08;letter-spacing:-1.4px;margin-bottom:16px;color:var(--text);}
+.hero h1{font-family:var(--body);font-size:44px;font-weight:800;line-height:1.04;letter-spacing:-1.8px;margin-bottom:18px;color:var(--text);}
 .hero h1 .accent{color:var(--accent-3);}
-.hero-sub{font-size:16px;color:var(--text-2);line-height:1.55;margin-bottom:24px;font-weight:400;max-width:560px;}
+.hero-sub{font-size:17px;color:var(--text-2);line-height:1.55;margin-bottom:28px;font-weight:400;max-width:560px;}
 .hero-sub strong{color:var(--text);font-weight:600;}
 .hero-cta-row{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;}
 .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;padding:15px 24px;border-radius:100px;letter-spacing:-.1px;transition:all .15s;border:none;}
@@ -301,6 +290,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .widget-cta button:hover{background:var(--dark-2);}
 .widget-cta button:disabled{background:var(--line-2);color:var(--muted);cursor:not-allowed;}
 
+.widget-flipper-note{padding:0 16px 14px;font-size:11.5px;color:var(--muted);line-height:1.5;text-align:center;}
+.widget-flipper-note a{color:var(--accent-3);font-weight:500;text-decoration:underline;text-underline-offset:2px;}
+.widget.in-details .widget-flipper-note,.widget.in-success .widget-flipper-note{display:none;}
+
 /* Hero proof footer */
 .hero-proof{margin-top:24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);font-weight:500;}
 .hero-proof-item{display:flex;align-items:center;gap:6px;}
@@ -310,12 +303,12 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 @media(min-width:840px){
   .hero{padding:80px 32px 56px;}
   .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
-  .hero h1{font-size:52px;letter-spacing:-2.2px;}
-  .hero-sub{font-size:18px;margin-bottom:32px;}
+  .hero h1{font-size:72px;letter-spacing:-3px;}
+  .hero-sub{font-size:19px;margin-bottom:36px;}
   .hero-cta-row{flex-direction:row;}
   .btn-primary,.btn-secondary{padding:14px 26px;}
 }
-@media(min-width:1100px){.hero h1{font-size:64px;letter-spacing:-2.5px;}}
+@media(min-width:1100px){.hero h1{font-size:88px;}}
 
 /* ============== BENEFITS ============== */
 .benefits{padding:48px 20px;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -425,17 +418,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .widget-field label .opt{color:var(--muted-2);font-weight:500;text-transform:none;letter-spacing:0;}
 .widget-field input{width:100%;background:var(--bg-2);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;font-size:15px;color:var(--text);font-family:var(--body);outline:none;transition:border-color .15s;}
 .widget-field input:focus{border-color:var(--accent);background:var(--card);}
-.widget-field select{width:100%;background:var(--bg-2);border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;font-size:15px;color:var(--text);font-family:var(--body);outline:none;transition:border-color .15s;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;cursor:pointer;}
-.widget-field select:focus{border-color:var(--accent);background-color:var(--card);}
 .widget-row-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .widget-details-cta{margin-top:14px;}
 .widget-details-cta button{width:100%;background:var(--accent);color:#fff;font-size:16px;font-weight:600;padding:16px;border-radius:14px;letter-spacing:-.1px;transition:all .15s;border:none;}
 .widget-details-cta button:hover{background:var(--accent-2);transform:translateY(-1px);}
-.widget-consent{margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.5;}
-.widget-consent label{display:flex;align-items:flex-start;gap:8px;cursor:pointer;user-select:none;}
-.widget-consent input[type="checkbox"]{flex-shrink:0;width:16px;height:16px;margin-top:2px;accent-color:var(--accent);cursor:pointer;}
-.widget-consent a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;font-weight:500;}
-.widget-consent a:hover{color:var(--accent-2);}
 .widget-details-cta button:disabled{background:var(--line-2);color:var(--muted);cursor:not-allowed;transform:none;}
 .widget-details-error{display:none;margin-top:10px;padding:11px 14px;background:#fef2f2;border:1px solid #fecaca;border-radius:10px;color:#b91c1c;font-size:13px;font-weight:500;}
 .widget-details-error.show{display:block;}
@@ -604,41 +590,6 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.show{opacity:1;transform:none;}
 </style>
-
-<!-- Organization schema for branded SERP and Knowledge Panel -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "CartridgeBond",
-  "alternateName": "Cartridge Bond",
-  "url": "https://cartridgebond.com",
-  "logo": "https://cartridgebond.com/logo.png",
-  "description": "The dedicated platform to buy and sell used Nintendo Switch games with locked-in prices, no haggling, and trades on your timeline.",
-  "foundingDate": "2026",
-  "founder": {
-    "@type": "Person",
-    "name": "Chip Beauford"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Mequon",
-    "addressRegion": "WI",
-    "postalCode": "53092",
-    "addressCountry": "US"
-  },
-  "areaServed": {
-    "@type": "Place",
-    "name": "Milwaukee, WI metro area"
-  },
-  "sameAs": [
-    "https://twitter.com/cartridgebond",
-    "https://instagram.com/cartridgebond",
-    "https://facebook.com/cartridgebond"
-  ]
-}
-</script>
-
 </head>
 <body>
 
@@ -654,18 +605,9 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     </button>
   </div>
   <div class="nav-menu" id="navMenu">
-    <a href="#widget" onclick="setNavMode('buy')">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
-      Buy A1 used games
-    </a>
-    <a href="#widget" onclick="setNavMode('sell')">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      Sell A1 used games
-    </a>
-    <hr>
     <a href="prices.html">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
-      Used game prices
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      Game prices
     </a>
     <a href="#how">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 4M12 17h.01"/></svg>
@@ -701,7 +643,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         <span class="hero-eyebrow-dot"></span>
         Now in Milwaukee Beta
       </div>
-      <h1>The future of <span class="accent">Nintendo Switch game resale.</span></h1>
+      <h1>The future of <span class="accent">Switch game resale.</span></h1>
       <p class="hero-sub">Buy and sell <strong>used Nintendo Switch games</strong> with locked-in prices, no haggling, and trades on your timeline. <strong>From your first listing to your hundredth</strong> - A1 quality, every time.</p>
       <div class="hero-proof">
         <div class="hero-proof-item">
@@ -710,11 +652,11 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         </div>
         <div class="hero-proof-item">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-          A1 condition only
+          Matched in 48hrs
         </div>
         <div class="hero-proof-item">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-          No marketplace hassle
+          A1 only
         </div>
       </div>
     </div>
@@ -757,7 +699,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         <button class="widget-row-summary" onclick="toggleAccordion('conditionRow')">
           <div class="widget-row-side">
             <div class="widget-label">Condition</div>
-            <div class="widget-value">A1 / Like New</div>
+            <div class="widget-value">A1 / Like new</div>
           </div>
           <span class="widget-chip">
             <span>What's this?</span>
@@ -770,7 +712,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
               <div class="condition-card">
                 <div class="condition-card-head">
                   <div class="condition-badge">A1</div>
-                  <div class="condition-name">Like New / Very good</div>
+                  <div class="condition-name">Like new / Very good</div>
                 </div>
                 <div class="condition-desc">Plays perfectly. Original case included. Minor surface scuffs OK.</div>
                 <div class="condition-checks">
@@ -803,7 +745,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
       <div class="widget-row" id="timelineRow">
         <button class="widget-row-summary" onclick="toggleAccordion('timelineRow')">
           <div class="widget-row-side">
-            <div class="widget-label" id="priceLabel">Price / Time Frame</div>
+            <div class="widget-label" id="priceLabel">You'll get (locked)</div>
             <div class="widget-value" id="priceValue">$--</div>
           </div>
           <span class="widget-chip">
@@ -842,7 +784,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
                 <span class="val" id="bondRetailSell">$59.99</span>
               </div>
               <div class="bond-row bond-sell-only">
-                <span class="label">Lock in future sale (<span class="bond-days">60</span>d)</span>
+                <span class="label"><span class="bond-sell-line">Sell to CartridgeBond</span></span>
                 <span class="val" id="bondSellPrice">$36</span>
               </div>
               <div class="bond-row cost bond-sell-only">
@@ -855,7 +797,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
                 <span class="val" id="bondRetailBuy">$59.99</span>
               </div>
               <div class="bond-row bond-buy-only">
-                <span class="label">Buy used in <span class="bond-days">60</span>d</span>
+                <span class="label"><span class="bond-buy-line">Buy on CartridgeBond</span></span>
                 <span class="val" id="bondBuyPrice">$40</span>
               </div>
               <div class="bond-row cost bond-buy-only">
@@ -874,11 +816,15 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 
       <div class="widget-age">
         <input type="checkbox" id="ageGate" required>
-        <label for="ageGate">I confirm I am <strong>13 or older</strong> and agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</label>
+        <label for="ageGate">I confirm I am <strong>16 or older</strong> and agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</label>
       </div>
 
       <div class="widget-cta">
         <button id="widgetSubmitBtn" onclick="startSubmission()" disabled>Buy / Sell Now <span style="display:inline-block;margin-left:6px;">-&gt;</span></button>
+      </div>
+
+      <div class="widget-flipper-note">
+        Got 5+ games to list? Email <a href="mailto:cartridgebond@gmail.com?subject=Bulk%20submission">cartridgebond@gmail.com</a> - we'll handle bulk listings for you during beta.
       </div>
 
       <!-- SUBMISSION DETAILS STEP -->
@@ -909,27 +855,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
               <input type="text" id="dZip" required autocomplete="postal-code" inputmode="numeric" maxlength="5" placeholder="53092">
             </div>
           </div>
-          <div class="widget-field">
-            <label>Preferred meetup location <span class="opt">optional</span></label>
-            <select id="dMeetupPref">
-              <option value="">No preference - I'm flexible</option>
-              <option value="Mequon - Library or Starbucks">Mequon area (Library, Starbucks)</option>
-              <option value="Glendale - Bayshore or library">Glendale (Bayshore, Library)</option>
-              <option value="Brookfield - Library or police station">Brookfield (Library, police station lobby)</option>
-              <option value="Wauwatosa - Mayfair or library">Wauwatosa (Mayfair, Library)</option>
-              <option value="Downtown Milwaukee">Downtown Milwaukee</option>
-              <option value="North Shore - flexible">North Shore - flexible</option>
-              <option value="West suburbs - flexible">West suburbs - flexible</option>
-              <option value="South suburbs - flexible">South suburbs - flexible</option>
-            </select>
-          </div>
           <input type="text" id="hp_field" name="hp_field" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;height:0;width:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="widget-consent">
-            <label for="dAgreeTerms">
-              <input type="checkbox" id="dAgreeTerms" required>
-              <span>I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>, and confirm I am at least 16 years old.</span>
-            </label>
-          </div>
           <div class="widget-details-cta">
             <button type="submit" id="detailsSubmitBtn">Lock it in <span style="display:inline-block;margin-left:6px;">-&gt;</span></button>
           </div>
@@ -943,7 +869,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
         <div class="widget-success-title">You're locked in</div>
-        <div class="widget-success-body" id="successBody">Your Bond is locked in. We will email you the moment we find your match. Check your inbox for confirmation.</div>
+        <div class="widget-success-body" id="successBody">A real person will reach out within 48 hours with your match. Check your email for confirmation.</div>
         <div class="widget-success-actions">
           <button onclick="resetWidget()" class="widget-success-btn-secondary">Submit another</button>
           <a href="status.html" class="widget-success-btn-primary">Check status</a>
@@ -972,7 +898,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         </div>
         <div class="benefit-content">
           <h3>Safer than buying used online</h3>
-          <p>Every Switch game meets our A1 condition standard. Like New, original case, plays perfectly. No mystery condition, no surprises.</p>
+          <p>Every Switch game meets our A1 condition standard. Like new, original case, plays perfectly. No mystery condition, no surprises.</p>
         </div>
       </div>
       <div class="benefit">
@@ -994,14 +920,14 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <div class="howitworks-head">
       <div class="howitworks-eyebrow">How it works</div>
       <h2>Three steps. <span class="accent">No haggling.</span></h2>
-      <p>Most marketplaces are an inbox to babysit. CartridgeBond is a streamlined process. Here's the whole flow.</p>
+      <p>Most marketplaces are an inbox to babysit. CartridgeBond is a process. Here's the whole flow.</p>
     </div>
     <div class="howitworks-grid">
       <div class="howstep">
         <div class="howstep-num">1</div>
         <div class="howstep-content">
           <h3>Pick your game and lock the price</h3>
-          <p>Search for any Nintendo Switch title, see our researched market price, choose your timeline (now or up to 90 days out), and confirm condition. Takes 60 seconds.</p>
+          <p>Search for any Switch title, see our researched market price, choose your timeline (now or up to 90 days out), and confirm condition. Takes 60 seconds.</p>
           <div class="howstep-detail">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
             Price researched against eBay sold &amp; PriceCharting
@@ -1012,7 +938,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
         <div class="howstep-num">2</div>
         <div class="howstep-content">
           <h3>We match you within 48 hours</h3>
-          <p>Our auto-matcher pairs you with a compatible buyer or seller in your area at the same locked price - no negotiation, no DMs. Most matches happen within 48 hours.</p>
+          <p>A real person reviews every submission during beta. We find a compatible buyer or seller in your area at your locked price - no negotiation, no DMs.</p>
           <div class="howstep-detail">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
             Both parties commit before any meetup
@@ -1040,7 +966,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <div class="feature-card">
       <div class="feature-eyebrow">The Bond</div>
       <h2>Trade on <span class="accent">your timeline,</span> not the marketplace's.</h2>
-      <p>Most platforms force you to sell now or buy now. <strong>The Bond</strong> lets you commit today to a trade in 30, 60, or 90 days at the same locked price - no surprises, no haggling later. You're committing to the trade, not predicting the future.</p>
+      <p>Most platforms force you to sell now or buy now. <strong>The Bond</strong> lets you commit today to a trade in 30, 60, or 90 days - locking in a guaranteed buyback price the moment you purchase, or pre-arranging the resale before you've even finished playing.</p>
       <a href="faq.html#bond" class="feature-cta">How The Bond works <span class="btn-arrow">-&gt;</span></a>
     </div>
   </div>
@@ -1052,7 +978,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <div class="compare-head">
       <div class="compare-eyebrow">Price comparison</div>
       <h2>Sell your Switch games for more.</h2>
-      <p>Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms. CartridgeBond pays more than GameStop trade-in, more than eBay nets after fees and shipping, and removes the haggling and ghosting of Facebook Marketplace. <strong>Plus: 60 seconds to lock in</strong> vs hours of listing photos and weeks of waiting on eBay.</p>
+      <p>Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms - CartridgeBond beats GameStop trade-in, eBay after fees, and the unpredictability of Facebook Marketplace.</p>
     </div>
 
     <div class="compare-widget">
@@ -1167,7 +1093,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <span class="seoqa-arrow">+</span>
         </button>
         <div class="seoqa-a">
-          <p>On CartridgeBond, every listing meets our A1 condition standard - the cartridge plays perfectly, the original case is included, and there are no deep scratches or condition surprises. We hold every submission to the same A1 standard during the Milwaukee beta.</p>
+          <p>On CartridgeBond, every listing meets our A1 condition standard - the cartridge plays perfectly, the original case is included, and there are no deep scratches or condition surprises. We vet every submission manually during the Milwaukee beta.</p>
           <p>Local trades happen at safe public meetup spots - libraries, coffee shops, police station parking lots. National launch will add escrow protection and trusted shipping for full buyer protection.</p>
         </div>
       </div>
@@ -1200,8 +1126,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <span class="seoqa-arrow">+</span>
         </button>
         <div class="seoqa-a">
-          <p>The Bond is our timeline feature. Most marketplaces force you to sell now or buy now. The Bond lets you commit today to a transaction in 30, 60, or 90 days at the same locked price.</p>
-          <p>As a buyer, you can pre-arrange your trade before you finish playing - knowing the exact price you'll pay later. As a seller, you can pre-arrange the resale at today's locked price even if you don't ship for 90 days. Same price either way - what The Bond actually delivers is commitment and certainty, not price prediction.</p>
+          <p>The Bond is our timeline feature. Most marketplaces force you to sell now or buy now. The Bond lets you commit today to a transaction in 30, 60, or 90 days.</p>
+          <p>As a buyer, you can lock in a guaranteed buyback price the moment you purchase - knowing exactly what your "true cost of play" will be. As a seller, you can pre-arrange the resale before you've even finished playing. Researched pricing makes it possible.</p>
         </div>
       </div>
 
@@ -1222,8 +1148,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <span class="seoqa-arrow">+</span>
         </button>
         <div class="seoqa-a">
-          <p>$0 platform fees during beta - both buyers and sellers. After beta, sellers will continue to net the full locked price, and buyers will pay a small platform fee on top (think 3-5%). Sellers always get exactly what they were promised.</p>
-          <p>The first 25 founders to complete a trade get free trades for life on both sides - even after we introduce buyer-side fees. We give 30 days notice before any fee changes.</p>
+          <p>$0 platform fees during beta. The first 25 founders to complete a trade get free trades for life - even after we introduce platform fees. We give 30 days notice before any fee changes.</p>
         </div>
       </div>
 
@@ -1239,7 +1164,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
   <div class="founder-inner">
     <div class="founder-card">
       <div class="founder-eyebrow">From the founder</div>
-      <div class="founder-quote">I got tired of the hassle that comes with Facebook Marketplace. CartridgeBond is what I wish had existed - an easy platform with locked-in terms, not another inbox to babysit.</div>
+      <div class="founder-quote">I got tired of selling Switch games on Facebook Marketplace. CartridgeBond is what I wish had existed - a real platform with locked-in terms, not another inbox to babysit.</div>
       <div class="founder-byline">
         <div class="founder-avatar">🎮</div>
         <div>
@@ -1247,8 +1172,8 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <div class="founder-role">Founder, CartridgeBond</div>
         </div>
       </div>
-      <p class="founder-body">You set your terms once, we find your match, and the deal closes on what you committed to. No DMs back and forth. No negotiation at the door. No flakiness. This is the ultimate easy-button for resale.</p>
-      <p class="founder-body" style="background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-top:18px;font-size:14px;"><strong style="color:var(--accent-3);">Beta status:</strong> CartridgeBond is currently in Milwaukee-area beta with Nintendo Switch titles only. Expanding catalog (more games, more systems), shipping nationwide, and escrow protection are all on the roadmap. Lock in early - the first 25 traders get free trades for life.</p>
+      <p class="founder-body">You set your terms once, we find your match, the deal closes on what you committed to. No DMs back and forth. No negotiation at the door. No flakiness.</p>
+      <p class="founder-body">We are in beta and reviewing submissions manually today - that helps us build smart matching before we automate it. Shipping and escrow are coming as we expand nationally.</p>
       <div class="founder-perk">
         <div class="founder-perk-icon">🏆</div>
         <div>
@@ -1394,10 +1319,6 @@ function copyLink(){
 
 // ── NAV MENU ──
 function toggleMenu(){ document.getElementById('navMenu').classList.toggle('open'); }
-function setNavMode(mode){
-  document.getElementById('navMenu').classList.remove('open');
-  setMode(mode);
-}
 document.addEventListener('click', function(e){
   var menu = document.getElementById('navMenu');
   var btn = document.getElementById('menuBtn');
@@ -1433,7 +1354,7 @@ function setMode(mode){
   CURRENT_MODE = mode;
   document.getElementById('tabSell').classList.toggle('active', mode === 'sell');
   document.getElementById('tabBuy').classList.toggle('active', mode === 'buy');
-  document.getElementById('priceLabel').textContent = 'Price / Time Frame';
+  document.getElementById('priceLabel').textContent = mode === 'sell' ? "You'll get (locked)" : "You'll pay (locked)";
   document.getElementById('gameRowLabel').textContent = mode === 'sell' ? 'Your game' : 'Game you want';
 
   // Hide condition photos in buy mode (buyer doesn't have the game)
@@ -1465,11 +1386,10 @@ function renderGameList(filter){
   }
 
   container.innerHTML = filtered.slice(0, 12).map(function(g){
-    var waitingCount = Math.floor(Math.random() * 5) + 1; // placeholder social proof
     return '<button class="game-item" onclick="selectGame(\'' + escapeAttr(g.shortTitle) + '\')">' +
       '<div class="game-item-left">' +
         '<div class="game-item-name">' + escapeHtml(g.shortTitle) + '</div>' +
-        '<div class="game-item-meta">' + escapeHtml(g.platform) + '<span class="dot"></span>' + waitingCount + ' ' + (CURRENT_MODE === 'sell' ? 'buyers' : 'sellers') + ' waiting</div>' +
+        '<div class="game-item-meta">' + escapeHtml(g.platform) + '</div>' +
       '</div>' +
       '<div class="game-item-price">$' + g.cartridgeBondPrice + '</div>' +
     '</button>';
@@ -1486,8 +1406,11 @@ function selectGame(shortTitle){
   document.getElementById('gameChipText').textContent = 'Change';
   document.getElementById('gameRow').classList.remove('empty');
 
-  // Update price displays
-  updatePriceDisplay();
+  // Trigger setTimeline to render breakdown panel with current timeline (default: Now)
+  // This ensures the breakdown panel shows from the moment a game is picked
+  var currentDays = SELECTED_TIMELINE_DAYS || 0;
+  var currentLabel = currentDays === 0 ? 'Now' : ('In ' + currentDays + ' days');
+  setTimeline(currentDays, currentLabel);
 
   // Update comparison widget below
   document.getElementById('compareGameName').textContent = game.shortTitle + ' / A1';
@@ -1509,18 +1432,33 @@ function setTimeline(days, label){
   });
   document.getElementById('timelineChipText').textContent = label;
 
-  // Update labels
+  // Always show the breakdown panel (Now and timelines all get the same view)
+  var explainer = document.getElementById('bondExplainer');
+  explainer.classList.add('show');
+  explainer.classList.remove('mode-sell', 'mode-buy');
+  explainer.classList.add('mode-' + CURRENT_MODE);
+
   if(days > 0){
-    document.getElementById('priceLabel').textContent = 'Price / Time Frame';
-    var explainer = document.getElementById('bondExplainer');
-    explainer.classList.add('show');
-    explainer.classList.remove('mode-sell', 'mode-buy');
-    explainer.classList.add('mode-' + CURRENT_MODE);
-    // Update day numbers
-    document.querySelectorAll('.bond-days').forEach(function(el){ el.textContent = days; });
+    document.getElementById('priceLabel').textContent = CURRENT_MODE === 'sell'
+      ? "You'll get in " + days + "d (locked)"
+      : "You'll pay in " + days + "d (locked)";
+    // Sell row: "Commit today, sell in 30d"
+    // Buy row: "Commit today, buy in 30d"
+    document.querySelectorAll('.bond-sell-line').forEach(function(el){
+      el.textContent = 'Commit today, sell in ' + days + 'd';
+    });
+    document.querySelectorAll('.bond-buy-line').forEach(function(el){
+      el.textContent = 'Commit today, buy in ' + days + 'd';
+    });
   } else {
-    document.getElementById('priceLabel').textContent = 'Price / Time Frame';
-    document.getElementById('bondExplainer').classList.remove('show');
+    document.getElementById('priceLabel').textContent = CURRENT_MODE === 'sell' ? "You'll get (locked)" : "You'll pay (locked)";
+    // Now: simpler labels
+    document.querySelectorAll('.bond-sell-line').forEach(function(el){
+      el.textContent = 'Sell to CartridgeBond';
+    });
+    document.querySelectorAll('.bond-buy-line').forEach(function(el){
+      el.textContent = 'Buy on CartridgeBond';
+    });
   }
 
   updatePriceDisplay();
@@ -1533,31 +1471,24 @@ function updatePriceDisplay(){
     return;
   }
 
+  // Flat pricing across all timelines - same locked price regardless of when you trade.
+  // The Bond's value is commitment flexibility, not price depreciation.
   var price = SELECTED_GAME.cartridgeBondPrice;
   var retail = SELECTED_GAME.retailPrice || 59.99;
 
-  // Flat pricing across all timelines.
-  // The Bond is a commitment + condition contract, not a depreciation tool.
-  // Same locked price regardless of whether trade happens now or in 90 days.
-  // (See PRICING_STRATEGY.md for rationale.)
-
-  // Always show the locked price
   document.getElementById('priceValue').textContent = '$' + price;
 
-  if(SELECTED_TIMELINE_DAYS > 0){
-    if(CURRENT_MODE === 'sell'){
-      // SELLING: True cost of play = retail - locked sell price
-      var trueCost = (retail - price).toFixed(2);
-      document.getElementById('bondRetailSell').textContent = '$' + retail.toFixed(2);
-      document.getElementById('bondSellPrice').textContent = '$' + price;
-      document.getElementById('bondTrueCost').textContent = '$' + trueCost;
-    } else {
-      // BUYING: Save vs retail = retail - locked buy price (used)
-      var savings = (retail - price).toFixed(2);
-      document.getElementById('bondRetailBuy').textContent = '$' + retail.toFixed(2);
-      document.getElementById('bondBuyPrice').textContent = '$' + price;
-      document.getElementById('bondSavings').textContent = '$' + savings;
-    }
+  // Populate breakdown values (same numbers for Now / 30 / 60 / 90)
+  if(CURRENT_MODE === 'sell'){
+    var trueCost = (retail - price).toFixed(2);
+    document.getElementById('bondRetailSell').textContent = '$' + retail.toFixed(2);
+    document.getElementById('bondSellPrice').textContent = '$' + price;
+    document.getElementById('bondTrueCost').textContent = '$' + trueCost;
+  } else {
+    var savings = (retail - price).toFixed(2);
+    document.getElementById('bondRetailBuy').textContent = '$' + retail.toFixed(2);
+    document.getElementById('bondBuyPrice').textContent = '$' + price;
+    document.getElementById('bondSavings').textContent = '$' + savings;
   }
 }
 
@@ -1596,25 +1527,6 @@ function startSubmission(){
     }
   } catch(e){}
 
-  // Pre-fill from previous submission in this session (so user doesn't re-enter contact details for next bond)
-  try {
-    var storedContact = sessionStorage.getItem('cb_contact');
-    if (storedContact) {
-      var c = JSON.parse(storedContact);
-      // Only prefill empty fields - don't override what's already there from localStorage
-      var nameField = document.getElementById('dName');
-      var emailField = document.getElementById('dEmail');
-      var phoneField = document.getElementById('dPhone');
-      var zipField = document.getElementById('dZip');
-      var meetupField = document.getElementById('dMeetupPref');
-      if (nameField && !nameField.value && c.name) nameField.value = c.name;
-      if (emailField && !emailField.value && c.email) emailField.value = c.email;
-      if (phoneField && !phoneField.value && c.phone) phoneField.value = c.phone;
-      if (zipField && !zipField.value && c.zip) zipField.value = c.zip;
-      if (meetupField && !meetupField.value && c.meetupPref) meetupField.value = c.meetupPref;
-    }
-  } catch(e){}
-
   // Smooth scroll widget into view
   var w=document.querySelector('.widget');var r=w.getBoundingClientRect();window.scrollTo({top:window.scrollY+r.top-72,behavior:'smooth'});
 }
@@ -1650,34 +1562,14 @@ function submitForm(e){
     return false;
   }
 
-  // Terms agreement (clickwrap consent)
-  var agreeCheckbox = document.getElementById('dAgreeTerms');
-  if(!agreeCheckbox || !agreeCheckbox.checked){
-    showDetailsError('Please confirm you agree to the Terms of Service and Privacy Policy.');
-    return false;
-  }
-
   var btn = document.getElementById('detailsSubmitBtn');
   btn.disabled = true;
   btn.innerHTML = 'Locking in...';
-
-  // Save contact details for next submission (skip re-entry)
-  try {
-    sessionStorage.setItem('cb_contact', JSON.stringify({
-      name: name,
-      email: email,
-      phone: phone,
-      zip: zip,
-      meetupPref: document.getElementById('dMeetupPref') ? document.getElementById('dMeetupPref').value : ''
-    }));
-  } catch(e) { /* sessionStorage might be blocked - ignore */ }
 
   // Build payload
   var modeText = CURRENT_MODE === 'sell' ? 'Sell Used' : 'Buy Used';
   var timelineText = SELECTED_TIMELINE_DAYS === 0 ? 'ASAP' : ('In ' + SELECTED_TIMELINE_DAYS + ' days');
   var priceText = document.getElementById('priceValue').textContent;
-  var meetupPrefField = document.getElementById('dMeetupPref');
-  var meetupPref = meetupPrefField ? meetupPrefField.value.trim() : '';
 
   var payload = {
     name: name,
@@ -1690,35 +1582,36 @@ function submitForm(e){
     resale_price: priceText,
     timeline: timelineText,
     bond_days: SELECTED_TIMELINE_DAYS,
-    meetupPref: meetupPref,
-    source: 'homepage-widget',
-    formType: 'bond-submission',
-    termsAgreed: true,
-    termsVersion: '2026-05-08',
-    agreedAt: new Date().toISOString()
+    source: 'homepage-widget'
   };
 
-  // Submit to Apps Script (v4.0 endpoint - writes to Sheet, sends user + admin emails)
-  // Using no-cors so we can't read the response. We rely on a timeout to show success.
-  var submitDone = false;
-
-  function finishSubmission() {
-    if (submitDone) return;
-    submitDone = true;
-    showSubmissionSuccess(name);
-  }
-
-  fetch('https://script.google.com/macros/s/AKfycbyR6ilRq4FXjfEmG82F9CImWXuUNcpDErXhiZFEtafvSqM6qbguXMB4DoVBu2UjYew2/exec', {
+  // Apps Script (existing endpoint, fire-and-forget)
+  fetch('https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec', {
     method: 'POST',
     body: JSON.stringify(payload),
     mode: 'no-cors'
-  })
-  .then(finishSubmission)
-  .catch(finishSubmission);
+  }).catch(function(){});
 
-  // Safety timeout: even if fetch hangs, show success after 6s
-  // (Apps Script almost certainly received the POST even if response failed)
-  setTimeout(finishSubmission, 6000);
+  // FormSubmit backup (real visible confirmation)
+  var fsData = new FormData();
+  Object.keys(payload).forEach(function(k){ fsData.append(k, payload[k]); });
+  fsData.append('_subject', '[CB] ' + payload.role + ': ' + payload.game + ' (' + payload.zip + ')');
+  fsData.append('_template', 'table');
+  fsData.append('_captcha', 'false');
+  fsData.append('_replyto', email);
+  fsData.append('_autoresponse',
+    'Hey ' + name.split(' ')[0] + ' - your CartridgeBond submission is confirmed!\n\n' +
+    'You requested: ' + payload.role + ' ' + payload.game + ' (' + timelineText + ', ' + priceText + ').\n\n' +
+    'A real person will reach out within 48 hours when we find your match. ' +
+    'Check status anytime at https://cartridgebond.com/status.html?email=' + encodeURIComponent(email) + '\n\n' +
+    'Reply to this email with any questions.\n\n- CartridgeBond');
+
+  fetch('https://formsubmit.co/cartridgebond@gmail.com', { method: 'POST', body: fsData })
+    .then(function(){ showSubmissionSuccess(name); })
+    .catch(function(){
+      // Even on error, if Apps Script likely succeeded, treat as success
+      showSubmissionSuccess(name);
+    });
 
   return false;
 }
@@ -1740,7 +1633,7 @@ function showSubmissionSuccess(name){
   var firstName = (name || '').split(' ')[0];
   if(firstName){
     document.getElementById('successBody').textContent =
-      'Thanks ' + firstName + ' - your Bond is locked in. We will email you the moment we find your match. Check your inbox for confirmation.';
+      'Thanks ' + firstName + ' - a real person will reach out within 48 hours with your match. Check your email for confirmation.';
   }
 
   var w=document.querySelector('.widget');var r=w.getBoundingClientRect();window.scrollTo({top:window.scrollY+r.top-72,behavior:'smooth'});
@@ -1751,29 +1644,21 @@ function resetWidget(){
   widget.classList.remove('in-details', 'in-success');
   document.getElementById('widgetDetails').classList.remove('show');
   document.getElementById('widgetSuccess').classList.remove('show');
-
-  // Reset selection state (NOT contact details - those persist via sessionStorage)
+  document.getElementById('detailsForm').reset();
+  // Reset selection state
   SELECTED_GAME = null;
   SELECTED_TIMELINE_DAYS = 0;
   document.getElementById('gameRowValue').innerHTML = '<span class="widget-value-empty">Pick a game</span>';
   document.getElementById('gameChipText').textContent = 'Browse';
   document.getElementById('gameRow').classList.add('empty');
   document.getElementById('priceValue').textContent = '$--';
-  document.getElementById('priceLabel').textContent = 'Price / Time Frame';
+  document.getElementById('priceLabel').textContent = CURRENT_MODE === 'sell' ? "You'll get (locked)" : "You'll pay (locked)";
   document.getElementById('timelineChipText').textContent = 'Now';
   document.querySelectorAll('.timeline-pill').forEach(function(p){
     p.classList.toggle('active', parseInt(p.getAttribute('data-days'), 10) === 0);
   });
   document.getElementById('bondExplainer').classList.remove('show');
   document.getElementById('ageGate').checked = false;
-
-  // Reset the details submit button state (in case it's stuck on "Locking in...")
-  var detailsBtn = document.getElementById('detailsSubmitBtn');
-  if (detailsBtn) {
-    detailsBtn.disabled = false;
-    detailsBtn.innerHTML = 'Lock it in <span style="display:inline-block;margin-left:6px;">-&gt;</span>';
-  }
-
   updateSubmitButton();
 }
 
