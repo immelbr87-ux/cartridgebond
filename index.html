@@ -79,10 +79,10 @@
     },
     {
       "@type": "Question",
-      "name": "What is a Bond on CartridgeBond?",
+      "name": "Can I lock in a price for a future trade?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A Bond is a locked-in trade with a flexible timeline. Most marketplaces force you to buy or sell now. With The Bond, you can commit today to a transaction in 30, 60, or 90 days - locking in a guaranteed buyback price when you purchase, or pre-arranging the resale before you finish playing."
+        "text": "Yes - that's the core of how CartridgeBond works. Most marketplaces force you to buy or sell now. We let you commit today to a transaction in 30, 60, or 90 days, locking in a guaranteed price when you commit, or pre-arranging the resale before you finish playing."
       }
     },
     {
@@ -321,6 +321,11 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 /* ============== BENEFITS ============== */
 .benefits{padding:48px 20px;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
 .benefits-inner{max-width:1100px;margin:0 auto;}
+.benefits-head{text-align:center;margin-bottom:36px;}
+.benefits-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-3);margin-bottom:14px;}
+.benefits-head h2{font-size:clamp(30px,5vw,52px);font-weight:700;letter-spacing:-0.035em;line-height:1.05;margin-bottom:14px;color:var(--text);}
+.benefits-head h2 .accent{color:var(--accent-3);}
+.benefits-head p{font-size:clamp(15px,1.4vw,17px);color:var(--muted);max-width:560px;margin:0 auto;line-height:1.5;}
 .benefits-grid{display:flex;flex-direction:column;gap:14px;}
 .benefit{display:flex;align-items:flex-start;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;transition:transform .2s,border-color .2s;}
 .benefit:hover{transform:translateY(-2px);border-color:var(--line-2);}
@@ -330,6 +335,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .benefit-content p{font-size:14.5px;color:var(--muted);line-height:1.55;}
 @media(min-width:840px){
   .benefits{padding:80px 32px;}
+  .benefits-head{margin-bottom:56px;}
   .benefits-grid{flex-direction:row;gap:18px;}
   .benefit{flex:1;flex-direction:column;padding:32px;}
   .benefit-icon{width:56px;height:56px;border-radius:16px;margin-bottom:18px;}
@@ -485,31 +491,104 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 }
 
 /* ============== HOW IT WORKS ============== */
-.howitworks{padding:64px 20px;scroll-margin-top:80px;}
+.howitworks{padding:80px 20px 96px;scroll-margin-top:80px;background:linear-gradient(180deg, var(--bg) 0%, var(--card-2) 100%);}
 .howitworks-inner{max-width:1100px;margin:0 auto;}
-.howitworks-head{margin-bottom:36px;}
-.howitworks-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent-3);font-weight:600;margin-bottom:12px;}
-.howitworks-head h2{font-family:var(--body);font-size:30px;font-weight:800;letter-spacing:-1.2px;line-height:1.1;color:var(--text);margin-bottom:10px;}
+.howitworks-head{margin-bottom:48px;text-align:center;}
+.howitworks-eyebrow{font-family:var(--body);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-3);font-weight:700;margin-bottom:14px;}
+.howitworks-head h2{font-family:var(--body);font-size:clamp(32px,5vw,56px);font-weight:700;letter-spacing:-0.035em;line-height:1.05;color:var(--text);margin-bottom:16px;}
 .howitworks-head h2 .accent{color:var(--accent-3);}
-.howitworks-head p{font-size:15.5px;color:var(--muted);line-height:1.55;max-width:560px;}
-.howitworks-grid{display:flex;flex-direction:column;gap:14px;position:relative;}
-.howstep{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;position:relative;}
-.howstep-num{width:42px;height:42px;background:var(--accent);color:#fff;border-radius:50%;font-family:var(--body);font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.howitworks-head p{font-size:clamp(15px,1.4vw,17px);color:var(--muted);line-height:1.5;max-width:580px;margin:0 auto;}
+.howitworks-grid{display:flex;flex-direction:column;gap:20px;position:relative;counter-reset:step;}
+.howstep{
+  display:flex;
+  gap:24px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:32px 26px;
+  position:relative;
+  transition:transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+  box-shadow:var(--shadow-1);
+  align-items:flex-start;
+}
+.howstep:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-2);
+  border-color:var(--accent-soft);
+}
+.howstep::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:24px;
+  pointer-events:none;
+  background:radial-gradient(ellipse 200px 80px at 10% 0%, rgba(22,163,74,0.04), transparent 60%);
+}
+.howstep > *{position:relative;z-index:1;}
+.howstep-num{
+  width:56px;
+  height:56px;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  color:#fff;
+  border-radius:18px;
+  font-family:var(--body);
+  font-weight:700;
+  font-size:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  letter-spacing:-0.02em;
+  box-shadow:0 8px 20px -6px rgba(22,163,74,0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+  position:relative;
+}
+.howstep-num::before{
+  content:'';
+  position:absolute;
+  inset:-3px;
+  border-radius:21px;
+  background:linear-gradient(135deg, rgba(22,163,74,0.18), transparent);
+  z-index:-1;
+}
 .howstep-content{flex:1;min-width:0;}
-.howstep-content h3{font-family:var(--body);font-size:17px;font-weight:700;letter-spacing:-.3px;color:var(--text);margin-bottom:6px;line-height:1.25;}
-.howstep-content p{font-size:14.5px;color:var(--muted);line-height:1.6;margin-bottom:10px;}
-.howstep-detail{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--accent-3);font-weight:600;letter-spacing:.5px;background:var(--accent-soft-2);border:1px solid var(--accent-soft);padding:5px 10px;border-radius:100px;}
-.howstep-detail svg{width:11px;height:11px;}
+.howstep-content h3{
+  font-family:var(--body);
+  font-size:19px;
+  font-weight:700;
+  letter-spacing:-0.015em;
+  color:var(--text);
+  margin-bottom:8px;
+  line-height:1.25;
+}
+.howstep-content p{
+  font-size:15px;
+  color:var(--text-2);
+  line-height:1.55;
+  margin-bottom:14px;
+}
+.howstep-detail{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-family:var(--body);
+  font-size:12.5px;
+  color:var(--accent-3);
+  font-weight:600;
+  letter-spacing:-0.005em;
+  background:var(--accent-soft-2);
+  border:1px solid var(--accent-soft);
+  padding:7px 12px;
+  border-radius:100px;
+}
+.howstep-detail svg{width:13px;height:13px;color:var(--accent-3);}
 @media(min-width:840px){
-  .howitworks{padding:96px 32px;}
-  .howitworks-head{margin-bottom:48px;}
-  .howitworks-head h2{font-size:42px;letter-spacing:-1.6px;}
-  .howitworks-head p{font-size:17px;}
-  .howitworks-grid{flex-direction:row;gap:18px;}
-  .howstep{flex:1;flex-direction:column;padding:32px 28px;align-items:flex-start;}
-  .howstep-num{margin-bottom:18px;width:48px;height:48px;font-size:19px;}
-  .howstep-content h3{font-size:20px;margin-bottom:8px;}
-  .howstep-content p{font-size:15px;}
+  .howitworks{padding:120px 32px;}
+  .howitworks-head{margin-bottom:64px;}
+  .howitworks-grid{flex-direction:row;gap:20px;}
+  .howstep{flex:1;flex-direction:column;padding:36px 32px;align-items:flex-start;}
+  .howstep-num{margin-bottom:24px;width:60px;height:60px;font-size:24px;}
+  .howstep-content h3{font-size:22px;margin-bottom:10px;}
+  .howstep-content p{font-size:15.5px;}
 }
 
 /* ============== FOUNDER SECTION ============== */
@@ -681,16 +760,18 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
 .widget-tabs{position:relative;}
 .widget-tab-indicator{
   position:absolute;
-  top:8px;
-  bottom:8px;
-  background:var(--bg-2);
-  border-radius:12px;
+  top:4px;
+  bottom:4px;
+  background:var(--card);
+  border-radius:11px;
   transition:left 0.4s var(--ease), width 0.4s var(--ease);
   z-index:0;
   pointer-events:none;
+  box-shadow:0 2px 8px -2px rgba(10,31,18,0.12), 0 1px 2px rgba(10,31,18,0.06);
 }
 .widget-tab{position:relative;z-index:1;transition:color 0.3s var(--ease) !important;background:transparent !important;}
-.widget-tab.active{background:transparent !important;color:var(--text) !important;box-shadow:none !important;}
+.widget-tab.active{background:transparent !important;color:var(--text) !important;box-shadow:none !important;font-weight:700 !important;}
+.widget-tab:not(.active){color:var(--muted) !important;}
 
 /* -- Game pick row: refined hover -- */
 .widget-row{transition:background 0.2s var(--ease-quick);}
@@ -701,16 +782,16 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
 .game-item{transition:background 0.2s var(--ease-quick), transform 0.2s var(--ease-quick) !important;}
 .game-item:hover{background:var(--bg-2);transform:translateX(3px);}
 
-/* -- Price value: bigger, more confident -- */
-.widget-value{
-  font-size:clamp(48px,7vw,68px) !important;
+/* -- Price value: bigger, more confident (price only, not game/condition rows) -- */
+#priceValue{
+  font-size:clamp(44px,7vw,64px) !important;
   font-weight:700 !important;
   letter-spacing:-0.04em !important;
   line-height:1 !important;
   font-feature-settings:'tnum';
   transition:color 0.2s var(--ease-quick);
 }
-.widget-value.changing{opacity:0.4;transition:opacity 0.15s var(--ease-quick);}
+#priceValue.changing{opacity:0.4;transition:opacity 0.15s var(--ease-quick);}
 
 /* -- Timeline pills: lift + glow -- */
 .timeline-pill{
@@ -871,11 +952,215 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
 .hero-proof{gap:28px !important;margin-bottom:60px !important;}
 .hero-proof-item{font-size:14px !important;}
 
-/* -- Mobile tweaks -- */
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE FIXES + REFINEMENTS v3
+   ═══════════════════════════════════════════════════════════════ */
+
+/* -- FIX #1a: Widget value sizing on mobile (was wrapping "Pick a game" to 2 lines) -- */
+.widget-value{
+  font-size:clamp(22px, 5vw, 36px) !important;
+  font-weight:700 !important;
+  letter-spacing:-0.03em !important;
+  line-height:1.15 !important;
+}
+/* Price display should still be big though - it's the headline */
+#priceValue{
+  font-size:clamp(40px, 8vw, 56px) !important;
+  font-weight:700 !important;
+  letter-spacing:-0.04em !important;
+  line-height:1 !important;
+}
+
+/* -- FIX #1b: Tab indicator was invisible. Make it explicitly visible -- */
+.widget-tabs{
+  position:relative;
+  background:var(--bg-2) !important;
+  border-radius:14px;
+  padding:4px !important;
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:0 !important;
+  margin-bottom:8px !important;
+  overflow:hidden;
+}
+.widget-tab-indicator{
+  position:absolute;
+  top:4px;
+  bottom:4px;
+  left:4px;
+  width:calc(50% - 4px);
+  background:var(--card);
+  border-radius:11px;
+  box-shadow:0 2px 8px -2px rgba(10,31,18,0.12), 0 1px 2px rgba(10,31,18,0.06);
+  transition:transform 0.35s var(--ease);
+  z-index:0;
+  pointer-events:none;
+}
+.widget-tabs[data-active="buy"] .widget-tab-indicator{
+  transform:translateX(100%);
+}
+.widget-tab{
+  position:relative;
+  z-index:1;
+  background:transparent !important;
+  color:var(--muted) !important;
+  border:none !important;
+  font-weight:600 !important;
+  font-size:14px !important;
+  padding:11px 16px !important;
+  cursor:pointer;
+  transition:color 0.25s var(--ease) !important;
+  font-family:inherit;
+  box-shadow:none !important;
+}
+.widget-tab.active{
+  color:var(--text) !important;
+  font-weight:700 !important;
+}
+
+/* -- FIX #2: How-step cards - premium elevation, refined typography -- */
+.howstep{
+  background:var(--card) !important;
+  border:1px solid var(--line) !important;
+  border-radius:24px !important;
+  padding:32px !important;
+  display:flex !important;
+  align-items:flex-start !important;
+  gap:22px !important;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 1px 2px rgba(10,31,18,0.03), 0 8px 24px -12px rgba(10,31,18,0.08) !important;
+  transition:transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.25s var(--ease) !important;
+}
+.howstep::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 380px 120px at 0% 0%, rgba(22,163,74,0.04), transparent);
+  pointer-events:none;
+  z-index:0;
+}
+.howstep > *{position:relative;z-index:1;}
+.howstep:hover{
+  transform:translateY(-4px);
+  box-shadow:0 4px 8px rgba(10,31,18,0.04), 0 24px 48px -16px rgba(10,31,18,0.14) !important;
+  border-color:var(--line-2) !important;
+}
+.howstep::after{display:none !important;}
+.howstep-num{
+  width:56px !important;
+  height:56px !important;
+  flex-shrink:0;
+  background:linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%) !important;
+  color:#fff;
+  border-radius:18px !important;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px !important;
+  font-weight:700;
+  letter-spacing:-0.02em;
+  box-shadow:0 8px 20px -6px rgba(22,163,74,0.45), inset 0 1px 0 rgba(255,255,255,0.25) !important;
+  position:relative;
+}
+.howstep-num::before{display:none !important;}
+.howstep-content{flex:1;min-width:0;}
+.howstep-content h3{
+  font-size:clamp(19px, 2.2vw, 24px) !important;
+  font-weight:700 !important;
+  letter-spacing:-0.025em !important;
+  line-height:1.2 !important;
+  margin-bottom:10px !important;
+  color:var(--text) !important;
+}
+.howstep-content p{
+  font-size:clamp(14.5px, 1.45vw, 16px) !important;
+  line-height:1.55 !important;
+  color:var(--muted) !important;
+  margin-bottom:14px !important;
+}
+.howstep-detail{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--accent-soft);
+  color:var(--accent-3);
+  font-size:12.5px;
+  font-weight:600;
+  padding:6px 12px;
+  border-radius:999px;
+  font-family:var(--mono);
+  letter-spacing:0.01em;
+}
+.howstep-detail svg{width:13px;height:13px;}
+
+/* Connecting line between steps on desktop (subtle "process" feel) */
+@media(min-width:840px){
+  .howsteps{position:relative;}
+  .howsteps::before{
+    content:'';
+    position:absolute;
+    left:60px;
+    top:80px;
+    bottom:80px;
+    width:2px;
+    background:linear-gradient(180deg, var(--accent-soft), var(--line-2), var(--accent-soft));
+    z-index:0;
+  }
+  .howstep{position:relative;z-index:1;}
+}
+
+/* -- FIX #3: Reframe "THE BOND" callout - keep panel, change positioning -- */
+.bond-callout-eyebrow{
+  /* Was "THE BOND" - now "WHY WE'RE DIFFERENT" - update via HTML */
+}
+
+/* -- FIX #4: Benefits section - stronger header presence -- */
+.benefits{padding:64px 20px !important;}
+.benefits-head, .howitworks-head{
+  margin-bottom:44px !important;
+  text-align:center;
+}
+.benefits-eyebrow, .howitworks-eyebrow{
+  font-size:11.5px !important;
+  font-weight:700 !important;
+  letter-spacing:0.16em !important;
+  text-transform:uppercase;
+  color:var(--accent-3) !important;
+  margin-bottom:16px !important;
+  display:inline-block !important;
+  padding:6px 14px !important;
+  background:var(--accent-soft) !important;
+  border-radius:999px !important;
+  font-family:var(--mono) !important;
+}
+.benefits-head h2, .howitworks-head h2{
+  font-size:clamp(32px, 5.5vw, 56px) !important;
+  font-weight:700 !important;
+  letter-spacing:-0.035em !important;
+  line-height:1.04 !important;
+  margin-bottom:18px !important;
+}
+.benefits-head p, .howitworks-head p{
+  font-size:clamp(16px, 1.5vw, 18px) !important;
+  color:var(--muted) !important;
+  line-height:1.55 !important;
+  max-width:600px;
+  margin:0 auto;
+}
+
+@media(min-width:840px){
+  .benefits{padding:96px 32px !important;}
+  .benefits-head, .howitworks-head{margin-bottom:64px !important;}
+}
+
+/* -- Mobile-specific tweaks (existing block, refined) -- */
 @media (max-width:640px){
   .hero h1{font-size:46px;}
-  .widget-value{font-size:52px !important;}
   .hero-proof{gap:16px !important;}
+  .howstep{padding:24px !important;gap:18px !important;border-radius:20px !important;}
+  .howstep-num{width:48px !important;height:48px !important;font-size:18px !important;border-radius:14px !important;}
+  .howsteps::before{display:none !important;}
 }
 
 </style>
@@ -952,7 +1237,7 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
 
     <!-- HERO WIDGET WITH ACCORDIONS -->
     <div class="widget" id="widget">
-      <div class="widget-tabs">
+      <div class="widget-tabs" data-active="sell">
         <div class="widget-tab-indicator" id="widgetTabIndicator"></div>
         <button class="widget-tab active" id="tabSell" onclick="setMode('sell')">Selling</button>
         <button class="widget-tab" id="tabBuy" onclick="setMode('buy')">Buying</button>
@@ -1046,7 +1331,7 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
         <div class="widget-accordion">
           <div class="widget-accordion-inner">
             <div class="timeline-head">
-              <div class="timeline-eyebrow">The Bond</div>
+              <div class="timeline-eyebrow">Your timeline</div>
               <div class="timeline-title">When do you want to lock this in?</div>
             </div>
             <div class="timeline-pills">
@@ -1201,6 +1486,11 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
 <!-- BENEFITS -->
 <section class="benefits reveal">
   <div class="benefits-inner">
+    <div class="benefits-head" data-reveal>
+      <div class="benefits-eyebrow">Why CartridgeBond</div>
+      <h2>Built for people who just want to <span class="accent">trade and move on.</span></h2>
+      <p>Most marketplaces turn selling into a part-time job. Here are the three things we fix:</p>
+    </div>
     <div class="benefits-grid">
       <div class="benefit">
         <div class="benefit-icon">
@@ -1279,14 +1569,13 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
   </div>
 </section>
 
-<!-- THE BOND CALLOUT -->
+<!-- HOW IT WORKS - TIMELINE -->
 <section class="feature reveal">
   <div class="feature-inner">
     <div class="feature-card">
-      <div class="feature-eyebrow">The Bond</div>
+      <div class="feature-eyebrow">How CartridgeBond works</div>
       <h2>Trade on <span class="accent">your timeline,</span> not the marketplace's.</h2>
-      <p>Most platforms force you to sell now or buy now. <strong>The Bond</strong> lets you commit today to a trade in 30, 60, or 90 days - locking in a guaranteed buyback price the moment you purchase, or pre-arranging the resale before you've even finished playing.</p>
-      <a href="faq.html#bond" class="feature-cta">How The Bond works <span class="btn-arrow">-&gt;</span></a>
+      <p>Most platforms force you to sell now or buy now. CartridgeBond lets you commit today to a trade in 30, 60, or 90 days - locking in a guaranteed price the moment you commit, or pre-arranging the resale before you've even finished playing. Pricing is researched against real eBay sold listings and PriceCharting, so the price doesn't move when you do.</p>
     </div>
   </div>
 </section>
@@ -1441,11 +1730,11 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
 
       <div class="seoqa-item">
         <button class="seoqa-q" onclick="toggleSeoqa(this)">
-          <span class="seoqa-q-text">What is The Bond and how does it work?</span>
+          <span class="seoqa-q-text">Can I lock in a price for a future trade?</span>
           <span class="seoqa-arrow">+</span>
         </button>
         <div class="seoqa-a">
-          <p>The Bond is our timeline feature. Most marketplaces force you to sell now or buy now. The Bond lets you commit today to a transaction in 30, 60, or 90 days.</p>
+          <p>Yes - that's the core of how CartridgeBond works. Most marketplaces force you to sell now or buy now. We let you commit today to a transaction in 30, 60, or 90 days at a locked-in price.</p>
           <p>As a buyer, you can lock in a guaranteed buyback price the moment you purchase - knowing exactly what your "true cost of play" will be. As a seller, you can pre-arrange the resale before you've even finished playing. Researched pricing makes it possible.</p>
         </div>
       </div>
@@ -2049,11 +2338,12 @@ document.getElementById('gameSearch').addEventListener('input', function(e){
 
 // - Sliding tab indicator -
 function moveTabIndicator(){
-  var ind = document.getElementById('widgetTabIndicator');
+  // CSS-based now - just set the data attribute on the tabs container
+  var tabs = document.querySelector('.widget-tabs');
   var active = document.querySelector('.widget-tab.active');
-  if(!ind || !active) return;
-  ind.style.left = active.offsetLeft + 'px';
-  ind.style.width = active.offsetWidth + 'px';
+  if(!tabs || !active) return;
+  var mode = active.id === 'tabBuy' ? 'buy' : 'sell';
+  tabs.setAttribute('data-active', mode);
 }
 window.addEventListener('load', function(){ setTimeout(moveTabIndicator, 50); });
 window.addEventListener('resize', moveTabIndicator);
