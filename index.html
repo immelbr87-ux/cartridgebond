@@ -318,6 +318,106 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 }
 @media(min-width:1100px){.hero h1{font-size:88px;}}
 
+/* ============== MOCK (Amazon-style demo with CartridgeBond overlay) ============== */
+.mock{padding:64px 20px 56px;background:var(--bg);border-top:1px solid var(--line);overflow:hidden;}
+@media(min-width:840px){.mock{padding:96px 32px 80px;}}
+.mock-inner{max-width:1200px;margin:0 auto;}
+.mock-head{text-align:center;max-width:760px;margin:0 auto 48px;}
+@media(min-width:840px){.mock-head{margin-bottom:64px;}}
+.mock-eyebrow{display:inline-block;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-3);background:var(--accent-soft);padding:6px 14px;border-radius:999px;margin-bottom:20px;}
+.mock-head h2{font-size:clamp(30px,4.5vw,52px);font-weight:800;letter-spacing:-0.035em;line-height:1.05;color:var(--text);margin-bottom:18px;}
+.mock-head h2 .accent{color:var(--accent-3);}
+.mock-head p{font-size:clamp(15px,1.6vw,18px);color:var(--text-2);line-height:1.6;max-width:640px;margin:0 auto;}
+.mock-head p strong{color:var(--text);font-weight:700;}
+
+/* Stage - the "browser window" */
+.mock-stage{background:#0a1f12;border-radius:20px;overflow:hidden;box-shadow:0 32px 80px -24px rgba(10,31,18,0.35),0 12px 32px -8px rgba(10,31,18,0.15);position:relative;}
+@media(min-width:840px){.mock-stage{border-radius:24px;}}
+.mock-stage::before{content:"";position:absolute;top:0;left:0;right:0;height:200px;background:radial-gradient(ellipse at top right,rgba(34,197,94,0.18) 0%,transparent 60%);pointer-events:none;z-index:1;}
+.mock-browser-chrome{display:flex;align-items:center;gap:6px;padding:12px 16px;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.06);position:relative;z-index:2;}
+.mock-dot{width:10px;height:10px;border-radius:50%;display:block;}
+.mock-dot.red{background:#ff5f57;}
+.mock-dot.yellow{background:#febc2e;}
+.mock-dot.green{background:#28c840;}
+.mock-url{flex:1;text-align:center;font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:0.05em;background:rgba(255,255,255,0.06);padding:5px 12px;border-radius:6px;margin:0 6px;max-width:280px;}
+
+/* Body - holds the product and overlay */
+.mock-body{display:grid;grid-template-columns:1fr;gap:0;padding:20px;position:relative;z-index:2;}
+@media(min-width:840px){.mock-body{grid-template-columns:1.4fr 1fr;gap:24px;padding:32px;}}
+
+/* Product card (left) */
+.mock-product{background:#fff;border-radius:14px;padding:20px;color:#0a0a0a;display:flex;flex-direction:column;gap:14px;}
+@media(min-width:840px){.mock-product{padding:24px 28px;}}
+.mock-product-breadcrumb{font-size:11.5px;color:#565959;font-weight:400;}
+.mock-product-card{display:grid;grid-template-columns:140px 1fr;gap:18px;align-items:start;}
+@media(min-width:560px){.mock-product-card{grid-template-columns:180px 1fr;gap:24px;}}
+.mock-product-image{background:#f7f7f4;border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1.15;}
+.mock-product-image svg{width:100%;height:100%;}
+.mock-product-info{display:flex;flex-direction:column;gap:8px;min-width:0;}
+.mock-product-title{font-size:15px;font-weight:600;line-height:1.35;color:#0F1111;letter-spacing:-0.01em;}
+@media(min-width:560px){.mock-product-title{font-size:17px;}}
+.mock-product-rating{display:flex;align-items:center;gap:6px;font-size:12px;color:#565959;flex-wrap:wrap;}
+.mock-stars{color:#ff9900;font-size:13px;letter-spacing:1px;}
+.mock-rating-text{color:#007185;}
+.mock-product-price{display:flex;align-items:baseline;gap:8px;margin-top:2px;}
+.mock-price-current{font-size:24px;font-weight:700;color:#0F1111;letter-spacing:-0.02em;font-feature-settings:'tnum';}
+.mock-price-strike{font-size:13px;color:#565959;text-decoration:line-through;}
+.mock-product-prime{font-size:12.5px;color:#0F1111;line-height:1.3;}
+.mock-prime{display:inline-block;color:#007185;font-weight:700;font-style:italic;letter-spacing:-0.01em;}
+.mock-product-stock{font-size:13px;color:#067D62;font-weight:700;margin-top:2px;}
+.mock-cta{display:block;width:100%;padding:10px 14px;border:1px solid #fcd200;border-radius:100px;font-size:13.5px;font-weight:500;text-align:center;cursor:default;margin-top:6px;}
+.mock-cta-cart{background:linear-gradient(180deg,#f7dfa5 0%,#f0c14b 100%);color:#0F1111;}
+.mock-cta-buy{background:linear-gradient(180deg,#f7ca00 0%,#f5a623 100%);border-color:#a88734 #9c7e31 #846a29;color:#0F1111;}
+
+/* CartridgeBond overlay (right) */
+.mock-overlay{background:linear-gradient(180deg,#0a1f12 0%,#0e2a18 100%);border:1.5px solid rgba(34,197,94,0.35);border-radius:14px;padding:24px;color:#f5f5f0;display:flex;flex-direction:column;gap:14px;position:relative;box-shadow:0 0 0 4px rgba(34,197,94,0.08),0 24px 48px -12px rgba(0,0,0,0.4);}
+@media(min-width:840px){.mock-overlay{padding:26px 28px;}}
+.mock-overlay-head{display:flex;align-items:center;justify-content:space-between;}
+.mock-overlay-brand{font-size:15px;font-weight:800;letter-spacing:-0.015em;color:#f5f5f0;}
+.mock-overlay-brand .b2{color:var(--accent);}
+.mock-overlay-badge{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:0.12em;color:var(--accent);background:rgba(34,197,94,0.15);padding:4px 9px;border-radius:100px;display:flex;align-items:center;gap:6px;}
+.mock-overlay-badge::before{content:"";width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.45;}}
+.mock-overlay-title{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(245,245,236,0.55);margin-bottom:-2px;}
+.mock-overlay-metric{background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:10px;padding:14px 16px;}
+.mock-overlay-metric-secondary{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);}
+.mock-metric-label{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,245,236,0.65);margin-bottom:6px;}
+.mock-metric-value{font-size:28px;font-weight:800;letter-spacing:-0.025em;color:var(--accent);font-feature-settings:'tnum';line-height:1;margin-bottom:4px;}
+.mock-metric-value-sm{font-size:20px;font-weight:800;letter-spacing:-0.02em;color:#f5f5f0;font-feature-settings:'tnum';line-height:1;margin-bottom:4px;}
+.mock-metric-sub{font-size:11.5px;color:rgba(245,245,236,0.55);}
+
+.mock-overlay-demand{display:flex;align-items:center;gap:10px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:10px;padding:10px 14px;}
+.mock-demand-icon{width:32px;height:32px;background:rgba(34,197,94,0.18);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);}
+.mock-demand-icon svg{width:16px;height:16px;}
+.mock-demand-label{font-size:13.5px;font-weight:700;color:#f5f5f0;line-height:1.2;margin-bottom:2px;}
+.mock-demand-sub{font-size:11.5px;color:rgba(245,245,236,0.6);}
+
+.mock-overlay-section{margin-top:2px;}
+.mock-section-label{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,245,236,0.65);margin-bottom:10px;}
+.mock-exit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.mock-exit-pill{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 6px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:default;transition:all 0.2s;color:#f5f5f0;}
+.mock-exit-pill-active{background:rgba(34,197,94,0.18);border-color:var(--accent);box-shadow:0 0 0 2px rgba(34,197,94,0.2);}
+.mock-exit-when{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.06em;color:rgba(245,245,236,0.65);text-transform:uppercase;}
+.mock-exit-pill-active .mock-exit-when{color:var(--accent);}
+.mock-exit-amt{font-size:15px;font-weight:800;letter-spacing:-0.02em;color:#f5f5f0;font-feature-settings:'tnum';line-height:1;}
+.mock-exit-pill-active .mock-exit-amt{color:var(--accent);}
+.mock-exit-tag{font-size:9.5px;font-weight:700;letter-spacing:0.04em;color:rgba(245,245,236,0.5);text-transform:uppercase;}
+.mock-exit-pill-active .mock-exit-tag{color:var(--accent);}
+
+.mock-activate{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:linear-gradient(180deg,var(--accent) 0%,var(--accent-2) 100%);color:#fff;padding:14px 20px;border-radius:12px;font-size:15px;font-weight:700;letter-spacing:-0.01em;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 8px 20px -6px rgba(34,197,94,0.5);}
+.mock-activate:hover{transform:translateY(-1px);box-shadow:0 12px 28px -6px rgba(34,197,94,0.6);}
+.mock-activate svg{width:16px;height:16px;}
+.mock-overlay-foot{text-align:center;font-size:11.5px;color:rgba(245,245,236,0.55);}
+
+/* Feature row below the mock */
+.mock-features{display:grid;grid-template-columns:1fr;gap:20px;margin-top:48px;}
+@media(min-width:720px){.mock-features{grid-template-columns:repeat(3,1fr);gap:28px;}}
+.mock-feature{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--card);border:1px solid var(--line);border-radius:14px;}
+.mock-feature-icon{width:40px;height:40px;background:var(--accent-soft);color:var(--accent-3);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mock-feature-icon svg{width:20px;height:20px;}
+.mock-feature-title{font-size:15.5px;font-weight:700;color:var(--text);letter-spacing:-0.015em;line-height:1.3;margin-bottom:4px;}
+.mock-feature-text p{font-size:13.5px;color:var(--muted);line-height:1.5;margin:0;}
+
 /* ============== BENEFITS ============== */
 .benefits{padding:48px 20px;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
 .benefits-inner{max-width:1100px;margin:0 auto;}
@@ -1477,6 +1577,181 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
         <div class="widget-success-actions">
           <button onclick="resetWidget()" class="widget-success-btn-secondary">Submit another</button>
           <a href="status.html" class="widget-success-btn-primary">Check status</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMAZON-STYLE MOCK + CHROME EXTENSION LANGUAGE -->
+<section class="mock reveal" id="mock">
+  <div class="mock-inner">
+    <div class="mock-head" data-reveal>
+      <div class="mock-eyebrow">Pre-commerce for gamers</div>
+      <h2>Buy the Game. <span class="accent">Line Up the Next Owner.</span></h2>
+      <p>CartridgeBond shows you the future resale value <strong>before you buy</strong>, so you always know your true cost of play. Here is what shopping looks like with CartridgeBond on:</p>
+    </div>
+
+    <div class="mock-stage" data-reveal>
+      <!-- Browser chrome -->
+      <div class="mock-browser-chrome">
+        <span class="mock-dot red"></span>
+        <span class="mock-dot yellow"></span>
+        <span class="mock-dot green"></span>
+        <div class="mock-url">amazon.com</div>
+      </div>
+
+      <div class="mock-body">
+        <!-- LEFT: stylized product page -->
+        <div class="mock-product">
+          <div class="mock-product-breadcrumb">Video Games &nbsp;/&nbsp; Nintendo Switch &nbsp;/&nbsp; Mario Kart 8 Deluxe</div>
+          <div class="mock-product-card">
+            <div class="mock-product-image">
+              <!-- Stylized "game cartridge" art -->
+              <svg viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                  <linearGradient id="mockCartBg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ef4444"/>
+                    <stop offset="100%" stop-color="#dc2626"/>
+                  </linearGradient>
+                  <linearGradient id="mockCartLabel" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#fff"/>
+                    <stop offset="100%" stop-color="#f1f1eb"/>
+                  </linearGradient>
+                </defs>
+                <!-- cartridge body -->
+                <path d="M 30,40 L 30,250 Q 30,270 50,270 L 170,270 Q 190,270 190,250 L 190,90 L 170,80 L 170,40 Q 170,20 150,20 L 50,20 Q 30,20 30,40 Z" fill="url(#mockCartBg)" stroke="rgba(0,0,0,0.15)" stroke-width="1.5"/>
+                <!-- white label -->
+                <rect x="50" y="45" width="120" height="160" rx="6" fill="url(#mockCartLabel)" stroke="rgba(0,0,0,0.08)"/>
+                <!-- title placeholder -->
+                <rect x="62" y="58" width="96" height="6" rx="2" fill="#0a0a0a" opacity="0.85"/>
+                <rect x="62" y="70" width="70" height="6" rx="2" fill="#0a0a0a" opacity="0.85"/>
+                <!-- color stripes -->
+                <rect x="62" y="88" width="96" height="22" rx="3" fill="#fbbf24"/>
+                <rect x="62" y="112" width="96" height="22" rx="3" fill="#22c55e"/>
+                <rect x="62" y="136" width="96" height="22" rx="3" fill="#3b82f6"/>
+                <rect x="62" y="160" width="60" height="6" rx="2" fill="#0a0a0a" opacity="0.45"/>
+                <rect x="62" y="172" width="80" height="6" rx="2" fill="#0a0a0a" opacity="0.45"/>
+                <rect x="62" y="184" width="50" height="6" rx="2" fill="#0a0a0a" opacity="0.45"/>
+                <!-- chip dots -->
+                <rect x="60" y="220" width="100" height="20" rx="2" fill="rgba(0,0,0,0.18)"/>
+                <circle cx="110" cy="255" r="3.5" fill="rgba(0,0,0,0.25)"/>
+              </svg>
+            </div>
+            <div class="mock-product-info">
+              <div class="mock-product-title">Mario Kart 8 Deluxe - Nintendo Switch</div>
+              <div class="mock-product-rating">
+                <span class="mock-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <span class="mock-rating-text">4.9 · 12,847 ratings</span>
+              </div>
+              <div class="mock-product-price">
+                <span class="mock-price-current">$59.99</span>
+                <span class="mock-price-strike">$69.99</span>
+              </div>
+              <div class="mock-product-prime">
+                <span class="mock-prime">prime</span> FREE delivery <strong>Tomorrow</strong>
+              </div>
+              <div class="mock-product-stock">In Stock</div>
+              <button class="mock-cta mock-cta-cart">Add to Cart</button>
+              <button class="mock-cta mock-cta-buy">Buy Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: CartridgeBond overlay panel -->
+        <div class="mock-overlay">
+          <div class="mock-overlay-head">
+            <span class="mock-overlay-brand">Cartridge<span class="b2">Bond</span></span>
+            <span class="mock-overlay-badge">Live</span>
+          </div>
+
+          <div class="mock-overlay-title">Game Exit Intelligence</div>
+
+          <div class="mock-overlay-metric">
+            <div class="mock-metric-label">Estimated Resale Value</div>
+            <div class="mock-metric-value">$38 - $42</div>
+            <div class="mock-metric-sub">after 60 days · A1 condition</div>
+          </div>
+
+          <div class="mock-overlay-demand">
+            <div class="mock-demand-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            </div>
+            <div>
+              <div class="mock-demand-label">High Demand</div>
+              <div class="mock-demand-sub">Fast resale expected</div>
+            </div>
+          </div>
+
+          <div class="mock-overlay-metric mock-overlay-metric-secondary">
+            <div class="mock-metric-label">True Cost of Playthrough</div>
+            <div class="mock-metric-value-sm">$18 - $22</div>
+            <div class="mock-metric-sub">based on 60-day ownership</div>
+          </div>
+
+          <div class="mock-overlay-section">
+            <div class="mock-section-label">One-Click Future Resale</div>
+            <div class="mock-exit-grid">
+              <button class="mock-exit-pill" type="button">
+                <span class="mock-exit-when">Now</span>
+                <span class="mock-exit-amt">$42</span>
+                <span class="mock-exit-tag">Best</span>
+              </button>
+              <button class="mock-exit-pill" type="button">
+                <span class="mock-exit-when">30d</span>
+                <span class="mock-exit-amt">$40</span>
+                <span class="mock-exit-tag">Good</span>
+              </button>
+              <button class="mock-exit-pill mock-exit-pill-active" type="button">
+                <span class="mock-exit-when">60d</span>
+                <span class="mock-exit-amt">$38</span>
+                <span class="mock-exit-tag">Picked</span>
+              </button>
+              <button class="mock-exit-pill" type="button">
+                <span class="mock-exit-when">90d</span>
+                <span class="mock-exit-amt">$34</span>
+                <span class="mock-exit-tag">OK</span>
+              </button>
+            </div>
+          </div>
+
+          <a class="mock-activate" href="#widget">
+            Activate Exit Plan
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+
+          <div class="mock-overlay-foot">It's free. No commitments.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature row below the mock -->
+    <div class="mock-features">
+      <div class="mock-feature">
+        <div class="mock-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        </div>
+        <div class="mock-feature-text">
+          <div class="mock-feature-title">Resale Value Before You Buy</div>
+          <p>See what games are worth later. Decide what you actually pay to play.</p>
+        </div>
+      </div>
+      <div class="mock-feature">
+        <div class="mock-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <div class="mock-feature-text">
+          <div class="mock-feature-title">One-Click Future Resale</div>
+          <p>Line up your exit for Now, 30, 60, or 90 days. We do the matching.</p>
+        </div>
+      </div>
+      <div class="mock-feature">
+        <div class="mock-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="mock-feature-text">
+          <div class="mock-feature-title">Future Demand Detected</div>
+          <p>We track active buyers and resale signals, so your game sells fast.</p>
         </div>
       </div>
     </div>
