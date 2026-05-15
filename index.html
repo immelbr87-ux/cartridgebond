@@ -669,7 +669,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 @media(min-width:840px){
   footer{padding:56px 32px 28px;}
   .footer-top{flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:32px;margin-bottom:36px;}
-  .footer-cols{grid-template-columns:repeat(3,auto);gap:64px;}
+  .footer-cols{grid-template-columns:repeat(4,auto);gap:48px;}
   .footer-bottom{text-align:left;}
 }
 
@@ -1853,6 +1853,16 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
           <a href="privacy.html">Privacy</a>
           <a href="mailto:cartridgebond@gmail.com">Contact</a>
         </div>
+        <div class="footer-col">
+          <div class="footer-col-head">Popular game values</div>
+          <a href="value/mario-kart-8-deluxe.html">Mario Kart 8 Deluxe</a>
+          <a href="value/zelda-tears-of-the-kingdom.html">Zelda: TOTK</a>
+          <a href="value/super-smash-bros-ultimate.html">Smash Ultimate</a>
+          <a href="value/animal-crossing-new-horizons.html">Animal Crossing NH</a>
+          <a href="value/pokemon-scarlet.html">Pokemon Scarlet</a>
+          <a href="value/super-mario-odyssey.html">Mario Odyssey</a>
+          <a href="prices.html"><strong>All 28 values →</strong></a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -2423,16 +2433,54 @@ window.addEventListener('resize', moveTabIndicator);
   document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
 })();
 
-// ── BOOT: load games ──
+// ── BOOT: load games + handle URL params ──
+function handleUrlParams() {
+  // Parse ?game=X&mode=Y from URL
+  var params = new URLSearchParams(window.location.search);
+  var gameParam = params.get('game');
+  var modeParam = params.get('mode');
+
+  if (!gameParam && !modeParam) return;
+
+  // Set mode first (defaults to sell)
+  if (modeParam === 'buy' || modeParam === 'sell') {
+    if (typeof setMode === 'function') {
+      setMode(modeParam);
+    }
+  }
+
+  // Find and select the game (case-insensitive match on shortTitle)
+  if (gameParam && ALL_GAMES.length) {
+    var gameTitle = decodeURIComponent(gameParam);
+    var found = ALL_GAMES.find(function(g) {
+      return g.shortTitle.toLowerCase() === gameTitle.toLowerCase();
+    });
+    if (found && typeof selectGame === 'function') {
+      // Slight delay so the widget DOM is ready
+      setTimeout(function() {
+        selectGame(found.shortTitle);
+        // Scroll the widget into view
+        var w = document.querySelector('.widget');
+        if (w) {
+          var r = w.getBoundingClientRect();
+          window.scrollTo({ top: window.scrollY + r.top - 72, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }
+}
+
 fetch('games.json?v=' + Date.now())
   .then(function(r){ if(!r.ok) throw new Error('no'); return r.json(); })
   .then(function(data){
     ALL_GAMES = (data && data.games) ? data.games : FALLBACK_GAMES;
     renderGameList('');
+    handleUrlParams();
   })
   .catch(function(){
     ALL_GAMES = FALLBACK_GAMES;
     renderGameList('');
+    handleUrlParams();
   });
 </script>
 
