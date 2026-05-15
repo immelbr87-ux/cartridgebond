@@ -1756,7 +1756,7 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
           <span class="seoqa-arrow">+</span>
         </button>
         <div class="seoqa-a">
-          <p>$0 platform fees during beta. The first 25 founders to complete a trade get free trades for life - even after we introduce platform fees. We give 30 days notice before any fee changes.</p>
+          <p>$0 platform fees during beta. The first <span data-founder-total>25</span> founders to complete a trade get free trades for life - even after we introduce platform fees. <span data-founder-remaining-text></span>We give 30 days notice before any fee changes.</p>
         </div>
       </div>
 
@@ -1785,7 +1785,7 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
       <div class="founder-perk">
         <div class="founder-perk-icon">🏆</div>
         <div>
-          <div class="founder-perk-text">First <strong>25 users</strong> trade free for life</div>
+          <div class="founder-perk-text">First <strong><span data-founder-total>25</span> users</strong> trade free for life</div>
           <div class="founder-perk-sub">Even after we introduce platform fees.</div>
         </div>
       </div>
@@ -1816,7 +1816,7 @@ nav.scrolled{background:rgba(247,247,244,0.78);backdrop-filter:saturate(180%) bl
 <section class="footer-cta">
   <div class="footer-cta-inner">
     <h2>Ready to lock in?</h2>
-    <p>It takes 60 seconds. Free during beta. First 25 founders trade free for life.</p>
+    <p>It takes 60 seconds. Free during beta. First <span data-founder-total>25</span> founders trade free for life.</p>
     <a href="#widget" class="btn-primary" style="display:inline-flex;">Buy / Sell Now <span class="btn-arrow">-&gt;</span></a>
   </div>
 </section>
@@ -2431,6 +2431,36 @@ window.addEventListener('resize', moveTabIndicator);
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+
+// ── DYNAMIC FOUNDER COUNTER ──
+// Reads config.json to populate data-founder-total and data-founder-remaining-text
+// across the page. Falls back gracefully if config.json fails to load.
+(function loadFounderConfig() {
+  fetch('config.json?v=' + Date.now())
+    .then(function(r){ if(!r.ok) throw new Error('no'); return r.json(); })
+    .then(function(cfg){
+      var total = cfg.totalFounderSpots || 25;
+      var left = cfg.founderSpotsLeft;
+
+      // Update all data-founder-total spans
+      document.querySelectorAll('[data-founder-total]').forEach(function(el){
+        el.textContent = total;
+      });
+
+      // If spotsLeft is less than total, show how many remain
+      var remainingEls = document.querySelectorAll('[data-founder-remaining-text]');
+      if (typeof left === 'number' && left < total && left > 0) {
+        remainingEls.forEach(function(el){
+          el.textContent = 'Only ' + left + ' founder spot' + (left === 1 ? '' : 's') + ' left. ';
+        });
+      } else {
+        remainingEls.forEach(function(el){ el.textContent = ''; });
+      }
+    })
+    .catch(function(){
+      // Silent fallback - hardcoded "25" stays as default
+    });
 })();
 
 // ── BOOT: load games + handle URL params ──
