@@ -117,6 +117,10 @@ footer a{color:var(--text-2);font-weight:500;}
 @media(min-width:560px){
   .page-title{font-size:36px;}
 }
+
+/* Updated footer to 4 columns */
+.footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(min-width:840px){.footer-cols{grid-template-columns:repeat(4,1fr);gap:32px;}}
 </style>
 </head>
 <body>
@@ -230,7 +234,45 @@ footer a{color:var(--text-2);font-weight:500;}
 </main>
 
 <footer>
-  &copy; 2026 CartridgeBond &nbsp;·&nbsp; <a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-brand"><span class="b1">Cartridge</span><span class="b2">Bond</span></a>
+        <p class="footer-tagline">The future of Nintendo Switch game resale. Beta in Milwaukee. National soon.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <div class="footer-col-head">Platform</div>
+          <a href="index.html#how">How it works</a>
+          <a href="prices.html">Game prices</a>
+          <a href="status.html">Check status</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-head">Resources</div>
+          <a href="faq.html">FAQ</a>
+          <a href="blog/index.html">Blog</a>
+          <a href="meetup.html">Safe meetup</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-head">Legal</div>
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="mailto:cartridgebond@gmail.com">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-head">Popular game values</div>
+          <a href="value/mario-kart-8-deluxe.html">Mario Kart 8 Deluxe</a>
+          <a href="value/zelda-tears-of-the-kingdom.html">Zelda: TOTK</a>
+          <a href="value/super-smash-bros-ultimate.html">Smash Ultimate</a>
+          <a href="value/animal-crossing-new-horizons.html">Animal Crossing NH</a>
+          <a href="value/pokemon-scarlet.html">Pokemon Scarlet</a>
+          <a href="value/super-mario-odyssey.html">Mario Odyssey</a>
+          <a href="prices.html"><strong>All 28 values -&gt;</strong></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
+  </div>
 </footer>
 
 <script>
