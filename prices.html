@@ -123,22 +123,6 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 @media(min-width:680px){.prices-scroll-hint{display:none;}.prices-table .g-name{position:static;}}
 @media(max-width:600px){.prices-table th,.prices-table td{padding:11px 10px;font-size:12.5px;}.prices-table .g-name{font-size:13px;}}
 
-
-/* HUB PAGE - VALUE PAGES GRID */
-.hub-grid{display:grid;grid-template-columns:1fr;gap:10px;}
-@media(min-width:600px){.hub-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:980px){.hub-grid{grid-template-columns:repeat(2,1fr);gap:14px;}}
-.hub-game{display:block;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s,box-shadow .2s,background .2s;}
-.hub-game:hover{transform:translateY(-2px);border-color:var(--accent);background:var(--card);box-shadow:0 8px 24px -12px rgba(10,31,18,0.14);}
-.hub-game-name{font-size:16.5px;font-weight:700;color:var(--text);letter-spacing:-.015em;line-height:1.25;margin-bottom:4px;}
-.hub-game-meta{font-size:12.5px;color:var(--muted);font-family:var(--mono);margin-bottom:12px;}
-.hub-game-prices{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;}
-.hub-cb{display:flex;flex-direction:column;align-items:flex-start;}
-.hub-cb span{font-size:11px;color:var(--muted);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin-bottom:2px;}
-.hub-cb strong{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.02em;font-feature-settings:'tnum';}
-.hub-vs{font-size:11.5px;color:var(--muted);text-align:right;line-height:1.35;max-width:170px;}
-
-
 </style>
 
 </head>
@@ -166,317 +150,211 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 
 <section class="page-hero">
   <div class="page-hero-inner">
-    <div class="page-eyebrow">Game values</div>
-    <h1>Nintendo Switch <span class="accent">game values.</span></h1>
-    <p>What your Nintendo Switch games are actually worth in A1 condition - locked-in prices, researched against real eBay sold listings and PriceCharting data. Click any game for the full price breakdown vs eBay, GameStop, and Facebook Marketplace.</p>
+    <div class="page-eyebrow">Prices</div>
+    <h1>Switch game <span class="accent">prices.</span></h1>
+    <p>What your Nintendo Switch games are actually worth on the secondary market - and why CartridgeBond beats eBay and GameStop.</p>
   </div>
 </section>
 
-
-    
-
-  <section class="content-section">
+<section class="content-section">
   <div class="content-inner">
-
     <div class="content-card">
-      <div class="content-meta">Last updated 2026-05-13 · 28 games tracked · A1 condition (CIB)</div>
-      <h2>How these prices work</h2>
-      <p><strong>CartridgeBond locked price</strong> is what an A1-condition complete-in-box (CIB) cartridge nets you on our platform. Prices are researched against eBay sold listings (90-day rolling median) and PriceCharting CIB values, then locked in for both buyer and seller before any meetup.</p>
-      <p>Click any game below for the full breakdown - how CartridgeBond compares to eBay after fees, GameStop trade-in, and Facebook Marketplace, plus condition-specific notes for that title.</p>
+      <div class="content-meta">Updated weekly · Last update 2026-04-28</div>
+      <h2>How CartridgeBond pricing works</h2>
+      <p>Prices reflect what Nintendo Switch games actually sell for in the secondary market - not GameStop trade-in values, not asking prices on eBay. We cross-reference <strong>eBay sold listings</strong> (90-day rolling), <strong>PriceCharting Complete-condition values</strong>, and observed local Wisconsin activity.</p>
+      <p>The CartridgeBond price is the price both parties commit to before meeting. No haggling, no door-side renegotiation, no surprises.</p>
     </div>
 
-    <div class="content-card">
-      <h2>Mario games on Switch</h2>
-      <p style="margin-bottom:18px;">7 Mario titles with locked CartridgeBond pricing. Tap any game for the full value breakdown.</p>
-      <div class="hub-grid">
-      <a href="value/super-mario-party-jamboree.html" class="hub-game">
-        <div class="hub-game-name">Super Mario Party Jamboree</div>
-        <div class="hub-game-meta">2024 · Party</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$42</strong></div>
-          <div class="hub-vs">vs $18 GameStop · $29-$31 eBay net</div>
-        </div>
-      </a>
-      <a href="value/mario-kart-8-deluxe.html" class="hub-game">
-        <div class="hub-game-name">Mario Kart 8 Deluxe</div>
-        <div class="hub-game-meta">2017 · Racing</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$38</strong></div>
-          <div class="hub-vs">vs $16 GameStop · $23-$24 eBay net</div>
-        </div>
-      </a>
-      <a href="value/super-mario-bros-wonder.html" class="hub-game">
-        <div class="hub-game-name">Super Mario Bros. Wonder</div>
-        <div class="hub-game-meta">2023 · Platformer</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$37</strong></div>
-          <div class="hub-vs">vs $16 GameStop · $24-$26 eBay net</div>
-        </div>
-      </a>
-      <a href="value/super-mario-3d-world-bowsers-fury.html" class="hub-game">
-        <div class="hub-game-name">Super Mario 3D World + Bowser's Fury</div>
-        <div class="hub-game-meta">2021 · Platformer</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$35</strong></div>
-          <div class="hub-vs">vs $15 GameStop · $23-$24 eBay net</div>
-        </div>
-      </a>
-      <a href="value/super-mario-odyssey.html" class="hub-game">
-        <div class="hub-game-name">Super Mario Odyssey</div>
-        <div class="hub-game-meta">2017 · Platformer</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$34</strong></div>
-          <div class="hub-vs">vs $14 GameStop · $20-$22 eBay net</div>
-        </div>
-      </a>
-      <a href="value/mario-party-superstars.html" class="hub-game">
-        <div class="hub-game-name">Mario Party Superstars</div>
-        <div class="hub-game-meta">2021 · Party</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$33</strong></div>
-          <div class="hub-vs">vs $14 GameStop · $21-$23 eBay net</div>
-        </div>
-      </a>
-      <a href="value/mario-rabbids-sparks-of-hope.html" class="hub-game">
-        <div class="hub-game-name">Mario + Rabbids Sparks of Hope</div>
-        <div class="hub-game-meta">2022 · Tactics</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$24</strong></div>
-          <div class="hub-vs">vs $10 GameStop · $13-$15 eBay net</div>
-        </div>
-      </a>
+    <div style="margin:24px 0 14px;">
+      <div class="content-meta" style="margin-bottom:6px;">Current prices · A1 condition</div>
+    </div>
+
+    <div class="prices-table-wrap">
+      <div class="prices-table-scroll">
+      <table class="prices-table">
+        <thead>
+          <tr>
+            <th>Game</th>
+            <th class="cb">CartridgeBond</th>
+            <th>eBay (after fees)</th>
+            <th>GameStop trade-in</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="g-name">Zelda: TOTK</td>
+          <td class="g-cb"><strong>$50</strong></td>
+          <td class="g-ebay">$37-41</td>
+          <td class="g-gs">$28</td>
+        </tr>
+        <tr>
+          <td class="g-name">Zelda: BOTW</td>
+          <td class="g-cb"><strong>$42</strong></td>
+          <td class="g-ebay">$30-34</td>
+          <td class="g-gs">$22</td>
+        </tr>
+        <tr>
+          <td class="g-name">Mario Kart 8 Deluxe</td>
+          <td class="g-cb"><strong>$43</strong></td>
+          <td class="g-ebay">$31-34</td>
+          <td class="g-gs">$22</td>
+        </tr>
+        <tr>
+          <td class="g-name">Smash Bros Ultimate</td>
+          <td class="g-cb"><strong>$43</strong></td>
+          <td class="g-ebay">$29-33</td>
+          <td class="g-gs">$20</td>
+        </tr>
+        <tr>
+          <td class="g-name">Mario Odyssey</td>
+          <td class="g-cb"><strong>$38</strong></td>
+          <td class="g-ebay">$26-30</td>
+          <td class="g-gs">$18</td>
+        </tr>
+        <tr>
+          <td class="g-name">Mario Wonder</td>
+          <td class="g-cb"><strong>$45</strong></td>
+          <td class="g-ebay">$32-36</td>
+          <td class="g-gs">$25</td>
+        </tr>
+        <tr>
+          <td class="g-name">Mario 3D World</td>
+          <td class="g-cb"><strong>$38</strong></td>
+          <td class="g-ebay">$26-30</td>
+          <td class="g-gs">$18</td>
+        </tr>
+        <tr>
+          <td class="g-name">Mario Party Superstars</td>
+          <td class="g-cb"><strong>$38</strong></td>
+          <td class="g-ebay">$26-30</td>
+          <td class="g-gs">$18</td>
+        </tr>
+        <tr>
+          <td class="g-name">Mario Party Jamboree</td>
+          <td class="g-cb"><strong>$45</strong></td>
+          <td class="g-ebay">$32-36</td>
+          <td class="g-gs">$25</td>
+        </tr>
+        <tr>
+          <td class="g-name">Animal Crossing NH</td>
+          <td class="g-cb"><strong>$36</strong></td>
+          <td class="g-ebay">$23-27</td>
+          <td class="g-gs">$16</td>
+        </tr>
+        <tr>
+          <td class="g-name">Pokemon Scarlet</td>
+          <td class="g-cb"><strong>$39</strong></td>
+          <td class="g-ebay">$26-29</td>
+          <td class="g-gs">$18</td>
+        </tr>
+        <tr>
+          <td class="g-name">Pokemon Violet</td>
+          <td class="g-cb"><strong>$39</strong></td>
+          <td class="g-ebay">$26-29</td>
+          <td class="g-gs">$18</td>
+        </tr>
+        <tr>
+          <td class="g-name">Pokemon Sword</td>
+          <td class="g-cb"><strong>$32</strong></td>
+          <td class="g-ebay">$21-25</td>
+          <td class="g-gs">$14</td>
+        </tr>
+        <tr>
+          <td class="g-name">Pokemon Shield</td>
+          <td class="g-cb"><strong>$32</strong></td>
+          <td class="g-ebay">$21-25</td>
+          <td class="g-gs">$14</td>
+        </tr>
+        <tr>
+          <td class="g-name">Pokemon Legends Arceus</td>
+          <td class="g-cb"><strong>$36</strong></td>
+          <td class="g-ebay">$24-28</td>
+          <td class="g-gs">$16</td>
+        </tr>
+        <tr>
+          <td class="g-name">Pokemon BD</td>
+          <td class="g-cb"><strong>$34</strong></td>
+          <td class="g-ebay">$22-26</td>
+          <td class="g-gs">$15</td>
+        </tr>
+        <tr>
+          <td class="g-name">Pokemon SP</td>
+          <td class="g-cb"><strong>$34</strong></td>
+          <td class="g-ebay">$22-26</td>
+          <td class="g-gs">$15</td>
+        </tr>
+        <tr>
+          <td class="g-name">Splatoon 3</td>
+          <td class="g-cb"><strong>$38</strong></td>
+          <td class="g-ebay">$26-30</td>
+          <td class="g-gs">$18</td>
+        </tr>
+        <tr>
+          <td class="g-name">Splatoon 2</td>
+          <td class="g-cb"><strong>$28</strong></td>
+          <td class="g-ebay">$18-22</td>
+          <td class="g-gs">$12</td>
+        </tr>
+        <tr>
+          <td class="g-name">Luigi's Mansion 3</td>
+          <td class="g-cb"><strong>$38</strong></td>
+          <td class="g-ebay">$26-30</td>
+          <td class="g-gs">$18</td>
+        </tr>
+        <tr>
+          <td class="g-name">Kirby Forgotten Land</td>
+          <td class="g-cb"><strong>$38</strong></td>
+          <td class="g-ebay">$26-30</td>
+          <td class="g-gs">$18</td>
+        </tr>
+        <tr>
+          <td class="g-name">Metroid Dread</td>
+          <td class="g-cb"><strong>$36</strong></td>
+          <td class="g-ebay">$24-28</td>
+          <td class="g-gs">$16</td>
+        </tr>
+        <tr>
+          <td class="g-name">DKC Tropical Freeze</td>
+          <td class="g-cb"><strong>$42</strong></td>
+          <td class="g-ebay">$30-34</td>
+          <td class="g-gs">$22</td>
+        </tr>
+        <tr>
+          <td class="g-name">Mario + Rabbids Sparks</td>
+          <td class="g-cb"><strong>$28</strong></td>
+          <td class="g-ebay">$18-22</td>
+          <td class="g-gs">$12</td>
+        </tr>
+        <tr>
+          <td class="g-name">Fire Emblem Engage</td>
+          <td class="g-cb"><strong>$36</strong></td>
+          <td class="g-ebay">$24-28</td>
+          <td class="g-gs">$16</td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="prices-scroll-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M5 12l4-4M5 12l4 4M19 12l-4-4M19 12l-4 4"/></svg>
+        Swipe to compare across platforms
       </div>
     </div>
 
-    <div class="content-card">
-      <h2>Zelda games on Switch</h2>
-      <p style="margin-bottom:18px;">2 Zelda titles with locked CartridgeBond pricing. Tap any game for the full value breakdown.</p>
-      <div class="hub-grid">
-      <a href="value/zelda-tears-of-the-kingdom.html" class="hub-game">
-        <div class="hub-game-name">The Legend of Zelda: Tears of the Kingdom</div>
-        <div class="hub-game-meta">2023 · Action-adventure</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$43</strong></div>
-          <div class="hub-vs">vs $18 GameStop · $27-$29 eBay net</div>
-        </div>
-      </a>
-      <a href="value/zelda-breath-of-the-wild.html" class="hub-game">
-        <div class="hub-game-name">The Legend of Zelda: Breath of the Wild</div>
-        <div class="hub-game-meta">2017 · Action-adventure</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$35</strong></div>
-          <div class="hub-vs">vs $15 GameStop · $24-$26 eBay net</div>
-        </div>
-      </a>
-      </div>
-    </div>
-
-    <div class="content-card">
-      <h2>Pokemon games on Switch</h2>
-      <p style="margin-bottom:18px;">8 Pokemon titles with locked CartridgeBond pricing. Tap any game for the full value breakdown.</p>
-      <div class="hub-grid">
-      <a href="value/pokemon-legends-z-a.html" class="hub-game">
-        <div class="hub-game-name">Pokemon Legends: Z-A</div>
-        <div class="hub-game-meta">2025 · RPG / Action</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$50</strong></div>
-          <div class="hub-vs">vs $22 GameStop · $38-$44 eBay net</div>
-        </div>
-      </a>
-      <a href="value/pokemon-legends-arceus.html" class="hub-game">
-        <div class="hub-game-name">Pokemon Legends: Arceus</div>
-        <div class="hub-game-meta">2022 · RPG / Action</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$40</strong></div>
-          <div class="hub-vs">vs $17 GameStop · $27-$29 eBay net</div>
-        </div>
-      </a>
-      <a href="value/pokemon-violet.html" class="hub-game">
-        <div class="hub-game-name">Pokemon Violet</div>
-        <div class="hub-game-meta">2022 · RPG</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$37</strong></div>
-          <div class="hub-vs">vs $16 GameStop · $24-$25 eBay net</div>
-        </div>
-      </a>
-      <a href="value/pokemon-scarlet.html" class="hub-game">
-        <div class="hub-game-name">Pokemon Scarlet</div>
-        <div class="hub-game-meta">2022 · RPG</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$36</strong></div>
-          <div class="hub-vs">vs $15 GameStop · $22-$24 eBay net</div>
-        </div>
-      </a>
-      <a href="value/pokemon-sword.html" class="hub-game">
-        <div class="hub-game-name">Pokemon Sword</div>
-        <div class="hub-game-meta">2019 · RPG</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$36</strong></div>
-          <div class="hub-vs">vs $15 GameStop · $22-$24 eBay net</div>
-        </div>
-      </a>
-      <a href="value/pokemon-shield.html" class="hub-game">
-        <div class="hub-game-name">Pokemon Shield</div>
-        <div class="hub-game-meta">2019 · RPG</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$36</strong></div>
-          <div class="hub-vs">vs $15 GameStop · $22-$23 eBay net</div>
-        </div>
-      </a>
-      <a href="value/pokemon-brilliant-diamond.html" class="hub-game">
-        <div class="hub-game-name">Pokemon Brilliant Diamond</div>
-        <div class="hub-game-meta">2021 · RPG</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$32</strong></div>
-          <div class="hub-vs">vs $13 GameStop · $20-$22 eBay net</div>
-        </div>
-      </a>
-      <a href="value/pokemon-shining-pearl.html" class="hub-game">
-        <div class="hub-game-name">Pokemon Shining Pearl</div>
-        <div class="hub-game-meta">2021 · RPG</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$32</strong></div>
-          <div class="hub-vs">vs $13 GameStop · $20-$22 eBay net</div>
-        </div>
-      </a>
-      </div>
-    </div>
-
-    <div class="content-card">
-      <h2>Nintendo Classics games on Switch</h2>
-      <p style="margin-bottom:18px;">4 Nintendo Classics titles with locked CartridgeBond pricing. Tap any game for the full value breakdown.</p>
-      <div class="hub-grid">
-      <a href="value/super-smash-bros-ultimate.html" class="hub-game">
-        <div class="hub-game-name">Super Smash Bros. Ultimate</div>
-        <div class="hub-game-meta">2018 · Fighting</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$38</strong></div>
-          <div class="hub-vs">vs $16 GameStop · $24-$25 eBay net</div>
-        </div>
-      </a>
-      <a href="value/donkey-kong-country-tropical-freeze.html" class="hub-game">
-        <div class="hub-game-name">Donkey Kong Country: Tropical Freeze</div>
-        <div class="hub-game-meta">2018 · Platformer</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$38</strong></div>
-          <div class="hub-vs">vs $16 GameStop · $25-$27 eBay net</div>
-        </div>
-      </a>
-      <a href="value/kirby-and-the-forgotten-land.html" class="hub-game">
-        <div class="hub-game-name">Kirby and the Forgotten Land</div>
-        <div class="hub-game-meta">2022 · Platformer</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$35</strong></div>
-          <div class="hub-vs">vs $15 GameStop · $23-$24 eBay net</div>
-        </div>
-      </a>
-      <a href="value/luigis-mansion-3.html" class="hub-game">
-        <div class="hub-game-name">Luigi's Mansion 3</div>
-        <div class="hub-game-meta">2019 · Action-adventure</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$34</strong></div>
-          <div class="hub-vs">vs $14 GameStop · $22-$24 eBay net</div>
-        </div>
-      </a>
-      </div>
-    </div>
-
-    <div class="content-card">
-      <h2>Metroid games on Switch</h2>
-      <p style="margin-bottom:18px;">2 Metroid titles with locked CartridgeBond pricing. Tap any game for the full value breakdown.</p>
-      <div class="hub-grid">
-      <a href="value/metroid-prime-4-beyond.html" class="hub-game">
-        <div class="hub-game-name">Metroid Prime 4: Beyond</div>
-        <div class="hub-game-meta">2025 · Action-adventure</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$48</strong></div>
-          <div class="hub-vs">vs $20 GameStop · $36-$42 eBay net</div>
-        </div>
-      </a>
-      <a href="value/metroid-dread.html" class="hub-game">
-        <div class="hub-game-name">Metroid Dread</div>
-        <div class="hub-game-meta">2021 · Action-adventure</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$34</strong></div>
-          <div class="hub-vs">vs $14 GameStop · $22-$24 eBay net</div>
-        </div>
-      </a>
-      </div>
-    </div>
-
-    <div class="content-card">
-      <h2>Splatoon games on Switch</h2>
-      <p style="margin-bottom:18px;">2 Splatoon titles with locked CartridgeBond pricing. Tap any game for the full value breakdown.</p>
-      <div class="hub-grid">
-      <a href="value/splatoon-3.html" class="hub-game">
-        <div class="hub-game-name">Splatoon 3</div>
-        <div class="hub-game-meta">2022 · Shooter</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$36</strong></div>
-          <div class="hub-vs">vs $15 GameStop · $24-$25 eBay net</div>
-        </div>
-      </a>
-      <a href="value/splatoon-2.html" class="hub-game">
-        <div class="hub-game-name">Splatoon 2</div>
-        <div class="hub-game-meta">2017 · Shooter</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$22</strong></div>
-          <div class="hub-vs">vs $9 GameStop · $11-$13 eBay net</div>
-        </div>
-      </a>
-      </div>
-    </div>
-
-    <div class="content-card">
-      <h2>Other Switch Games games on Switch</h2>
-      <p style="margin-bottom:18px;">3 Other Switch Games titles with locked CartridgeBond pricing. Tap any game for the full value breakdown.</p>
-      <div class="hub-grid">
-      <a href="value/animal-crossing-new-horizons.html" class="hub-game">
-        <div class="hub-game-name">Animal Crossing: New Horizons</div>
-        <div class="hub-game-meta">2020 · Life simulation</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$38</strong></div>
-          <div class="hub-vs">vs $16 GameStop · $24-$26 eBay net</div>
-        </div>
-      </a>
-      <a href="value/fire-emblem-engage.html" class="hub-game">
-        <div class="hub-game-name">Fire Emblem Engage</div>
-        <div class="hub-game-meta">2023 · Tactics RPG</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$32</strong></div>
-          <div class="hub-vs">vs $13 GameStop · $20-$22 eBay net</div>
-        </div>
-      </a>
-      <a href="value/minecraft-switch.html" class="hub-game">
-        <div class="hub-game-name">Minecraft (Nintendo Switch Edition)</div>
-        <div class="hub-game-meta">2018 · Sandbox</div>
-        <div class="hub-game-prices">
-          <div class="hub-cb"><span>CartridgeBond</span><strong>$24</strong></div>
-          <div class="hub-vs">vs $10 GameStop · $16-$21 eBay net</div>
-        </div>
-      </a>
-      </div>
-    </div>
-
-    <div class="content-card">
-      <h2>What "A1 condition" actually means</h2>
-      <p>Every cartridge that trades on CartridgeBond must meet our A1 standard. This is what gives us the leverage to lock in prices - the buyer knows exactly what they're getting before money changes hands. A1 means:</p>
-      <ul>
-        <li><strong>Cartridge in original case</strong> - CIB required, no third-party cases or missing cases</li>
-        <li><strong>Plays without errors</strong> - boots, runs, saves work normally</li>
-        <li><strong>No deep scratches affecting gameplay</strong> - light surface scuffs on the case are okay</li>
-        <li><strong>Label fully intact</strong> - clean cartridge pins, no major label damage</li>
-        <li><strong>Original inserts included where applicable</strong> - manual, map, slipcover when the game shipped with one</li>
-      </ul>
-      <p>Sellers who can't meet these standards are filtered out before any match. Buyers don't have to inspect or take chances.</p>
+    <div class="content-card" style="margin-top:24px;">
+      <h2>Why we beat the alternatives</h2>
+      <h3>vs eBay</h3>
+      <p>eBay charges a 13% seller fee plus listing fees plus shipping costs. A Mario Kart 8 Deluxe that sells for $50 on eBay nets about $31-34 after all costs. On CartridgeBond it nets the full $43.</p>
+      <h3>vs Facebook Marketplace</h3>
+      <p>Facebook Marketplace is "free" but the time you spend on lowballs, ghost buyers, and door-side haggling costs more than the platform fees you save. Plus there's no condition standard - "good" can mean anything.</p>
+      <h3>vs GameStop</h3>
+      <p>GameStop trade-in averages 30-40% of resale value, and pays in store credit unless you take a further haircut for cash. Mario Kart 8 Deluxe nets ~$22 in GameStop credit. CartridgeBond nets $43 cash.</p>
     </div>
 
     <div class="cta-card">
-      <h3>Don't see your game?</h3>
-      <p>We're adding more Switch titles weekly. Send us the game you're trying to trade and we'll research the locked price.</p>
-      <a href="mailto:cartridgebond@gmail.com?subject=Price%20request" class="btn">Request a game price →</a>
+      <h3>Ready to lock in?</h3>
+      <p>Submit your game in 60 seconds. Real person reviews. Match within 48 hours.</p>
+      <a href="index.html#widget" class="btn">Buy / Sell Now -&gt;</a>
     </div>
-
   </div>
 </section>
 

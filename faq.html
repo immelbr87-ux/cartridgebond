@@ -108,10 +108,6 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 .footer-col a:hover{color:var(--text);}
 .footer-bottom{padding-top:20px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);text-align:center;line-height:1.5;}
 @media(min-width:840px){footer{padding:56px 32px 28px;}.footer-top{flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:32px;margin-bottom:36px;}.footer-cols{grid-template-columns:repeat(3,auto);gap:64px;}.footer-bottom{text-align:left;}}
-
-/* Updated footer to 4 columns */
-.footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-@media(min-width:840px){.footer-cols{grid-template-columns:repeat(4,1fr);gap:32px;}}
 </style>
 
 <!-- JSON-LD: FAQPage schema for rich snippets -->
@@ -134,6 +130,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 <nav>
   <a href="index.html" class="brand"><span class="b1">Cartridge</span><span class="b2">Bond</span></a>
   <div class="nav-cta-row">
+    <a href="login.html" class="nav-signin">Sign in</a>
     <a href="index.html#widget" class="nav-cta">Buy / Sell Now</a>
     <button class="nav-menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span></button>
   </div>
@@ -157,6 +154,11 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <a href="status.html">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
       Check status
+    </a>
+    <hr>
+    <a href="login.html">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+      Sign in
     </a>
     <a href="index.html#widget" class="menu-cta">Buy / Sell Now</a>
   </div>
@@ -347,7 +349,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
     <div class="footer-top">
       <div>
         <a href="index.html" class="footer-brand"><span class="b1">Cartridge</span><span class="b2">Bond</span></a>
-        <p class="footer-tagline">The future of Nintendo Switch game resale. Beta in Milwaukee. National soon.</p>
+        <p class="footer-tagline">The future of game resale. Beta in Milwaukee. National soon.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -361,6 +363,7 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <a href="faq.html">FAQ</a>
           <a href="blog/index.html">Blog</a>
           <a href="meetup.html">Safe meetup</a>
+          <a href="waitlist.html">Outside Milwaukee?</a>
         </div>
         <div class="footer-col">
           <div class="footer-col-head">Legal</div>
@@ -368,19 +371,9 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
           <a href="privacy.html">Privacy</a>
           <a href="mailto:cartridgebond@gmail.com">Contact</a>
         </div>
-        <div class="footer-col">
-          <div class="footer-col-head">Popular game values</div>
-          <a href="value/mario-kart-8-deluxe.html">Mario Kart 8 Deluxe</a>
-          <a href="value/zelda-tears-of-the-kingdom.html">Zelda: TOTK</a>
-          <a href="value/super-smash-bros-ultimate.html">Smash Ultimate</a>
-          <a href="value/animal-crossing-new-horizons.html">Animal Crossing NH</a>
-          <a href="value/pokemon-scarlet.html">Pokemon Scarlet</a>
-          <a href="value/super-mario-odyssey.html">Mario Odyssey</a>
-          <a href="prices.html"><strong>All 28 values -&gt;</strong></a>
-        </div>
       </div>
     </div>
-    <div class="footer-bottom">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction.</div>
+    <div class="footer-bottom">&copy; 2026 CartridgeBond - A connection platform only - not a party to any transaction</div>
   </div>
 </footer>
 
