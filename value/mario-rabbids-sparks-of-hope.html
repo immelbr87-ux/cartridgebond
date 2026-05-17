@@ -175,8 +175,8 @@ nav { position:sticky; top:0; z-index:100; padding:14px 20px; display:flex; alig
 .value-cta .btn { padding:14px 24px; border-radius:14px; font-size:15px; font-weight:600; text-decoration:none; transition:all 0.2s; }
 .value-cta .btn-primary { background:var(--accent); color:white; }
 .value-cta .btn-primary:hover { background:#16a34a; transform:translateY(-1px); }
-.value-cta .btn-secondary { background:rgba(245,245,236,.08); color:#f5f5f0; border:1px solid rgba(245,245,236,.18); }
-.value-cta .btn-secondary:hover { background:rgba(245,245,236,.16); }
+.value-cta .btn-secondary { background:rgba(245,245,236,.12); color:#f5f5f0; border:1.5px solid rgba(245,245,236,.45); }
+.value-cta .btn-secondary:hover { background:rgba(245,245,236,.22); border-color:rgba(245,245,236,.7); }
 
 /* Related games */
 .related-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin:24px 0; }
@@ -209,10 +209,21 @@ footer { background:var(--dark); color:rgba(245,245,236,.7); padding:48px 20px; 
   .compare-table tbody td:first-child { padding-top:14px; font-weight:600; }
 }
 
-.value-hero-image{margin:24px 0 36px;max-width:680px;}
-.value-hero-image-inner{border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -24px rgba(10,31,18,0.18);aspect-ratio:2/1;}
-.value-hero-image-inner svg{width:100%;height:100%;display:block;}
-@media(max-width:640px){.value-hero-image{margin:20px 0 28px;}}
+/* Box art hero presentation */
+.value-art-row{display:grid;grid-template-columns:1fr;gap:32px;align-items:start;margin-top:20px;}
+@media(min-width:760px){.value-art-row{grid-template-columns:240px 1fr;gap:48px;}}
+@media(min-width:980px){.value-art-row{grid-template-columns:280px 1fr;gap:56px;}}
+.value-art{position:relative;}
+.value-art-img{width:100%;max-width:280px;aspect-ratio:3/4;background:var(--bg-2);border-radius:14px;overflow:hidden;box-shadow:0 4px 12px rgba(10,31,18,.06),0 24px 48px -16px rgba(10,31,18,.18);position:relative;}
+.value-art-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.value-art-img.is-missing{background:linear-gradient(135deg,var(--accent-soft) 0%,var(--bg-2) 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;}
+.value-art-img.is-missing::before{content:attr(data-fallback);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-3);line-height:1.5;}
+.value-art-caption{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:14px;text-align:center;font-weight:600;}
+@media(max-width:759px){.value-art{display:flex;flex-direction:column;align-items:center;}.value-art-img{max-width:200px;}}
+
+.section-fullbleed{background:var(--bg-2);width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;padding:64px 20px;overflow-x:hidden;}
+.section-fullbleed > div{max-width:1100px;margin:0 auto;}
+@media(min-width:1140px){.section-fullbleed{padding:64px calc(50vw - 540px);}}
 </style>
 </head>
 <body>
@@ -236,36 +247,14 @@ footer { background:var(--dark); color:rgba(245,245,236,.7); padding:48px 20px; 
   <div class="value-hero-platform">Nintendo Switch · Ubisoft / Nintendo · 2022 · Tactics</div>
   <p class="value-hero-sub">A1-condition complete-in-box copies of Mario + Rabbids Sparks of Hope trade for <strong>$24 on CartridgeBond</strong>, approximately 140% more than GameStop's $10 trade-in offer. Prices are researched against eBay sold listings and PriceCharting data, then locked in for both buyer and seller before any meetup.</p>
 
-  <div class="value-hero-image">
-    <div class="value-hero-image-inner"><svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-  <defs>
-    <radialGradient id="glow_mario_rabbids_sparks_of_hope" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.35"/>
-      <stop offset="60%" stop-color="#22c55e" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="bg_mario_rabbids_sparks_of_hope" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0a1f12"/>
-      <stop offset="100%" stop-color="#0e2a18"/>
-    </linearGradient>
-  </defs>
-  <rect width="800" height="400" fill="url(#bg_mario_rabbids_sparks_of_hope)"/>
-  <circle cx="400" cy="200" r="200" fill="url(#glow_mario_rabbids_sparks_of_hope)"/>
-  <g transform="translate(330,110) rotate(10)" opacity="1.0">
-    <path d="M 0,12 L 0,168 Q 0,180 12,180 L 128,180 Q 140,180 140,168 L 140,57.6 L 122,50.400000000000006 L 122,12 Q 122,0 110,0 L 12,0 Q 0,0 0,12 Z" fill="#16a34a" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
-    <rect x="42.0" y="99.00000000000001" width="56.0" height="27.0" rx="3" fill="rgba(0,0,0,0.15)"/>
-    <circle cx="70.0" cy="153.0" r="3.5" fill="rgba(0,0,0,0.25)"/>
-  </g>
-  <g opacity="0.4">
-    <circle cx="120" cy="80" r="2" fill="#22c55e"/>
-    <circle cx="680" cy="120" r="3" fill="#22c55e"/>
-    <circle cx="700" cy="320" r="2" fill="#22c55e"/>
-    <circle cx="100" cy="340" r="2.5" fill="#22c55e"/>
-  </g>
-</svg></div>
-  </div>
-
-  <div class="price-summary">
+  <div class="value-art-row">
+    <div class="value-art">
+      <div class="value-art-img is-missing" data-fallback="Mario + Rabbids Sparks of Hope">
+        <img src="../images/games/mario-rabbids-sparks-of-hope.jpg" alt="Mario + Rabbids Sparks of Hope box art" onerror="this.parentElement.classList.remove('is-missing');this.style.display='none';this.parentElement.classList.add('is-missing');" onload="this.parentElement.classList.remove('is-missing');">
+      </div>
+      <div class="value-art-caption">Nintendo Switch</div>
+    </div>
+    <div class="price-summary">
     <div class="price-summary-label">CartridgeBond locked price</div>
     <div class="price-summary-value">$24</div>
     <div class="price-summary-condition"><strong>A1 condition</strong> · CIB · researched market price</div>
@@ -274,6 +263,7 @@ footer { background:var(--dark); color:rgba(245,245,236,.7); padding:48px 20px; 
       <a href="../index.html?game=Mario%20+%20Rabbids%20Sparks&mode=buy" class="secondary">Buy at $24 →</a>
     </div>
   </div>
+</div>
 </section>
 
 <section class="section">
@@ -388,7 +378,7 @@ footer { background:var(--dark); color:rgba(245,245,236,.7); padding:48px 20px; 
   </div>
 </section>
 
-<section class="section" style="background:var(--bg-2); margin:0 -1000px; padding:64px max(20px, calc(50vw - 540px));">
+<section class="section" class="section-fullbleed">
   <div style="max-width:1100px; margin:0 auto;">
     <div class="section-eyebrow">Get Started</div>
     <h2>Lock in your Mario + Rabbids Sparks trade in <span class="accent">60 seconds</span></h2>
