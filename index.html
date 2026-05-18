@@ -110,6 +110,7 @@ input{font-family:inherit;}
 /* ===== NAV (Apple translucent) ===== */
 nav{position:sticky;top:0;z-index:9000;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.04);}
 .nav-brand{font-size:19px;font-weight:800;letter-spacing:-.03em;color:var(--ink);}
+.g{color:var(--accent);}
 .nav-brand .g{color:var(--accent);}
 .nav-actions{display:flex;align-items:center;gap:8px;}
 .nav-cta{font-size:14px;font-weight:500;color:#fff;background:var(--accent);padding:8px 17px;border-radius:980px;letter-spacing:-.01em;transition:transform .2s var(--ease),background .2s;}
@@ -144,7 +145,7 @@ nav{position:sticky;top:0;z-index:9000;height:48px;display:flex;align-items:cent
 .hero-device-fade{height:60px;background:linear-gradient(180deg,transparent,#fff);margin-top:-60px;position:relative;z-index:2;}
 
 /* ===== WIDGET WRAP (sits in hero, Apple card) ===== */
-.widget-wrap{max-width:480px;margin:0 auto;padding:8px 0 60px;}
+.widget-wrap{max-width:480px;margin:0 auto;padding:8px 0 16px;}
 .widget{background:#fff;border:1px solid var(--line-soft);border-radius:28px;padding:10px;box-shadow:0 4px 16px rgba(0,0,0,.04),0 30px 60px -28px rgba(0,0,0,.16);scroll-margin-top:70px;text-align:left;}
 .widget-tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--bg-soft);border-radius:16px;padding:4px;margin-bottom:8px;}
 .widget-tab{padding:12px 16px;border-radius:13px;font-size:15px;font-weight:700;color:var(--ink-2);transition:all .2s var(--ease);letter-spacing:-.01em;}
@@ -289,7 +290,7 @@ nav{position:sticky;top:0;z-index:9000;height:48px;display:flex;align-items:cent
 .car-foot a{font-size:17px;color:var(--blue);font-weight:500;}
 
 /* benefits 2x2 (Apple "Built for trust") */
-.benefits{padding:80px 22px;}
+.benefits{padding:64px 22px;}
 .benefits-inner{max-width:1100px;margin:0 auto;}
 .benefits h2.bh{font-size:clamp(30px,7.5vw,38px);font-weight:800;letter-spacing:-.035em;text-align:center;margin-bottom:34px;color:var(--ink);}
 .benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
@@ -718,7 +719,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
 <!-- LIVE MARKET CAROUSEL -->
 <section class="car reveal">
   <div class="car-head">
-    <h2>Top games right now.</h2>
+    <h2><span class="g">Top games</span> right now.</h2>
     <p>Live researched prices. Swipe to explore. &rarr;</p>
   </div>
   <div class="car-scroller" id="carScroller">
@@ -773,7 +774,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
   <div class="compare-inner">
     <div class="compare-head">
       <div class="compare-eyebrow">Price comparison</div>
-      <h2>Sell your Switch games for more.</h2>
+      <h2>Sell your Switch games <span class="g">for more.</span></h2>
       <p>Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms - CartridgeBond beats GameStop trade-in, eBay after fees, and the unpredictability of Facebook Marketplace.</p>
     </div>
 
