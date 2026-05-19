@@ -199,27 +199,60 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
   ]
 }
 </script>
+<style>
+/* Nav overrides - consistent across all pages */
+nav{position:sticky;top:0;z-index:900;height:52px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08);}
+.cb-nav-brand{font-size:17px;font-weight:800;letter-spacing:-.03em;color:#0a0a0a;text-decoration:none;}
+.cb-nav-brand .g{color:#22c55e;}
+.cb-nav-right{display:flex;align-items:center;gap:10px;}
+.cb-nav-cta{background:#22c55e;color:#fff;font-size:13px;font-weight:700;padding:8px 16px;border-radius:100px;text-decoration:none;letter-spacing:-.01em;white-space:nowrap;}
+.cb-ham{width:34px;height:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:50%;border:1px solid rgba(0,0,0,.12);cursor:pointer;background:none;}
+.cb-ham span{display:block;width:15px;height:1.5px;background:#0a0a0a;border-radius:2px;}
+#cbNavMenu{display:none;position:fixed;top:52px;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08);z-index:899;padding:12px 20px 20px;}
+#cbNavMenu.open{display:block;}
+#cbNavMenu a{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:600;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05);color:#0a0a0a;text-decoration:none;letter-spacing:-.02em;}
+#cbNavMenu a:last-child{border-bottom:none;}
+#cbNavMenu .cb-menu-signin{color:#16a34a;font-weight:700;}
+#cbNavMenu .cb-menu-cta{display:flex;align-items:center;justify-content:center;background:#22c55e;color:#fff;border-radius:100px;padding:13px;margin-top:8px;font-size:18px;font-weight:700;letter-spacing:-.02em;}
+#cbNavMenu hr{border:none;border-top:1px solid rgba(0,0,0,.07);margin:4px 0;}
+:root{color-scheme:light only;}
+@media(prefers-color-scheme:dark){html,body{background:#fff!important;color:#0a0a0a!important;}}
+</style>
 </head>
 <body>
 
 <nav>
-  <a href="../index.html" class="brand"><span class="b1">Cartridge</span><span class="b2">Bond</span></a>
-  <div class="nav-cta-row">
-    <a href="../index.html#widget" class="nav-cta">Buy / Sell Now</a>
-    <button class="nav-menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span></button>
-  </div>
-  <div class="nav-menu" id="navMenu">
-    <a href="../prices.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Game prices</a>
-    <a href="../index.html#how"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 4M12 17h.01"/></svg>How it works</a>
-    <a href="../faq.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>FAQ</a>
-    <a href="index.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/></svg>Blog</a>
-    <a href="../status.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Check status</a>
-    <hr>
-    <a href="../login.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>Sign in</a>
-    <a href="../index.html#widget" class="menu-cta">Buy / Sell Now</a>
+  <a href="../index.html" class="cb-nav-brand">Cartridge<span class="g">Bond</span></a>
+  <div class="cb-nav-right">
+    <a href="../index.html#widget" class="cb-nav-cta">Buy / Sell Now</a>
+    <button class="cb-ham" id="cbHamBtn" onclick="cbToggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
-
+<div id="cbNavMenu">
+  <a href="../prices.html">Game values</a>
+  <a href="../index.html#how">How it works</a>
+  <a href="../faq.html">FAQ</a>
+  <a href="../blog/index.html">Blog</a>
+  <a href="../meetup.html">Safe meetup</a>
+  <a href="../status.html">Check trade status</a>
+  <hr>
+  <a href="../login.html" class="cb-menu-signin">Sign in</a>
+  <a href="../index.html#widget" class="cb-menu-cta">Buy / Sell Now</a>
+</div>
+<script>
+function cbToggleNav(){
+  document.getElementById('cbNavMenu').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('cbNavMenu');
+  var b=document.getElementById('cbHamBtn');
+  if(m&&m.classList.contains('open')&&!m.contains(e.target)&&b&&!b.contains(e.target)){
+    m.classList.remove('open');
+  }
+});
+</script>
 <main>
 
 <section class="post-hero">
@@ -362,41 +395,45 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
+<footer style="background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:#6b6b6b;line-height:1.7;margin-top:0;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:flex;flex-direction:column;gap:32px;padding-bottom:40px;">
       <div>
-        <a href="../index.html" class="footer-brand"><span class="b1">Cartridge</span><span class="b2">Bond</span></a>
-        <p class="footer-tagline">The future of game resale. Beta in Milwaukee. National soon.</p>
+        <div style="font-size:18px;font-weight:800;color:#0a0a0a;letter-spacing:-.03em;margin-bottom:8px;text-decoration:none;">Cartridge<span style="color:#22c55e;">Bond</span></div>
+        <div style="font-size:13px;color:#6b6b6b;line-height:1.6;max-width:260px;">The future of Nintendo Switch game resale. Beta in Milwaukee. National soon.</div>
       </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <div class="footer-col-head">Platform</div>
-          <a href="../index.html#how">How it works</a>
-          <a href="../prices.html">Game prices</a>
-          <a href="../status.html">Check status</a>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+        <div>
+          <div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Explore</div>
+          <a href="../index.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Home</a>
+          <a href="../prices.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Game values</a>
+          <a href="../faq.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">FAQ</a>
+          <a href="../blog/index.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Blog</a>
+          <a href="../meetup.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Safe meetup</a>
+          <a href="../login.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Sign in</a>
         </div>
-        <div class="footer-col">
-          <div class="footer-col-head">Resources</div>
-          <a href="../faq.html">FAQ</a>
-          <a href="index.html">Blog</a>
-          <a href="../meetup.html">Safe meetup</a>
-          <a href="../waitlist.html">Outside Milwaukee?</a>
+        <div>
+          <div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Top games</div>
+          <a href="../value/zelda-tears-of-the-kingdom.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Zelda: TOTK</a>
+          <a href="../value/mario-kart-8-deluxe.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Mario Kart 8</a>
+          <a href="../value/super-smash-bros-ultimate.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Smash Ultimate</a>
+          <a href="../value/animal-crossing-new-horizons.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Animal Crossing</a>
+          <a href="../value/pokemon-scarlet.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Pokemon Scarlet</a>
         </div>
-        <div class="footer-col">
-          <div class="footer-col-head">Legal</div>
-          <a href="../terms.html">Terms</a>
-          <a href="../privacy.html">Privacy</a>
-          <a href="mailto:cartridgebond@gmail.com">Contact</a>
+        <div>
+          <div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Company</div>
+          <a href="../terms.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Terms</a>
+          <a href="../privacy.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Privacy</a>
+          <a href="mailto:cartridgebond@gmail.com" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Contact</a>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">&copy; 2026 CartridgeBond - A connection platform only - not a party to any transaction</div>
+    <div style="border-top:1px solid rgba(0,0,0,.1);padding:18px 0 32px;color:#9a9a9a;font-size:12px;">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction. Not affiliated with Nintendo, GameStop, eBay, or Facebook.</div>
   </div>
 </footer>
 
 <script>
-function toggleMenu(){document.getElementById('navMenu').classList.toggle('open');}
+/* toggleMenu replaced by cbToggleNav */
 document.addEventListener('click',function(e){var m=document.getElementById('navMenu'),b=document.getElementById('menuBtn');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target))m.classList.remove('open');});
 </script>
 
