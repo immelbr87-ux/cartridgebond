@@ -230,6 +230,50 @@ a{color:inherit;text-decoration:none;}
 .settings-row:last-child{border-bottom:none;}
 .settings-row .label{color:var(--text-2);}
 .settings-row .val{color:var(--muted);font-family:var(--mono);font-size:13px;}
+
+/* === FORCE LIGHT MODE === */
+:root { color-scheme: light only; }
+@media (prefers-color-scheme: dark) {
+  html { background: #f7f7f4 !important; }
+  body { background: #f7f7f4 !important; color: #0a0a0a !important; }
+  * { color-scheme: light; }
+}
+
+/* === APPLE PREMIUM OVERRIDES === */
+/* Cleaner background */
+:root {
+  --bg: #f5f5f7 !important;
+  --bg-2: #ececec !important;
+}
+/* Bigger card radius */
+.stat-card { border-radius: 18px !important; padding: 20px 18px !important; }
+/* Stat number weight */
+.stat-card-num { font-size: 30px !important; letter-spacing: -.05em !important; }
+/* Stat label cleaner */
+.stat-card-label { font-size: 10.5px !important; letter-spacing: .09em !important; color: #9a9a9a !important; }
+.stat-card-sub { font-size: 12px !important; margin-top: 4px !important; }
+/* Bond cards */
+.bond-card { padding: 18px 22px !important; }
+.bond-title { font-size: 14.5px !important; font-weight: 700 !important; letter-spacing: -.02em !important; }
+/* Section heads */
+.section-head { padding: 18px 22px !important; }
+.section-title { font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: -.01em !important; }
+/* Sidebar */
+.sidebar { background: #fff !important; }
+.sb-brand { letter-spacing: -.03em !important; }
+/* Mobile bar */
+.mobile-bar { background: rgba(255,255,255,.92) !important; }
+/* Main eyebrow */
+.main-eyebrow { font-size: 12px !important; font-weight: 700 !important; letter-spacing: .08em !important; color: #22c55e !important; text-transform: uppercase !important; margin-bottom: 8px !important; }
+/* Accent */
+.accent { color: #22c55e !important; }
+/* Nav items active state */
+.nav-item.active .nav-icon { color: #16a34a !important; }
+/* Dash sections */
+.dash-section { border-radius: 18px !important; background: #fff !important; border: 1px solid rgba(0,0,0,.08) !important; margin-bottom: 16px !important; overflow: hidden !important; }
+/* CTA button */
+.main-cta, .empty-cta { background: #22c55e !important; border-radius: 100px !important; font-weight: 700 !important; letter-spacing: -.01em !important; }
+
 </style>
 </head>
 <body>
