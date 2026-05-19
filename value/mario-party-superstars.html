@@ -185,19 +185,7 @@ nav { position:sticky; top:0; z-index:100; padding:14px 20px; display:flex; alig
 .related-card-name { font-size:15px; font-weight:700; color:var(--text); margin-bottom:6px; letter-spacing:-0.015em; }
 .related-card-price { font-size:13px; color:var(--accent-3); font-weight:600; font-family:var(--mono); }
 
-/* Footer */
-footer { background:var(--dark); color:rgba(245,245,236,.7); padding:48px 20px; margin-top:64px; }
-.footer-inner { max-width:1100px; margin:0 auto; }
-.footer-brand { font-size:20px; font-weight:800; color:#f5f5f0; margin-bottom:8px; }
-.footer-brand .b2 { color:var(--accent); }
-.footer-tagline { font-size:14px; margin-bottom:32px; }
-.footer-links { display:flex; flex-wrap:wrap; gap:24px; font-size:13px; margin-bottom:24px; }
-.footer-links a { color:rgba(245,245,236,.7); text-decoration:none; }
-.footer-links a:hover { color:var(--accent); }
-.footer-popular { font-size:12px; color:rgba(245,245,236,.5); }
-.footer-popular a { color:rgba(245,245,236,.7); text-decoration:none; margin-right:14px; }
-.footer-popular a:hover { color:var(--accent); }
-.footer-bottom { border-top:1px solid rgba(245,245,236,.1); padding-top:16px; font-size:12px; color:rgba(245,245,236,.5); margin-top:24px; }
+/* footer styles moved to footer-new */
 
 @media (max-width:640px) {
   .price-summary { padding:24px; }
@@ -224,14 +212,58 @@ footer { background:var(--dark); color:rgba(245,245,236,.7); padding:48px 20px; 
 .section-fullbleed{background:var(--bg-2);width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;padding:64px 20px;overflow-x:hidden;}
 .section-fullbleed > div{max-width:1100px;margin:0 auto;}
 @media(min-width:1140px){.section-fullbleed{padding:64px calc(50vw - 540px);}}
+
+/* Nav menu additions */
+.nav-menu-btn{width:34px;height:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:50%;border:1px solid var(--line);cursor:pointer;background:none;}
+.nav-menu-btn span{display:block;width:16px;height:1.5px;background:var(--text);border-radius:2px;}
+.nav-menu{position:fixed;top:48px;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line);transform:translateY(-12px);opacity:0;pointer-events:none;transition:all .3s ease;z-index:8999;padding:14px 22px 22px;}
+.nav-menu.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+.nav-menu a{display:flex;align-items:center;gap:12px;font-size:21px;font-weight:600;letter-spacing:-.02em;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06);color:var(--text);}
+.nav-menu a:last-child{border-bottom:none;}
+.nav-menu a svg{width:20px;height:20px;flex-shrink:0;opacity:.7;}
+.nav-menu hr{border:none;border-top:1px solid rgba(0,0,0,.06);margin:4px 0;}
+.nav-menu a.menu-cta{color:var(--accent-2);font-weight:700;}
+/* New footer */
+.footer-new{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:#6b6b6b;line-height:1.7;}
+.footer-new-top{display:flex;flex-direction:column;gap:32px;padding-bottom:40px;}
+.footer-new-brand{font-size:18px;font-weight:800;color:#0a0a0a;letter-spacing:-.03em;margin-bottom:8px;}
+.footer-new-brand .b2{color:var(--accent-2);}
+.footer-new-tag{color:#6b6b6b;font-size:13px;line-height:1.6;max-width:260px;}
+.footer-new-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px 20px;}
+.footer-new-col-head{font-size:11px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;}
+.footer-new-col a{display:block;font-size:13.5px;color:#6b6b6b;margin-bottom:8px;transition:color .15s;}
+.footer-new-col a:hover{color:#0a0a0a;}
+.footer-new-hr{border:none;border-top:1px solid rgba(0,0,0,.1);margin:0;}
+.footer-new-legal{padding:18px 0 32px;color:#9a9a9a;font-size:12px;line-height:1.7;}
+@media(min-width:760px){
+  .footer-new{max-width:1100px;margin:0 auto;padding:72px 48px 0;}
+  .footer-new-top{flex-direction:row;align-items:flex-start;gap:64px;}
+  .footer-new-cols{grid-template-columns:repeat(3,1fr);gap:0 40px;flex:1;}
+}
+
 </style>
 </head>
 <body>
 
 <nav>
   <a href="../index.html" class="brand">Cartridge<span class="b2">Bond</span></a>
-  <a href="../index.html#widget" class="nav-cta">Buy / Sell Now</a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <a href="../index.html#widget" class="nav-cta">Buy / Sell Now</a>
+    <button class="nav-menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+<div class="nav-menu" id="navMenu">
+  <a href="../prices.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Game prices</a>
+  <a href="../index.html#how"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 2-2.5 4M12 17h.01"/></svg>How it works</a>
+  <a href="../faq.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>FAQ</a>
+  <a href="../blog/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/></svg>Blog</a>
+  <a href="../status.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Check status</a>
+  <hr>
+  <a href="../login.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>Sign in</a>
+  <a href="../index.html#widget" class="menu-cta">Buy / Sell Now</a>
+</div>
 
 <div class="breadcrumb">
   <a href="../index.html">Home</a>
@@ -390,35 +422,51 @@ footer { background:var(--dark); color:rgba(245,245,236,.7); padding:48px 20px; 
   </div>
 </section>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">Cartridge<span class="b2">Bond</span></div>
-    <p class="footer-tagline">The future of Nintendo Switch game resale. Beta in Milwaukee. National soon.</p>
-
-    <div class="footer-links">
-      <a href="../index.html">Home</a>
-      <a href="../prices.html">All game values</a>
-      <a href="../faq.html">FAQ</a>
-      <a href="../blog/">Blog</a>
-      <a href="../terms.html">Terms</a>
-      <a href="../privacy.html">Privacy</a>
+<footer class="footer-new">
+  <div class="footer-new-top">
+    <div>
+      <div class="footer-new-brand">Cartridge<span class="b2">Bond</span></div>
+      <div class="footer-new-tag">The future of Nintendo Switch game resale. Beta in Milwaukee. National soon.</div>
     </div>
-
-    <div class="footer-popular">
-      <strong style="color:rgba(245,245,236,.85); display:block; margin-bottom:10px; font-weight:600;">Popular game values</strong>
-      <a href="mario-kart-8-deluxe.html">Mario Kart 8 Deluxe</a>
-      <a href="zelda-tears-of-the-kingdom.html">Zelda: TOTK</a>
-      <a href="super-smash-bros-ultimate.html">Smash Ultimate</a>
-      <a href="animal-crossing-new-horizons.html">Animal Crossing NH</a>
-      <a href="pokemon-scarlet.html">Pokemon Scarlet</a>
-      <a href="super-mario-odyssey.html">Mario Odyssey</a>
-    </div>
-
-    <div class="footer-bottom">
-      &copy; 2026 CartridgeBond. Game prices last updated 2026-05-13. CartridgeBond is not affiliated with Nintendo, GameStop, eBay, or Facebook.
+    <div class="footer-new-cols">
+      <div class="footer-new-col">
+        <div class="footer-new-col-head">Explore</div>
+        <a href="../index.html">Home</a>
+        <a href="../prices.html">Game values</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../blog/index.html">Blog</a>
+        <a href="../meetup.html">Safe meetup</a>
+        <a href="../login.html">Sign in</a>
+      </div>
+      <div class="footer-new-col">
+        <div class="footer-new-col-head">Top games</div>
+        <a href="zelda-tears-of-the-kingdom.html">Zelda: TOTK</a>
+        <a href="mario-kart-8-deluxe.html">Mario Kart 8</a>
+        <a href="super-smash-bros-ultimate.html">Smash Ultimate</a>
+        <a href="animal-crossing-new-horizons.html">Animal Crossing</a>
+        <a href="pokemon-scarlet.html">Pokemon Scarlet</a>
+      </div>
+      <div class="footer-new-col">
+        <div class="footer-new-col-head">Company</div>
+        <a href="../terms.html">Terms</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="mailto:cartridgebond@gmail.com">Contact</a>
+      </div>
     </div>
   </div>
+  <hr class="footer-new-hr">
+  <div class="footer-new-legal">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction. Not affiliated with Nintendo, GameStop, eBay, or Facebook.</div>
 </footer>
 
+<script>
+function toggleMenu(){document.getElementById('navMenu').classList.toggle('open');}
+document.addEventListener('click',function(e){
+  var menu=document.getElementById('navMenu');
+  var btn=document.getElementById('menuBtn');
+  if(menu&&menu.classList.contains('open')&&!menu.contains(e.target)&&btn&&!btn.contains(e.target)){
+    menu.classList.remove('open');
+  }
+});
+</script>
 </body>
 </html>
