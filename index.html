@@ -30,6 +30,18 @@
     "name": "Milwaukee, WI"
   }
 }
+
+// Auto-select game from URL param (e.g. prices.html links)
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var g = params.get('game');
+  if(g){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ selectGame(decodeURIComponent(g)); }, 400);
+    });
+  }
+})();
+
 </script>
 <script type="application/ld+json">
 {
@@ -232,7 +244,16 @@ nav{position:sticky;top:0;z-index:9000;height:48px;display:flex;align-items:cent
 .widget-cta button:disabled{background:var(--line);color:var(--ink-3);cursor:not-allowed;}
 .widget-flipper-note{padding:4px 18px 14px;font-size:12px;color:var(--ink-3);line-height:1.5;text-align:center;}
 .widget-flipper-note a{color:var(--accent-2);font-weight:600;}
-.widget-details,.widget-success{display:none;padding:8px;}
+.widget-details,
+.widget-loading{display:none;padding:48px 24px;text-align:center;}
+.widget-loading-spinner{width:40px;height:40px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px;}
+.widget-loading-title{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-.02em;}
+.widget-loading-sub{font-size:13.5px;color:var(--ink-3);}
+@keyframes spin{to{transform:rotate(360deg);}}
+.widget.in-loading .widget-tabs,.widget.in-loading .widget-row,.widget.in-loading .widget-meta,.widget.in-loading .widget-age,.widget.in-loading .widget-cta,.widget.in-loading .widget-flipper-note,.widget.in-loading .widget-details{display:none;}
+.widget.in-loading .widget-loading{display:block;}
+
+.widget-success{display:none;padding:8px;}
 .widget.in-details .widget-tabs,.widget.in-details .widget-row,.widget.in-details .widget-meta,.widget.in-details .widget-age,.widget.in-details .widget-cta,.widget.in-details .widget-flipper-note{display:none;}
 .widget.in-details .widget-details{display:block;}
 .widget.in-success .widget-tabs,.widget.in-success .widget-row,.widget.in-success .widget-meta,.widget.in-success .widget-age,.widget.in-success .widget-cta,.widget.in-success .widget-flipper-note,.widget.in-success .widget-details{display:none;}
@@ -473,7 +494,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
       Sign in
     </a>
-    <a href="#widget" class="menu-cta">Buy / Sell Now</a>
+    <a href="#widget" style="display:flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;border-radius:100px;padding:14px;margin-top:6px;font-size:19px;font-weight:700;letter-spacing:-.02em;">Buy / Sell Now</a>
   </div>
 
 
@@ -481,10 +502,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
   <div class="hero-eyebrow">Now in Milwaukee Beta</div>
   <h1><span class="g">PreCommerce</span> for Nintendo Switch Games.</h1>
   <div class="hero-sub">Market-true pricing. Zero marketplace hassle. Future resale, locked in.</div>
-  <div class="hero-cta-row">
-    <a href="#widget" class="btn-pill btn-fill">Sell a game</a>
-    <a href="prices.html" class="btn-pill btn-out">Browse prices</a>
-  </div>
+  
   <div class="hero-device">
     <img src="images/hero/switch-hero.png" alt="Nintendo Switch console" loading="eager">
   </div>
@@ -696,15 +714,29 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       </div>
 
       <!-- SUCCESS STEP -->
+            <div class="widget-loading" id="widgetLoading">
+        <div class="widget-loading-spinner"></div>
+        <div class="widget-loading-title">Locking in your price...</div>
+        <div class="widget-loading-sub">This usually takes a few seconds.</div>
+      </div>
       <div class="widget-success" id="widgetSuccess">
         <div class="widget-success-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
-        <div class="widget-success-title">You're locked in</div>
-        <div class="widget-success-body" id="successBody">A real person will reach out within 48 hours with your match. Check your email for confirmation.</div>
+        <div class="widget-success-title">Your price is locked.</div>
+        <div class="widget-success-body" id="successBody">We are actively searching for your match. You will receive an email confirmation shortly. When a match is found, both parties are notified with next steps.</div>
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:14px 16px;margin:16px 0;text-align:left;">
+          <div style="font-size:11px;font-weight:700;color:#15803d;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px;">What happens next</div>
+          <div style="font-size:13.5px;color:#1a3a1a;line-height:1.7;">
+            1. Check your email for a confirmation<br>
+            2. We match you with a verified counterparty<br>
+            3. Both parties receive contact details by email<br>
+            4. Exchange at a time and place that works for both
+          </div>
+        </div>
         <div class="widget-success-actions">
           <button onclick="resetWidget()" class="widget-success-btn-secondary">Submit another</button>
-          <a href="status.html" class="widget-success-btn-primary">Check status</a>
+          <a href="status.html" class="widget-success-btn-primary">Check trade status</a>
         </div>
       </div>
     </div>
@@ -765,9 +797,44 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       <div class="gcard-body"><div class="gcard-name">Smash Ultimate</div><div class="gcard-demand">Medium demand</div>
         <div class="gcard-row"><span class="k">Locked price</span><span class="v">$31</span></div></div>
     </div>
+    <div class="gcard" onclick="location.href='value/super-mario-odyssey.html'">
+      <div class="gcard-art ph"><span>Super Mario<br>Odyssey</span></div>
+      <div class="gcard-body"><div class="gcard-name">Mario Odyssey</div><div class="gcard-demand">High demand</div>
+        <div class="gcard-row"><span class="k">Locked price</span><span class="v">$38</span></div></div>
+    </div>
+    <div class="gcard" onclick="location.href='value/animal-crossing-new-horizons.html'">
+      <div class="gcard-art ph"><span>Animal Crossing<br>New Horizons</span></div>
+      <div class="gcard-body"><div class="gcard-name">Animal Crossing</div><div class="gcard-demand">High demand</div>
+        <div class="gcard-row"><span class="k">Locked price</span><span class="v">$36</span></div></div>
+    </div>
+    <div class="gcard" onclick="location.href='value/pokemon-scarlet.html'">
+      <div class="gcard-art ph"><span>Pokemon<br>Scarlet</span></div>
+      <div class="gcard-body"><div class="gcard-name">Pokemon Scarlet</div><div class="gcard-demand">Medium demand</div>
+        <div class="gcard-row"><span class="k">Locked price</span><span class="v">$39</span></div></div>
+    </div>
+    <div class="gcard" onclick="location.href='value/super-mario-wonder.html'">
+      <div class="gcard-art ph"><span>Super Mario<br>Wonder</span></div>
+      <div class="gcard-body"><div class="gcard-name">Mario Wonder</div><div class="gcard-demand">Very high demand</div>
+        <div class="gcard-row"><span class="k">Locked price</span><span class="v">$45</span></div></div>
+    </div>
+    <div class="gcard" onclick="location.href='value/pokemon-violet.html'">
+      <div class="gcard-art ph"><span>Pokemon<br>Violet</span></div>
+      <div class="gcard-body"><div class="gcard-name">Pokemon Violet</div><div class="gcard-demand">Medium demand</div>
+        <div class="gcard-row"><span class="k">Locked price</span><span class="v">$38</span></div></div>
+    </div>
+    <div class="gcard" onclick="location.href='value/splatoon-3.html'">
+      <div class="gcard-art ph"><span>Splatoon 3</span></div>
+      <div class="gcard-body"><div class="gcard-name">Splatoon 3</div><div class="gcard-demand">Medium demand</div>
+        <div class="gcard-row"><span class="k">Locked price</span><span class="v">$34</span></div></div>
+    </div>
+    <div class="gcard" onclick="location.href='value/luigi-s-mansion-3.html'">
+      <div class="gcard-art ph"><span>Luigi's<br>Mansion 3</span></div>
+      <div class="gcard-body"><div class="gcard-name">Luigi's Mansion 3</div><div class="gcard-demand">High demand</div>
+        <div class="gcard-row"><span class="k">Locked price</span><span class="v">$32</span></div></div>
+    </div>
   </div>
   <div class="car-dots" id="carDots"></div>
-  <div class="car-foot"><a href="prices.html">View all 28 game values &rsaquo;</a></div>
+  <div class="car-foot"><a href="prices.html">View all game values &rsaquo;</a></div>
 </section>
 
 <div class="photo-moment">
@@ -775,11 +842,6 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
 </div>
 
 
-<section class="sec-statement reveal">
-  <h2>Fair price.<br><span class="g">Zero flakes.</span></h2>
-  <p>Set your terms once. We find the match.</p>
-  <a href="#how" class="lk">See how it works &rsaquo;</a>
-</section>
 
 <!-- HOW IT WORKS -->
 <section class="howitworks reveal" id="how">
@@ -806,8 +868,8 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
   <div class="compare-inner">
     <div class="compare-head">
       <div class="compare-eyebrow">Price comparison</div>
-      <h2>Sell your Switch games <span class="g">for more.</span></h2>
-      <p>Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms - CartridgeBond beats GameStop trade-in, eBay after fees, and the unpredictability of Facebook Marketplace.</p>
+      <h2>Every platform, <span class="g">compared.</span></h2>
+      <p>CartridgeBond beats GameStop trade-in, eBay after fees, and the unpredictability of Facebook Marketplace. Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms. - CartridgeBond beats GameStop trade-in, eBay after fees, and the unpredictability of Facebook Marketplace.</p>
     </div>
 
     <div class="compare-widget">
@@ -1176,6 +1238,8 @@ function updatePriceDisplay(){
 
 // ── SUBMISSION FLOW ──
 function startSubmission(){
+  var widget = document.querySelector('.widget');
+  if(widget){ widget.className = widget.className.replace('in-details','') + ' in-loading'; }
   if(!SELECTED_GAME){
     // Force opening the game accordion if no game picked
     toggleAccordion('gameRow');
