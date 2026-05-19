@@ -16,11 +16,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-nav{position:sticky;top:0;z-index:900;height:52px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08);}
-/* Force light mode */
-:root{color-scheme:light only;}
-@media(prefers-color-scheme:dark){html,body{background:#ffffff!important;color:#0a0a0a!important;}}
-
 :root{
   --bg:#f7f7f4;--bg-2:#efeeea;--bg-3:#e8e7e1;--card:#ffffff;--card-2:#fbfbf7;
   --line:#e2e2dc;--line-2:#cfcfc7;--line-3:#a8a89e;
@@ -112,45 +107,60 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 
 </style>
 
+<style>
+/* Nav overrides - consistent across all pages */
+nav{position:sticky;top:0;z-index:900;height:52px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08);}
+.cb-nav-brand{font-size:17px;font-weight:800;letter-spacing:-.03em;color:#0a0a0a;text-decoration:none;}
+.cb-nav-brand .g{color:#22c55e;}
+.cb-nav-right{display:flex;align-items:center;gap:10px;}
+.cb-nav-cta{background:#22c55e;color:#fff;font-size:13px;font-weight:700;padding:8px 16px;border-radius:100px;text-decoration:none;letter-spacing:-.01em;white-space:nowrap;}
+.cb-ham{width:34px;height:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:50%;border:1px solid rgba(0,0,0,.12);cursor:pointer;background:none;}
+.cb-ham span{display:block;width:15px;height:1.5px;background:#0a0a0a;border-radius:2px;}
+#cbNavMenu{display:none;position:fixed;top:52px;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08);z-index:899;padding:12px 20px 20px;}
+#cbNavMenu.open{display:block;}
+#cbNavMenu a{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:600;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05);color:#0a0a0a;text-decoration:none;letter-spacing:-.02em;}
+#cbNavMenu a:last-child{border-bottom:none;}
+#cbNavMenu .cb-menu-signin{color:#16a34a;font-weight:700;}
+#cbNavMenu .cb-menu-cta{display:flex;align-items:center;justify-content:center;background:#22c55e;color:#fff;border-radius:100px;padding:13px;margin-top:8px;font-size:18px;font-weight:700;letter-spacing:-.02em;}
+#cbNavMenu hr{border:none;border-top:1px solid rgba(0,0,0,.07);margin:4px 0;}
+:root{color-scheme:light only;}
+@media(prefers-color-scheme:dark){html,body{background:#fff!important;color:#0a0a0a!important;}}
+</style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-brand" style="font-size:17px;font-weight:800;letter-spacing:-.03em;color:#0a0a0a;">Cartridge<span style="color:#22c55e;">Bond</span></a>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <a href="index.html#widget" style="background:#22c55e;color:#fff;font-size:13px;font-weight:700;padding:8px 18px;border-radius:100px;letter-spacing:-.01em;">Buy / Sell Now</a>
-    <button class="nav-menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu" style="width:34px;height:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:50%;border:1px solid rgba(0,0,0,.12);cursor:pointer;background:none;">
-      <span style="display:block;width:16px;height:1.5px;background:#0a0a0a;border-radius:2px;"></span>
-      <span style="display:block;width:16px;height:1.5px;background:#0a0a0a;border-radius:2px;"></span>
-      <span style="display:block;width:16px;height:1.5px;background:#0a0a0a;border-radius:2px;"></span>
+  <a href="index.html" class="cb-nav-brand">Cartridge<span class="g">Bond</span></a>
+  <div class="cb-nav-right">
+    <a href="index.html#widget" class="cb-nav-cta">Buy / Sell Now</a>
+    <button class="cb-ham" id="cbHamBtn" onclick="cbToggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
-<div id="navMenu" style="display:none;position:fixed;top:52px;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08);z-index:999;padding:14px 22px 22px;">
-  <a href="prices.html" style="display:flex;align-items:center;gap:12px;font-size:21px;font-weight:600;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06);color:#0a0a0a;">Game prices</a>
-  <a href="index.html#how" style="display:flex;align-items:center;gap:12px;font-size:21px;font-weight:600;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06);color:#0a0a0a;">How it works</a>
-  <a href="faq.html" style="display:flex;align-items:center;gap:12px;font-size:21px;font-weight:600;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06);color:#0a0a0a;">FAQ</a>
-  <a href="blog/index.html" style="display:flex;align-items:center;gap:12px;font-size:21px;font-weight:600;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06);color:#0a0a0a;">Blog</a>
-  <a href="meetup.html" style="display:flex;align-items:center;gap:12px;font-size:21px;font-weight:600;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06);color:#0a0a0a;">Safe meetup</a>
-  <a href="status.html" style="display:flex;align-items:center;gap:12px;font-size:21px;font-weight:600;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06);color:#0a0a0a;">Check trade status</a>
-  <hr style="border:none;border-top:1px solid rgba(0,0,0,.06);margin:4px 0;">
-  <a href="login.html" style="display:flex;align-items:center;gap:12px;font-size:21px;font-weight:700;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06);color:#16a34a;">Sign in</a>
-  <a href="index.html#widget" style="display:flex;align-items:center;justify-content:center;background:#22c55e;color:#fff;border-radius:100px;padding:14px;margin-top:6px;font-size:19px;font-weight:700;letter-spacing:-.02em;">Buy / Sell Now</a>
+<div id="cbNavMenu">
+  <a href="prices.html">Game values</a>
+  <a href="index.html#how">How it works</a>
+  <a href="faq.html">FAQ</a>
+  <a href="blog/index.html">Blog</a>
+  <a href="meetup.html">Safe meetup</a>
+  <a href="status.html">Check trade status</a>
+  <hr>
+  <a href="login.html" class="cb-menu-signin">Sign in</a>
+  <a href="index.html#widget" class="cb-menu-cta">Buy / Sell Now</a>
 </div>
 <script>
-function toggleMenu(){
-  var m=document.getElementById('navMenu');
-  m.style.display=m.style.display==='none'?'block':'none';
+function cbToggleNav(){
+  document.getElementById('cbNavMenu').classList.toggle('open');
 }
 document.addEventListener('click',function(e){
-  var m=document.getElementById('navMenu');
-  var btn=document.getElementById('menuBtn');
-  if(m&&m.style.display!=='none'&&!m.contains(e.target)&&btn&&!btn.contains(e.target)){
-    m.style.display='none';
+  var m=document.getElementById('cbNavMenu');
+  var b=document.getElementById('cbHamBtn');
+  if(m&&m.classList.contains('open')&&!m.contains(e.target)&&b&&!b.contains(e.target)){
+    m.classList.remove('open');
   }
 });
 </script>
-
 <main>
 
 <section class="page-hero">
@@ -219,44 +229,45 @@ document.addEventListener('click',function(e){
 
 </main>
 
-<footer style="background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:#6b6b6b;line-height:1.7;">
-  <div style="display:flex;flex-direction:column;gap:32px;padding-bottom:40px;max-width:1100px;margin:0 auto;">
-    <div>
-      <div style="font-size:18px;font-weight:800;color:#0a0a0a;letter-spacing:-.03em;margin-bottom:8px;">Cartridge<span style="color:#22c55e;">Bond</span></div>
-      <div style="font-size:13px;color:#6b6b6b;line-height:1.6;max-width:260px;">The future of Nintendo Switch game resale. Beta in Milwaukee. National soon.</div>
+<footer style="background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:#6b6b6b;line-height:1.7;margin-top:0;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:flex;flex-direction:column;gap:32px;padding-bottom:40px;">
+      <div>
+        <div style="font-size:18px;font-weight:800;color:#0a0a0a;letter-spacing:-.03em;margin-bottom:8px;text-decoration:none;">Cartridge<span style="color:#22c55e;">Bond</span></div>
+        <div style="font-size:13px;color:#6b6b6b;line-height:1.6;max-width:260px;">The future of Nintendo Switch game resale. Beta in Milwaukee. National soon.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+        <div>
+          <div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Explore</div>
+          <a href="index.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Home</a>
+          <a href="prices.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Game values</a>
+          <a href="faq.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">FAQ</a>
+          <a href="blog/index.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Blog</a>
+          <a href="meetup.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Safe meetup</a>
+          <a href="login.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Sign in</a>
+        </div>
+        <div>
+          <div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Top games</div>
+          <a href="value/zelda-tears-of-the-kingdom.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Zelda: TOTK</a>
+          <a href="value/mario-kart-8-deluxe.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Mario Kart 8</a>
+          <a href="value/super-smash-bros-ultimate.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Smash Ultimate</a>
+          <a href="value/animal-crossing-new-horizons.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Animal Crossing</a>
+          <a href="value/pokemon-scarlet.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Pokemon Scarlet</a>
+        </div>
+        <div>
+          <div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Company</div>
+          <a href="terms.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Terms</a>
+          <a href="privacy.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Privacy</a>
+          <a href="mailto:cartridgebond@gmail.com" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Contact</a>
+        </div>
+      </div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;">
-      <div>
-        <div style="font-size:11px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;">Explore</div>
-        <a href="index.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Home</a>
-        <a href="prices.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Game values</a>
-        <a href="faq.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">FAQ</a>
-        <a href="blog/index.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Blog</a>
-        <a href="meetup.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Safe meetup</a>
-        <a href="login.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Sign in</a>
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;">Top games</div>
-        <a href="value/zelda-tears-of-the-kingdom.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Zelda: TOTK</a>
-        <a href="value/mario-kart-8-deluxe.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Mario Kart 8</a>
-        <a href="value/super-smash-bros-ultimate.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Smash Ultimate</a>
-        <a href="value/animal-crossing-new-horizons.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Animal Crossing</a>
-        <a href="value/pokemon-scarlet.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Pokemon Scarlet</a>
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;">Company</div>
-        <a href="terms.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Terms</a>
-        <a href="privacy.html" style="display:block;color:#6b6b6b;margin-bottom:8px;">Privacy</a>
-        <a href="mailto:cartridgebond@gmail.com" style="display:block;color:#6b6b6b;margin-bottom:8px;">Contact</a>
-      </div>
-    </div>
+    <div style="border-top:1px solid rgba(0,0,0,.1);padding:18px 0 32px;color:#9a9a9a;font-size:12px;">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction. Not affiliated with Nintendo, GameStop, eBay, or Facebook.</div>
   </div>
-  <hr style="border:none;border-top:1px solid rgba(0,0,0,.1);max-width:1100px;margin:0 auto;">
-  <div style="max-width:1100px;margin:0 auto;padding:18px 0 32px;color:#9a9a9a;font-size:12px;">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction. Not affiliated with Nintendo, GameStop, eBay, or Facebook.</div>
 </footer>
 
 <script>
-function toggleMenu(){document.getElementById('navMenu').classList.toggle('open');}
+/* toggleMenu replaced by cbToggleNav */
 document.addEventListener('click',function(e){var m=document.getElementById('navMenu'),b=document.getElementById('menuBtn');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target))m.classList.remove('open');});
 
 </script>
