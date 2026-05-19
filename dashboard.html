@@ -231,48 +231,77 @@ a{color:inherit;text-decoration:none;}
 .settings-row .label{color:var(--text-2);}
 .settings-row .val{color:var(--muted);font-family:var(--mono);font-size:13px;}
 
-/* === FORCE LIGHT MODE === */
+/* === APPLE PREMIUM UPGRADES === */
+/* Force light */
 :root { color-scheme: light only; }
 @media (prefers-color-scheme: dark) {
-  html { background: #f7f7f4 !important; }
-  body { background: #f7f7f4 !important; color: #0a0a0a !important; }
-  * { color-scheme: light; }
+  html, body { background: #f5f5f7 !important; color: #0a0a0a !important; }
+  .sidebar, .drawer, .stat-card, .bond-card, .dash-section { background: #ffffff !important; color: #0a0a0a !important; }
 }
 
-/* === APPLE PREMIUM OVERRIDES === */
 /* Cleaner background */
-:root {
-  --bg: #f5f5f7 !important;
-  --bg-2: #ececec !important;
+body { background: #f5f5f7 !important; }
+
+/* Drawer upgrades */
+.drawer { border-radius: 20px 0 0 20px !important; box-shadow: -20px 0 60px rgba(0,0,0,.12) !important; }
+.drawer-head { padding: 22px 26px !important; }
+.drawer-title { font-size: 17px !important; font-weight: 800 !important; letter-spacing: -.03em !important; }
+.drawer-close { border-radius: 50% !important; width: 32px !important; height: 32px !important; background: rgba(0,0,0,.06) !important; font-size: 16px !important; }
+.drawer-body { padding: 24px 26px !important; }
+.drawer-actions { padding: 16px 26px 28px !important; display: flex !important; flex-direction: column !important; gap: 10px !important; border-top: 1px solid rgba(0,0,0,.06) !important; }
+.drawer-secondary { border-radius: 100px !important; padding: 13px !important; font-weight: 600 !important; font-size: 15px !important; border: 1px solid rgba(0,0,0,.12) !important; background: #f5f5f7 !important; }
+.drawer-primary { border-radius: 100px !important; padding: 13px !important; font-weight: 700 !important; font-size: 15px !important; text-align: center !important; background: #22c55e !important; color: #fff !important; }
+
+/* Cancel bond button */
+.drawer-cancel-bond {
+  width: 100%; padding: 13px; border-radius: 100px;
+  font-size: 14px; font-weight: 600; font-family: inherit;
+  color: #ef4444; background: #fff1f1; border: 1px solid #fecaca;
+  cursor: pointer; transition: background .15s;
 }
-/* Bigger card radius */
+.drawer-cancel-bond:hover { background: #fee2e2 !important; }
+
+/* Timeline upgrades */
+.tl-dot.done { background: #22c55e !important; border-color: #22c55e !important; width: 14px !important; height: 14px !important; }
+.tl-dot.curr { background: #22c55e !important; border-color: #22c55e !important; width: 14px !important; height: 14px !important; box-shadow: 0 0 0 4px rgba(34,197,94,.15) !important; }
+.tl-dot { width: 14px !important; height: 14px !important; }
+.tl-title { font-size: 14.5px !important; font-weight: 700 !important; letter-spacing: -.02em !important; }
+.tl-sub { font-size: 13px !important; color: #6b6b6b !important; margin-top: 2px !important; }
+
+/* Drawer info card (the detail table) */
+.drawer-info-card { border-radius: 16px !important; background: #f5f5f7 !important; border: none !important; overflow: hidden !important; }
+.dic-row { padding: 13px 16px !important; border-bottom: 1px solid rgba(0,0,0,.06) !important; }
+.dic-row:last-child { border-bottom: none !important; }
+.dic-label { font-size: 12.5px !important; color: #9a9a9a !important; }
+.dic-val { font-size: 14px !important; font-weight: 700 !important; letter-spacing: -.02em !important; }
+
+/* Stat cards */
 .stat-card { border-radius: 18px !important; padding: 20px 18px !important; }
-/* Stat number weight */
-.stat-card-num { font-size: 30px !important; letter-spacing: -.05em !important; }
-/* Stat label cleaner */
-.stat-card-label { font-size: 10.5px !important; letter-spacing: .09em !important; color: #9a9a9a !important; }
-.stat-card-sub { font-size: 12px !important; margin-top: 4px !important; }
+.stat-card-num { font-size: 32px !important; letter-spacing: -.05em !important; line-height: 1 !important; margin: 6px 0 4px !important; }
+.stat-card-label { font-size: 10px !important; letter-spacing: .09em !important; color: #9a9a9a !important; }
+
 /* Bond cards */
 .bond-card { padding: 18px 22px !important; }
-.bond-title { font-size: 14.5px !important; font-weight: 700 !important; letter-spacing: -.02em !important; }
-/* Section heads */
+.bond-title { font-size: 15px !important; font-weight: 700 !important; letter-spacing: -.03em !important; }
+.bond-price { font-size: 18px !important; font-weight: 800 !important; letter-spacing: -.04em !important; }
+.bond-status { border-radius: 100px !important; font-size: 10.5px !important; padding: 3px 9px !important; font-weight: 700 !important; letter-spacing: .04em !important; }
+
+/* Section cards */
+.dash-section { border-radius: 18px !important; background: #fff !important; }
 .section-head { padding: 18px 22px !important; }
-.section-title { font-size: 13.5px !important; font-weight: 700 !important; letter-spacing: -.01em !important; }
+.section-title { font-size: 15px !important; font-weight: 800 !important; letter-spacing: -.03em !important; }
+
+/* Mobile bar */
+.mobile-bar { background: rgba(255,255,255,.9) !important; }
+.mobile-brand { letter-spacing: -.03em !important; font-size: 17px !important; }
+
 /* Sidebar */
 .sidebar { background: #fff !important; }
-.sb-brand { letter-spacing: -.03em !important; }
-/* Mobile bar */
-.mobile-bar { background: rgba(255,255,255,.92) !important; }
-/* Main eyebrow */
-.main-eyebrow { font-size: 12px !important; font-weight: 700 !important; letter-spacing: .08em !important; color: #22c55e !important; text-transform: uppercase !important; margin-bottom: 8px !important; }
-/* Accent */
-.accent { color: #22c55e !important; }
-/* Nav items active state */
-.nav-item.active .nav-icon { color: #16a34a !important; }
-/* Dash sections */
-.dash-section { border-radius: 18px !important; background: #fff !important; border: 1px solid rgba(0,0,0,.08) !important; margin-bottom: 16px !important; overflow: hidden !important; }
-/* CTA button */
-.main-cta, .empty-cta { background: #22c55e !important; border-radius: 100px !important; font-weight: 700 !important; letter-spacing: -.01em !important; }
+.sb-brand { font-size: 18px !important; letter-spacing: -.04em !important; }
+.sb-foot { padding: 16px 18px !important; gap: 2px !important; display: flex !important; flex-direction: column !important; }
+
+/* Eyebrow */
+.main-eyebrow { color: #22c55e !important; font-weight: 700 !important; letter-spacing: .08em !important; font-size: 11px !important; }
 
 </style>
 </head>
@@ -323,7 +352,11 @@ a{color:inherit;text-decoration:none;}
   </nav>
 
   <div class="sb-foot">
-    <button class="sb-signout" onclick="signOut()">
+    <a href="index.html" class="sb-signout" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Back to site
+    </a>
+    <button class="sb-signout" onclick="signOut()" style="margin-top:4px;">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
       Sign out
     </button>
@@ -514,6 +547,7 @@ a{color:inherit;text-decoration:none;}
   <div class="drawer-body" id="drawerBody"></div>
   <div class="drawer-actions" id="drawerActions">
     <button class="drawer-secondary" onclick="closeDrawer()">Close</button>
+    <button class="drawer-cancel-bond" id="drawerCancelBtn" onclick="confirmCancelBond()" style="display:none;">Cancel Bond</button>
     <a class="drawer-primary" id="drawerPrimaryBtn" href="#" style="display:none;">Action</a>
   </div>
 </aside>
@@ -681,14 +715,18 @@ function openBondDrawer(index){
   var b = USER_BONDS[index];
   if(!b) return;
   document.getElementById('drawerTitle').textContent = b.game || 'Bond details';
+  CANCEL_BOND_INDEX = index;
+  var cancelBtn = document.getElementById('drawerCancelBtn');
+  var isActive = (b.status || '').toLowerCase().indexOf('complete') === -1 && (b.status || '').toLowerCase().indexOf('cancel') === -1;
+  if (cancelBtn) cancelBtn.style.display = isActive ? 'block' : 'none';
 
   // Build minimal timeline based on status
   var status = (b.status || '').toLowerCase();
   var steps = [
     {s:'done', t:'Submitted', sub:b.role + ' at ' + (b.price || '?'), time:b.date || ''},
     {s:status.indexOf('match')!==-1 || status.indexOf('complete')!==-1 ? 'done' : status.indexOf('active')!==-1 ? 'curr' : 'wait', t:'Under review / Active', sub:'We are searching for your match', time:''},
-    {s:status.indexOf('match')!==-1 ? 'curr' : status.indexOf('complete')!==-1 ? 'done' : 'wait', t:'Matched', sub:'Both parties get email with meetup details', time:''},
-    {s:status.indexOf('complete')!==-1 ? 'done' : 'wait', t:'Trade complete', sub:'Meetup and exchange', time:''},
+    {s:status.indexOf('match')!==-1 ? 'curr' : status.indexOf('complete')!==-1 ? 'done' : 'wait', t:'Matched', sub:'Both parties receive contact info by email', time:''},
+    {s:status.indexOf('complete')!==-1 ? 'done' : 'wait', t:'Trade complete', sub:'Exchange confirmed and complete', time:''},
     {s:'wait', t:'Leave review', sub:'Rate each other after', time:''}
   ];
 
@@ -822,6 +860,49 @@ function saveSettings(){
   }).catch(function(){});
 
   alert('Saved.');
+}
+
+
+// ── CANCEL BOND ──
+var CANCEL_BOND_INDEX = null;
+
+function confirmCancelBond() {
+  var b = USER_BONDS[CANCEL_BOND_INDEX];
+  if (!b) return;
+  var confirmed = confirm('Cancel your Bond for ' + (b.game || 'this game') + '? This cannot be undone.');
+  if (!confirmed) return;
+  cancelBondRequest(b, CANCEL_BOND_INDEX);
+}
+
+function cancelBondRequest(b, idx) {
+  var btn = document.getElementById('drawerCancelBtn');
+  if (btn) { btn.textContent = 'Canceling...'; btn.disabled = true; }
+
+  fetch(GAS_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      action: 'cancelBond',
+      token: localStorage.getItem('cb_token'),
+      bondId: b.id || b.rowNum || idx
+    })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(d) {
+    if (d.ok) {
+      USER_BONDS.splice(idx, 1);
+      closeDrawer();
+      renderBonds();
+      alert('Bond canceled.');
+    } else {
+      alert('Could not cancel: ' + (d.error || 'please email cartridgebond@gmail.com'));
+      if (btn) { btn.textContent = 'Cancel Bond'; btn.disabled = false; }
+    }
+  })
+  .catch(function() {
+    alert('Connection error. Please email cartridgebond@gmail.com to cancel.');
+    if (btn) { btn.textContent = 'Cancel Bond'; btn.disabled = false; }
+  });
 }
 
 // ── SIGN OUT ──
