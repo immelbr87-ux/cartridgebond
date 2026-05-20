@@ -607,9 +607,10 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
           <div class="widget-accordion-inner">
             <div class="timeline-head">
               <div class="timeline-eyebrow">The Bond</div>
-              <div class="timeline-title">When do you want to lock this in?</div>
+              <div class="timeline-title" id="timelineTitle">When do you want to exchange?</div>
             </div>
-            <div class="timeline-pills">
+            <!-- SELL timeline pills -->
+            <div class="timeline-pills" id="sellTimelinePills">
               <button class="timeline-pill active" data-days="0" onclick="setTimeline(0,'Now')">
                 <span class="timeline-pill-label">Now</span>
                 <span class="timeline-pill-sub">Trade ASAP</span>
@@ -625,6 +626,21 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
               <button class="timeline-pill" data-days="90" onclick="setTimeline(90,'90 days')">
                 <span class="timeline-pill-label">90d</span>
                 <span class="timeline-pill-sub">In 3 months</span>
+              </button>
+            </div>
+            <!-- BUY timeline pills (default: Flexible) -->
+            <div class="timeline-pills" id="buyTimelinePills" style="display:none;">
+              <button class="timeline-pill active" data-days="90" onclick="setBuyTimeline(90,'Flexible')">
+                <span class="timeline-pill-label">Flexible</span>
+                <span class="timeline-pill-sub">Within 90 days</span>
+              </button>
+              <button class="timeline-pill" data-days="30" onclick="setBuyTimeline(30,'Within 30 days')">
+                <span class="timeline-pill-label">30d</span>
+                <span class="timeline-pill-sub">Within a month</span>
+              </button>
+              <button class="timeline-pill" data-days="0" onclick="setBuyTimeline(0,'Now')">
+                <span class="timeline-pill-label">Now</span>
+                <span class="timeline-pill-sub">Need it ASAP</span>
               </button>
             </div>
             <div class="bond-explainer mode-sell" id="bondExplainer">
@@ -764,7 +780,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       </div>
       <div class="benefit">
         <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <div class="benefit-content"><h3>60-second listing</h3><p>Pick game, lock price, done. Matched within 48 hours.</p></div>
+        <div class="benefit-content"><h3>60-second listing</h3><p>Pick game, lock price, done. Matched when a counterparty is found.</p></div>
       </div>
     </div>
   </div>
@@ -1098,6 +1114,37 @@ function setMode(mode){
   document.getElementById('tabBuy').classList.toggle('active', mode === 'buy');
   document.getElementById('priceLabel').textContent = mode === 'sell' ? "You'll get (locked)" : "You'll pay (locked)";
   document.getElementById('gameRowLabel').textContent = mode === 'sell' ? 'Your game' : 'Game you want';
+  // Swap timeline pills and title based on mode
+  var sellPills = document.getElementById('sellTimelinePills');
+  var buyPills  = document.getElementById('buyTimelinePills');
+  var tlTitle   = document.getElementById('timelineTitle');
+  if(sellPills && buyPills){
+    if(mode === 'buy'){
+      sellPills.style.display = 'none';
+      buyPills.style.display  = '';
+      if(tlTitle) tlTitle.textContent = 'When do you need it?';
+      // Set Flexible as default directly - no defer, no function call
+      SELECTED_DAYS = 90;
+      SELECTED_TIMELINE_DAYS = 90;
+      SELECTED_TIMELINE = 'Flexible';
+      document.querySelectorAll('.timeline-pill').forEach(function(p){ p.classList.remove('active'); });
+      var fp = buyPills.querySelector('[data-days="90"]');
+      if(fp) fp.classList.add('active');
+      var chipEl = document.getElementById('timelineChipText');
+      if(chipEl) chipEl.textContent = 'Flexible';
+    } else {
+      sellPills.style.display = '';
+      buyPills.style.display  = 'none';
+      if(tlTitle) tlTitle.textContent = 'When do you want to exchange?';
+      SELECTED_DAYS = 0;
+      SELECTED_TIMELINE = 'Now';
+      document.querySelectorAll('.timeline-pill').forEach(function(p){ p.classList.remove('active'); });
+      var np = sellPills.querySelector('[data-days="0"]');
+      if(np) np.classList.add('active');
+      var chipEl2 = document.getElementById('timelineChipText');
+      if(chipEl2) chipEl2.textContent = 'Now';
+    }
+  }
 
   // Hide condition photos in buy mode (buyer doesn't have the game)
   var photosCta = document.getElementById('conditionPhotosCta');
@@ -1148,11 +1195,17 @@ function selectGame(shortTitle){
   document.getElementById('gameChipText').textContent = 'Change';
   document.getElementById('gameRow').classList.remove('empty');
 
-  // Trigger setTimeline to render breakdown panel with current timeline (default: Now)
-  // This ensures the breakdown panel shows from the moment a game is picked
-  var currentDays = SELECTED_TIMELINE_DAYS || 0;
-  var currentLabel = currentDays === 0 ? 'Now' : ('In ' + currentDays + ' days');
-  setTimeline(currentDays, currentLabel);
+  // Trigger appropriate timeline setter based on current mode
+  if(CURRENT_MODE === 'buy'){
+    // In buy mode, preserve current buy selection (default: Flexible/90)
+    var buyDays = (typeof SELECTED_DAYS !== 'undefined') ? SELECTED_DAYS : 90;
+    var buyLabel = buyDays === 0 ? 'Now' : (buyDays === 30 ? 'Within 30 days' : 'Flexible');
+    setBuyTimeline(buyDays, buyLabel);
+  } else {
+    var currentDays = SELECTED_TIMELINE_DAYS || 0;
+    var currentLabel = currentDays === 0 ? 'Now' : ('In ' + currentDays + ' days');
+    setTimeline(currentDays, currentLabel);
+  }
 
   // Update comparison widget below
   document.getElementById('compareGameName').textContent = game.shortTitle + ' / A1';
@@ -1169,6 +1222,24 @@ function selectGame(shortTitle){
 }
 
 // ── TIMELINE / THE BOND ──
+
+function setBuyTimeline(days, label){
+  SELECTED_DAYS = days;
+  SELECTED_TIMELINE_DAYS = days;  // keep both vars in sync
+  SELECTED_TIMELINE = label;
+  // Force clear all sell pills too so no crossover
+  document.querySelectorAll('.timeline-pill').forEach(function(p){
+    p.classList.remove('active');
+  });
+  // Set active only on the matching buy pill
+  document.querySelectorAll('#buyTimelinePills .timeline-pill').forEach(function(p){
+    if(parseInt(p.dataset.days) === days) p.classList.add('active');
+  });
+  var chip = document.getElementById('timelineChipText');
+  if(chip) chip.textContent = label;
+  updatePriceDisplay();
+}
+
 function setTimeline(days, label){
   SELECTED_TIMELINE_DAYS = days;
   document.querySelectorAll('.timeline-pill').forEach(function(p){
@@ -1348,7 +1419,7 @@ function submitForm(e){
   fsData.append('_autoresponse',
     'Hey ' + name.split(' ')[0] + ' - your CartridgeBond submission is confirmed!\n\n' +
     'You requested: ' + payload.role + ' ' + payload.game + ' (' + timelineText + ', ' + priceText + ').\n\n' +
-    'A real person will reach out within 48 hours when we find your match. ' +
+    'You will receive an email as soon as your match is found. ' +
     'Check status anytime at https://cartridgebond.com/status.html?email=' + encodeURIComponent(email) + '\n\n' +
     'Reply to this email with any questions.\n\n- CartridgeBond');
 
@@ -1379,7 +1450,7 @@ function showSubmissionSuccess(name){
   var firstName = (name || '').split(' ')[0];
   if(firstName){
     document.getElementById('successBody').textContent =
-      'Thanks ' + firstName + ' - a real person will reach out within 48 hours with your match. Check your email for confirmation.';
+      'Thanks ' + firstName + ' - your price is locked. We will email you when your match is found.';
   }
 
   var w=document.querySelector('.widget');var r=w.getBoundingClientRect();window.scrollTo({top:window.scrollY+r.top-72,behavior:'smooth'});
