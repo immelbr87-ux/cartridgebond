@@ -172,6 +172,8 @@ nav{position:sticky;top:0;z-index:9000;height:48px;display:flex;align-items:cent
 .widget-value{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.025em;line-height:1.15;}
 .widget-value-empty{color:var(--accent-2);font-weight:700;}
 .widget-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:1px solid var(--line);border-radius:980px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;flex-shrink:0;transition:all .2s var(--ease);}
+.widget-chip.chip-next{background:#22c55e;color:#fff;border-color:#22c55e;animation:cb-chip-pulse 2s ease-in-out infinite;}
+@keyframes cb-chip-pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4);}50%{box-shadow:0 0 0 5px rgba(34,197,94,.0);}}
 .widget-row.open .widget-chip{background:var(--accent);color:#fff;border-color:var(--accent);}
 .widget-row.empty:not(.open) .widget-chip{background:var(--accent);color:#fff;border-color:var(--accent);}
 .widget-chip-arrow{font-size:9px;transition:transform .25s var(--ease);}
@@ -522,7 +524,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       <div class="widget-row empty" id="gameRow">
         <button class="widget-row-summary" onclick="toggleAccordion('gameRow')">
           <div class="widget-row-side">
-            <div class="widget-label" id="gameRowLabel">Your game</div>
+            <div class="widget-label" id="gameRowLabel">Your game / price</div>
             <div class="widget-value" id="gameRowValue" style="display:flex;align-items:center;gap:10px;">
               <span id="gameRowName"><span class="widget-value-empty">Pick a game</span></span>
               <span id="gameRowPrice" style="font-size:18px;font-weight:800;color:#22c55e;display:none;"></span>
@@ -598,11 +600,11 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       <div class="widget-row" id="timelineRow">
         <button class="widget-row-summary" onclick="toggleAccordion('timelineRow')">
           <div class="widget-row-side">
-            <div class="widget-label" id="priceLabel">When</div>
-            <div class="widget-value" id="priceValue" style="font-size:13px;color:#6b6b6b;font-weight:500;">Choose your timing</div>
+            <div class="widget-label" id="priceLabel">Timing</div>
+            <div class="widget-value" id="priceValue" style="font-weight:700;color:#0a0a0a;">Now</div>
           </div>
           <span class="widget-chip">
-            <span id="timelineChipText">Now</span>
+            <span id="timelineChipText">Change</span>
             <span class="widget-chip-arrow">&#9662;</span>
           </span>
         </button>
@@ -626,9 +628,9 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
                 <span class="timeline-pill-label">60d</span>
                 <span class="timeline-pill-sub">In 2 months</span>
               </button>
-              <button class="timeline-pill" data-days="90" onclick="setTimeline(90,'90 days')">
-                <span class="timeline-pill-label">90d</span>
-                <span class="timeline-pill-sub">In 3 months</span>
+              <button class="timeline-pill" data-days="90" onclick="setTimeline(90,'Flexible')">
+                <span class="timeline-pill-label">Flexible</span>
+                <span class="timeline-pill-sub">Any time works</span>
               </button>
             </div>
             <!-- BUY timeline pills (default: Flexible) -->
@@ -1110,14 +1112,14 @@ function setMode(mode){
   CURRENT_MODE = mode;
   document.getElementById('tabSell').classList.toggle('active', mode === 'sell');
   document.getElementById('tabBuy').classList.toggle('active', mode === 'buy');
-  // Update row labels based on mode
-  document.getElementById('priceLabel').textContent = mode === 'sell' ? 'When can you sell?' : 'When do you need it?';
+  // Timing label stays "Timing" always
+  document.getElementById('priceLabel').textContent = 'Timing';
   // Set timing default: Sell → Now, Buy → Flexible
+  var defaultTiming = mode === 'sell' ? 'Now' : 'Flexible';
   var chipEl = document.getElementById('timelineChipText');
-  if (chipEl) chipEl.textContent = mode === 'sell' ? 'Now' : 'Flexible';
-  // Reset timing value display
+  if (chipEl) chipEl.textContent = 'Change';
   var pv = document.getElementById('priceValue');
-  if (pv) pv.textContent = mode === 'sell' ? 'Now (or choose)' : 'Flexible (or choose)';
+  if (pv) { pv.textContent = defaultTiming; pv.style.fontWeight = '700'; pv.style.color = '#0a0a0a'; }
   document.getElementById('gameRowLabel').textContent = mode === 'sell' ? 'Your game' : 'Game you want';
   // Swap timeline pills and title based on mode
   var sellPills = document.getElementById('sellTimelinePills');
@@ -1198,7 +1200,10 @@ function selectGame(shortTitle){
   // Update game row, remove empty state
   document.getElementById('gameRowName').textContent = game.shortTitle;
   var gp = document.getElementById('gameRowPrice');
-  if (gp) { gp.textContent = game.price ? '$' + game.price : ''; gp.style.display = game.price ? 'inline' : 'none'; }
+  if (gp) { gp.textContent = game.cartridgeBondPrice ? '$' + game.cartridgeBondPrice : ''; gp.style.display = game.cartridgeBondPrice ? 'inline' : 'none'; }
+  // Highlight timing chip as next step
+  var tc = document.querySelector('#timelineRow .widget-chip');
+  if (tc) tc.classList.add('chip-next');
   document.getElementById('gameChipText').textContent = 'Change';
   document.getElementById('gameRow').classList.remove('empty');
 
@@ -1252,9 +1257,13 @@ function setTimeline(days, label){
   document.querySelectorAll('.timeline-pill').forEach(function(p){
     p.classList.toggle('active', parseInt(p.getAttribute('data-days'), 10) === days);
   });
-  document.getElementById('timelineChipText').textContent = label;
+  // Chip stays as "Change", priceValue shows the selection
+  document.getElementById('timelineChipText').textContent = 'Change';
   var pv = document.getElementById('priceValue');
-  if (pv) pv.textContent = label;
+  if (pv) { pv.textContent = label; pv.style.fontWeight = '700'; pv.style.color = '#0a0a0a'; }
+  // Remove green highlight — timing is now set
+  var tc = document.querySelector('#timelineRow .widget-chip');
+  if (tc) tc.classList.remove('chip-next');
 
   // Always show the breakdown panel (Now and timelines all get the same view)
   var explainer = document.getElementById('bondExplainer');
@@ -1263,9 +1272,7 @@ function setTimeline(days, label){
   explainer.classList.add('mode-' + CURRENT_MODE);
 
   if(days > 0){
-    document.getElementById('priceLabel').textContent = CURRENT_MODE === 'sell'
-      ? "You'll get in " + days + "d (locked)"
-      : "You'll pay in " + days + "d (locked)";
+    document.getElementById('priceLabel').textContent = 'Timing';
     // Sell row: "Commit today, sell in 30d"
     // Buy row: "Commit today, buy in 30d"
     document.querySelectorAll('.bond-sell-line').forEach(function(el){
@@ -1275,7 +1282,7 @@ function setTimeline(days, label){
       el.textContent = 'Commit today, buy in ' + days + 'd';
     });
   } else {
-    document.getElementById('priceLabel').textContent = CURRENT_MODE === 'sell' ? "You'll get (locked)" : "You'll pay (locked)";
+    document.getElementById('priceLabel').textContent = 'Timing';
     // Now: simpler labels
     document.querySelectorAll('.bond-sell-line').forEach(function(el){
       el.textContent = 'Sell to CartridgeBond';
@@ -1290,8 +1297,7 @@ function setTimeline(days, label){
 
 function updatePriceDisplay(){
   if(!SELECTED_GAME){
-    // No game picked yet
-    document.getElementById('priceValue').textContent = '$--';
+    // No game yet — keep timing label as-is
     return;
   }
 
@@ -1299,8 +1305,7 @@ function updatePriceDisplay(){
   // The Bond's value is commitment flexibility, not price depreciation.
   var price = SELECTED_GAME.cartridgeBondPrice;
   var retail = SELECTED_GAME.retailPrice || 59.99;
-
-  document.getElementById('priceValue').textContent = '$' + price;
+  // priceValue shows timing, not price — price shows in gameRowPrice
 
   // Populate breakdown values (same numbers for Now / 30 / 60 / 90)
   if(CURRENT_MODE === 'sell'){
@@ -1330,7 +1335,7 @@ function startSubmission(){
   // Build summary text
   var modeText = CURRENT_MODE === 'sell' ? 'Selling' : 'Buying';
   var timelineText = SELECTED_TIMELINE_DAYS === 0 ? 'now' : ('in ' + SELECTED_TIMELINE_DAYS + ' days');
-  var priceText = document.getElementById('priceValue').textContent;
+  var priceText = SELECTED_GAME && SELECTED_GAME.cartridgeBondPrice ? '$' + SELECTED_GAME.cartridgeBondPrice : '';
   var summary = '<strong>' + modeText + '</strong> ' + SELECTED_GAME.shortTitle +
                 ' (A1) ' + timelineText + ' for <strong>' + priceText + '</strong>';
   document.getElementById('detailsSummary').innerHTML = summary;
@@ -1398,8 +1403,9 @@ function submitForm(e){
 
   // Build payload
   var modeText = CURRENT_MODE === 'sell' ? 'Sell Used' : 'Buy Used';
-  var timelineText = SELECTED_TIMELINE_DAYS === 0 ? 'ASAP' : ('In ' + SELECTED_TIMELINE_DAYS + ' days');
-  var priceText = document.getElementById('priceValue').textContent;
+  var selectedTimingLabel = document.getElementById('priceValue') ? document.getElementById('priceValue').textContent : 'Now';
+  var timelineText = selectedTimingLabel || (SELECTED_TIMELINE_DAYS === 0 ? 'ASAP' : ('In ' + SELECTED_TIMELINE_DAYS + ' days'));
+  var priceText = SELECTED_GAME && SELECTED_GAME.cartridgeBondPrice ? '$' + SELECTED_GAME.cartridgeBondPrice : '';
 
   var payload = {
     name: name,
@@ -1409,7 +1415,7 @@ function submitForm(e){
     role: modeText,
     game: SELECTED_GAME.shortTitle,
     condition: 'A1 - Like New / Very Good',
-    resale_price: priceText,
+    resale_price: SELECTED_GAME && SELECTED_GAME.cartridgeBondPrice ? SELECTED_GAME.cartridgeBondPrice : '',
     timeline: timelineText,
     bond_days: SELECTED_TIMELINE_DAYS,
     source: 'homepage-widget'
@@ -1487,9 +1493,14 @@ function resetWidget(){
   var gp = document.getElementById('gameRowPrice'); if (gp) gp.style.display = 'none';
   document.getElementById('gameChipText').textContent = 'Browse';
   document.getElementById('gameRow').classList.add('empty');
-  document.getElementById('priceValue').textContent = '$--';
-  document.getElementById('priceLabel').textContent = CURRENT_MODE === 'sell' ? "You'll get (locked)" : "You'll pay (locked)";
-  document.getElementById('timelineChipText').textContent = 'Now';
+  var defaultTiming = CURRENT_MODE === 'sell' ? 'Now' : 'Flexible';
+  document.getElementById('priceValue').textContent = defaultTiming;
+  document.getElementById('priceValue').style.fontWeight = '700';
+  document.getElementById('priceValue').style.color = '#0a0a0a';
+  document.getElementById('priceLabel').textContent = 'Timing';
+  document.getElementById('timelineChipText').textContent = 'Change';
+  var tc = document.querySelector('#timelineRow .widget-chip');
+  if (tc) tc.classList.remove('chip-next');
   document.querySelectorAll('.timeline-pill').forEach(function(p){
     p.classList.toggle('active', parseInt(p.getAttribute('data-days'), 10) === 0);
   });
