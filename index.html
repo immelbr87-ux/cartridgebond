@@ -616,34 +616,34 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
             </div>
             <!-- SELL timeline pills -->
             <div class="timeline-pills" id="sellTimelinePills">
-              <button class="timeline-pill active" data-days="0" onclick="setTimeline(0,'Now')">
+              <button class="timeline-pill active" data-days="0" onclick="setTimeline(0,'Now',true)">
                 <span class="timeline-pill-label">Now</span>
                 <span class="timeline-pill-sub">Trade ASAP</span>
               </button>
-              <button class="timeline-pill" data-days="30" onclick="setTimeline(30,'30 days')">
+              <button class="timeline-pill" data-days="30" onclick="setTimeline(30,'30 days',true)">
                 <span class="timeline-pill-label">30d</span>
                 <span class="timeline-pill-sub">In 1 month</span>
               </button>
-              <button class="timeline-pill" data-days="60" onclick="setTimeline(60,'60 days')">
+              <button class="timeline-pill" data-days="60" onclick="setTimeline(60,'60 days',true)">
                 <span class="timeline-pill-label">60d</span>
                 <span class="timeline-pill-sub">In 2 months</span>
               </button>
-              <button class="timeline-pill" data-days="90" onclick="setTimeline(90,'Flexible')">
+              <button class="timeline-pill" data-days="90" onclick="setTimeline(90,'Flexible',true)">
                 <span class="timeline-pill-label">Flexible</span>
                 <span class="timeline-pill-sub">Any time works</span>
               </button>
             </div>
             <!-- BUY timeline pills (default: Flexible) -->
             <div class="timeline-pills" id="buyTimelinePills" style="display:none;">
-              <button class="timeline-pill active" data-days="90" onclick="setBuyTimeline(90,'Flexible')">
+              <button class="timeline-pill active" data-days="90" onclick="setBuyTimeline(90,'Flexible',true)">
                 <span class="timeline-pill-label">Flexible</span>
                 <span class="timeline-pill-sub">Within 90 days</span>
               </button>
-              <button class="timeline-pill" data-days="30" onclick="setBuyTimeline(30,'Within 30 days')">
+              <button class="timeline-pill" data-days="30" onclick="setBuyTimeline(30,'Within 30 days',true)">
                 <span class="timeline-pill-label">30d</span>
                 <span class="timeline-pill-sub">Within a month</span>
               </button>
-              <button class="timeline-pill" data-days="0" onclick="setBuyTimeline(0,'Now')">
+              <button class="timeline-pill" data-days="0" onclick="setBuyTimeline(0,'Now',true)">
                 <span class="timeline-pill-label">Now</span>
                 <span class="timeline-pill-sub">Need it ASAP</span>
               </button>
@@ -1078,10 +1078,18 @@ function copyLink(){
 // ── NAV MENU ──
 function toggleMenu(){ document.getElementById('navMenu').classList.toggle('open'); }
 document.addEventListener('click', function(e){
+  // Close nav menu
   var menu = document.getElementById('navMenu');
   var btn = document.getElementById('menuBtn');
   if(menu && menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)){
     menu.classList.remove('open');
+  }
+  // Close open widget accordions when clicking outside the widget
+  var widget = document.querySelector('.widget');
+  if(widget && !widget.contains(e.target)){
+    document.querySelectorAll('.widget-row.open').forEach(function(r){
+      r.classList.remove('open');
+    });
   }
 });
 
@@ -1235,20 +1243,26 @@ function selectGame(shortTitle){
 
 // ── TIMELINE / THE BOND ──
 
-function setBuyTimeline(days, label){
+function setBuyTimeline(days, label, fromUser){
   SELECTED_DAYS = days;
   SELECTED_TIMELINE_DAYS = days;  // keep both vars in sync
   SELECTED_TIMELINE = label;
-  // Force clear all sell pills too so no crossover
   document.querySelectorAll('.timeline-pill').forEach(function(p){
     p.classList.remove('active');
   });
-  // Set active only on the matching buy pill
   document.querySelectorAll('#buyTimelinePills .timeline-pill').forEach(function(p){
     if(parseInt(p.dataset.days) === days) p.classList.add('active');
   });
   var chip = document.getElementById('timelineChipText');
-  if(chip) chip.textContent = label;
+  if(chip) chip.textContent = 'Change';
+  var pv = document.getElementById('priceValue');
+  if (pv) { pv.textContent = label; pv.style.fontWeight = '700'; pv.style.color = '#0a0a0a'; }
+  if (fromUser) {
+    var tc = document.querySelector('#timelineRow .widget-chip');
+    if (tc) tc.classList.remove('chip-next');
+    var tr = document.getElementById('timelineRow');
+    if (tr) tr.classList.remove('open');
+  }
   updatePriceDisplay();
 }
 
