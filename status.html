@@ -206,10 +206,17 @@ document.addEventListener('click',function(e){
     </div>
 
     <div id="statusResult" class="status-result"></div>
+<div id="signinPlug" style="display:none;margin:24px 0 0;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;padding:22px 24px;">
+  <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#16a34a;margin-bottom:6px;">Your CartridgeBond account</div>
+  <div style="font-size:16px;font-weight:700;color:#0a0a0a;margin-bottom:6px;">See all your bonds in one place.</div>
+  <div style="font-size:14px;color:#6b6b6b;margin-bottom:16px;line-height:1.6;">Sign in to track active bonds, match history, ratings, and your Founder status &mdash; without typing your email every time.</div>
+  <a href="login.html" style="display:inline-block;background:#22c55e;color:#fff;font-size:14px;font-weight:700;padding:11px 24px;border-radius:100px;text-decoration:none;letter-spacing:-.01em;">Sign in to your dashboard &rarr;</a>
+</div>
+
 
     <div class="content-card" style="margin-top:24px;">
       <h2>What status means</h2>
-      <p><strong>Under review</strong> - We received your submission and our auto-matcher is checking for compatible matches. Usually under 12 hours.</p>
+      
       <p><strong>Active</strong> - Your listing is live and we're searching for a match.</p>
       <p><strong>Matched</strong> - We found your counterparty. Both parties get an email with meetup details.</p>
       <p><strong>Completed</strong> - Trade is closed. Don't forget to leave a rating!</p>
@@ -305,7 +312,7 @@ function renderStatusResults(data,email){
   }
   var html='';
   data.submissions.forEach(function(s){
-    var status=(s.status||'Under review').toLowerCase();
+    var status=(s.status||'Active').toLowerCase();
     var cls=status.indexOf('match')!==-1?'matched':status.indexOf('complete')!==-1?'completed':'';
     html+='<div class="status-card">'+
       '<div class="status-icon">'+(s.role||'??').substr(0,2).toUpperCase()+'</div>'+
@@ -318,6 +325,9 @@ function renderStatusResults(data,email){
   });
   box.innerHTML=html;
   box.classList.add('show');
+  // Show sign-in plug when bonds found
+  var plug = document.getElementById('signinPlug');
+  if (plug) plug.style.display = 'block';
 }
 // Pre-fill from query string if email passed
 (function(){

@@ -733,7 +733,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       </div>
 
       <!-- SUCCESS STEP -->
-            <div class="widget-loading" id="widgetLoading">
+            <div class="widget-loading" id="widgetLoading" style="display:none;">
         <div class="widget-loading-spinner"></div>
         <div class="widget-loading-title">Locking in your price...</div>
         <div class="widget-loading-sub">This usually takes a few seconds.</div>
@@ -1391,6 +1391,10 @@ function submitForm(e){
   var btn = document.getElementById('detailsSubmitBtn');
   btn.disabled = true;
   btn.innerHTML = 'Locking in...';
+  // Show loading state, hide form
+  document.getElementById('widgetDetails').style.display = 'none';
+  var wl = document.getElementById('widgetLoading');
+  if (wl) { wl.style.display = 'block'; wl.style.paddingTop = '48px'; }
 
   // Build payload
   var modeText = CURRENT_MODE === 'sell' ? 'Sell Used' : 'Buy Used';
@@ -1451,10 +1455,15 @@ function showDetailsError(msg){
 
 function showSubmissionSuccess(name){
   var widget = document.querySelector('.widget');
-  widget.classList.remove('in-details');
+  widget.classList.remove('in-details', 'in-loading');
   widget.classList.add('in-success');
+  // Explicitly hide loading spinner, show success
+  var wl = document.getElementById('widgetLoading');
+  if (wl) wl.style.display = 'none';
+  document.getElementById('widgetDetails').style.display = 'none';
   document.getElementById('widgetDetails').classList.remove('show');
-  document.getElementById('widgetSuccess').classList.add('show');
+  var ws = document.getElementById('widgetSuccess');
+  if (ws) { ws.style.display = 'block'; ws.classList.add('show'); }
 
   var firstName = (name || '').split(' ')[0];
   if(firstName){
