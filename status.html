@@ -278,7 +278,7 @@ function checkStatus(e){
   var resultBox=document.getElementById('statusResult');
   resultBox.classList.remove('show');
   // Apps Script status endpoint
-  var endpoint='https://script.google.com/macros/s/AKfycbyYRSqdJR4J7kHp5cd1yGWj-GlfwbXgTntuYXV95El0OTsNYvbDdHF28f1kCtcv3F8M/exec?action=status&email='+encodeURIComponent(email);
+  var endpoint='https://script.google.com/macros/s/AKfycbybpmlpe6PtFsotY0iQ9CCCiYgsqJ8tyyLFib0pkqd8uyVKazgoyLiybfQZYmvC-xMd/exec?action=status&email='+encodeURIComponent(email);
   fetch(endpoint)
     .then(function(r){return r.json();})
     .then(function(data){
