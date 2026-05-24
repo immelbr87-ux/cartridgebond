@@ -523,7 +523,10 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
         <button class="widget-row-summary" onclick="toggleAccordion('gameRow')">
           <div class="widget-row-side">
             <div class="widget-label" id="gameRowLabel">Your game</div>
-            <div class="widget-value" id="gameRowValue"><span class="widget-value-empty">Pick a game</span></div>
+            <div class="widget-value" id="gameRowValue" style="display:flex;align-items:center;gap:10px;">
+              <span id="gameRowName"><span class="widget-value-empty">Pick a game</span></span>
+              <span id="gameRowPrice" style="font-size:18px;font-weight:800;color:#22c55e;display:none;"></span>
+            </div>
           </div>
           <span class="widget-chip">
             <span id="gameChipText">Browse</span>
@@ -595,8 +598,8 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       <div class="widget-row" id="timelineRow">
         <button class="widget-row-summary" onclick="toggleAccordion('timelineRow')">
           <div class="widget-row-side">
-            <div class="widget-label" id="priceLabel">You'll get (locked)</div>
-            <div class="widget-value" id="priceValue">$--</div>
+            <div class="widget-label" id="priceLabel">When</div>
+            <div class="widget-value" id="priceValue" style="font-size:13px;color:#6b6b6b;font-weight:500;">Choose your timing</div>
           </div>
           <span class="widget-chip">
             <span id="timelineChipText">Now</span>
@@ -1107,7 +1110,14 @@ function setMode(mode){
   CURRENT_MODE = mode;
   document.getElementById('tabSell').classList.toggle('active', mode === 'sell');
   document.getElementById('tabBuy').classList.toggle('active', mode === 'buy');
-  document.getElementById('priceLabel').textContent = mode === 'sell' ? "You'll get (locked)" : "You'll pay (locked)";
+  // Update row labels based on mode
+  document.getElementById('priceLabel').textContent = mode === 'sell' ? 'When can you sell?' : 'When do you need it?';
+  // Set timing default: Sell → Now, Buy → Flexible
+  var chipEl = document.getElementById('timelineChipText');
+  if (chipEl) chipEl.textContent = mode === 'sell' ? 'Now' : 'Flexible';
+  // Reset timing value display
+  var pv = document.getElementById('priceValue');
+  if (pv) pv.textContent = mode === 'sell' ? 'Now (or choose)' : 'Flexible (or choose)';
   document.getElementById('gameRowLabel').textContent = mode === 'sell' ? 'Your game' : 'Game you want';
   // Swap timeline pills and title based on mode
   var sellPills = document.getElementById('sellTimelinePills');
@@ -1186,7 +1196,9 @@ function selectGame(shortTitle){
   SELECTED_GAME = game;
 
   // Update game row, remove empty state
-  document.getElementById('gameRowValue').textContent = game.shortTitle;
+  document.getElementById('gameRowName').textContent = game.shortTitle;
+  var gp = document.getElementById('gameRowPrice');
+  if (gp) { gp.textContent = game.price ? '$' + game.price : ''; gp.style.display = game.price ? 'inline' : 'none'; }
   document.getElementById('gameChipText').textContent = 'Change';
   document.getElementById('gameRow').classList.remove('empty');
 
@@ -1241,6 +1253,8 @@ function setTimeline(days, label){
     p.classList.toggle('active', parseInt(p.getAttribute('data-days'), 10) === days);
   });
   document.getElementById('timelineChipText').textContent = label;
+  var pv = document.getElementById('priceValue');
+  if (pv) pv.textContent = label;
 
   // Always show the breakdown panel (Now and timelines all get the same view)
   var explainer = document.getElementById('bondExplainer');
@@ -1460,7 +1474,8 @@ function resetWidget(){
   // Reset selection state
   SELECTED_GAME = null;
   SELECTED_TIMELINE_DAYS = 0;
-  document.getElementById('gameRowValue').innerHTML = '<span class="widget-value-empty">Pick a game</span>';
+  document.getElementById('gameRowName').innerHTML = '<span class="widget-value-empty">Pick a game</span>';
+  var gp = document.getElementById('gameRowPrice'); if (gp) gp.style.display = 'none';
   document.getElementById('gameChipText').textContent = 'Browse';
   document.getElementById('gameRow').classList.add('empty');
   document.getElementById('priceValue').textContent = '$--';
