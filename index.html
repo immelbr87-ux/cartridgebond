@@ -502,8 +502,8 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
 
 <section class="hero">
   <div class="hero-eyebrow">Now in Milwaukee Beta</div>
-  <h1><span class="g">PreCommerce</span> for Nintendo Switch Games.</h1>
-  <div class="hero-sub">Market-true pricing. Zero marketplace hassle. Future resale, locked in.</div>
+  <h1><span class="g">Buy and Sell Nintendo Switch Games</span> at Locked, Market-Researched Prices.</h1>
+  <div class="hero-sub">No Haggling or Inbox-Babysitting.<br><strong>A1 Condition Games Only.</strong><br>Zero Fees During Beta.</div>
   
   <div class="hero-device">
     <img src="images/hero/switch-hero.png" alt="Nintendo Switch console" loading="eager">
@@ -548,6 +548,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
           </div>
         </div>
       </div>
+      <div id="gameDemandNote" style="display:none;font-size:12.5px;color:#6b6b6b;padding:6px 16px 0;line-height:1.5;"></div>
 
       <!-- CONDITION ROW (accordion) -->
       <div class="widget-row" id="conditionRow">
@@ -611,7 +612,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
         <div class="widget-accordion">
           <div class="widget-accordion-inner">
             <div class="timeline-head">
-              <div class="timeline-eyebrow">The Bond</div>
+              <div class="timeline-eyebrow">Your timeline</div>
               <div class="timeline-title" id="timelineTitle">When do you want to exchange?</div>
             </div>
             <!-- SELL timeline pills -->
@@ -687,11 +688,11 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
 
       <div class="widget-age">
         <input type="checkbox" id="ageGate" required>
-        <label for="ageGate">I confirm I am <strong>16 or older</strong> and agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</label>
+        <label for="ageGate">I confirm I am <strong>18 or older</strong> and agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</label>
       </div>
 
       <div class="widget-cta">
-        <button id="widgetSubmitBtn" onclick="startSubmission()" disabled>Buy / Sell Now <span style="display:inline-block;margin-left:6px;">-&gt;</span></button>
+        <button id="widgetSubmitBtn" onclick="startSubmission()">Get started &rarr;</button>
       </div>
 
       <div class="widget-flipper-note">
@@ -727,8 +728,14 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
             </div>
           </div>
           <input type="text" id="hp_field" name="hp_field" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;height:0;width:0;" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="widget-details-legal" style="margin-bottom:12px;">
+            <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#6b6b6b;cursor:pointer;line-height:1.5;">
+              <input type="checkbox" id="ageGate" required style="margin-top:2px;accent-color:#22c55e;flex-shrink:0;">
+              <span>I confirm I am <strong style="color:#0a0a0a;">18 or older</strong> and agree to the <a href="terms.html" style="color:#22c55e;">Terms</a> and <a href="privacy.html" style="color:#22c55e;">Privacy Policy</a>.</span>
+            </label>
+          </div>
           <div class="widget-details-cta">
-            <button type="submit" id="detailsSubmitBtn">Lock it in <span style="display:inline-block;margin-left:6px;">-&gt;</span></button>
+            <button type="submit" id="detailsSubmitBtn">Lock it in &rarr;</button>
           </div>
           <div class="widget-details-error" id="detailsError"></div>
         </form>
@@ -745,14 +752,14 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
         <div class="widget-success-title">Your price is locked.</div>
-        <div class="widget-success-body" id="successBody">We are actively searching for your match. You will receive an email confirmation shortly. When a match is found, both parties are notified with next steps.</div>
+        <div class="widget-success-body" id="successBody">Your bond is live. We run matching every 15 minutes and will email you the moment a buyer is found. </div>
         <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:14px 16px;margin:16px 0;text-align:left;">
           <div style="font-size:11px;font-weight:700;color:#15803d;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px;">What happens next</div>
           <div style="font-size:13.5px;color:#1a3a1a;line-height:1.7;">
             1. Check your email for a confirmation<br>
             2. We match you with a verified counterparty<br>
             3. Both parties receive contact details by email<br>
-            4. Exchange at a time and place that works for both
+            4. Arrange your exchange — time, place, and payment sorted between you
           </div>
         </div>
         <div class="widget-success-actions">
@@ -781,7 +788,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       </div>
       <div class="benefit">
         <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="benefit-content"><h3>Safe local meetup</h3><p>Vetted public meeting spots across the Milwaukee area.</p></div>
+        <div class="benefit-content"><h3>Safe local meetup</h3><p>Public spots — libraries, Target, police station lobbies. Guide included.</p></div>
       </div>
       <div class="benefit">
         <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
@@ -1120,6 +1127,8 @@ function setMode(mode){
   CURRENT_MODE = mode;
   document.getElementById('tabSell').classList.toggle('active', mode === 'sell');
   document.getElementById('tabBuy').classList.toggle('active', mode === 'buy');
+  var cta = document.getElementById('widgetSubmitBtn');
+  if (cta) cta.innerHTML = (mode === 'sell' ? 'Lock my sell price' : 'Find my game') + ' &rarr;';
   // Timing label stays "Timing" always
   document.getElementById('priceLabel').textContent = 'Timing';
   // Set timing default: Sell → Now, Buy → Flexible
@@ -1190,10 +1199,12 @@ function renderGameList(filter){
   }
 
   container.innerHTML = filtered.slice(0, 12).map(function(g){
+    var demandDot = g.demandLabel && g.demandLabel.toLowerCase().indexOf('very') > -1 ? '#f59e0b' : '#22c55e';
+    var demandText = g.demandLabel || '';
     return '<button class="game-item' + (SELECTED_GAME && SELECTED_GAME.shortTitle===g.shortTitle ? ' selected' : '') + '" onclick="selectGame(\'' + escapeAttr(g.shortTitle) + '\')">' +
       '<div class="game-item-left">' +
         '<div class="game-item-name">' + escapeHtml(g.shortTitle) + '</div>' +
-        '<div class="game-item-meta">' + escapeHtml(g.platform) + '</div>' +
+        (demandText ? '<div class="game-item-meta"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:'+demandDot+';margin-right:5px;vertical-align:middle;"></span>' + escapeHtml(demandText) + '</div>' : '') +
       '</div>' +
       '<div class="game-item-price">$' + g.cartridgeBondPrice + '</div>' +
     '</button>';
@@ -1212,6 +1223,16 @@ function selectGame(shortTitle){
   // Highlight timing chip as next step
   var tc = document.querySelector('#timelineRow .widget-chip');
   if (tc) tc.classList.add('chip-next');
+
+  // Show demand note beneath game row
+  var demandNote = document.getElementById('gameDemandNote');
+  if (demandNote && game.demandLabel) {
+    var hot = game.demandLabel.toLowerCase().indexOf('very') > -1;
+    demandNote.style.display = 'block';
+    demandNote.innerHTML = hot
+      ? '&#x1F525; <strong>' + game.demandLabel + '</strong> &mdash; buyers are active for this title right now'
+      : '<span style="color:#22c55e;">&#10003;</span> <strong>' + game.demandLabel + '</strong> &mdash; regularly traded on CartridgeBond';
+  }
   document.getElementById('gameChipText').textContent = 'Change';
   document.getElementById('gameRow').classList.remove('empty');
 
@@ -1338,13 +1359,13 @@ function updatePriceDisplay(){
 // ── SUBMISSION FLOW ──
 function startSubmission(){
   var widget = document.querySelector('.widget');
-  if(widget){ widget.className = widget.className.replace('in-details','') + ' in-loading'; }
+  if(widget){ widget.classList.remove('in-details'); widget.classList.add('in-loading'); }
   if(!SELECTED_GAME){
     // Force opening the game accordion if no game picked
     toggleAccordion('gameRow');
     return;
   }
-  if(!document.getElementById('ageGate').checked) return;
+  // Age confirmed in details form
 
   // Build summary text
   var modeText = CURRENT_MODE === 'sell' ? 'Selling' : 'Buying';
