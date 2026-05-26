@@ -692,7 +692,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       </div>
 
       <div class="widget-cta">
-        <button id="widgetSubmitBtn" onclick="startSubmission()">Get started &rarr;</button>
+        <button id="widgetSubmitBtn" onclick="startSubmission()">Lock Your Trade &rarr;</button>
       </div>
 
       <div class="widget-flipper-note">
@@ -784,15 +784,15 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
       </div>
       <div class="benefit">
         <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <div class="benefit-content"><h3>A1 condition</h3><p>Every cartridge verified complete-in-box. No surprises on pickup.</p></div>
+        <div class="benefit-content"><h3>A1 condition</h3><p>User-guaranteed complete-in-box. Seller confirms condition at listing. Escrow verification coming soon.</p></div>
       </div>
       <div class="benefit">
         <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="benefit-content"><h3>Safe local meetup</h3><p>Public spots — libraries, Target, police station lobbies. Guide included.</p></div>
+        <div class="benefit-content"><h3>Safe local meetup</h3><p>Public spots: libraries, Target, police station lobbies. Guide included.</p></div>
       </div>
       <div class="benefit">
         <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <div class="benefit-content"><h3>60-second listing</h3><p>Pick game, lock price, done. Matched when a counterparty is found.</p></div>
+        <div class="benefit-content"><h3>30-second listing</h3><p>Pick a game, choose a timeframe, done. Matched when a counterparty is found.</p></div>
       </div>
     </div>
   </div>
@@ -1128,7 +1128,7 @@ function setMode(mode){
   document.getElementById('tabSell').classList.toggle('active', mode === 'sell');
   document.getElementById('tabBuy').classList.toggle('active', mode === 'buy');
   var cta = document.getElementById('widgetSubmitBtn');
-  if (cta) cta.innerHTML = (mode === 'sell' ? 'Lock my sell price' : 'Find my game') + ' &rarr;';
+  if (cta) cta.innerHTML = 'Lock Your Trade &rarr;';
   // Timing label stays "Timing" always
   document.getElementById('priceLabel').textContent = 'Timing';
   // Set timing default: Sell → Now, Buy → Flexible
@@ -1296,10 +1296,6 @@ function setTimeline(days, label){
   document.getElementById('timelineChipText').textContent = 'Change';
   var pv = document.getElementById('priceValue');
   if (pv) { pv.textContent = label; pv.style.fontWeight = '700'; pv.style.color = '#0a0a0a'; }
-  // Remove green highlight — timing is now set
-  var tc = document.querySelector('#timelineRow .widget-chip');
-  if (tc) tc.classList.remove('chip-next');
-
   // Always show the breakdown panel (Now and timelines all get the same view)
   var explainer = document.getElementById('bondExplainer');
   explainer.classList.add('show');
