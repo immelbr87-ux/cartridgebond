@@ -689,11 +689,6 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
         <span id="metaText">Price researched against eBay sold listings &amp; PriceCharting</span>
       </div>
 
-      <div class="widget-age">
-        <input type="checkbox" id="ageGate" required>
-        <label for="ageGate">I confirm I am <strong>18 or older</strong> and agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</label>
-      </div>
-
       <div class="widget-cta">
         <button id="widgetSubmitBtn" onclick="startSubmission()">Lock Your Trade &rarr;</button>
       </div>
@@ -887,7 +882,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
     <div class="compare-head">
       <div class="compare-eyebrow">Price comparison</div>
       <h2>Every platform, <span class="g">compared.</span></h2>
-      <p>CartridgeBond beats GameStop trade-in, eBay after fees, and the unpredictability of Facebook Marketplace. Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms. - CartridgeBond beats GameStop trade-in, eBay after fees, and the unpredictability of Facebook Marketplace.</p>
+      <p>Here's what a Mario Kart 8 Deluxe in A1 condition actually nets you across the major resale platforms.</p>
     </div>
 
     <div class="compare-widget">
@@ -1077,12 +1072,14 @@ function copyLink(){
   } else {
     fallback();
   }
-  btn.textContent = 'Copied!';
-  btn.classList.add('copied');
-  setTimeout(function(){
-    btn.textContent = 'Copy';
-    btn.classList.remove('copied');
-  }, 2000);
+  if(btn){
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function(){
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  }
 }
 
 // ── NAV MENU ──
