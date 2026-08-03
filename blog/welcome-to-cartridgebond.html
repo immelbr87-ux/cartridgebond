@@ -11,17 +11,6 @@
 <meta name="color-scheme" content="light only">
 <meta name="supported-color-schemes" content="light">
 
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER_REPLACE_ME"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-PLACEHOLDER_REPLACE_ME');
-</script>
-<!-- End Google Analytics 4 -->
-
-
 <title>Welcome to CartridgeBond | CartridgeBond Blog</title>
 <meta name="description" content="How a twin dad's research habit built a better marketplace for Switch game resale.">
 <meta name="theme-color" content="#f7f7f4">
@@ -221,20 +210,19 @@ footer{padding:36px 20px 24px;background:var(--bg-2);border-top:1px solid var(--
 }
 </script>
 <style>
-/* Nav overrides - consistent across all pages */
-nav{position:sticky;top:0;z-index:900;height:52px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08);}
+nav{position:sticky;top:0;z-index:900;height:52px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08);}
 .cb-nav-brand{font-size:17px;font-weight:800;letter-spacing:-.03em;color:#0a0a0a;text-decoration:none;}
 .cb-nav-brand .g{color:#22c55e;}
 .cb-nav-right{display:flex;align-items:center;gap:10px;}
-.cb-nav-cta{background:#22c55e;color:#fff;font-size:13px;font-weight:700;padding:8px 16px;border-radius:100px;text-decoration:none;letter-spacing:-.01em;white-space:nowrap;}
+.cb-nav-cta{background:#22c55e;color:#fff;font-size:13px;font-weight:700;padding:8px 16px;border-radius:100px;text-decoration:none;}
 .cb-ham{width:34px;height:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:50%;border:1px solid rgba(0,0,0,.12);cursor:pointer;background:none;}
 .cb-ham span{display:block;width:15px;height:1.5px;background:#0a0a0a;border-radius:2px;}
-#cbNavMenu{display:none;position:fixed;top:52px;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08);z-index:899;padding:12px 20px 20px;}
+#cbNavMenu{display:none;position:fixed;top:52px;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.08);z-index:899;padding:12px 20px 20px;}
 #cbNavMenu.open{display:block;}
-#cbNavMenu a{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:600;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05);color:#0a0a0a;text-decoration:none;letter-spacing:-.02em;}
+#cbNavMenu a{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:600;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05);color:#0a0a0a;text-decoration:none;}
 #cbNavMenu a:last-child{border-bottom:none;}
 #cbNavMenu .cb-menu-signin{color:#16a34a;font-weight:700;}
-#cbNavMenu .cb-menu-cta{display:flex;align-items:center;justify-content:center;background:#22c55e;color:#fff;border-radius:100px;padding:13px;margin-top:8px;font-size:18px;font-weight:700;letter-spacing:-.02em;}
+#cbNavMenu .cb-menu-cta{justify-content:center;background:#22c55e;color:#fff;border-radius:100px;padding:13px;margin-top:8px;font-size:18px;font-weight:700;}
 #cbNavMenu hr{border:none;border-top:1px solid rgba(0,0,0,.07);margin:4px 0;}
 :root{color-scheme:light only;}
 @media(prefers-color-scheme:dark){html,body{background:#fff!important;color:#0a0a0a!important;}}
@@ -243,35 +231,31 @@ nav{position:sticky;top:0;z-index:900;height:52px;padding:0 20px;display:flex;al
 <body>
 
 <nav>
-  <a href="../index.html" class="cb-nav-brand">Cartridge<span class="g">Bond</span></a>
+  <a href="index.html" class="cb-nav-brand">Cartridge<span class="g">Bond</span></a>
   <div class="cb-nav-right">
-    <a href="../index.html#widget" class="cb-nav-cta">Buy / Sell Now</a>
+    <a href="index.html#widget" class="cb-nav-cta">Buy / Sell Now</a>
     <button class="cb-ham" id="cbHamBtn" onclick="cbToggleNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 <div id="cbNavMenu">
-  <a href="../prices.html">Game values</a>
-  <a href="../index.html#how">How it works</a>
-  <a href="../faq.html">FAQ</a>
-  <a href="../blog/index.html">Blog</a>
-  <a href="../meetup.html">Safe meetup</a>
-  <a href="../status.html">Check trade status</a>
+  <a href="prices.html">Game values</a>
+  <a href="index.html#how">How it works</a>
+  <a href="faq.html">FAQ</a>
+  <a href="blog/index.html">Blog</a>
+  <a href="meetup.html">Safe meetup</a>
+  <a href="status.html">Check trade status</a>
   <hr>
-  <a href="../login.html" class="cb-menu-signin">Sign in</a>
-  <a href="../index.html#widget" class="cb-menu-cta">Buy / Sell Now</a>
+  <a href="login.html" class="cb-menu-signin">Sign in</a>
+  <a href="index.html#widget" class="cb-menu-cta">Buy / Sell Now</a>
 </div>
 <script>
-function cbToggleNav(){
-  document.getElementById('cbNavMenu').classList.toggle('open');
-}
+function cbToggleNav(){document.getElementById('cbNavMenu').classList.toggle('open');}
 document.addEventListener('click',function(e){
-  var m=document.getElementById('cbNavMenu');
-  var b=document.getElementById('cbHamBtn');
+  var m=document.getElementById('cbNavMenu');var b=document.getElementById('cbHamBtn');
   if(m&&m.classList.contains('open')&&!m.contains(e.target)&&b&&!b.contains(e.target)){
-    m.classList.remove('open');
-  }
+    m.classList.remove('open');}
 });
 </script>
 <main>
@@ -294,18 +278,18 @@ document.addEventListener('click',function(e){
   
   <div class="section">
     <h2>The Snoo Problem (And Why It's Everywhere)</h2>
-    <p>For the uninitiated: the Snoo is a bassinet that costs around $1,600 new. It's excellent. It's also something your kid will use for approximately four months before they age out of it entirely. When my twins were born, I bought two of them.</p><p>Before I pulled that trigger, I spent weeks building confidence in the secondary market. What do Snoos sell for used? How fast do they move? What condition affects the price? What are the common friction points - are sellers getting lowballed, are buyers getting burned? Is there a time of year when supply is high and prices drop?</p><p>I did all of this research because I needed to know - with high confidence - that I could recoup a meaningful portion of that cost when we were done. The resale value wasn't a nice-to-have. It was part of the purchase decision.</p><p>Here's what struck me afterward: I have over ten years of eCommerce experience. I understand marketplaces, pricing dynamics, and how buyers and sellers behave. And even I found the research exhausting and the eventual selling process frustrating. What is someone without that background supposed to do?</p>
+    <p>For the uninitiated: the Snoo is a bassinet that costs around $1,200 new. It's excellent. It's also something your kid will use for approximately four months before they age out of it entirely. When my twins were born, I bought two of them.</p><p>Before I pulled that trigger, I spent weeks building confidence in the secondary market. What do Snoos sell for used? How fast do they move? What condition affects the price? What are the common friction points - are sellers getting lowballed, are buyers getting burned? Is there a time of year when supply is high and prices drop?</p><p>I did all of this research because I needed to know - with high confidence - that I could recoup a meaningful portion of that cost when we were done. The resale value wasn't a nice-to-have. It was part of the purchase decision - a bet that there would be demand later, once my kids outgrew them.</p><p>The bet paid off. I found buyers for both bassinets. But getting there meant weeks of inbox-babysitting, message threads that went nowhere, and enough wasted time and hassle that the win felt smaller than it should have. Here's what struck me afterward: I have over ten years of eCommerce experience. I understand marketplaces, pricing dynamics, and how buyers and sellers behave. And even I found the research exhausting and the eventual selling process frustrating. What is someone without that background supposed to do?</p><p>The fix seemed obvious in hindsight: what if the buyer was already locked in <em>before</em> I needed to sell? What if the price was agreed on before either of us ever opened an inbox? That's the whole idea behind CartridgeBond - know what you'll get back before you buy, so the bet isn't a bet anymore, and the selling part never turns into a second job.</p>
   </div>
   <div class="section">
     <h2>The Idea Behind CartridgeBond</h2>
-    <p>I've lived in Milwaukee for over a decade. I grew up in Sheboygan, went to UW-Whitewater, built a career in eCommerce merchandising and marketing, and became - unexpectedly - a twin dad who suddenly had a very personal relationship with the secondary market.</p><p>The pattern I kept seeing, whether it was the Snoo or a stroller or a Nintendo Switch game: people were leaving money on the table, spending way too much time on the transaction, and still ending up in sketchy meetup situations with strangers who showed up offering less than agreed.</p><p>The root cause was always the same: <strong>the terms weren't locked before anyone moved.</strong> You post a listing, you DM back and forth, you agree on $43, and then someone shows up with $35 and an excuse. The negotiation happens at the worst possible time - when you've already driven somewhere and you don't want to leave empty-handed.</p><p>CartridgeBond is built to fix that. We lock price and condition before anyone moves. Then we match buyers and sellers locally and let them complete a transaction that's already been decided.</p>
+    <p>I've lived in Milwaukee for over a decade. I grew up in Sheboygan, went to UW-Whitewater, built a career in eCommerce merchandising and marketing, and became - unexpectedly - a twin dad who suddenly had a very personal relationship with the secondary market.</p><p>The pattern I kept seeing, whether it was the Snoo or a stroller or a Nintendo Switch game: people were spending way more time than they should have just figuring out what something was actually worth, then grinding through a message thread full of lowball offers before anyone even agreed to meet. Even when a price got agreed on, you still didn't really know if "like new" meant the same thing to the other person that it meant to you - and once in a while, someone just didn't show up at all.</p><p>The root cause was always the same: <strong>the terms weren't locked before anyone moved, and nobody had done the pricing research for you.</strong> CartridgeBond fixes both. We do the market research so you don't have to, and price and condition are locked before anyone moves - no message-thread haggling, no condition surprises.</p><p>CartridgeBond is built to fix that. We lock price and condition before anyone moves. Then we match buyers and sellers locally and let them complete a transaction that's already been decided.</p>
   </div>
   <div class="section">
     <h2>What CartridgeBond Actually Does (And How It Works)</h2>
     <p>Here's the simple version:</p>
 <ol>
 <li><strong>You submit your game</strong> - select the title, lock in your price and condition (A1 - like new, original case included), and tell us your timeline. Takes about two minutes.</li>
-<li><strong>We find your match</strong> - a real person reviews every submission and looks for a compatible buyer or seller in your area. Usually within 24-48 hours.</li>
+<li><strong>We find your match</strong> - our auto-matcher runs every 15 minutes and pairs you with a compatible buyer or seller in your area at the same locked price. Most matches happen within 48 hours; if local supply is dry, your Bond stays open and we'll email you the moment shipping launches.</li>
 <li><strong>We connect you</strong> - once matched, we email both parties with each other's first name, general zip code, and the agreed terms. You coordinate the meetup directly.</li>
 <li><strong>You meet locally</strong> - at a coffee shop, library, or anywhere public. Inspect the game before paying. Cash changes hands. Done.</li>
 </ol>
@@ -313,15 +297,15 @@ document.addEventListener('click',function(e){
   </div>
   <div class="section">
     <h2>The Real Value Proposition: Confidence in the Transaction</h2>
-    <p>My personal mantra is simple: <strong>add value.</strong> Not just build a product - add something real to people's lives. CartridgeBond's value is confidence.</p><p>Confidence for the seller that the price they agreed to is the price they'll receive. Confidence for the buyer that the game they're getting is in the condition that was promised. Confidence for both parties that the person they're meeting is committed - not just browsing.</p><p>That confidence has a dollar value too. CartridgeBond buyers pay market-rate prices - typically 80-95% of eBay sold values, with none of the fees. Sellers keep the full amount, no platform cut during beta. Compared to GameStop trade-in, the average Milwaukee seller gets $15-25 more per game. On five games, that's a meaningful amount of money.</p>
+    <p>My personal mantra is simple: <strong>add value.</strong> Not just build a product - add something real to people's lives. CartridgeBond's value is confidence, and it shows up in a few concrete ways.</p><p>You don't have to research what something's actually worth - we've already done it, cross-referencing eBay sold listings, PriceCharting, and local activity. You don't grind through a message thread full of lowball offers - price is locked before anyone meets. You don't get a condition surprise at pickup - both sides agree to the A1 standard up front. And with The Bond, you get real peace of mind knowing you have a buyer or seller lined up ahead of time, instead of hoping one shows up when you're ready.</p><p>That confidence has a dollar value too. CartridgeBond buyers pay market-rate prices - typically 80-95% of eBay sold values, with none of the fees. Sellers keep the full amount, no platform cut during beta. Compared to GameStop trade-in, the average Milwaukee seller gets $15-25 more per game. On five games, that's a meaningful amount of money.</p>
   </div>
   <div class="section">
     <h2>Why Nintendo Switch Games First</h2>
-    <p>Switch cartridges are the perfect starting point for a local precommerce platform. They're easy to verify on the spot (plug it in, confirm it launches - takes 60 seconds). They have well-established secondary market prices. They're lightweight, easy to transport, and don't require special handling.</p><p>More importantly: in the Milwaukee and North Shore area, there's real density of both buyers and sellers. Every household with kids has Switch games they've outgrown. Every kid who got a Switch for Christmas wants the games their friends have. The supply and demand is there - it just needed a better connection layer.</p><p>We're starting with six titles and expanding based on demand. Platforms, condition tiers, and cities follow as the model proves out. Crawl, walk, run.</p>
+    <p>Switch cartridges are the perfect starting point for a local precommerce platform. They're easy to verify on the spot (plug it in, confirm it launches - takes 60 seconds). They have well-established secondary market prices. They're lightweight, easy to transport, and don't require special handling.</p><p>More importantly: in the Milwaukee and North Shore area, there's real density of both buyers and sellers. Every household with kids has Switch games they've outgrown. Every kid who got a Switch for Christmas wants the games their friends have. The supply and demand is there - it just needed a better connection layer.</p><p>We're live with nearly 30 titles today and adding more based on demand. Other platforms, condition tiers, and cities follow as the model proves out.</p>
   </div>
   <div class="section">
     <h2>What I Hope This Becomes</h2>
-    <p>The bigger vision is simple: <strong>let people experience great products they might otherwise consider out of reach, with confidence that they can sell them when they're done.</strong></p><p>That's the Snoo insight applied broadly. If you know - with real confidence, not just hope - that you can sell something for 60-70% of what you paid, the effective cost of ownership drops dramatically. A $1,600 Snoo that sells for $1,000 cost you $600 for four months of use. That math changes the purchase decision entirely.</p><p>CartridgeBond is the infrastructure that makes that confidence possible at the local level - without the platform fees, shipping risk, or negotiation chaos of the existing options.</p><p>We're in free beta in Milwaukee and the North Shore. I'd love your feedback - genuinely. What works, what doesn't, what you wish was different. This is built for you.</p><p>Keep checking back. We have some exciting things coming.</p><p style="margin-top:16px;font-size:15px;"><em>- Chip Beauford, Founder &amp; Fellow Secondary Market Researcher</em></p>
+    <p>The bigger vision is simple: <strong>let people experience great products they might otherwise consider out of reach, with confidence that they can sell them when they're done.</strong></p><p>That's the Snoo insight applied broadly. If you know - with real confidence, not just hope - that you can sell something for 60-70% of what you paid, the effective cost of ownership drops dramatically. A $1,200 Snoo that sells for $800 cost you $400 for four months of use. That math changes the purchase decision entirely.</p><p>Compare that to renting one instead: Happiest Baby's own SNOO rental runs $159 a month, plus a one-time reconditioning fee - for four months, that's close to $795 all in, and at the end you have nothing to show for it. Buying and reselling at a known price beats renting by roughly $395, and you actually own the thing while you're using it.</p><p>CartridgeBond is the infrastructure that makes that confidence possible at the local level - without the platform fees, shipping risk, or negotiation chaos of the existing options.</p><p>We're in free beta in Milwaukee and the North Shore. I'd love your feedback - genuinely. What works, what doesn't, what you wish was different. This is built for you.</p><p>Keep checking back. We have some exciting things coming.</p><p style="margin-top:16px;font-size:15px;"><em>- Chip Beauford, Founder &amp; Fellow Secondary Market Researcher</em></p>
   </div>
   <div class="section">
     <h2>Quick Reference: CartridgeBond vs The Alternatives</h2>
@@ -383,34 +367,26 @@ document.addEventListener('click',function(e){
 <footer style="background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:#6b6b6b;line-height:1.7;margin-top:0;">
   <div style="max-width:1100px;margin:0 auto;">
     <div style="display:flex;flex-direction:column;gap:32px;padding-bottom:40px;">
-      <div>
-        <div style="font-size:18px;font-weight:800;color:#0a0a0a;letter-spacing:-.03em;margin-bottom:8px;text-decoration:none;">Cartridge<span style="color:#22c55e;">Bond</span></div>
-        <div style="font-size:13px;color:#6b6b6b;line-height:1.6;max-width:260px;">The future of Nintendo Switch game resale. Beta in Milwaukee. National soon.</div>
-      </div>
+      <div><div style="font-size:18px;font-weight:800;color:#0a0a0a;letter-spacing:-.03em;margin-bottom:8px;">Cartridge<span style="color:#22c55e;">Bond</span></div>
+      <div style="font-size:13px;color:#6b6b6b;line-height:1.6;max-width:260px;">The future of Nintendo Switch game resale. Beta in Milwaukee. National soon.</div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
-        <div>
-          <div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Explore</div>
-          <a href="../index.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Home</a>
-          <a href="../prices.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Game values</a>
-          <a href="../faq.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">FAQ</a>
-          <a href="../blog/index.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Blog</a>
-          <a href="../meetup.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Safe meetup</a>
-          <a href="../login.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Sign in</a>
-        </div>
-        <div>
-          <div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Top games</div>
-          <a href="../value/zelda-tears-of-the-kingdom.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Zelda: TOTK</a>
-          <a href="../value/mario-kart-8-deluxe.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Mario Kart 8</a>
-          <a href="../value/super-smash-bros-ultimate.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Smash Ultimate</a>
-          <a href="../value/animal-crossing-new-horizons.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Animal Crossing</a>
-          <a href="../value/pokemon-scarlet.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Pokemon Scarlet</a>
-        </div>
-        <div>
-          <div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Company</div>
-          <a href="../terms.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Terms</a>
-          <a href="../privacy.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Privacy</a>
-          <a href="mailto:cartridgebond@gmail.com" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Contact</a>
-        </div>
+        <div><div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Explore</div>
+          <a href="index.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Home</a>
+          <a href="prices.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Game values</a>
+          <a href="faq.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">FAQ</a>
+          <a href="blog/index.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Blog</a>
+          <a href="meetup.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Safe meetup</a>
+          <a href="login.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Sign in</a></div>
+        <div><div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Top games</div>
+          <a href="value/zelda-tears-of-the-kingdom.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Zelda: TOTK</a>
+          <a href="value/mario-kart-8-deluxe.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Mario Kart 8</a>
+          <a href="value/super-smash-bros-ultimate.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Smash Ultimate</a>
+          <a href="value/animal-crossing-new-horizons.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Animal Crossing</a>
+          <a href="value/pokemon-scarlet.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Pokemon Scarlet</a></div>
+        <div><div style="font-size:10.5px;font-weight:700;color:#0a0a0a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Company</div>
+          <a href="terms.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Terms</a>
+          <a href="privacy.html" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Privacy</a>
+          <a href="mailto:cartridgebond@gmail.com" style="display:block;color:#6b6b6b;margin-bottom:9px;text-decoration:none;">Contact</a></div>
       </div>
     </div>
     <div style="border-top:1px solid rgba(0,0,0,.1);padding:18px 0 32px;color:#9a9a9a;font-size:12px;">&copy; 2026 CartridgeBond. A connection platform only - not a party to any transaction. Not affiliated with Nintendo, GameStop, eBay, or Facebook.</div>
@@ -418,7 +394,7 @@ document.addEventListener('click',function(e){
 </footer>
 
 <script>
-/* toggleMenu replaced by cbToggleNav */
+/* replaced by cbToggleNav */
 document.addEventListener('click',function(e){var m=document.getElementById('navMenu'),b=document.getElementById('menuBtn');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target))m.classList.remove('open');});
 </script>
 
