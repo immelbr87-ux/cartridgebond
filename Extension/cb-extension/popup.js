@@ -1,5 +1,5 @@
 // CartridgeBond Extension Popup
-const CB_SITE = 'https://cartridgebond.com';
+const CB_SITE = 'https://www.cartridgebond.com';
 
 chrome.storage.local.get(['cb_detected'], ({ cb_detected }) => {
   const detected = document.getElementById('detected-game');

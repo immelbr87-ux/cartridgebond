@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 const CB_API_GS  = 'https://script.google.com/macros/s/AKfycbybpmlpe6PtFsotY0iQ9CCCiYgsqJ8tyyLFib0pkqd8uyVKazgoyLiybfQZYmvC-xMd/exec';
-const CB_SITE_GS = 'https://cartridgebond.com';
+const CB_SITE_GS = 'https://www.cartridgebond.com';
 
 const GS_GAMES = [
   { keys: ['mario kart 8'],                        title: 'Mario Kart 8 Deluxe',     price: 43, gsPrice: 18 },

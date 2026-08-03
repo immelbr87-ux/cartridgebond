@@ -13,7 +13,7 @@ var CB_CONFIG = {
   dataUrl: 'PASTE_YOUR_BUYERFEED_WEBAPP_URL_HERE',
 
   // CartridgeBond site URL — links in the badge point here
-  siteUrl: 'https://cartridgebond.com',
+  siteUrl: 'https://www.cartridgebond.com',
 
   // How long to cache the buyer feed (milliseconds) — 15 minutes
   cacheMs: 15 * 60 * 1000,

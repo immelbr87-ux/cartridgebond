@@ -2,7 +2,7 @@ function buildPill(game, buyers, sellers, bestBuyerTimeline, bestBuyerDays) {
   const isSell  = buyers > 0;
   const isBuy   = sellers > 0 && !isSell;
   const isEmpty = !buyers && !sellers;
-  const CB_SITE_LOCAL = 'https://cartridgebond.com';
+  const CB_SITE_LOCAL = 'https://www.cartridgebond.com';
   const sellUrl = `${CB_SITE_LOCAL}/index.html?game=${encodeURIComponent(game.title)}&mode=sell#widget`;
   const buyUrl  = `${CB_SITE_LOCAL}/index.html?game=${encodeURIComponent(game.title)}&mode=buy#widget`;
 
@@ -70,8 +70,8 @@ function buildPill(game, buyers, sellers, bestBuyerTimeline, bestBuyerDays) {
 function buildExpandCard(game, mode, buyerTimeline, buyerDays) {
   const isBuy       = mode === 'buy';
   const hasMatch    = !!buyerTimeline; // true when real buyers are waiting
-  const sellUrl     = `https://cartridgebond.com/index.html?game=${encodeURIComponent(game.title)}&mode=sell#widget`;
-  const buyUrl      = `https://cartridgebond.com/index.html?game=${encodeURIComponent(game.title)}&mode=buy#widget`;
+  const sellUrl     = `https://www.cartridgebond.com/index.html?game=${encodeURIComponent(game.title)}&mode=sell#widget`;
+  const buyUrl      = `https://www.cartridgebond.com/index.html?game=${encodeURIComponent(game.title)}&mode=buy#widget`;
   const cardCls     = isBuy ? 'cb-expand-card blue' : 'cb-expand-card';
   const lockCls     = isBuy ? 'cbx-lock-btn blue'   : 'cbx-lock-btn';
   const ctaUrl      = isBuy ? buyUrl : sellUrl;
@@ -121,7 +121,7 @@ function buildExpandCard(game, mode, buyerTimeline, buyerDays) {
           </button>
         </div>
         <div class="cbx-footer">
-          <a href="https://cartridgebond.com" target="_blank">cartridgebond.com &nbsp;·&nbsp; Cartridge<em>Bond</em></a>
+          <a href="https://www.cartridgebond.com" target="_blank">cartridgebond.com &nbsp;·&nbsp; Cartridge<em>Bond</em></a>
         </div>
       </div>`;
   }
@@ -165,7 +165,7 @@ function buildExpandCard(game, mode, buyerTimeline, buyerDays) {
         </button>
       </div>
       <div class="cbx-footer">
-        <a href="https://cartridgebond.com" target="_blank">cartridgebond.com &nbsp;·&nbsp; Cartridge<em>Bond</em></a>
+        <a href="https://www.cartridgebond.com" target="_blank">cartridgebond.com &nbsp;·&nbsp; Cartridge<em>Bond</em></a>
       </div>
     </div>`;
 }
@@ -190,7 +190,7 @@ function cbCollapseCard() {
 // CartridgeBond — Amazon content script
 
 const CB_API  = 'https://script.google.com/macros/s/AKfycbybpmlpe6PtFsotY0iQ9CCCiYgsqJ8tyyLFib0pkqd8uyVKazgoyLiybfQZYmvC-xMd/exec';
-const CB_SITE = 'https://cartridgebond.com';
+const CB_SITE = 'https://www.cartridgebond.com';
 
 const CB_GAMES = [
   { keys:['mario kart 8'],                         title:'Mario Kart 8 Deluxe',     price:43 },
