@@ -184,6 +184,7 @@ function lookupSubmissionsByEmail(email) {
   for (var i = 1; i < rows.length; i++) {
     if (String(rows[i][COL.email-1]||'').toLowerCase().trim() !== email) continue;
     found.push({
+      rowNum:        i + 1,
       date:          rows[i][COL.timestamp-1] ? new Date(rows[i][COL.timestamp-1]).toLocaleDateString() : '',
       role:          String(rows[i][COL.role-1]      || ''),
       game:          String(rows[i][COL.game-1]      || ''),
@@ -218,6 +219,9 @@ function doPost(e) {
     // ── Rating actions ─────────────────────────────────────────────────────
     if (data.action === 'getTradeForRating')  return getTradeForRating(data.token);
     if (data.action === 'submitRating')       return submitRating(data);
+
+    // ── Cancel a bond (authenticated) ──────────────────────────────────────
+    if (data.action === 'cancelBond')         return cancelBond(data);
 
     // ── My bonds (authenticated) ───────────────────────────────────────────
     if (data.action === 'getMyBonds') {
@@ -355,12 +359,15 @@ function handleSubmission(data) {
 // ════════════════════════════════════════════════════════════════════════════
 //  AUTO-MATCHING
 // ════════════════════════════════════════════════════════════════════════════
-function tryAutoMatch(sheet, newRowNum, newData, newPrice) {
+function tryAutoMatch(sheet, newRowNum, newData, newPrice, opts) {
+  opts = opts || {};
+  var priorityBoost = opts.priorityBoost || 0;
+  var isRematch = !!opts.isRematch;
   var rows = sheet.getDataRange().getValues();
   var newRole = String(newData.role || '').toLowerCase();
   var isSeller = newRole.indexOf('sell') !== -1;
   var isBuyer = newRole.indexOf('buy') !== -1;
-  if (!isSeller && !isBuyer) return;
+  if (!isSeller && !isBuyer) return false;
 
   var newGame = normalizeGame(newData.game);
   var newZip = String(newData.zip || '').replace(/\D/g, '').substring(0, 5);
@@ -403,7 +410,7 @@ function tryAutoMatch(sheet, newRowNum, newData, newPrice) {
       continue;
     }
 
-    var score = scoreMatch(newZip, rZip, newCond, rCond, sellPr, buyPr, rTime, rRating, rReviews, i);
+    var score = scoreMatch(newZip, rZip, newCond, rCond, sellPr, buyPr, rTime, rRating, rReviews, i) + priorityBoost;
     candidates.push({ rowNum: rNum, score: score, rowData: rows[i], email: rEmail, price: sellPr });
   }
 
@@ -415,13 +422,13 @@ function tryAutoMatch(sheet, newRowNum, newData, newPrice) {
 
   if (!candidates.length) {
     Logger.log('No local candidates for row ' + newRowNum + ' (distant candidates: ' + distantCandidatesCount + ')');
-    return;
+    return false;
   }
   candidates.sort(function(a, b) { return b.score - a.score; });
   var best = candidates[0];
   if (best.score < 20) {
     Logger.log('No quality match (best score: ' + best.score + ')');
-    return;
+    return false;
   }
 
   // Lock the match
@@ -461,13 +468,14 @@ function tryAutoMatch(sheet, newRowNum, newData, newPrice) {
   };
 
   try {
-    sendEmail(p1.email, subjectLine('Match found', p1.game), buildMatchHtml(p1, p2));
+    sendEmail(p1.email, subjectLine(isRematch ? 'New match found' : 'Match found', p1.game),
+      isRematch ? buildRematchFoundHtml(p1, p2) : buildMatchHtml(p1, p2));
     sendEmail(p2.email, subjectLine('Match found', p2.game), buildMatchHtml(p2, p1));
     sheet.getRange(newRowNum, COL.matchEmailSent).setValue(matchedAt);
     sheet.getRange(best.rowNum, COL.matchEmailSent).setValue(matchedAt);
 
     GmailApp.sendEmail(CONFIG.adminEmail,
-      '[CB] AUTO-MATCH #' + tradeNum + ' - ' + p1.game + ' - $' + best.price,
+      '[CB] ' + (isRematch ? 'REMATCH' : 'AUTO-MATCH') + ' #' + tradeNum + ' - ' + p1.game + ' - $' + best.price,
       'Trade #' + tradeNum + '\n' + p1.name + ' <' + p1.email + '> (' + p1.role + ')' +
       '\n  matched with\n' + p2.name + ' <' + p2.email + '> (' + p2.role + ')' +
       '\nGame: ' + p1.game + '\nPrice: $' + best.price + '\nScore: ' + best.score +
@@ -476,6 +484,7 @@ function tryAutoMatch(sheet, newRowNum, newData, newPrice) {
 
     Logger.log('MATCH Trade#' + tradeNum + ' rows ' + newRowNum + '<->' + best.rowNum + ' score=' + best.score);
   } catch(err) { Logger.log('Match email error: ' + err); }
+  return true;
 }
 
 function scoreMatch(z1, z2, c1, c2, sellPr, buyPr, timeline, rating, reviewCount, rowIdx) {
@@ -522,6 +531,134 @@ function scheduledMatchSweep() {
     if (!d.email || !d.game || !d.role) continue;
     tryAutoMatch(sheet, i + 1, d, pr);
     Utilities.sleep(400); // gentle rate limit
+  }
+}
+
+
+// ════════════════════════════════════════════════════════════════════════════
+//  CANCEL BOND + REMATCH
+// ════════════════════════════════════════════════════════════════════════════
+function cancelBond(data) {
+  var session = validateToken(data.token || '');
+  if (!session) return respond({ ok: false, error: 'invalid_session' });
+
+  var rowNum = parseInt(data.bondId, 10);
+  var sheet = getSheet(CONFIG.sheetName);
+  var lastRow = sheet.getLastRow();
+  if (!rowNum || rowNum < 2 || rowNum > lastRow) {
+    return respond({ ok: false, error: 'invalid_bond' });
+  }
+
+  var rowVals = sheet.getRange(rowNum, 1, 1, TOTAL_COLS).getValues()[0];
+  var rowEmail = String(rowVals[COL.email-1] || '').trim().toLowerCase();
+  if (rowEmail !== session) return respond({ ok: false, error: 'not_yours' });
+
+  var status = String(rowVals[COL.status-1] || '').toLowerCase();
+  if (status === 'canceled') return respond({ ok: false, error: 'already_canceled' });
+  if (status === 'completed') return respond({ ok: false, error: 'already_completed' });
+
+  var wasMatched = status === 'matched';
+  var matchedRowNum = parseInt(rowVals[COL.matchedRow-1], 10) || 0;
+  var game = String(rowVals[COL.game-1] || '');
+
+  sheet.getRange(rowNum, COL.status).setValue('Canceled');
+
+  try { logCancellationPenalty(rowEmail, wasMatched); }
+  catch(err) { Logger.log('Penalty log failed: ' + err); }
+
+  try {
+    var fn = String(rowVals[COL.name-1] || getNameForEmail(rowEmail)).trim().split(' ')[0] || 'there';
+    sendEmail(rowEmail, subjectLine('Bond canceled', game), buildCanceledHtml(fn, game, wasMatched));
+  } catch(err) { Logger.log('Cancel email failed: ' + err); }
+
+  // If this bond had a live match, free up the partner and try to re-queue them
+  if (wasMatched && matchedRowNum && matchedRowNum <= lastRow) {
+    try {
+      sheet.getRange(matchedRowNum, COL.status).setValue('Active');
+      sheet.getRange(matchedRowNum, COL.matchedRow).setValue('');
+      sheet.getRange(matchedRowNum, COL.matchedEmail).setValue('');
+      sheet.getRange(matchedRowNum, COL.matchedAt).setValue('');
+      sheet.getRange(matchedRowNum, COL.matchEmailSent).setValue('');
+      checkForRematch(sheet, matchedRowNum);
+    } catch(err) { Logger.log('Rematch trigger failed: ' + err); }
+  }
+
+  try {
+    GmailApp.sendEmail(CONFIG.adminEmail,
+      '[CB] Bond canceled - row ' + rowNum + (wasMatched ? ' (WAS MATCHED - partner re-queued)' : ''),
+      'Email: ' + rowEmail + '\nGame: ' + game + '\nWas matched: ' + wasMatched,
+      { replyTo: CONFIG.adminEmail });
+  } catch(err) { Logger.log('Admin cancel notice failed: ' + err); }
+
+  return respond({ ok: true });
+}
+
+// Re-run matching for someone whose match just canceled on them. They get a
+// priority boost (not their fault they're back in the pool) and a different
+// email depending on whether a new match was found right away.
+function checkForRematch(sheet, orphanRowNum) {
+  var rowVals = sheet.getRange(orphanRowNum, 1, 1, TOTAL_COLS).getValues()[0];
+  var d = {
+    name:      String(rowVals[COL.name-1] || ''),
+    email:     String(rowVals[COL.email-1] || ''),
+    role:      String(rowVals[COL.role-1] || ''),
+    game:      String(rowVals[COL.game-1] || ''),
+    zip:       String(rowVals[COL.zip-1] || ''),
+    condition: String(rowVals[COL.condition-1] || 'A1'),
+    timeline:  String(rowVals[COL.timeline-1] || '')
+  };
+  var price = parseFloat(String(rowVals[COL.price-1] || '0')) || 0;
+  if (!d.email || !d.game || !d.role) return;
+
+  var boost = calculatePriorityScore(orphanRowNum, sheet);
+  var found = tryAutoMatch(sheet, orphanRowNum, d, price, { priorityBoost: boost, isRematch: true });
+
+  if (!found) {
+    try {
+      var fn = String(d.name || '').trim().split(' ')[0] || 'there';
+      sendEmail(d.email, subjectLine('Still searching', d.game), buildNoRematchHtml(fn, d.game));
+    } catch(err) { Logger.log('No-rematch email failed: ' + err); }
+  }
+}
+
+// Boost for someone re-entering the pool through no fault of their own.
+// Grows slightly the longer they've been waiting overall, capped so it
+// can't completely override real geography/price/condition fit.
+function calculatePriorityScore(rowNum, sheet) {
+  var rowVals = sheet.getRange(rowNum, 1, 1, TOTAL_COLS).getValues()[0];
+  var submitted = rowVals[COL.timestamp-1];
+  var boost = 15; // baseline: dropped by someone else's cancellation
+  if (submitted) {
+    var days = Math.floor((new Date() - new Date(submitted)) / 86400000);
+    boost += Math.min(15, Math.max(0, days));
+  }
+  return boost;
+}
+
+// Tracks cancellations per email so repeat offenders (especially ones who
+// cancel after being matched, stranding a partner) can be flagged.
+function logCancellationPenalty(email, wasMatched) {
+  var sheet = getSheet('CancellationLog');
+  if (!sheet.getRange(1, 1).getValue()) {
+    sheet.getRange(1, 1, 1, 3).setValues([['Timestamp', 'Email', 'Note']]);
+    sheet.getRange(1, 1, 1, 3).setFontWeight('bold').setBackground('#0a1f12').setFontColor('#22c55e');
+    sheet.setFrozenRows(1);
+  }
+  sheet.appendRow([new Date(), email, wasMatched ? 'Matched (stranded partner)' : 'Active (no impact)']);
+
+  var rows = sheet.getDataRange().getValues();
+  var cutoff = new Date(Date.now() - 30 * 86400000);
+  var count = 0;
+  for (var i = 1; i < rows.length; i++) {
+    if (String(rows[i][1] || '').toLowerCase().trim() === email && new Date(rows[i][0]) >= cutoff) count++;
+  }
+  if (count >= 3) {
+    try {
+      GmailApp.sendEmail(CONFIG.adminEmail,
+        '[CB] Repeat canceler flagged - ' + email,
+        email + ' has canceled ' + count + ' bonds in the last 30 days.',
+        { replyTo: CONFIG.adminEmail });
+    } catch(err) { Logger.log('Repeat-canceler alert failed: ' + err); }
   }
 }
 
@@ -769,6 +906,59 @@ function buildRatingReceivedHtml(fn, avg, data) {
       ? 'Consistent ratings above 4.5 unlock your <strong>Trusted Trader</strong> badge and improve your match position.'
       : 'Reply to this email if you think this review was unfair and we will look into it.') +
     ctaButton('View Your Profile', CONFIG.portalUrl) + learnMore()
+  );
+}
+
+
+function buildCanceledHtml(fn, game, wasMatched) {
+  return emailWrap('Bond canceled', 'This listing is now closed.',
+    section('Hey ' + esc(fn) + ' - your Bond for ' + esc(game) + ' has been canceled.') +
+    para(wasMatched
+      ? 'This Bond was already matched with another trader. We have let them know and are searching for a new match on their behalf - no action needed from you.'
+      : 'This listing is now closed and will no longer be considered for matching.') +
+    para('Changed your mind? You can submit a new listing any time from the homepage.') +
+    ctaButton('Start a New Bond', CONFIG.siteUrl) + learnMore()
+  );
+}
+
+function buildRematchFoundHtml(me, them) {
+  var isSeller = String(me.role || '').toLowerCase().indexOf('sell') !== -1;
+  var agreedPrice = Math.min(me.price || 999, them.price || 999);
+  var theirFirst = esc(String(them.name || '').split(' ')[0] || 'Your new match');
+  var myFirst = esc(String(me.name || '').split(' ')[0] || 'there');
+  return emailWrap(
+    'New match found',
+    'Your previous match fell through - good news, we found you another.',
+    section('Good news, ' + myFirst + '.') +
+    para('Your previous match for <strong>' + esc(me.game) + '</strong> canceled their Bond, so we went back to work right away. ' +
+      theirFirst + ' is ' + (isSeller ? 'ready to buy your copy' : 'a verified seller with a copy in the right condition') +
+      ' at your locked price. Reach out within 24 hours to lock in the meetup.') +
+    detailCard([
+      ['Game', esc(me.game)],
+      ['Agreed price', '$' + agreedPrice],
+      ['Condition', isSeller ? esc(them.condition || 'A1') + ' expected' : esc(them.condition || 'A1') + ' - as listed'],
+      [isSeller ? 'Buyer' : 'Seller', esc(them.name)],
+      ['Their email', '<a href="mailto:' + esc(them.email) + '" style="color:#16a34a;">' + esc(them.email) + '</a>'],
+      ['Their zip', esc(them.zip || '-')]
+    ], 'green') +
+    ctaButton('Email ' + theirFirst + ' Now', 'mailto:' + esc(them.email)) +
+    divider() +
+    steps([
+      'Email ' + theirFirst + ' at ' + esc(them.email) + ' to say hello and propose a meetup time.',
+      'Choose a public location - library lobby, Target, Starbucks, or police station community room.',
+      isSeller ? 'Bring the game in its described condition. Buyer inspects before paying.'
+               : 'Bring exact payment. Inspect the game before you pay.',
+      'Once done, reply to this email to confirm. Both of you will be prompted to rate each other.'
+    ]) + safety() + (me.founder ? founderCelebration(me.founder, me.tradeNum) : '') + learnMore()
+  );
+}
+
+function buildNoRematchHtml(fn, game) {
+  return emailWrap('Still searching', 'Your previous match fell through - your Bond is active again.',
+    section('Hey ' + esc(fn) + ' - your match for ' + esc(game) + ' canceled.') +
+    para("This wasn't anything you did - the other trader backed out of their Bond. Your listing is active again and now gets priority placement against new submissions, so you'll typically hear back faster than a first-time listing.") +
+    para('No action needed. We will email you the moment a new match is found.') +
+    learnMore()
   );
 }
 

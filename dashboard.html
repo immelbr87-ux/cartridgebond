@@ -883,7 +883,7 @@ function cancelBondRequest(b, idx) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       action: 'cancelBond',
-      token: localStorage.getItem('cb_token'),
+      token: localStorage.getItem('bond_token'),
       bondId: b.id || b.rowNum || idx
     })
   })
