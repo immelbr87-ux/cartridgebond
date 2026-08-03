@@ -179,6 +179,28 @@ function doGet(e) {
       remaining: Math.max(0, CONFIG.founderCount - filled)
     });
   }
+  if (action === 'gameStatus') {
+    var gameParam = String(e.parameter.game || '').trim().toLowerCase();
+    if (!gameParam) return respond({ ok: false, error: 'missing_game' });
+
+    var gsSheet = getSheet(CONFIG.sheetName);
+    var gsRows = gsSheet.getDataRange().getValues();
+    var buyerCount = 0, sellerCount = 0;
+
+    for (var gi = 1; gi < gsRows.length; gi++) {
+      var gStatus = String(gsRows[gi][COL.status-1] || '').toLowerCase();
+      if (gStatus !== 'active') continue;
+
+      var gGame = String(gsRows[gi][COL.game-1] || '').trim().toLowerCase();
+      if (gGame !== gameParam) continue;
+
+      var gRole = String(gsRows[gi][COL.role-1] || '').toLowerCase();
+      if (gRole.indexOf('buy') !== -1) buyerCount++;
+      else if (gRole.indexOf('sell') !== -1) sellerCount++;
+    }
+
+    return respond({ ok: true, buyers: buyerCount, sellers: sellerCount });
+  }
   return respond({ status: 'CartridgeBond API', version: CONFIG.apiVersion });
 }
 
