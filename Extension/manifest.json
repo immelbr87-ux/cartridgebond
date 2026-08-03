@@ -1,45 +1,107 @@
 {
   "manifest_version": 3,
-  "name": "CartridgeBond — Local Switch Game Deals",
+  "name": "CartridgeBond \u2014 Resale Value",
+  "short_name": "CartridgeBond",
+  "description": "See locked resale prices for Nintendo Switch games while you shop. Someone may already be waiting.",
   "version": "1.0.0",
-  "description": "See if someone near you in Milwaukee wants to buy or sell this Nintendo Switch game on CartridgeBond — before you pay retail.",
-
-  "permissions": [
-    "storage"
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.amazon.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.gamestop.com/*"
+      ],
+      "js": [
+        "gamestop.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.bestbuy.com/*"
+      ],
+      "js": [
+        "bestbuy.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.target.com/*"
+      ],
+      "js": [
+        "target.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.walmart.com/*"
+      ],
+      "js": [
+        "walmart.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle"
+    }
   ],
-
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
   "host_permissions": [
     "https://www.amazon.com/*",
     "https://www.gamestop.com/*",
     "https://www.bestbuy.com/*",
     "https://www.target.com/*",
-    "https://www.walmart.com/*"
+    "https://www.walmart.com/*",
+    "https://script.google.com/*"
   ],
-
-  "content_scripts": [
+  "web_accessible_resources": [
     {
-      "matches": [
-        "https://www.amazon.com/*/dp/*",
-        "https://www.amazon.com/dp/*",
-        "https://www.gamestop.com/*.html",
-        "https://www.bestbuy.com/site/*",
-        "https://www.target.com/p/*",
-        "https://www.walmart.com/ip/*"
+      "resources": [
+        "welcome.html"
       ],
-      "js": ["content.js"],
-      "css": ["badge.css"],
-      "run_at": "document_idle"
+      "matches": [
+        "<all_urls>"
+      ]
     }
-  ],
-
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "CartridgeBond"
-  },
-
-  "icons": {
-    "16":  "icons/icon16.png",
-    "48":  "icons/icon48.png",
-    "128": "icons/icon128.png"
-  }
+  ]
 }

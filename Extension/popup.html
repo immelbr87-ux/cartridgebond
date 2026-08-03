@@ -2,115 +2,129 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CartridgeBond</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    width: 280px;
-    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-    background: #0d2318;
-    color: white;
-    min-height: 180px;
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  background:#ffffff;color:#0a0a0a;
+  -webkit-font-smoothing:antialiased;
+  width:300px;min-height:200px;
+}
+.header{
+  background:#0a1a0e;padding:16px 18px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{font-size:15px;font-weight:800;letter-spacing:-.03em;color:#fff;}
+.brand span{color:#22c55e;}
+.live-badge{
+  display:flex;align-items:center;gap:5px;
+  font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 
-  .header {
-    padding: 16px 16px 12px;
-    border-bottom: 1px solid rgba(34,197,94,0.2);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(34,197,94,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.07) 1px,transparent 1px);
-    background-size: 20px 20px;
-    pointer-events: none;
-  }
-  .brand {
-    font-size: 15px;
-    font-weight: 800;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    position: relative;
-  }
-  .brand .bond { color: #22c55e; }
-  .tagline {
-    font-size: 10px;
-    color: rgba(255,255,255,0.4);
-    letter-spacing: .06em;
-    margin-top: 3px;
-    position: relative;
-  }
+.body{padding:16px 18px;}
 
-  .body { padding: 14px 16px; }
+/* Detected game card */
+#detected-game{display:none;}
+#detected-game .game-name{font-size:14px;font-weight:700;color:#0a0a0a;letter-spacing:-.02em;margin-bottom:4px;}
+#detected-game .game-price{
+  font-size:11px;color:#6b6b6b;margin-bottom:14px;
+}
+#detected-game .game-price strong{color:#16a34a;}
 
-  .status {
-    font-size: 12px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.6;
-    margin-bottom: 14px;
-    text-align: center;
-  }
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.stat{background:#f5f5f5;border-radius:10px;padding:10px 12px;}
+.stat-num{font-size:22px;font-weight:800;letter-spacing:-.04em;color:#0a0a0a;line-height:1;}
+.stat-num.green{color:#16a34a;}
+.stat-num.blue{color:#2563eb;}
+.stat-label{font-size:10px;color:#9a9a9a;margin-top:3px;font-weight:500;}
 
-  .status .highlight {
-    color: #22c55e;
-    font-weight: 700;
-  }
+.btn-row{display:flex;gap:8px;}
+.btn{
+  flex:1;padding:10px 12px;border-radius:100px;border:none;
+  font-size:13px;font-weight:700;cursor:pointer;text-align:center;
+  text-decoration:none;display:flex;align-items:center;justify-content:center;
+  letter-spacing:-.01em;transition:opacity .15s;
+}
+.btn:hover{opacity:.85;}
+.btn-sell{background:#22c55e;color:#fff;}
+.btn-buy{background:#f0f0ee;color:#0a0a0a;}
 
-  .btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background: #16a34a;
-    color: white;
-    text-decoration: none;
-    border-radius: 7px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 8px;
-    transition: background 0.15s;
-  }
-  .btn:hover { background: #14532d; }
-  .btn-outline {
-    background: transparent;
-    border: 1.5px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.6);
-  }
-  .btn-outline:hover { border-color: rgba(255,255,255,0.35); background: transparent; color: white; }
+/* No game detected */
+#no-game{text-align:center;padding:24px 0;}
+#no-game .icon{font-size:32px;margin-bottom:10px;}
+#no-game p{font-size:13px;color:#6b6b6b;line-height:1.5;margin-bottom:14px;}
+#no-game a{
+  display:inline-block;background:#22c55e;color:#fff;
+  font-size:12px;font-weight:700;padding:9px 18px;
+  border-radius:100px;text-decoration:none;
+}
 
-  .footer {
-    padding: 10px 16px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    font-size: 10px;
-    color: rgba(255,255,255,0.2);
-    text-align: center;
-  }
+.footer{
+  border-top:1px solid #f0f0ee;padding:10px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer a{font-size:11px;color:#9a9a9a;text-decoration:none;}
+.footer a:hover{color:#22c55e;}
+.footer-links{display:flex;gap:12px;}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="brand"><strong>Cartridge</strong><span class="bond"><strong>Bond</strong></span></div>
-  <div class="tagline">Local Nintendo Switch Game Trades — Milwaukee, WI</div>
+  <div class="brand">Cartridge<span>Bond</span></div>
+  <div class="live-badge">
+    <div class="live-dot"></div>
+    Live prices
+  </div>
 </div>
 
 <div class="body">
-  <div class="status" id="status">
-    Browse any Nintendo Switch game on Amazon, GameStop, Best Buy, Target, or Walmart to see if a local buyer or seller is waiting on CartridgeBond.
+
+  <!-- Detected game view -->
+  <div id="detected-game">
+    <div class="game-name" id="popup-game-name">Loading...</div>
+    <div class="game-price">Locked resale price: <strong id="popup-price">$--</strong></div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num green" id="popup-buyers">--</div>
+        <div class="stat-label">Buyers waiting</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num blue" id="popup-sellers">--</div>
+        <div class="stat-label">Sellers ready</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn btn-sell" id="popup-sell-btn" href="#" target="_blank">Sell this game</a>
+      <a class="btn btn-buy"  id="popup-buy-btn"  href="#" target="_blank">Buy this game</a>
+    </div>
   </div>
-  <a href="https://www.cartridgebond.com" target="_blank" class="btn">Go to CartridgeBond</a>
-  <a href="https://www.cartridgebond.com/prices.html" target="_blank" class="btn btn-outline">See Price Guide</a>
+
+  <!-- No game detected view -->
+  <div id="no-game">
+    <div class="icon">🎮</div>
+    <p>Browse a Nintendo Switch game on Amazon to see the locked resale price.</p>
+    <a href="https://www.cartridgebond.com/prices.html" target="_blank">View all game values</a>
+  </div>
+
 </div>
 
 <div class="footer">
-  Milwaukee &amp; North Shore &bull; Free beta
+  <div class="footer-links">
+    <a href="https://www.cartridgebond.com" target="_blank">Site</a>
+    <a href="https://www.cartridgebond.com/dashboard.html" target="_blank">My Bonds</a>
+    <a href="https://www.cartridgebond.com/faq.html" target="_blank">FAQ</a>
+  </div>
+  <a href="https://www.cartridgebond.com/prices.html" target="_blank">All games →</a>
 </div>
 
+<script src="popup.js"></script>
 </body>
 </html>
