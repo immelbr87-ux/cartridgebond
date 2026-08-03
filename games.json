@@ -12,7 +12,9 @@
       "ebayNetLow": 27,
       "ebayNetHigh": 29,
       "tier": "premium",
-      "retailPrice": 69.99
+      "retailPrice": 69.99,
+      "slug": "zelda-tears-of-the-kingdom",
+      "hasArt": true
     },
     {
       "title": "The Legend of Zelda: Breath of the Wild",
@@ -23,7 +25,9 @@
       "ebayNetLow": 24,
       "ebayNetHigh": 26,
       "tier": "premium",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "zelda-breath-of-the-wild",
+      "hasArt": true
     },
     {
       "title": "Mario Kart 8 Deluxe",
@@ -34,7 +38,9 @@
       "ebayNetLow": 23,
       "ebayNetHigh": 24,
       "tier": "premium",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "mario-kart-8-deluxe",
+      "hasArt": true
     },
     {
       "title": "Super Smash Bros. Ultimate",
@@ -45,7 +51,9 @@
       "ebayNetLow": 24,
       "ebayNetHigh": 25,
       "tier": "premium",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "super-smash-bros-ultimate",
+      "hasArt": true
     },
     {
       "title": "Super Mario Odyssey",
@@ -56,7 +64,9 @@
       "ebayNetLow": 20,
       "ebayNetHigh": 22,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "super-mario-odyssey",
+      "hasArt": true
     },
     {
       "title": "Super Mario Bros. Wonder",
@@ -67,7 +77,9 @@
       "ebayNetLow": 24,
       "ebayNetHigh": 26,
       "tier": "premium",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "super-mario-bros-wonder",
+      "hasArt": true
     },
     {
       "title": "Super Mario 3D World + Bowser's Fury",
@@ -78,7 +90,9 @@
       "ebayNetLow": 23,
       "ebayNetHigh": 24,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "super-mario-3d-world-bowsers-fury",
+      "hasArt": false
     },
     {
       "title": "Mario Party Superstars",
@@ -89,7 +103,9 @@
       "ebayNetLow": 21,
       "ebayNetHigh": 23,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "mario-party-superstars",
+      "hasArt": true
     },
     {
       "title": "Super Mario Party Jamboree",
@@ -100,7 +116,9 @@
       "ebayNetLow": 29,
       "ebayNetHigh": 31,
       "tier": "premium",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "super-mario-party-jamboree",
+      "hasArt": true
     },
     {
       "title": "Animal Crossing: New Horizons",
@@ -111,7 +129,9 @@
       "ebayNetLow": 24,
       "ebayNetHigh": 26,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "animal-crossing-new-horizons",
+      "hasArt": true
     },
     {
       "title": "Pokemon Scarlet",
@@ -122,7 +142,9 @@
       "ebayNetLow": 22,
       "ebayNetHigh": 24,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "pokemon-scarlet",
+      "hasArt": true
     },
     {
       "title": "Pokemon Violet",
@@ -133,7 +155,9 @@
       "ebayNetLow": 24,
       "ebayNetHigh": 25,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "pokemon-violet",
+      "hasArt": false
     },
     {
       "title": "Pokemon Sword",
@@ -144,7 +168,9 @@
       "ebayNetLow": 22,
       "ebayNetHigh": 24,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "pokemon-sword",
+      "hasArt": true
     },
     {
       "title": "Pokemon Shield",
@@ -155,7 +181,9 @@
       "ebayNetLow": 22,
       "ebayNetHigh": 23,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "pokemon-shield",
+      "hasArt": true
     },
     {
       "title": "Pokemon Legends: Arceus",
@@ -166,7 +194,9 @@
       "ebayNetLow": 27,
       "ebayNetHigh": 29,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "pokemon-legends-arceus",
+      "hasArt": true
     },
     {
       "title": "Pokemon Brilliant Diamond",
@@ -177,7 +207,9 @@
       "ebayNetLow": 20,
       "ebayNetHigh": 22,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "pokemon-brilliant-diamond",
+      "hasArt": true
     },
     {
       "title": "Pokemon Shining Pearl",
@@ -188,7 +220,9 @@
       "ebayNetLow": 20,
       "ebayNetHigh": 22,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "pokemon-shining-pearl",
+      "hasArt": true
     },
     {
       "title": "Splatoon 3",
@@ -199,7 +233,9 @@
       "ebayNetLow": 24,
       "ebayNetHigh": 25,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "splatoon-3",
+      "hasArt": true
     },
     {
       "title": "Splatoon 2",
@@ -210,7 +246,9 @@
       "ebayNetLow": 11,
       "ebayNetHigh": 13,
       "tier": "value",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "splatoon-2",
+      "hasArt": true
     },
     {
       "title": "Luigi's Mansion 3",
@@ -221,7 +259,9 @@
       "ebayNetLow": 22,
       "ebayNetHigh": 24,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "luigis-mansion-3",
+      "hasArt": true
     },
     {
       "title": "Kirby and the Forgotten Land",
@@ -232,7 +272,9 @@
       "ebayNetLow": 23,
       "ebayNetHigh": 24,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "kirby-and-the-forgotten-land",
+      "hasArt": false
     },
     {
       "title": "Metroid Dread",
@@ -243,7 +285,9 @@
       "ebayNetLow": 22,
       "ebayNetHigh": 24,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "metroid-dread",
+      "hasArt": false
     },
     {
       "title": "Donkey Kong Country: Tropical Freeze",
@@ -254,7 +298,9 @@
       "ebayNetLow": 25,
       "ebayNetHigh": 27,
       "tier": "premium",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "donkey-kong-country-tropical-freeze",
+      "hasArt": false
     },
     {
       "title": "Mario + Rabbids Sparks of Hope",
@@ -265,7 +311,9 @@
       "ebayNetLow": 13,
       "ebayNetHigh": 15,
       "tier": "value",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "mario-rabbids-sparks-of-hope",
+      "hasArt": false
     },
     {
       "title": "Fire Emblem Engage",
@@ -276,7 +324,9 @@
       "ebayNetLow": 20,
       "ebayNetHigh": 22,
       "tier": "standard",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "fire-emblem-engage",
+      "hasArt": false
     },
     {
       "title": "Pokemon Legends: Z-A",
@@ -287,7 +337,9 @@
       "ebayNetLow": 38,
       "ebayNetHigh": 44,
       "tier": "premium",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "pokemon-legends-z-a",
+      "hasArt": false
     },
     {
       "title": "Metroid Prime 4: Beyond",
@@ -298,7 +350,9 @@
       "ebayNetLow": 36,
       "ebayNetHigh": 42,
       "tier": "premium",
-      "retailPrice": 59.99
+      "retailPrice": 59.99,
+      "slug": "metroid-prime-4-beyond",
+      "hasArt": false
     },
     {
       "title": "Minecraft",
@@ -309,7 +363,9 @@
       "ebayNetLow": 16,
       "ebayNetHigh": 21,
       "tier": "evergreen",
-      "retailPrice": 29.99
+      "retailPrice": 29.99,
+      "slug": "minecraft-switch",
+      "hasArt": false
     }
   ]
 }
