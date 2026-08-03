@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cartridgebond.com/sitemap.xml
+Sitemap: https://www.cartridgebond.com/sitemap.xml

@@ -75,8 +75,9 @@ var COL = {
   reviewCount:    22,  // V
   founderNumber:  23,  // W
   tradeNumber:    24,  // X
+  relistNudgeSent: 25, // Y
 };
-var TOTAL_COLS = 24;
+var TOTAL_COLS = 25;
 
 
 // ════════════════════════════════════════════════════════════════════════════
@@ -168,6 +169,16 @@ function doGet(e) {
     if (!session) return respond({ error: 'invalid_session', submissions: [] });
     return respond({ submissions: lookupSubmissionsByEmail(session) });
   }
+  if (action === 'founderStatus') {
+    var p = PropertiesService.getScriptProperties();
+    var trades = parseInt(p.getProperty('tradeCounter') || '0', 10);
+    var filled = Math.min(trades, CONFIG.founderCount);
+    return respond({
+      total: CONFIG.founderCount,
+      filled: filled,
+      remaining: Math.max(0, CONFIG.founderCount - filled)
+    });
+  }
   return respond({ status: 'CartridgeBond API', version: CONFIG.apiVersion });
 }
 
@@ -219,6 +230,7 @@ function doPost(e) {
     // ── Rating actions ─────────────────────────────────────────────────────
     if (data.action === 'getTradeForRating')  return getTradeForRating(data.token);
     if (data.action === 'submitRating')       return submitRating(data);
+    if (data.action === 'getRatingLink')      return getRatingLink(data);
 
     // ── Cancel a bond (authenticated) ──────────────────────────────────────
     if (data.action === 'cancelBond')         return cancelBond(data);
@@ -697,6 +709,33 @@ function getTradeForRating(token) {
   });
 }
 
+// Issues a signed rating link for a logged-in user's own completed trade -
+// lets the dashboard send someone into the existing, working rate.html flow
+// instead of duplicating a rating UI in-app.
+function getRatingLink(data) {
+  var session = validateToken(data.token || '');
+  if (!session) return respond({ error: 'invalid_session' });
+  var tradeNum = String(data.tradeNum || '').trim();
+  if (!tradeNum) return respond({ error: 'missing_trade' });
+
+  var sheet = getSheet(CONFIG.sheetName);
+  var rows = sheet.getDataRange().getValues();
+  var partnerEmail = '';
+  for (var i = 1; i < rows.length; i++) {
+    var rEmail = String(rows[i][COL.email-1] || '').toLowerCase().trim();
+    var rTrade = String(rows[i][COL.tradeNumber-1] || '');
+    if (rEmail === session && rTrade === tradeNum) {
+      partnerEmail = String(rows[i][COL.matchedEmail-1] || '').toLowerCase().trim();
+      break;
+    }
+  }
+  if (!partnerEmail) return respond({ error: 'trade_not_found' });
+
+  var ratingToken = generateRatingToken(session, partnerEmail, tradeNum);
+  var url = CONFIG.ratingUrl + '?trade=' + encodeURIComponent(tradeNum) + '&token=' + encodeURIComponent(ratingToken);
+  return respond({ url: url });
+}
+
 function submitRating(data) {
   var decoded = verifyRatingToken(data.token || '');
   if (!decoded) {
@@ -736,6 +775,16 @@ function submitRating(data) {
   rSheet.appendRow([new Date(), rater, ratee, tradeNum, data.rateeRole || '',
     stars[0], stars[1], stars[2], stars[3], parseFloat(avg), comment]);
 
+  // A rating is the rater confirming their side of the trade actually happened
+  for (var k = 1; k < rows.length; k++) {
+    var kEmail = String(rows[k][COL.email-1] || '').toLowerCase().trim();
+    var kTrade = String(rows[k][COL.tradeNumber-1] || '');
+    if (kEmail === rater && kTrade === String(tradeNum)) {
+      sheet.getRange(k + 1, COL.status).setValue('Completed');
+      break;
+    }
+  }
+
   // Notify ratee
   try {
     sendEmail(ratee, 'New CartridgeBond rating - ' + avg + '/5',
@@ -744,6 +793,41 @@ function submitRating(data) {
 
   Logger.log('Rating: ' + rater + ' -> ' + ratee + ' = ' + avg);
   return respond({ result: 'ok' });
+}
+
+
+// ════════════════════════════════════════════════════════════════════════════
+//  RELIST NUDGES (10-14 days after a trade completes)
+// ════════════════════════════════════════════════════════════════════════════
+function sendRelistNudges() {
+  var sheet = getSheet(CONFIG.sheetName);
+  var rows = sheet.getDataRange().getValues();
+  var now = new Date();
+  var sent = 0;
+
+  for (var i = 1; i < rows.length; i++) {
+    var status = String(rows[i][COL.status-1] || '').toLowerCase();
+    var nudgeSent = rows[i][COL.relistNudgeSent-1];
+    var email = String(rows[i][COL.email-1] || '');
+    var matchedAt = rows[i][COL.matchedAt-1];
+    if (status !== 'completed' || nudgeSent || !email || !matchedAt) continue;
+
+    var completedDate = new Date(matchedAt);
+    if (isNaN(completedDate)) continue;
+    var days = (now - completedDate) / 86400000;
+    if (days < 10 || days > 14) continue;
+
+    try {
+      var fn = String(rows[i][COL.name-1] || '').trim().split(' ')[0] || 'there';
+      var game = String(rows[i][COL.game-1] || 'your last Bond');
+      sendEmail(email, subjectLine('Got another game to move', game),
+        buildRelistNudgeHtml(fn, game));
+      sheet.getRange(i + 1, COL.relistNudgeSent).setValue(now);
+      sent++;
+      Utilities.sleep(200);
+    } catch(err) { Logger.log('Relist nudge err row ' + (i+1) + ': ' + err); }
+  }
+  Logger.log('Relist nudges sent: ' + sent);
 }
 
 
@@ -963,6 +1047,17 @@ function buildNoRematchHtml(fn, game) {
 }
 
 
+function buildRelistNudgeHtml(fn, game) {
+  return emailWrap('Got another one?', 'Your last Bond went smoothly - list your next game in under a minute.',
+    section('Hey ' + esc(fn) + ' - how has your Switch shelf looked since ' + esc(game) + '?') +
+    para("Traders who list a second game usually do it within a couple weeks of their first Bond, while the process is still fresh. If you've got something else to sell - or you're eyeing something to buy - we're ready.") +
+    ctaButton('List Your Next Game', CONFIG.siteUrl + '/#widget') +
+    para('<em style="color:#999;font-size:12px;">Not feeling it right now? No action needed - we will not keep nudging.</em>') +
+    learnMore()
+  );
+}
+
+
 // ════════════════════════════════════════════════════════════════════════════
 //  EMAIL TEMPLATE BUILDING BLOCKS (shared across files)
 // ════════════════════════════════════════════════════════════════════════════
@@ -1150,13 +1245,13 @@ function initSheets() {
 
   var sub = ss.getSheetByName(CONFIG.sheetName) || ss.insertSheet(CONFIG.sheetName);
   if (!sub.getRange(1, 1).getValue()) {
-    sub.getRange(1, 1, 1, 24).setValues([[
+    sub.getRange(1, 1, 1, 25).setValues([[
       'Timestamp', 'Name', 'Email', 'Phone', 'Zip', 'Role', 'Game', 'Price', 'Condition',
       'Timeline', 'Notes', 'Form Type', 'City', 'Status', 'Matched Row', 'Matched Email',
       'Matched At', 'Match Email Sent', 'Follow-up Sent', 'Meetup Pref',
-      'Rating', 'Review Count', 'Founder Number', 'Trade Number'
+      'Rating', 'Review Count', 'Founder Number', 'Trade Number', 'Relist Nudge Sent'
     ]]);
-    sub.getRange(1, 1, 1, 24).setFontWeight('bold').setBackground('#0a1f12').setFontColor('#22c55e');
+    sub.getRange(1, 1, 1, 25).setFontWeight('bold').setBackground('#0a1f12').setFontColor('#22c55e');
     sub.setFrozenRows(1);
     Logger.log('Submissions sheet headers added');
   }
@@ -1197,11 +1292,12 @@ function installTriggers() {
   ScriptApp.getProjectTriggers().forEach(function(t) { ScriptApp.deleteTrigger(t); });
   ScriptApp.newTrigger('scheduledMatchSweep').timeBased().everyMinutes(15).create();
   ScriptApp.newTrigger('sendFollowUpRatingRequests').timeBased().everyDays(1).atHour(10).create();
+  ScriptApp.newTrigger('sendRelistNudges').timeBased().everyDays(1).atHour(11).create();
   ScriptApp.newTrigger('cleanupExpiredSessions').timeBased().onWeekDay(ScriptApp.WeekDay.SUNDAY).atHour(3).create();
   if (typeof autoReleaseExpiredInspections === 'function') {
     ScriptApp.newTrigger('autoReleaseExpiredInspections').timeBased().everyHours(1).create();
   }
-  Logger.log('Triggers installed: matchSweep(15m), followUp(daily 10am), sessionCleanup(weekly), escrowAutoRelease(hourly if escrow loaded)');
+  Logger.log('Triggers installed: matchSweep(15m), followUp(daily 10am), relistNudge(daily 11am), sessionCleanup(weekly), escrowAutoRelease(hourly if escrow loaded)');
 }
 
 

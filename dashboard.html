@@ -752,7 +752,13 @@ function openBondDrawer(index){
     '<div class="dic-row"><span class="dic-label">Date</span><span class="dic-val">' + (b.date || '--') + '</span></div>' +
   '</div>';
 
-  document.getElementById('drawerBody').innerHTML = tl + info;
+  var rateBtn = '';
+  if (status.indexOf('complete') !== -1 && b.tradeNumber) {
+    rateBtn = '<button class="empty-cta" id="drawerRateBtn" style="width:100%;margin-top:14px;" onclick="goToRating(\'' +
+      String(b.tradeNumber).replace(/'/g, '') + '\', this)">Rate this trade &rarr;</button>';
+  }
+
+  document.getElementById('drawerBody').innerHTML = tl + info + rateBtn;
   document.getElementById('drawerOverlay').classList.add('open');
   document.getElementById('drawer').classList.add('open');
 }
@@ -825,10 +831,30 @@ function closeRatingModal(){
   document.querySelectorAll('.star').forEach(function(s){ s.classList.remove('active'); });
 }
 
-function submitRating(){
-  // For now, just close - real submission requires Apps Script support
-  alert('Rating submitted (stub). Backend rating capture coming soon.');
-  closeRatingModal();
+function goToRating(tradeNum, btn){
+  if (btn) { btn.textContent = 'Loading...'; btn.disabled = true; }
+  fetch(GAS_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      action: 'getRatingLink',
+      token: localStorage.getItem('bond_token'),
+      tradeNum: tradeNum
+    })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    if (d.url) {
+      window.location.href = d.url;
+    } else {
+      alert('Could not open rating: ' + (d.error || 'please email cartridgebond@gmail.com'));
+      if (btn) { btn.textContent = 'Rate this trade \u2192'; btn.disabled = false; }
+    }
+  })
+  .catch(function(){
+    alert('Connection error. Please email cartridgebond@gmail.com to rate this trade.');
+    if (btn) { btn.textContent = 'Rate this trade \u2192'; btn.disabled = false; }
+  });
 }
 
 // ── SETTINGS ──

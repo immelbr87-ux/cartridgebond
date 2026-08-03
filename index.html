@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>CartridgeBond - Lock in your Switch game price before you buy</title>
 <meta name="description" content="The first precommerce network for Nintendo Switch games. Lock your buy or sell price before anyone meets. Beta in Milwaukee, national soon.">
-<link rel="canonical" href="https://cartridgebond.com/">
+<link rel="canonical" href="https://www.cartridgebond.com/">
 <meta property="og:title" content="CartridgeBond - Lock in your Switch game price">
 <meta property="og:description" content="Switch game resale without the haggling. Lock price and condition before anyone meets.">
-<meta property="og:url" content="https://cartridgebond.com/">
+<meta property="og:url" content="https://www.cartridgebond.com/">
 <meta property="og:type" content="website">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "CartridgeBond",
-  "url": "https://cartridgebond.com",
+  "url": "https://www.cartridgebond.com",
   "description": "The dedicated platform to buy and sell used Nintendo Switch games. Locked-in pricing, no haggling, no platform fees during beta.",
   "applicationCategory": "MarketplaceApplication",
   "operatingSystem": "Web",
@@ -693,6 +693,8 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
         <button id="widgetSubmitBtn" onclick="startSubmission()">Lock Your Trade &rarr;</button>
       </div>
 
+      <div class="widget-flipper-note" id="founderNote" style="display:none;"></div>
+
       <div class="widget-flipper-note">
         Got 5+ games to list? Email <a href="mailto:cartridgebond@gmail.com?subject=Bulk%20submission">cartridgebond@gmail.com</a> - we'll handle bulk listings for you during beta.
       </div>
@@ -818,12 +820,12 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
   </div>
   <div class="car-scroller" id="carScroller">
     <div class="gcard" onclick="location.href='value/zelda-tears-of-the-kingdom.html'">
-      <div class="gcard-art"><img loading="lazy" src="https://cartridgebond.com/images/games/zelda-tears-of-the-kingdom.jpg" alt="Zelda: Tears of the Kingdom"></div>
+      <div class="gcard-art"><img loading="lazy" src="https://www.cartridgebond.com/images/games/zelda-tears-of-the-kingdom.jpg" alt="Zelda: Tears of the Kingdom"></div>
       <div class="gcard-body"><div class="gcard-name">Zelda: TOTK</div><div class="gcard-demand">Very high demand</div>
         <div class="gcard-row"><span class="k">Locked price</span><span class="v">$43</span></div></div>
     </div>
     <div class="gcard" onclick="location.href='value/zelda-breath-of-the-wild.html'">
-      <div class="gcard-art"><img loading="lazy" src="https://cartridgebond.com/images/games/zelda-breath-of-the-wild.jpg" alt="Zelda: Breath of the Wild"></div>
+      <div class="gcard-art"><img loading="lazy" src="https://www.cartridgebond.com/images/games/zelda-breath-of-the-wild.jpg" alt="Zelda: Breath of the Wild"></div>
       <div class="gcard-body"><div class="gcard-name">Zelda: BOTW</div><div class="gcard-demand">High demand</div>
         <div class="gcard-row"><span class="k">Locked price</span><span class="v">$35</span></div></div>
     </div>
@@ -1044,7 +1046,7 @@ updateSubmitButton();
 
 // ── SHARE ──
 function shareNative(){
-  var url = 'https://cartridgebond.com';
+  var url = 'https://www.cartridgebond.com';
   var title = 'CartridgeBond - The future of game resale';
   var text = 'Lock in prices, skip the haggling, and trade Switch games on your timeline.';
   if(navigator.share){
@@ -1055,7 +1057,7 @@ function shareNative(){
 }
 
 function copyLink(){
-  var url = 'https://cartridgebond.com';
+  var url = 'https://www.cartridgebond.com';
   var btn = document.getElementById('copyLinkBtn');
   var fallback = function(){
     // Fallback for older browsers
@@ -1469,7 +1471,7 @@ function submitForm(e){
     'Hey ' + name.split(' ')[0] + ' - your CartridgeBond submission is confirmed!\n\n' +
     'You requested: ' + payload.role + ' ' + payload.game + ' (' + timelineText + ', ' + priceText + ').\n\n' +
     'You will receive an email as soon as your match is found. ' +
-    'Check status anytime at https://cartridgebond.com/status.html?email=' + encodeURIComponent(email) + '\n\n' +
+    'Check status anytime at https://www.cartridgebond.com/status.html?email=' + encodeURIComponent(email) + '\n\n' +
     'Reply to this email with any questions.\n\n- CartridgeBond');
 
   fetch('https://formsubmit.co/cartridgebond@gmail.com', { method: 'POST', body: fsData })
@@ -1577,6 +1579,21 @@ fetch('games.json?v=' + Date.now())
     ALL_GAMES = FALLBACK_GAMES;
     renderGameList('');
   });
+
+// ── BOOT: live founder spot count ──
+fetch('https://script.google.com/macros/s/AKfycbybpmlpe6PtFsotY0iQ9CCCiYgsqJ8tyyLFib0pkqd8uyVKazgoyLiybfQZYmvC-xMd/exec?action=founderStatus')
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    var el = document.getElementById('founderNote');
+    if (!el || !d || typeof d.remaining !== 'number') return;
+    if (d.remaining <= 0) {
+      el.textContent = 'All 25 Founder spots are filled - free trades for life are locked in for our first 25 traders.';
+    } else {
+      el.textContent = d.remaining + ' of ' + d.total + ' Founder spots left - complete a trade now to lock in free trades for life.';
+    }
+    el.style.display = 'block';
+  })
+  .catch(function(){ /* fail silently, badge stays hidden */ });
 </script>
 
 <script>
