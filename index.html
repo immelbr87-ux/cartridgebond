@@ -1035,12 +1035,10 @@ var FALLBACK_GAMES = [
 
 // ── AGE GATE & SUBMIT ENABLE ──
 function updateSubmitButton(){
-  var ageOk = document.getElementById('ageGate').checked;
   var gameOk = !!SELECTED_GAME;
   var btn = document.getElementById('widgetSubmitBtn');
-  if(btn) btn.disabled = !(ageOk && gameOk);
+  if(btn) btn.disabled = !gameOk;
 }
-document.getElementById('ageGate').addEventListener('change', updateSubmitButton);
 updateSubmitButton();
 
 // ── SHARE ──
