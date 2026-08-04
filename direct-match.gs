@@ -40,22 +40,36 @@ function handleListOffers(gameParam, wantRole) {
     var price = parseFloat(String(rows[i][COL.price - 1] || '0').replace(/[^0-9.]/g, '')) || 0;
     if (price <= 0) continue;
 
+    // Condition is NOT a differentiator between offers - every trade on
+    // CartridgeBond is A1-only by design. Price, though, CAN legitimately
+    // differ between two offers on the same game: each person locked in at
+    // whatever CartridgeBond's researched price was on the day they
+    // submitted, and that reference price does move over time as the
+    // weekly intelligence refresh updates games.json. So price is shown
+    // per-offer (it's what THAT person actually locked), while condition is
+    // stated once, up front, since it never varies.
     offers.push({
       offerId: i + 1, // sheet row number - stable enough for a short-lived offer list
       price: price,
-      condition: String(rows[i][COL.condition - 1] || 'A1').toUpperCase(),
       timeline: String(rows[i][COL.timeline - 1] || ''),
+      rating: parseFloat(rows[i][COL.rating - 1]) || 0,
+      reviewCount: parseInt(rows[i][COL.reviewCount - 1], 10) || 0,
     });
   }
 
-  // Best terms first: for a seller browsing buyers, highest buyer price wins;
-  // for a buyer browsing sellers, lowest seller price wins.
-  offers.sort(function(a, b) { return wantsToSell ? b.price - a.price : a.price - b.price; });
-
-  return { ok: true, offers: offers.slice(0, 12) };
+  return {
+    ok: true,
+    condition: 'A1',            // always - shown once, above the list; price is per-offer below
+    offers: offers.slice(0, 20),
+    // Sorting is done client-side (soonest / top-rated) since this is the
+    // full small list already. Distance sort is meaningless right now since
+    // matching is already zip-radius gated during the local-meetup beta -
+    // it becomes a real sort dimension once national shipping ships.
+  };
 }
 
 // Called from handleSubmission when the person picked a specific offer instead
+
 // of setting their own parameters. Mirrors tryAutoMatch's "lock + trade number
 // + email both sides" block, but against one chosen row instead of a search.
 function lockDirectMatch(sheet, newRowNum, newData, newPrice, targetRowNum) {
