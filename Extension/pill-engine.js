@@ -26,6 +26,7 @@ var dropdownOpen = false;
 var currentTl    = 'flex'; // timeline selection in dropdown
 var _ddGame = null, _ddMode = null, _ddBuyers = 0, _ddSellers = 0;
 var _ddOffers = [], _ddOfferId = null, _ddPickedPrice = 0;
+var _ddReferenceCondition = 'A1', _ddSort = 'soonest';
 var _breakdownCache = {}; // slug -> {comparison, intel} - avoid refetching per open
 
 function closeDropdown(){
@@ -80,9 +81,11 @@ function openDropdown(game, mode, anchorEl){
     });
   }, 100);
 
-  fetchOffers(game, mode).then(function(offers){
+  fetchOffers(game, mode).then(function(result){
     if(!dropdownOpen || _ddGame !== game) return; // dropdown closed/changed while fetch was in flight
-    _ddOffers = offers;
+    _ddOffers = result.offers;
+    _ddReferenceCondition = result.condition || 'A1';
+    _ddSort = 'soonest';
     renderOfferStep();
   });
 }
@@ -92,9 +95,9 @@ async function fetchOffers(game, mode){
     var url = `${CB_API}?action=listOffers&game=${encodeURIComponent(game.title)}&role=${mode}`;
     var res = await fetch(url, { signal: AbortSignal.timeout(4000) });
     var data = await res.json();
-    if(data.ok) return data.offers || [];
+    if(data.ok) return { offers: data.offers || [], condition: data.condition };
   }catch(_){}
-  return [];
+  return { offers: [], condition: null };
 }
 
 function timelineLabel(val){
@@ -104,13 +107,37 @@ function timelineLabel(val){
   return 'Timing flexible';
 }
 
+function timelineSortRank(val){
+  if(val === 'now') return 0;
+  if(val && /^\d+$/.test(val)) return parseInt(val, 10);
+  return 999; // flex / unknown - last
+}
+
+function sortOffers(offers, sort){
+  var copy = offers.slice();
+  if(sort === 'rating'){
+    copy.sort(function(a, b){
+      if(b.rating !== a.rating) return b.rating - a.rating;
+      return b.reviewCount - a.reviewCount;
+    });
+  } else {
+    copy.sort(function(a, b){ return timelineSortRank(a.timeline) - timelineSortRank(b.timeline); });
+  }
+  return copy;
+}
+
+function ratingLabel(o){
+  if(!o.reviewCount) return '<span class="dd-offer-new">New member</span>';
+  return `<span class="dd-offer-stars">${starsHTML(Math.round(o.rating))}</span> ${o.rating.toFixed(1)} <span class="dd-offer-count">(${o.reviewCount})</span>`;
+}
+
 // ── Step 1: browse real committed offers, or go straight to custom params ───
 function renderOfferStep(){
   var body = document.getElementById('dd-body');
   if(!body || !_ddGame) return;
   var isSell = _ddMode === 'sell';
   var blueClass = isSell ? '' : ' blue';
-  var offers = _ddOffers || [];
+  var offers = sortOffers(_ddOffers || [], _ddSort);
   var counterpart = isSell ? 'buyer' : 'seller';
 
   var head = `<div class="dd-game">${esc(_ddGame.title)}</div>
@@ -128,22 +155,36 @@ function renderOfferStep(){
     return;
   }
 
-  var cards = offers.map(function(o, idx){
-    return `<button class="dd-offer-card" onclick="cbPickOffer(${o.offerId},${o.price},'${esc(o.condition)}','${esc(o.timeline)}')" type="button">
+  var cards = offers.map(function(o){
+    return `<button class="dd-offer-card" onclick="cbPickOffer(${o.offerId},${o.price},'${esc(o.timeline)}')" type="button">
       <div class="dd-offer-left">
         <div class="dd-offer-price">$${o.price}</div>
-        <div class="dd-offer-meta">${esc(o.condition)} condition &middot; ${esc(timelineLabel(o.timeline))}</div>
+        <div class="dd-offer-rating">${ratingLabel(o)}</div>
+        <div class="dd-offer-meta">${esc(timelineLabel(o.timeline))}</div>
       </div>
       <div class="dd-offer-pick">Bond &rarr;</div>
     </button>`;
   }).join('');
 
   body.innerHTML = head + `
-    <div class="dd-offer-label">${offers.length} ${counterpart}${offers.length!==1?'s':''} already committed &mdash; pick one:</div>
+    <div class="dd-offer-terms${blueClass}"><strong>${esc(_ddReferenceCondition)} condition guaranteed</strong> on every offer &mdash; price reflects when each person locked in, timing and rating are theirs</div>
+    <div class="dd-offer-toprow">
+      <div class="dd-offer-label">${offers.length} ${counterpart}${offers.length!==1?'s':''} committed</div>
+      <div class="dd-sort-toggle">
+        <button class="dd-sort-btn${_ddSort==='soonest'?' sel':''}" onclick="cbSetSort('soonest')" type="button">Soonest</button>
+        <button class="dd-sort-btn${_ddSort==='rating'?' sel':''}" onclick="cbSetSort('rating')" type="button">Top rated</button>
+      </div>
+    </div>
     <div class="dd-offer-list">${cards}</div>
-    <button class="dd-custom-link" onclick="cbShowCustomParams()" type="button">None of these work? Set your own price &amp; timeline &rarr;</button>
+    <button class="dd-custom-link" onclick="cbShowCustomParams()" type="button">None of these work? Set your own timeline &rarr;</button>
+    <div class="dd-sort-note">Price &amp; distance sorting arrive with national shipping &mdash; every trade is local and this price today.</div>
   `;
 }
+
+window.cbSetSort = function(sort){
+  _ddSort = sort;
+  renderOfferStep();
+};
 
 // ── "Set my own parameters" step (the original price/timeline picker) ──────
 function renderCustomParamsHTML(blueClass, isSell){
@@ -213,7 +254,7 @@ window.cbBackToOffer = function(){
 };
 
 // ── Picking a specific real offer ────────────────────────────────────────────
-window.cbPickOffer = function(offerId, price, condition, timeline){
+window.cbPickOffer = function(offerId, price, timeline){
   var body = document.getElementById('dd-body');
   if(!body || !_ddGame) return;
   _ddOfferId = offerId;
@@ -232,7 +273,7 @@ window.cbPickOffer = function(offerId, price, condition, timeline){
         <div class="dd-price-label">${priceLabel}</div>
         <div class="dd-price-val">$${price}</div>
       </div>
-      <div class="dd-badge${blueClass}">${esc(condition)} &middot; ${esc(timelineLabel(timeline))}</div>
+      <div class="dd-badge${blueClass}">${esc(_ddReferenceCondition)} &middot; ${esc(timelineLabel(timeline))}</div>
     </div>
     <button class="dd-cta${blueClass}" onclick="cbShowConfirm()" type="button">
       Confirm this bond
@@ -261,7 +302,7 @@ window.cbShowConfirm = function(){
   var price = _ddOfferId ? _ddPickedPrice : _ddGame.price;
 
   body.innerHTML = `
-    <button class="dd-back" onclick="${_ddOfferId ? `cbPickOffer(${_ddOfferId},${_ddPickedPrice},'A1','${currentTl}')` : 'cbShowCustomParams()'}" type="button">
+    <button class="dd-back" onclick="${_ddOfferId ? `cbPickOffer(${_ddOfferId},${_ddPickedPrice},'${currentTl}')` : 'cbShowCustomParams()'}" type="button">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
       Back
     </button>
@@ -456,13 +497,13 @@ function buildPill(game, buyers, sellers){
     msg = `<span class="cb-count" id="cb-cnt">${buyers}</span> Future Buyer${buyers!==1?'s':''} Waiting`;
     sub = `Complete the Bond &amp; Sell This Game Later &mdash; Lock <span class="cb-price">$${game.price}</span> Sell Price Now`;
     actionInner = `<button class="cb-action-btn" onclick="cbOpenDropdown(event,'sell')" type="button">
-      Sell Used Now ${arrowSVG}
+      Commit to Sell Used ${arrowSVG}
     </button>`;
   } else if(hasSellers){
     msg = `<span class="cb-count" id="cb-cnt">${sellers}</span> Seller${sellers!==1?'s':''} Ready To Sell Used`;
     sub = `Buy Used at <span class="cb-price">$${game.price}</span> &mdash; A1 Condition Guaranteed`;
     actionInner = `<button class="cb-action-btn blue" onclick="cbOpenDropdown(event,'buy')" type="button">
-      Buy Used Now ${arrowSVG}
+      Commit to Buy Used ${arrowSVG}
     </button>`;
   } else {
     msg = `Lock in <strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> &nbsp;&middot;&nbsp; A1 condition`;
