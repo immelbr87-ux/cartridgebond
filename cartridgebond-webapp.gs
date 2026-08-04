@@ -201,6 +201,21 @@ function doGet(e) {
 
     return respond({ ok: true, buyers: buyerCount, sellers: sellerCount });
   }
+
+  if (action === 'productIntelligence') {
+    var slug = String(e.parameter.slug || '').trim();
+    if (!slug) return respond({ ok: false, error: 'missing_slug' });
+    return respond(handleProductIntelligence(slug));
+  }
+
+  if (action === 'productIntelligenceAll') {
+    return respond(handleProductIntelligenceAll());
+  }
+
+  if (action === 'listOffers') {
+    return respond(handleListOffers(e.parameter.game, e.parameter.role));
+  }
+
   return respond({ status: 'CartridgeBond API', version: CONFIG.apiVersion });
 }
 
@@ -256,6 +271,9 @@ function doPost(e) {
 
     // ── Cancel a bond (authenticated) ──────────────────────────────────────
     if (data.action === 'cancelBond')         return cancelBond(data);
+
+    // ── Product Intelligence waitlist (defined in intelligence-engine.gs) ──
+    if (data.action === 'joinWaitlist')       return respond(handleJoinWaitlist(data));
 
     // ── My bonds (authenticated) ───────────────────────────────────────────
     if (data.action === 'getMyBonds') {
@@ -381,12 +399,19 @@ function handleSubmission(data) {
     );
   } catch(err) { Logger.log('Admin email failed: ' + err); }
 
-  // Try auto-match
-  try { tryAutoMatch(sheet, newRowNum, data, price); }
-  catch(err) { Logger.log('Auto-match failed: ' + err); }
+  // Try direct match first if they picked a specific offer; fall back to the
+  // normal auto-matcher if it went stale (someone else took it first) or if
+  // they set their own custom parameters instead.
+  var matched = false;
+  try {
+    if (data.matchOfferId) {
+      matched = lockDirectMatch(sheet, newRowNum, data, price, parseInt(data.matchOfferId, 10));
+    }
+    if (!matched) matched = tryAutoMatch(sheet, newRowNum, data, price);
+  } catch(err) { Logger.log('Match attempt failed: ' + err); }
 
   Logger.log('Submission OK row ' + newRowNum + ': ' + data.email + ' | ' + data.game);
-  return respond({ result: 'ok' });
+  return respond({ result: 'ok', matched: matched });
 }
 
 
@@ -1319,7 +1344,19 @@ function installTriggers() {
   if (typeof autoReleaseExpiredInspections === 'function') {
     ScriptApp.newTrigger('autoReleaseExpiredInspections').timeBased().everyHours(1).create();
   }
-  Logger.log('Triggers installed: matchSweep(15m), followUp(daily 10am), relistNudge(daily 11am), sessionCleanup(weekly), escrowAutoRelease(hourly if escrow loaded)');
+  // Product Intelligence Agent (defined in intelligence-engine.gs)
+  ScriptApp.newTrigger('refreshProductIntelligence')
+    .timeBased().onWeekDay(ScriptApp.WeekDay.MONDAY).atHour(6).create();
+
+  // Price Drift Watch (defined in price-drift-agent.gs) - runs after the 6am refresh
+  ScriptApp.newTrigger('checkPriceDrift')
+    .timeBased().onWeekDay(ScriptApp.WeekDay.MONDAY).atHour(7).create();
+
+  // Match Concierge Agent (defined in growth-agents.gs)
+  ScriptApp.newTrigger('sendMatchConciergeNudges').timeBased().everyHours(4).create();
+  ScriptApp.newTrigger('sendNoShowChecks').timeBased().everyDays(1).atHour(9).create();
+
+  Logger.log('Triggers installed: matchSweep(15m), followUp(daily 10am), relistNudge(daily 11am), sessionCleanup(weekly), escrowAutoRelease(hourly if escrow loaded), productIntelligence(weekly Mon 6am), priceDrift(weekly Mon 7am), conciergeNudge(4h), noShowCheck(daily 9am)');
 }
 
 

@@ -14,7 +14,11 @@
       "tier": "premium",
       "retailPrice": 69.99,
       "slug": "zelda-tears-of-the-kingdom",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "The Legend of Zelda: Breath of the Wild",
@@ -27,7 +31,11 @@
       "tier": "premium",
       "retailPrice": 59.99,
       "slug": "zelda-breath-of-the-wild",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Mario Kart 8 Deluxe",
@@ -40,7 +48,11 @@
       "tier": "premium",
       "retailPrice": 59.99,
       "slug": "mario-kart-8-deluxe",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Super Smash Bros. Ultimate",
@@ -53,7 +65,11 @@
       "tier": "premium",
       "retailPrice": 59.99,
       "slug": "super-smash-bros-ultimate",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Super Mario Odyssey",
@@ -66,7 +82,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "super-mario-odyssey",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Super Mario Bros. Wonder",
@@ -79,7 +99,11 @@
       "tier": "premium",
       "retailPrice": 59.99,
       "slug": "super-mario-bros-wonder",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Super Mario 3D World + Bowser's Fury",
@@ -92,7 +116,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "super-mario-3d-world-bowsers-fury",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Mario Party Superstars",
@@ -105,7 +133,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "mario-party-superstars",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Super Mario Party Jamboree",
@@ -118,7 +150,11 @@
       "tier": "premium",
       "retailPrice": 59.99,
       "slug": "super-mario-party-jamboree",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Animal Crossing: New Horizons",
@@ -131,7 +167,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "animal-crossing-new-horizons",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Pokemon Scarlet",
@@ -144,7 +184,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "pokemon-scarlet",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Pokemon Violet",
@@ -157,7 +201,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "pokemon-violet",
-      "hasArt": false
+      "hasArt": false,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Pokemon Sword",
@@ -170,7 +218,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "pokemon-sword",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Pokemon Shield",
@@ -183,7 +235,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "pokemon-shield",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Pokemon Legends: Arceus",
@@ -196,7 +252,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "pokemon-legends-arceus",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Pokemon Brilliant Diamond",
@@ -209,7 +269,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "pokemon-brilliant-diamond",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Pokemon Shining Pearl",
@@ -222,7 +286,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "pokemon-shining-pearl",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Splatoon 3",
@@ -235,7 +303,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "splatoon-3",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Splatoon 2",
@@ -248,7 +320,11 @@
       "tier": "value",
       "retailPrice": 59.99,
       "slug": "splatoon-2",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Luigi's Mansion 3",
@@ -261,7 +337,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "luigis-mansion-3",
-      "hasArt": true
+      "hasArt": true,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Kirby and the Forgotten Land",
@@ -274,7 +354,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "kirby-and-the-forgotten-land",
-      "hasArt": false
+      "hasArt": false,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Metroid Dread",
@@ -287,7 +371,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "metroid-dread",
-      "hasArt": false
+      "hasArt": false,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Donkey Kong Country: Tropical Freeze",
@@ -300,7 +388,11 @@
       "tier": "premium",
       "retailPrice": 59.99,
       "slug": "donkey-kong-country-tropical-freeze",
-      "hasArt": false
+      "hasArt": false,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Mario + Rabbids Sparks of Hope",
@@ -313,7 +405,11 @@
       "tier": "value",
       "retailPrice": 59.99,
       "slug": "mario-rabbids-sparks-of-hope",
-      "hasArt": false
+      "hasArt": false,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Fire Emblem Engage",
@@ -326,7 +422,11 @@
       "tier": "standard",
       "retailPrice": 59.99,
       "slug": "fire-emblem-engage",
-      "hasArt": false
+      "hasArt": false,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Pokemon Legends: Z-A",
@@ -339,7 +439,11 @@
       "tier": "premium",
       "retailPrice": 59.99,
       "slug": "pokemon-legends-z-a",
-      "hasArt": false
+      "hasArt": false,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Metroid Prime 4: Beyond",
@@ -352,7 +456,11 @@
       "tier": "premium",
       "retailPrice": 59.99,
       "slug": "metroid-prime-4-beyond",
-      "hasArt": false
+      "hasArt": false,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     },
     {
       "title": "Minecraft",
@@ -365,7 +473,11 @@
       "tier": "evergreen",
       "retailPrice": 29.99,
       "slug": "minecraft-switch",
-      "hasArt": false
+      "hasArt": false,
+      "releaseDate": null,
+      "successor": null,
+      "accessories": [],
+      "commonIssues": []
     }
   ]
 }

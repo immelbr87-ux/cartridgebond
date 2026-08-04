@@ -231,6 +231,23 @@ document.addEventListener('click',function(e){
 .gm-link span.arrow{color:var(--muted);}
 .gm-note{font-size:11px;color:var(--muted-2);margin-top:14px;line-height:1.6;}
 .gm-cta{display:block;text-align:center;background:var(--accent);color:#fff;font-weight:700;font-size:14px;padding:13px;border-radius:100px;text-decoration:none;margin-top:16px;}
+.gm-intel{margin-top:16px;padding:16px;border-radius:12px;background:var(--card-2);border:1px solid var(--line);}
+.gm-intel-loading{font-size:12.5px;color:var(--muted);text-align:center;padding:20px;}
+.gm-intel-score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.gm-intel-score{font-size:26px;font-weight:800;letter-spacing:-.02em;}
+.gm-intel-score small{font-size:13px;font-weight:600;color:var(--muted);}
+.gm-intel-rec{font-size:11px;font-weight:700;padding:5px 10px;border-radius:100px;letter-spacing:.02em;}
+.gm-intel-rec.buy{background:var(--accent-soft);color:var(--accent-3);}
+.gm-intel-rec.research{background:var(--warn-soft);color:#92660a;}
+.gm-stars-grid{display:grid;grid-template-columns:1fr auto;gap:8px 12px;font-size:12.5px;color:var(--text-2);margin-bottom:12px;}
+.gm-stars-grid .stars{color:var(--accent-2);letter-spacing:1px;}
+.gm-stars-grid .stars .off{color:var(--line-2);}
+.gm-intel-confidence{font-size:11px;color:var(--muted-2);margin-bottom:10px;}
+.gm-intel-narrative{font-size:12.5px;line-height:1.6;color:var(--text-2);border-top:1px solid var(--line);padding-top:12px;}
+.gm-waitlist{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);}
+.gm-waitlist-count{font-size:11.5px;color:var(--muted);flex:1;}
+.gm-waitlist-btn{font-size:11.5px;font-weight:700;padding:8px 12px;border-radius:100px;border:1.5px solid var(--accent);color:var(--accent-3);background:#fff;cursor:pointer;}
+.gm-waitlist-btn:disabled{opacity:.6;cursor:default;}
 </style>
 
 <section class="page-hero">
@@ -319,6 +336,7 @@ function openGameModal(idx){
       '<div class="gm-price-row"><span>eBay, after fees</span><span>$' + g.ebayNetLow + '-' + g.ebayNetHigh + '</span></div>' +
       '<div class="gm-price-row"><span>GameStop trade-in</span><span>$' + g.gameStopTradeIn + '</span></div>' +
     '</div>' +
+    '<div id="gmIntel" class="gm-intel gm-intel-loading">Loading ownership score&hellip;</div>' +
     '<div class="gm-links">' +
       '<a class="gm-link" href="' + nintendoUrl + '" target="_blank" rel="noopener">Official Nintendo listing <span class="arrow">&rarr;</span></a>' +
       '<a class="gm-link" href="' + trailerUrl + '" target="_blank" rel="noopener">Watch trailer on YouTube <span class="arrow">&rarr;</span></a>' +
@@ -329,6 +347,80 @@ function openGameModal(idx){
 
   document.getElementById('gmOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  loadOwnershipIntelligence(g.slug);
+}
+
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbybpmlpe6PtFsotY0iQ9CCCiYgsqJ8tyyLFib0pkqd8uyVKazgoyLiybfQZYmvC-xMd/exec';
+
+function starRow(label, n){
+  n = Math.max(0, Math.min(5, n || 0));
+  var filled = '&#9733;'.repeat(n);
+  var empty = '<span class="off">' + '&#9733;'.repeat(5 - n) + '</span>';
+  return '<div>' + esc(label) + '</div><div class="stars">' + filled + empty + '</div>';
+}
+
+function loadOwnershipIntelligence(slug){
+  var box = document.getElementById('gmIntel');
+  if (!slug) { box.style.display = 'none'; return; }
+  box.style.display = 'block';
+  box.className = 'gm-intel gm-intel-loading';
+  box.textContent = 'Loading ownership score\u2026';
+
+  fetch(GAS_URL + '?action=productIntelligence&slug=' + encodeURIComponent(slug))
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (!res.ok) { box.style.display = 'none'; return; }
+      var d = res.data;
+      var recClass = d.buyWaitRecommendation === 'BUY_NOW' ? 'buy' : 'research';
+      var recLabel = d.buyWaitRecommendation === 'BUY_NOW' ? '\uD83D\uDFE2 BUY NOW' : '\uD83D\uDD0D RESEARCH FIRST';
+
+      box.className = 'gm-intel';
+      box.innerHTML =
+        '<div class="gm-intel-score-row">' +
+          '<div class="gm-intel-score">' + d.ownershipScore + '<small> / 100</small></div>' +
+          '<div class="gm-intel-rec ' + recClass + '">' + recLabel + '</div>' +
+        '</div>' +
+        '<div class="gm-stars-grid">' +
+          starRow('Resale Strength', d.resaleStrength) +
+          starRow('Liquidity', d.liquidity) +
+          starRow('Depreciation', d.depreciation) +
+          starRow('Demand', d.demand) +
+          starRow('Ease of Selling', d.easeOfSelling) +
+        '</div>' +
+        '<div class="gm-intel-confidence">Confidence: ' + d.confidencePct + '%' +
+          (d.expectedTimeToSellDays ? ' &middot; Typical time to sell: ' + d.expectedTimeToSellDays + ' days' : '') +
+        '</div>' +
+        (d.aiAnalysis ? '<div class="gm-intel-narrative">' + esc(d.aiAnalysis) + '</div>' : '') +
+        '<div class="gm-waitlist">' +
+          '<div class="gm-waitlist-count" id="gmWaitlistCount">' + (d.waitlistCount || 0) + ' CartridgeBond members want this game.</div>' +
+          '<button class="gm-waitlist-btn" id="gmWaitlistBtn" onclick="joinWaitlist(\'' + slug + '\')">Notify me</button>' +
+        '</div>';
+    })
+    .catch(function(){ box.style.display = 'none'; });
+}
+
+function joinWaitlist(slug){
+  var email = window.prompt('Email for a heads-up when a buyer/seller is ready for this game:');
+  if (!email) return;
+  var btn = document.getElementById('gmWaitlistBtn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Joining\u2026'; }
+
+  fetch(GAS_URL, {
+    method: 'POST',
+    body: JSON.stringify({ action: 'joinWaitlist', slug: slug, email: email }),
+  })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (btn) { btn.disabled = true; btn.textContent = res.alreadyJoined ? 'Already on list' : 'You\'re on the list'; }
+      var countEl = document.getElementById('gmWaitlistCount');
+      if (countEl && res.count != null) {
+        countEl.textContent = res.count + ' CartridgeBond members want this game.';
+      }
+    })
+    .catch(function(){
+      if (btn) { btn.disabled = false; btn.textContent = 'Notify me'; }
+    });
 }
 
 function closeGameModal(){
