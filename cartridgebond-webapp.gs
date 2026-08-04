@@ -1,6 +1,6 @@
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║  CartridgeBond — webapp.gs   (v4.0 fresh build)              ║
+ * ║  CartridgeBond - webapp.gs   (v4.0 fresh build)              ║
  * ║  ──────────────────────────────────────────────────────────  ║
  * ║  Core file. Owns:                                            ║
  * ║    - doGet / doPost routing                                  ║
@@ -11,8 +11,8 @@
  * ║    - Sheet setup + scheduled triggers                        ║
  * ║                                                              ║
  * ║  Sister files:                                               ║
- * ║    auth.gs    — Google OAuth + email-code login              ║
- * ║    escrow.gs  — Stripe escrow + Shippo shipping (optional)   ║
+ * ║    auth.gs - Google OAuth + email-code login              ║
+ * ║    escrow.gs - Stripe escrow + Shippo shipping (optional)   ║
  * ║                                                              ║
  * ║  ──────────────────────────────────────────────────────────  ║
  * ║  DEPLOY (one-time setup):                                    ║
@@ -81,7 +81,7 @@ var TOTAL_COLS = 25;
 
 
 // ════════════════════════════════════════════════════════════════════════════
-//  HTML escape — every user-supplied value goes through this before
+//  HTML escape - every user-supplied value goes through this before
 //  appearing in any email template. Prevents HTML injection.
 // ════════════════════════════════════════════════════════════════════════════
 function esc(str) {
@@ -153,7 +153,7 @@ function verifyRatingToken(token) {
 
 
 // ════════════════════════════════════════════════════════════════════════════
-//  doGet — status lookups + health check
+//  doGet - status lookups + health check
 // ════════════════════════════════════════════════════════════════════════════
 function doGet(e) {
   if (!e || !e.parameter) return respond({ status: 'CartridgeBond API', version: CONFIG.apiVersion });
@@ -250,7 +250,7 @@ function lookupSubmissionsByEmail(email) {
 
 
 // ════════════════════════════════════════════════════════════════════════════
-//  doPost — main routing
+//  doPost - main routing
 // ════════════════════════════════════════════════════════════════════════════
 function doPost(e) {
   try {
@@ -1285,7 +1285,7 @@ function getNameForEmail(email) {
 
 
 // ════════════════════════════════════════════════════════════════════════════
-//  SHEET SETUP — run initSheets() once after deploy
+//  SHEET SETUP - run initSheets() once after deploy
 // ════════════════════════════════════════════════════════════════════════════
 function initSheets() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -1361,7 +1361,7 @@ function installTriggers() {
 
 
 // ════════════════════════════════════════════════════════════════════════════
-//  TESTS — run from the function dropdown in the editor
+//  TESTS - run from the function dropdown in the editor
 // ════════════════════════════════════════════════════════════════════════════
 function testEmailDelivery() {
   var to = Session.getActiveUser().getEmail();

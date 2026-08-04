@@ -1,4 +1,4 @@
-# Full Repo Rebuild — Deploy Guide
+# Full Repo Rebuild - Deploy Guide
 
 This is the corrected version. The bad SVG illustrations are GONE.
 

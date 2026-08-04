@@ -1,7 +1,7 @@
 /**
  * ╔══════════════════════════════════════════════════════════════╗
  * ║  intelligence-engine.gs                                      ║
- * ║  Product Intelligence Agent — live Ownership Score + AI copy ║
+ * ║  Product Intelligence Agent - live Ownership Score + AI copy ║
  * ║  ──────────────────────────────────────────────────────────  ║
  * ║  Owns:                                                        ║
  * ║    - Ownership Score (0-100) + 5 star sub-scores              ║
@@ -126,7 +126,7 @@ function findIntelligenceRow_(slug) {
   return null;
 }
 
-// ── MAIN REFRESH — the "agent" that runs weekly ──────────────────────────────
+// ── MAIN REFRESH - the "agent" that runs weekly ──────────────────────────────
 function refreshProductIntelligence() {
   var games = fetchGamesJson_();
   if (!games.length) { Logger.log('refreshProductIntelligence: no games loaded, aborting'); return; }
@@ -332,7 +332,7 @@ function confidenceFromDataPoints_(dataPoints) {
   return Math.min(95, 45 + dataPoints * 3);
 }
 
-// ── AI NARRATIVE — numbers go IN, prose comes OUT. Model never invents stats ──
+// ── AI NARRATIVE - numbers go IN, prose comes OUT. Model never invents stats ──
 function generateAIAnalysis_(game, m, scores) {
   var apiKey = PropertiesService.getScriptProperties().getProperty('CLAUDE_API_KEY');
   if (!apiKey) return ''; // no key configured yet - skip narrative, keep the real numbers

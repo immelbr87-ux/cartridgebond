@@ -1,8 +1,8 @@
-# Box Art Manifest — 28 Images You Need to Add
+# Box Art Manifest - 28 Images You Need to Add
 
 The value pages now display Nintendo Switch box art. I can't fetch these images myself (sandbox firewall blocks all image hosts), so you need to drop 28 image files into `/images/games/` before or after uploading.
 
-**If you skip this:** pages still work fine. They show a clean text fallback (game title on a soft green gradient) instead of a broken image. So this is enhancement, not blocker — but box art looks much better.
+**If you skip this:** pages still work fine. They show a clean text fallback (game title on a soft green gradient) instead of a broken image. So this is enhancement, not blocker - but box art looks much better.
 
 ## What to do
 
@@ -73,5 +73,5 @@ Box art for editorial/informational use (showing what game a page is about) is s
 - Front cover only, not spine/back
 - Avoid watermarked images (PriceCharting, eBay watermarks)
 - Roughly portrait. The CSS crops to 3:4 with object-fit:cover so slight ratio differences are fine
-- ~600x800px is plenty. Don't use 4000px images — wastes load time
+- ~600x800px is plenty. Don't use 4000px images - wastes load time
 - Keep total folder under ~6MB (≈200KB per image)

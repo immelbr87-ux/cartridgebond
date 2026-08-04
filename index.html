@@ -440,7 +440,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
   .sec-statement{padding:72px 30px;}
   .sec-statement h2{font-size:52px;}
 
-  /* Carousel — contain it so cards scroll rather than shrink */
+  /* Carousel - contain it so cards scroll rather than shrink */
   .car{overflow:hidden;}
   .car-head{max-width:1100px;margin:0 auto;padding:0 48px 22px;}
   .car-scroller{max-width:1100px;margin:0 auto;padding:4px 48px 28px;}
@@ -767,7 +767,7 @@ footer{background:#f2f2f2;padding:56px 24px 0;font-size:13px;color:var(--ink-3);
             1. Check your email for a confirmation<br>
             2. We match you with a verified counterparty<br>
             3. Both parties receive contact details by email<br>
-            4. Arrange your exchange — time, place, and payment sorted between you
+            4. Arrange your exchange - time, place, and payment sorted between you
           </div>
         </div>
         <div class="widget-success-actions">
@@ -1239,8 +1239,8 @@ function selectGame(shortTitle){
     var hot = game.demandLabel.toLowerCase().indexOf('very') > -1;
     demandNote.style.display = 'block';
     demandNote.innerHTML = hot
-      ? '&#x1F525; <strong>' + game.demandLabel + '</strong> &mdash; buyers are active for this title right now'
-      : '<span style="color:#22c55e;">&#10003;</span> <strong>' + game.demandLabel + '</strong> &mdash; regularly traded on CartridgeBond';
+      ? '&#x1F525; <strong>' + game.demandLabel + '</strong> - buyers are active for this title right now'
+      : '<span style="color:#22c55e;">&#10003;</span> <strong>' + game.demandLabel + '</strong> - regularly traded on CartridgeBond';
   }
   document.getElementById('gameChipText').textContent = 'Change';
   document.getElementById('gameRow').classList.remove('empty');
@@ -1337,7 +1337,7 @@ function setTimeline(days, label){
 
 function updatePriceDisplay(){
   if(!SELECTED_GAME){
-    // No game yet — keep timing label as-is
+    // No game yet - keep timing label as-is
     return;
   }
 
@@ -1345,7 +1345,7 @@ function updatePriceDisplay(){
   // The Bond's value is commitment flexibility, not price depreciation.
   var price = SELECTED_GAME.cartridgeBondPrice;
   var retail = SELECTED_GAME.retailPrice || 59.99;
-  // priceValue shows timing, not price — price shows in gameRowPrice
+  // priceValue shows timing, not price - price shows in gameRowPrice
 
   // Populate breakdown values (same numbers for Now / 30 / 60 / 90)
   if(CURRENT_MODE === 'sell'){
