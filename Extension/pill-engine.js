@@ -146,7 +146,7 @@ function renderOfferStep(){
   if(!offers.length){
     body.innerHTML = head + `
       <div class="dd-empty-notice">
-        No ${counterpart}s available yet for this game &mdash; you'd be the first.
+        No ${counterpart}s available yet for this game - you'd be the first.
         Lock in your parameters below and we'll match you the instant someone joins.
       </div>
       ${renderCustomParamsHTML(blueClass, isSell)}
@@ -156,7 +156,7 @@ function renderOfferStep(){
   }
 
   var cards = offers.map(function(o){
-    return `<button class="dd-offer-card" onclick="cbPickOffer(${o.offerId},${o.price},'${esc(o.timeline)}')" type="button">
+    return `<button class="dd-offer-card${blueClass}" onclick="cbPickOffer(${o.offerId},${o.price},'${esc(o.timeline)}')" type="button">
       <div class="dd-offer-left">
         <div class="dd-offer-price">$${o.price}</div>
         <div class="dd-offer-rating">${ratingLabel(o)}</div>
@@ -167,7 +167,7 @@ function renderOfferStep(){
   }).join('');
 
   body.innerHTML = head + `
-    <div class="dd-offer-terms${blueClass}"><strong>${esc(_ddReferenceCondition)} condition guaranteed</strong> on every offer &mdash; price reflects when each person locked in, timing and rating are theirs</div>
+    <div class="dd-offer-terms${blueClass}"><strong>${esc(_ddReferenceCondition)} condition guaranteed</strong> on every offer - price reflects when each person locked in, timing and rating are theirs</div>
     <div class="dd-offer-toprow">
       <div class="dd-offer-label">${offers.length} ${counterpart}${offers.length!==1?'s':''} committed</div>
       <div class="dd-sort-toggle">
@@ -177,7 +177,7 @@ function renderOfferStep(){
     </div>
     <div class="dd-offer-list">${cards}</div>
     <button class="dd-custom-link" onclick="cbShowCustomParams()" type="button">None of these work? Set your own timeline &rarr;</button>
-    <div class="dd-sort-note">Price &amp; distance sorting arrive with national shipping &mdash; every trade is local and this price today.</div>
+    <div class="dd-sort-note">Price &amp; distance sorting arrive with national shipping - every trade is local and this price today.</div>
   `;
 }
 
@@ -358,7 +358,7 @@ window.cbSubmitLock = function(){
     .then(function(res){ cbShowSuccess(!!res.matched); })
     .catch(function(){
       if(btn){ btn.disabled = false; btn.textContent = 'Confirm & lock my price'; }
-      if(note){ note.textContent = 'Something went wrong — try again, or finish at cartridgebond.com.'; }
+      if(note){ note.textContent = 'Something went wrong - try again, or finish at cartridgebond.com.'; }
     });
 };
 
@@ -372,7 +372,7 @@ function cbShowSuccess(matched){
   var title = matched ? "You're matched" : "You're locked in";
   var sub = matched
     ? `$${price} on ${esc(_ddGame.title)} is confirmed with your ${isSell?'buyer':'seller'}. Check your email for next steps.`
-    : `$${price} on ${esc(_ddGame.title)} is locked${waiting > 0 ? ` &mdash; ${waiting} ${isSell?'buyer':'seller'}${waiting!==1?'s':''} already waiting` : ''}. We'll email you the moment you're matched.`;
+    : `$${price} on ${esc(_ddGame.title)} is locked${waiting > 0 ? ` - ${waiting} ${isSell?'buyer':'seller'}${waiting!==1?'s':''} already waiting` : ''}. We'll email you the moment you're matched.`;
 
   body.innerHTML = `
     <div class="dd-success">
@@ -387,7 +387,7 @@ function cbShowSuccess(matched){
   setTimeout(closeDropdown, 6000);
 }
 
-// ── Full price breakdown — content differs by mode ───────────────────────────
+// ── Full price breakdown - content differs by mode ───────────────────────────
 window.cbToggleBreakdown = function(){
   var panel = document.getElementById('dd-breakdown');
   var arrow = document.getElementById('dd-bd-arrow');
@@ -443,7 +443,7 @@ function renderBreakdown(data, mode){
   var rows = '';
   if(c){
     rows = `
-      <div class="dd-bd-row"><span>Buy new (retail)</span><span>$${c.retailPrice ?? '—'}</span></div>
+      <div class="dd-bd-row"><span>Buy new (retail)</span><span>$${c.retailPrice ?? ' - '}</span></div>
       <div class="dd-bd-row hl"><span>CartridgeBond (A1, used)</span><span>$${c.cartridgeBondPrice}</span></div>
       <div class="dd-bd-row"><span>eBay, used</span><span>$${c.ebayNetLow}&ndash;${c.ebayNetHigh}</span></div>
       <div class="dd-bd-row"><span>GameStop, used</span><span>$${c.gameStopTradeIn}</span></div>
@@ -495,13 +495,13 @@ function buildPill(game, buyers, sellers){
 
   if(hasBuyers){
     msg = `<span class="cb-count" id="cb-cnt">${buyers}</span> Future Buyer${buyers!==1?'s':''} Waiting`;
-    sub = `Complete the Bond &amp; Sell This Game Later &mdash; Lock <span class="cb-price">$${game.price}</span> Sell Price Now`;
+    sub = `Complete the Bond &amp; Sell This Game Later - Lock <span class="cb-price">$${game.price}</span> Sell Price Now`;
     actionInner = `<button class="cb-action-btn" onclick="cbOpenDropdown(event,'sell')" type="button">
       Commit to Sell Used ${arrowSVG}
     </button>`;
   } else if(hasSellers){
     msg = `<span class="cb-count" id="cb-cnt">${sellers}</span> Seller${sellers!==1?'s':''} Ready To Sell Used`;
-    sub = `Buy Used at <span class="cb-price">$${game.price}</span> &mdash; A1 Condition Guaranteed`;
+    sub = `Buy Used at <span class="cb-price">$${game.price}</span> - A1 Condition Guaranteed`;
     actionInner = `<button class="cb-action-btn blue" onclick="cbOpenDropdown(event,'buy')" type="button">
       Commit to Buy Used ${arrowSVG}
     </button>`;

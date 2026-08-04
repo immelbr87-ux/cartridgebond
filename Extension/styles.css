@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────────────────────
-   CartridgeBond Extension — Premium Pill Styles
+   CartridgeBond Extension - Premium Pill Styles
    Apple-quality. White-first. Minimalist.
    ───────────────────────────────────────────────────────────────────────────── */
 
@@ -23,7 +23,7 @@
 @keyframes cb-slidein { from { opacity: 0; transform: translateY(-9px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes cb-ring { 0% { transform: scale(1); opacity: .6; } 65% { transform: scale(2.6); opacity: 0; } 100% { opacity: 0; } }
 @keyframes cb-sweep { to { transform: translateX(260%); } }
-@keyframes cb-breathe { 0%, 100% { box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 0 0 0 rgba(34,197,94,0); } 50% { box-shadow: 0 1px 3px rgba(0,0,0,.04), 0 0 0 5px rgba(34,197,94,.08); } }
+@keyframes cb-breathe { 0%, 100% { box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 0 0 0 rgba(10,10,10,0); } 50% { box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 0 0 5px rgba(10,10,10,.06); } }
 @keyframes cb-expand-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 
 #cb-pill {
@@ -35,7 +35,7 @@
 .cb-pill-inner {
   animation: cb-slidein .4s cubic-bezier(.34, 1.45, .64, 1) both;
   background: #ffffff;
-  border: 1px solid rgba(10, 10, 10, .14);
+  border: 1px solid rgba(10, 10, 10, .32);
   border-radius: 14px;
   padding: 11px 10px 11px 14px;
   display: flex;
@@ -58,7 +58,7 @@
   animation: cb-slidein .4s cubic-bezier(.34,1.45,.64,1) both, cb-breathe 2.7s ease 1s 3;
 }
 .cb-state-sellers .cb-pill-inner {
-  border-color: rgba(10, 10, 10, .14);
+  border-color: rgba(10, 10, 10, .32);
   box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 2px 16px rgba(0,0,0,.05);
 }
 
@@ -69,12 +69,13 @@
 .cb-dot-ring { position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid; animation: cb-ring 2.2s ease infinite; opacity: 0; }
 .cb-dot-ring-2 { position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid; animation: cb-ring 2.2s ease .8s infinite; opacity: 0; }
 
-.cb-text-block { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.cb-text-block { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 0; }
 .cb-message { font-size: 13.5px; font-weight: 600; color: #0a0a0a; white-space: nowrap; letter-spacing: -.025em; line-height: 1.2; }
 .cb-message .cb-count { font-weight: 800; font-size: 17px; }
 .cb-sub { font-size: 11.5px; color: #6b6b6b; white-space: nowrap; letter-spacing: -.01em; }
-.cb-sub .cb-price { font-weight: 700; }
-.cb-brand-inline { font-size: 9px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #b0b0b0; margin-top: 2px; }
+.cb-sub .cb-price { font-weight: 800; color: #16a34a; }
+.cb-state-sellers .cb-sub .cb-price { color: #1d4ed8; }
+.cb-brand-inline { font-size: 9px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #0a0a0a; margin-top: 1px; }
 .cb-brand-inline em { font-style: normal; color: #22c55e; font-weight: 800; }
 
 .cb-action-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
@@ -109,90 +110,10 @@
 }
 .cb-dual-buy:hover { background: rgba(0,0,0,.04); }
 
-/* ── Expanded card ── */
-.cb-expand-card {
-  animation: cb-expand-in .32s cubic-bezier(.34,1.25,.64,1) both;
-  background: #fff;
-  border: 1px solid rgba(34,197,94,.22);
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,.09), 0 0 0 1px rgba(34,197,94,.05);
-  overflow: hidden;
-  width: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Helvetica, Arial, sans-serif;
-}
-.cb-expand-card.blue { border-color: rgba(59,130,246,.22); box-shadow: 0 4px 24px rgba(0,0,0,.09), 0 0 0 1px rgba(59,130,246,.05); }
-.cbx-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 15px 10px; }
-.cbx-brand-row { display: flex; align-items: center; gap: 7px; }
-.cbx-live-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
-.cbx-brand-text { font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #9a9a9a; }
-.cbx-brand-text em { font-style: normal; color: #22c55e; }
-.cbx-close { width: 24px; height: 24px; border-radius: 50%; background: rgba(0,0,0,.06); border: none; cursor: pointer; font-size: 13px; color: #6b6b6b; display: flex; align-items: center; justify-content: center; transition: background .12s; font-family: inherit; }
-.cbx-close:hover { background: rgba(0,0,0,.1); }
-.cbx-divider { height: 1px; background: rgba(0,0,0,.06); margin: 0 15px; }
-.cbx-body { padding: 14px 15px; }
-.cbx-game-name { font-size: 16px; font-weight: 700; color: #0a0a0a; letter-spacing: -.03em; margin-bottom: 3px; }
-.cbx-condition { font-size: 12.5px; color: #6b6b6b; margin-bottom: 14px; letter-spacing: -.01em; }
-.cbx-condition strong { color: #16a34a; }
-.cbx-timing-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #9a9a9a; margin-bottom: 8px; }
-.cbx-chips { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
-.cbx-chip { padding: 7px 14px; border-radius: 100px; border: 1px solid rgba(0,0,0,.12); background: transparent; font-size: 12.5px; font-weight: 500; color: #3a3a3a; cursor: pointer; transition: all .12s; letter-spacing: -.01em; font-family: inherit; }
-.cbx-chip:hover { border-color: rgba(34,197,94,.5); color: #16a34a; }
-.cbx-chip.selected { background: #0a0a0a; color: #fff; border-color: #0a0a0a; }
-.cbx-chip.selected-blue { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
-.cbx-price-row { display: flex; align-items: center; justify-content: space-between; background: #f7f7f5; border-radius: 12px; padding: 12px 15px; margin-bottom: 14px; }
-.cbx-price-amount { font-size: 26px; font-weight: 800; color: #16a34a; letter-spacing: -.05em; }
-.cbx-price-lbl { font-size: 10px; color: #9a9a9a; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px; }
-.cbx-price-notes { text-align: right; font-size: 11.5px; color: #9a9a9a; line-height: 1.5; }
-.cbx-lock-btn { width: 100%; padding: 13px; background: #0a0a0a; color: #fff; border: none; border-radius: 100px; font-size: 13.5px; font-weight: 700; cursor: pointer; letter-spacing: -.02em; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background .12s; font-family: inherit; }
-.cbx-lock-btn:hover { background: #222; }
-.cbx-lock-btn.blue { background: #1d4ed8; }
-.cbx-lock-btn.blue:hover { background: #1e40af; }
-.cbx-lock-btn svg { width: 14px; height: 14px; }
-.cbx-footer { display: flex; justify-content: center; padding: 10px 15px 13px; }
-.cbx-footer a { font-size: 11px; color: #b0b0b0; font-weight: 600; text-decoration: none; transition: color .12s; }
-.cbx-footer a:hover { color: #22c55e; }
-.cbx-footer em { font-style: normal; color: #22c55e; }
-
-/* ── GameStop card ── */
 .cb-gs-wrap { margin: 12px 0; }
 
-/* ── Match card (buyers already waiting) ── */
-.cbx-match-eyebrow {
-  font-size: 10px; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; color: #16a34a; margin-bottom: 6px;
-}
-.cbx-match-info {
-  background: #f7f7f5; border-radius: 12px;
-  padding: 10px 13px; margin-bottom: 14px;
-  display: flex; flex-direction: column; gap: 8px;
-}
-.cbx-match-row {
-  display: flex; align-items: center;
-  justify-content: space-between;
-}
-.cbx-match-label {
-  font-size: 11.5px; color: #9a9a9a; font-weight: 500;
-}
-.cbx-match-badge {
-  font-size: 12px; font-weight: 700;
-  background: #f0fdf4; color: #16a34a;
-  border: 1px solid #bbf7d0;
-  border-radius: 100px; padding: 3px 10px;
-  letter-spacing: -.01em;
-}
-
-/* ── Price amount bigger ── */
-.cbx-price-amount {
-  font-size: 32px !important;
-  font-weight: 800 !important;
-  color: #16a34a !important;
-  letter-spacing: -.05em !important;
-  line-height: 1 !important;
-}
-.cb-expand-card.blue .cbx-price-amount { color: #1d4ed8 !important; }
-
 /* ═════════════════════════════════════════════════════════════════════════
-   #cb-dropdown — was previously unstyled (rendered with browser defaults).
+   #cb-dropdown - was previously unstyled (rendered with browser defaults).
    Added when the inline lock-in flow was built, so it now matches the
    pill's Apple-quality design language.
    ═════════════════════════════════════════════════════════════════════════ */
@@ -237,7 +158,8 @@
 .dd-price-card.blue { background: #eff6ff; border-color: #bfdbfe; }
 .dd-price-label { font-size: 9.5px; font-weight: 700; letter-spacing: .06em; color: #16a34a; margin-bottom: 2px; }
 .dd-price-card.blue .dd-price-label { color: #1d4ed8; }
-.dd-price-val { font-size: 24px; font-weight: 800; color: #0a0a0a; letter-spacing: -.03em; }
+.dd-price-val { font-size: 24px; font-weight: 800; color: #16a34a; letter-spacing: -.03em; }
+.dd-price-card.blue .dd-price-val { color: #1d4ed8; }
 .dd-badge {
   font-size: 10px; font-weight: 700; color: #15803d; background: #fff;
   border: 1px solid #bbf7d0; border-radius: 100px; padding: 5px 9px; text-align: center;
@@ -346,7 +268,8 @@
   font-family: inherit; text-align: left;
 }
 .dd-offer-card:hover { border-color: #22c55e; background: #f0fdf4; }
-.dd-offer-price { font-size: 15px; font-weight: 800; color: #0a0a0a; letter-spacing: -.02em; }
+.dd-offer-price { font-size: 15px; font-weight: 800; color: #16a34a; letter-spacing: -.02em; }
+.dd-offer-card.blue .dd-offer-price { color: #1d4ed8; }
 .dd-offer-rating { font-size: 11.5px; color: #6b6b6b; margin-top: 1px; }
 .dd-offer-stars { color: #f5a623; letter-spacing: 1px; font-size: 10.5px; }
 .dd-offer-count { color: #9a9a9a; font-weight: 500; }

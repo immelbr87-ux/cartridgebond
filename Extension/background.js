@@ -1,4 +1,4 @@
-// CartridgeBond Extension — Background Service Worker (Manifest V3)
+// CartridgeBond Extension - Background Service Worker (Manifest V3)
 
 chrome.runtime.onInstalled.addListener(({ reason }) => {
   if (reason === 'install') {

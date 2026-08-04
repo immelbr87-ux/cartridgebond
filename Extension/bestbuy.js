@@ -1,4 +1,4 @@
-// CartridgeBond — Best Buy content script
+// CartridgeBond - Best Buy content script
 // Site-specific only: constants, games list, anchor detection, game matching.
 // The pill/dropdown/offer-list/age-gate itself lives in pill-engine.js.
 

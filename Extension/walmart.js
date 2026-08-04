@@ -1,4 +1,4 @@
-// CartridgeBond — Walmart content script
+// CartridgeBond - Walmart content script
 // Site-specific only: constants, games list, anchor detection, game matching.
 // The pill/dropdown/offer-list/age-gate itself lives in pill-engine.js.
 
