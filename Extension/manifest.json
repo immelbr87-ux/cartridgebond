@@ -15,6 +15,7 @@
         "https://www.amazon.com/*"
       ],
       "js": [
+        "pill-engine.js",
         "content.js"
       ],
       "css": [
@@ -27,6 +28,7 @@
         "https://www.gamestop.com/*"
       ],
       "js": [
+        "pill-engine.js",
         "gamestop.js"
       ],
       "css": [
@@ -39,6 +41,7 @@
         "https://www.bestbuy.com/*"
       ],
       "js": [
+        "pill-engine.js",
         "bestbuy.js"
       ],
       "css": [
@@ -51,6 +54,7 @@
         "https://www.target.com/*"
       ],
       "js": [
+        "pill-engine.js",
         "target.js"
       ],
       "css": [
@@ -63,6 +67,7 @@
         "https://www.walmart.com/*"
       ],
       "js": [
+        "pill-engine.js",
         "walmart.js"
       ],
       "css": [
@@ -92,7 +97,8 @@
     "https://www.bestbuy.com/*",
     "https://www.target.com/*",
     "https://www.walmart.com/*",
-    "https://script.google.com/*"
+    "https://script.google.com/*",
+    "https://www.cartridgebond.com/*"
   ],
   "web_accessible_resources": [
     {
