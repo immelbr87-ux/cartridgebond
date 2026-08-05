@@ -27,6 +27,9 @@ var currentTl    = 'flex'; // timeline selection in dropdown
 var _ddGame = null, _ddMode = null, _ddBuyers = 0, _ddSellers = 0;
 var _ddOffers = [], _ddOfferId = null, _ddPickedPrice = 0;
 var _ddReferenceCondition = 'A1', _ddSort = 'soonest';
+var _ddStep = 'offers'; // tracks which dropdown step is showing, so a slow
+                         // async response (e.g. the offer-list fetch) can't
+                         // clobber a step the user has already moved past
 var _breakdownCache = {}; // slug -> {comparison, intel} - avoid refetching per open
 
 function closeDropdown(){
@@ -42,7 +45,7 @@ function esc(s){
 function buildDropdownShell(game, mode){
   return `<div class="dd-head">
     <div class="dd-brand">Cartridge<em>Bond</em></div>
-    <button class="dd-close" onclick="cbCloseDropdown()" type="button">✕</button>
+    <button class="dd-close" data-cb-action="close" type="button">✕</button>
   </div>
   <div class="dd-body" id="dd-body">
     <div class="dd-game">${esc(game.title)}</div>
@@ -54,13 +57,17 @@ function buildDropdownShell(game, mode){
 function openDropdown(game, mode, anchorEl){
   closeDropdown();
   dropdownOpen = true;
-  _ddGame = game; _ddMode = mode; _ddOfferId = null;
+  _ddGame = game; _ddMode = mode; _ddOfferId = null; _ddStep = 'offers';
   _ddBuyers = _currentBuyers; _ddSellers = _currentSellers;
 
   var dd = document.createElement('div');
   dd.id = 'cb-dropdown';
   dd.innerHTML = buildDropdownShell(game, mode);
-  dd.addEventListener('click', function(e){ e.stopPropagation(); });
+  // NOTE: no stopPropagation here on purpose - the outside-click listener
+  // below already correctly distinguishes inside/outside via dd.contains(),
+  // and the single delegated data-cb-action listener (bottom of this file)
+  // is attached to document, so clicks inside dd must be allowed to bubble
+  // all the way up or none of the dropdown's buttons would work at all.
   document.body.appendChild(dd);
 
   // Position below the pill anchor
@@ -74,7 +81,14 @@ function openDropdown(game, mode, anchorEl){
   // Close on outside click
   setTimeout(function(){
     document.addEventListener('click', function outsideClick(e){
-      if(!dd.contains(e.target) && e.target.id !== 'cb-pill'){
+      // Use composedPath() (captured at dispatch time), not e.target -
+      // an earlier bubble-phase handler (e.g. cbShowConfirm) may have
+      // already replaced dd-body's innerHTML and detached e.target from
+      // the DOM by the time this listener runs, which would make
+      // dd.contains(e.target) wrongly read as "outside" and close the
+      // dropdown on every single click inside it.
+      var path = e.composedPath();
+      if(!path.includes(dd) && e.target.id !== 'cb-pill'){
         closeDropdown();
         document.removeEventListener('click', outsideClick);
       }
@@ -82,7 +96,7 @@ function openDropdown(game, mode, anchorEl){
   }, 100);
 
   fetchOffers(game, mode).then(function(result){
-    if(!dropdownOpen || _ddGame !== game) return; // dropdown closed/changed while fetch was in flight
+    if(!dropdownOpen || _ddGame !== game || _ddStep !== 'offers') return; // dropdown closed, game changed, or user already moved past this step
     _ddOffers = result.offers;
     _ddReferenceCondition = result.condition || 'A1';
     _ddSort = 'soonest';
@@ -135,6 +149,7 @@ function ratingLabel(o){
 function renderOfferStep(){
   var body = document.getElementById('dd-body');
   if(!body || !_ddGame) return;
+  _ddStep = 'offers';
   var isSell = _ddMode === 'sell';
   var blueClass = isSell ? '' : ' blue';
   var offers = sortOffers(_ddOffers || [], _ddSort);
@@ -156,7 +171,7 @@ function renderOfferStep(){
   }
 
   var cards = offers.map(function(o){
-    return `<button class="dd-offer-card${blueClass}" onclick="cbPickOffer(${o.offerId},${o.price},'${esc(o.timeline)}')" type="button">
+    return `<button class="dd-offer-card${blueClass}" data-cb-action="pick-offer" data-offer-id="${o.offerId}" data-price="${o.price}" data-timeline="${esc(o.timeline)}" type="button">
       <div class="dd-offer-left">
         <div class="dd-offer-price">$${o.price}</div>
         <div class="dd-offer-rating">${ratingLabel(o)}</div>
@@ -171,12 +186,12 @@ function renderOfferStep(){
     <div class="dd-offer-toprow">
       <div class="dd-offer-label">${offers.length} ${counterpart}${offers.length!==1?'s':''} committed</div>
       <div class="dd-sort-toggle">
-        <button class="dd-sort-btn${_ddSort==='soonest'?' sel':''}" onclick="cbSetSort('soonest')" type="button">Soonest</button>
-        <button class="dd-sort-btn${_ddSort==='rating'?' sel':''}" onclick="cbSetSort('rating')" type="button">Top rated</button>
+        <button class="dd-sort-btn${_ddSort==='soonest'?' sel':''}" data-cb-action="set-sort" data-sort="soonest" type="button">Soonest</button>
+        <button class="dd-sort-btn${_ddSort==='rating'?' sel':''}" data-cb-action="set-sort" data-sort="rating" type="button">Top rated</button>
       </div>
     </div>
     <div class="dd-offer-list">${cards}</div>
-    <button class="dd-custom-link" onclick="cbShowCustomParams()" type="button">None of these work? Set your own timeline &rarr;</button>
+    <button class="dd-custom-link" data-cb-action="show-custom" type="button">None of these work? Set your own timeline &rarr;</button>
     <div class="dd-sort-note">Price &amp; distance sorting arrive with national shipping - every trade is local and this price today.</div>
   `;
 }
@@ -198,7 +213,7 @@ function renderCustomParamsHTML(blueClass, isSell){
   var ctaLabel   = isSell ? 'Lock in my sell price' : 'Lock in my buy price';
 
   var tlHTML = tlOpts.map(([top,bot,val]) =>
-    `<button class="dd-tl-btn${val===defaultTl?' sel':''}" onclick="cbSelTl('${val}',this)" type="button">
+    `<button class="dd-tl-btn${val===defaultTl?' sel':''}" data-cb-action="sel-tl" data-tl="${val}" type="button">
        <div class="dd-tl-top">${top}</div><div class="dd-tl-bot">${bot}</div>
      </button>`
   ).join('');
@@ -216,14 +231,14 @@ function renderCustomParamsHTML(blueClass, isSell){
       <div class="dd-value-chip">A1 condition guaranteed</div>
       <div class="dd-value-chip">Zero fees</div>
     </div>`}
-    <button class="dd-breakdown-toggle" onclick="cbToggleBreakdown()" type="button">
+    <button class="dd-breakdown-toggle" data-cb-action="toggle-breakdown" type="button">
       See full price breakdown ${isSell ? '&amp; ownership score' : 'across platforms'}
       <svg id="dd-bd-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
     </button>
     <div id="dd-breakdown" class="dd-breakdown"></div>
     <div class="dd-tl-label">${isSell ? 'When can you sell?' : 'When do you need it?'}</div>
     <div class="dd-tl-row">${tlHTML}</div>
-    <button class="dd-cta${blueClass}" onclick="cbShowConfirm()" type="button">
+    <button class="dd-cta${blueClass}" data-cb-action="show-confirm" type="button">
       ${ctaLabel}
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
@@ -236,11 +251,12 @@ function wireCustomParamsEvents(){ /* buttons use inline onclick - nothing to wi
 window.cbShowCustomParams = function(){
   var body = document.getElementById('dd-body');
   if(!body || !_ddGame) return;
+  _ddStep = 'custom';
   _ddOfferId = null;
   var isSell = _ddMode === 'sell';
   var blueClass = isSell ? '' : ' blue';
   body.innerHTML = `
-    <button class="dd-back" onclick="cbBackToOffer()" type="button">
+    <button class="dd-back" data-cb-action="back-to-offer" type="button">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>Back
     </button>
     <div class="dd-game">${esc(_ddGame.title)}</div>
@@ -257,13 +273,14 @@ window.cbBackToOffer = function(){
 window.cbPickOffer = function(offerId, price, timeline){
   var body = document.getElementById('dd-body');
   if(!body || !_ddGame) return;
+  _ddStep = 'picked';
   _ddOfferId = offerId;
   var isSell = _ddMode === 'sell';
   var blueClass = isSell ? '' : ' blue';
   var priceLabel = isSell ? 'YOU GET (LOCKED)' : 'YOU PAY (LOCKED)';
 
   body.innerHTML = `
-    <button class="dd-back" onclick="cbBackToOffer()" type="button">
+    <button class="dd-back" data-cb-action="back-to-offer" type="button">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>Back
     </button>
     <div class="dd-game">${esc(_ddGame.title)}</div>
@@ -275,7 +292,7 @@ window.cbPickOffer = function(offerId, price, timeline){
       </div>
       <div class="dd-badge${blueClass}">${esc(_ddReferenceCondition)} &middot; ${esc(timelineLabel(timeline))}</div>
     </div>
-    <button class="dd-cta${blueClass}" onclick="cbShowConfirm()" type="button">
+    <button class="dd-cta${blueClass}" data-cb-action="show-confirm" type="button">
       Confirm this bond
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
@@ -297,12 +314,13 @@ window.cbSelTl = function(val, el){
 window.cbShowConfirm = function(){
   var body = document.getElementById('dd-body');
   if(!body || !_ddGame) return;
+  _ddStep = 'confirm';
   var isSell = _ddMode === 'sell';
   var blueClass = isSell ? '' : ' blue';
   var price = _ddOfferId ? _ddPickedPrice : _ddGame.price;
 
   body.innerHTML = `
-    <button class="dd-back" onclick="${_ddOfferId ? `cbPickOffer(${_ddOfferId},${_ddPickedPrice},'${currentTl}')` : 'cbShowCustomParams()'}" type="button">
+    <button class="dd-back" data-cb-action="back-from-confirm" type="button">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
       Back
     </button>
@@ -311,7 +329,7 @@ window.cbShowConfirm = function(){
     <div class="dd-confirm-label">Where should we send your match?</div>
     <input class="dd-input" id="dd-email" type="email" placeholder="you@email.com" autocomplete="email">
     <input class="dd-input" id="dd-zip" type="text" placeholder="ZIP code (helps find a nearby match)" maxlength="5" inputmode="numeric">
-    <button class="dd-cta${blueClass}" id="dd-submit-btn" onclick="cbSubmitLock()" type="button">
+    <button class="dd-cta${blueClass}" id="dd-submit-btn" data-cb-action="submit-lock" type="button">
       Confirm &amp; lock my price
     </button>
     <div class="dd-note" id="dd-submit-note">
@@ -365,6 +383,7 @@ window.cbSubmitLock = function(){
 function cbShowSuccess(matched){
   var body = document.getElementById('dd-body');
   if(!body || !_ddGame) return;
+  _ddStep = 'success';
   var isSell = _ddMode === 'sell';
   var waiting = isSell ? _ddBuyers : _ddSellers;
   var price = _ddOfferId ? _ddPickedPrice : _ddGame.price;
@@ -496,17 +515,17 @@ function buildPill(game, buyers, sellers){
   if(hasBuyers){
     msg = `Sell PreOwned for <strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> - A1 Condition`;
     sub = `<span class="cb-count" id="cb-cnt">${buyers}</span> Future Buyer${buyers!==1?'s':''} Committed - $0 Fees in Beta`;
-    actionInner = `<button class="cb-action-btn" onclick="cbOpenDropdown(event,'sell')" type="button">
+    actionInner = `<button class="cb-action-btn" data-cb-action="open-dropdown" data-mode="sell" type="button">
       Sell PreOwned ${arrowSVG}
     </button>
-    <button class="cb-action-secondary" onclick="cbOpenDropdown(event,'buy')" type="button">Buy PreOwned</button>`;
+    <button class="cb-action-secondary" data-cb-action="open-dropdown" data-mode="buy" type="button">Buy PreOwned</button>`;
   } else if(hasSellers){
     msg = `Buy PreOwned for <strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> - A1 Condition`;
     sub = `<span class="cb-count" id="cb-cnt">${sellers}</span> Future Seller${sellers!==1?'s':''} Committed - $0 Fees in Beta`;
-    actionInner = `<button class="cb-action-btn" onclick="cbOpenDropdown(event,'buy')" type="button">
+    actionInner = `<button class="cb-action-btn" data-cb-action="open-dropdown" data-mode="buy" type="button">
       Buy PreOwned ${arrowSVG}
     </button>
-    <button class="cb-action-secondary" onclick="cbOpenDropdown(event,'sell')" type="button">Sell PreOwned</button>`;
+    <button class="cb-action-secondary" data-cb-action="open-dropdown" data-mode="sell" type="button">Sell PreOwned</button>`;
   } else {
     msg = `<strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> PreOwned Buy/Sell Price`;
     sub = `A1 Condition Only - Choose Your Timing`;
@@ -515,8 +534,8 @@ function buildPill(game, buyers, sellers){
   var actionHTML = hasBuyers || hasSellers
     ? `<div class="cb-action-wrap">${actionInner}</div>`
     : `<div class="cb-dual-wrap">
-        <button class="cb-dual-sell" onclick="cbOpenDropdown(event,'sell')" type="button">Sell PreOwned</button>
-        <button class="cb-dual-buy" onclick="cbOpenDropdown(event,'buy')" type="button">Buy PreOwned</button>
+        <button class="cb-dual-sell" data-cb-action="open-dropdown" data-mode="sell" type="button">Sell PreOwned</button>
+        <button class="cb-dual-buy" data-cb-action="open-dropdown" data-mode="buy" type="button">Buy PreOwned</button>
       </div>`;
 
   return `<div id="cb-pill" class="${stateClass}">
@@ -538,14 +557,18 @@ function buildPill(game, buyers, sellers){
   </div>`;
 }
 
-// Global opener called from pill onclick
+// Opens the dropdown for a given mode - called via delegated click handler
+// at the bottom of this file, not inline onclick (content scripts run in an
+// isolated JS world; inline onclick="" attributes always execute in the
+// page's own main world and can never reach an isolated-world function, so
+// every interactive element in this file is wired through one delegated
+// listener using data-cb-action attributes instead).
 var _currentGame = null;
 var _currentBuyers = 0, _currentSellers = 0;
-window.cbOpenDropdown = function(e, mode){
-  e.stopPropagation();
+function cbOpenDropdown(mode){
   var anchor = document.getElementById('cb-pill');
   if(_currentGame) openDropdown(_currentGame, mode, anchor);
-};
+}
 
 // ── Inject ────────────────────────────────────────────────────────────────────
 function injectPill(anchor, game, buyers, sellers){
@@ -564,18 +587,6 @@ function injectPill(anchor, game, buyers, sellers){
     var t = setInterval(function(){ i++; cnt.textContent = i; if(i>=target) clearInterval(t); }, 110);
   }
 }
-
-// ── Fetch & init ──────────────────────────────────────────────────────────────
-async function fetchBondData(game){
-  try{
-    var url = `${CB_API}?action=gameStatus&game=${encodeURIComponent(game.title)}&minBuyerTimeline=30`;
-    var res = await fetch(url, { signal: AbortSignal.timeout(4000) });
-    var data = await res.json();
-    if(data.ok) return { buyers: data.buyers||0, sellers: data.sellers||0 };
-  }catch(_){}
-  return { buyers:0, sellers:0 };
-}
-
 
 // ── Fetch & mount ─────────────────────────────────────────────────────────────
 async function fetchBondData(game){
@@ -677,3 +688,55 @@ async function CBMount(anchor, game){
     _mounting = false;
   }
 }
+
+// ── Single delegated click handler for the whole pill + dropdown UI ─────────
+// Every interactive element above is wired via data-cb-action (+ data-*
+// params) instead of inline onclick="" - see the note above cbOpenDropdown
+// for why. One listener, attached once, handles all of it by inspecting
+// which data-cb-action fired.
+document.addEventListener('click', function(e){
+  var el = e.target.closest('[data-cb-action]');
+  if(!el) return;
+  var action = el.dataset.cbAction;
+
+  if(action === 'open-dropdown'){
+    e.stopPropagation();
+    cbOpenDropdown(el.dataset.mode);
+    return;
+  }
+
+  // Everything else below only makes sense once the dropdown exists
+  switch(action){
+    case 'close':
+      closeDropdown();
+      break;
+    case 'pick-offer':
+      cbPickOffer(parseInt(el.dataset.offerId, 10), parseFloat(el.dataset.price), el.dataset.timeline);
+      break;
+    case 'set-sort':
+      cbSetSort(el.dataset.sort);
+      break;
+    case 'show-custom':
+      cbShowCustomParams();
+      break;
+    case 'sel-tl':
+      cbSelTl(el.dataset.tl, el);
+      break;
+    case 'toggle-breakdown':
+      cbToggleBreakdown();
+      break;
+    case 'show-confirm':
+      cbShowConfirm();
+      break;
+    case 'back-to-offer':
+      cbBackToOffer();
+      break;
+    case 'back-from-confirm':
+      if(_ddOfferId){ cbPickOffer(_ddOfferId, _ddPickedPrice, currentTl); }
+      else { cbShowCustomParams(); }
+      break;
+    case 'submit-lock':
+      cbSubmitLock();
+      break;
+  }
+});
