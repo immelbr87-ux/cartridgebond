@@ -137,7 +137,7 @@ body{
     <div class="divider"></div>
 
     <div class="age-section">
-      <input type="checkbox" id="age-cb" onchange="toggleAge(this)">
+      <input type="checkbox" id="age-cb">
       <label class="age-label" for="age-cb" id="age-label">
         <div class="age-box">
           <svg class="age-check-svg" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5"/></svg>
@@ -155,7 +155,7 @@ body{
       <a href="https://www.cartridgebond.com/terms.html" target="_blank">Full terms</a>
     </div>
 
-    <button class="cta-btn" id="cta-btn" onclick="activate()" disabled>
+    <button class="cta-btn" id="cta-btn" disabled>
       Start using CartridgeBond
     </button>
   </div>
@@ -169,39 +169,6 @@ body{
   </div>
 </div>
 
-<script>
-function toggleAge(cb) {
-  var label = document.getElementById('age-label');
-  var btn   = document.getElementById('cta-btn');
-  if (cb.checked) {
-    label.classList.add('checked');
-    btn.disabled = false;
-    btn.classList.add('ready');
-  } else {
-    label.classList.remove('checked');
-    btn.disabled = true;
-    btn.classList.remove('ready');
-  }
-}
-
-function activate() {
-  // Store age verification so we never show this again
-  chrome.storage.local.set({
-    cb_age_verified: true,
-    cb_tos_accepted: true,
-    cb_install_date: new Date().toISOString()
-  }, function() {
-    // Navigate to Amazon to try it out
-    window.location.href = 'https://www.amazon.com/s?k=nintendo+switch+games';
-  });
-}
-
-// If already verified, skip straight to Amazon
-chrome.storage.local.get(['cb_age_verified'], function(res) {
-  if (res.cb_age_verified) {
-    window.location.href = 'https://www.amazon.com/s?k=nintendo+switch+games';
-  }
-});
-</script>
+<script src="welcome.js"></script>
 </body>
 </html>
