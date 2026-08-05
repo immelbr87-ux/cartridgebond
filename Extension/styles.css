@@ -29,6 +29,9 @@
 #cb-pill {
   display: block;
   margin: 10px 0 4px;
+  max-width: 560px; /* prevents the pill stretching edge-to-edge on wide
+                        SPA layouts (Target etc.) and leaving a huge empty
+                        gap between the text and the action button */
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
@@ -37,7 +40,7 @@
   background: #ffffff;
   border: 1px solid rgba(10, 10, 10, .32);
   border-radius: 14px;
-  padding: 11px 10px 11px 14px;
+  padding: 13px 12px 13px 16px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -69,7 +72,7 @@
 .cb-dot-ring { position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid; animation: cb-ring 2.2s ease infinite; opacity: 0; }
 .cb-dot-ring-2 { position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid; animation: cb-ring 2.2s ease .8s infinite; opacity: 0; }
 
-.cb-text-block { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 0; }
+.cb-text-block { display: flex; flex-direction: column; gap: 7px; flex: 1; min-width: 0; }
 .cb-message { font-size: 13.5px; font-weight: 600; color: #0a0a0a; white-space: nowrap; letter-spacing: -.025em; line-height: 1.2; }
 .cb-message .cb-count { font-weight: 800; font-size: 17px; }
 .cb-sub { font-size: 11.5px; color: #6b6b6b; white-space: nowrap; letter-spacing: -.01em; }
@@ -98,11 +101,11 @@
 
 .cb-dual-wrap { display: flex; gap: 6px; flex-shrink: 0; }
 .cb-dual-sell {
-  background: #0a0a0a; color: #fff; border: none; border-radius: 100px;
+  background: #15803d; color: #fff; border: none; border-radius: 100px;
   padding: 8px 18px; font-size: 12.5px; font-weight: 600; cursor: pointer;
   letter-spacing: -.02em; transition: background .12s; font-family: inherit;
 }
-.cb-dual-sell:hover { background: #222; }
+.cb-dual-sell:hover { background: #166534; }
 .cb-dual-buy {
   background: transparent; border: 1px solid rgba(0,0,0,.18); border-radius: 100px;
   padding: 8px 18px; font-size: 12.5px; font-weight: 600; cursor: pointer;

@@ -506,8 +506,8 @@ function buildPill(game, buyers, sellers){
       Commit to Buy Used ${arrowSVG}
     </button>`;
   } else {
-    msg = `Lock in <strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> &nbsp;&middot;&nbsp; A1 condition`;
-    sub = `Sell when ready &middot; Buy used &middot; Choose your timing`;
+    msg = `Lock In <strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> Future Resale &nbsp;-&nbsp; A1 Condition`;
+    sub = `Choose Your Resale Timing`;
   }
 
   var actionHTML = hasBuyers || hasSellers
@@ -643,26 +643,35 @@ if(chrome.storage && chrome.storage.onChanged){
 // Handles the age gate, skeleton, live buyer/seller fetch, and popup sync -
 // every site gets the exact same buy/sell pill and dropdown, just injected
 // at whatever anchor point makes sense on that site's DOM.
+var _mounting = false;
 async function CBMount(anchor, game){
   if(!anchor || !game) return;
-  if(document.getElementById('cb-pill')) return;
-  _currentGame = game;
-  _mountAnchor = anchor;
-  _mountGame = game;
+  if(_mounting || document.getElementById('cb-pill')) return;
+  _mounting = true; // set synchronously, before any await, so concurrent
+                     // MutationObserver-triggered calls on SPA pages (Target,
+                     // Best Buy, etc.) can't all slip past the guard above
+                     // during the gap before the first await resolves
+  try {
+    _currentGame = game;
+    _mountAnchor = anchor;
+    _mountGame = game;
 
-  var ageOk = await isAgeVerified();
-  if(!ageOk){
-    injectAgeGatePill(anchor);
-    return;
+    var ageOk = await isAgeVerified();
+    if(!ageOk){
+      injectAgeGatePill(anchor);
+      return;
+    }
+
+    var sk = document.createElement('div');
+    sk.id = 'cb-pill';
+    sk.innerHTML = `<div class="cb-skeleton"><div class="cb-skeleton-inner"><div class="cb-skeleton-dot"></div><div class="cb-skeleton-text"></div></div></div>`;
+    anchor.parentNode.insertBefore(sk, anchor.nextSibling);
+
+    var { buyers, sellers } = await fetchBondData(game);
+    sk.remove();
+    injectPill(anchor, game, buyers, sellers);
+    chrome.storage.local.set({ cb_detected: { game:game.title, price:game.price, buyers, sellers, url:location.href } });
+  } finally {
+    _mounting = false;
   }
-
-  var sk = document.createElement('div');
-  sk.id = 'cb-pill';
-  sk.innerHTML = `<div class="cb-skeleton"><div class="cb-skeleton-inner"><div class="cb-skeleton-dot"></div><div class="cb-skeleton-text"></div></div></div>`;
-  anchor.parentNode.insertBefore(sk, anchor.nextSibling);
-
-  var { buyers, sellers } = await fetchBondData(game);
-  sk.remove();
-  injectPill(anchor, game, buyers, sellers);
-  chrome.storage.local.set({ cb_detected: { game:game.title, price:game.price, buyers, sellers, url:location.href } });
 }
