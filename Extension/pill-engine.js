@@ -489,7 +489,7 @@ function buildPill(game, buyers, sellers){
   var arrowSVG   = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
 
   var stateClass = hasBuyers ? 'cb-state-buyers' : hasSellers ? 'cb-state-sellers' : 'cb-state-empty';
-  var dotColor   = hasSellers && !hasBuyers ? '#3b82f6' : '#22c55e';
+  var dotColor   = '#22c55e'; // green always - no more buy/sell color split
 
   var msg, sub, actionInner;
 
@@ -498,13 +498,15 @@ function buildPill(game, buyers, sellers){
     sub = `Complete the Bond &amp; Sell This Game Later - Lock <span class="cb-price">$${game.price}</span> Sell Price Now`;
     actionInner = `<button class="cb-action-btn" onclick="cbOpenDropdown(event,'sell')" type="button">
       Commit to Sell Used ${arrowSVG}
-    </button>`;
+    </button>
+    <button class="cb-action-secondary" onclick="cbOpenDropdown(event,'buy')" type="button">Buy Used</button>`;
   } else if(hasSellers){
     msg = `<span class="cb-count" id="cb-cnt">${sellers}</span> Seller${sellers!==1?'s':''} Ready To Sell Used`;
     sub = `Buy Used at <span class="cb-price">$${game.price}</span> - A1 Condition Guaranteed`;
     actionInner = `<button class="cb-action-btn blue" onclick="cbOpenDropdown(event,'buy')" type="button">
       Commit to Buy Used ${arrowSVG}
-    </button>`;
+    </button>
+    <button class="cb-action-secondary" onclick="cbOpenDropdown(event,'sell')" type="button">Sell Used</button>`;
   } else {
     msg = `Lock In <strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> Future Resale &nbsp;-&nbsp; A1 Condition`;
     sub = `Choose Your Resale Timing`;

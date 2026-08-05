@@ -77,14 +77,20 @@
 .cb-message .cb-count { font-weight: 800; font-size: 17px; }
 .cb-sub { font-size: 11.5px; color: #6b6b6b; white-space: nowrap; letter-spacing: -.01em; }
 .cb-sub .cb-price { font-weight: 800; color: #16a34a; }
-.cb-state-sellers .cb-sub .cb-price { color: #1d4ed8; }
 .cb-brand-inline { font-size: 9px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #0a0a0a; margin-top: 1px; }
 .cb-brand-inline em { font-style: normal; color: #22c55e; font-weight: 800; }
 
-.cb-action-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+.cb-action-wrap { display: flex; flex-direction: row; align-items: center; gap: 8px; flex-shrink: 0; }
+.cb-action-secondary {
+  background: transparent; border: 1px solid rgba(0,0,0,.18); border-radius: 100px;
+  padding: 8px 15px; font-size: 12.5px; font-weight: 600; letter-spacing: -.02em;
+  color: #0a0a0a; cursor: pointer; white-space: nowrap; font-family: inherit;
+  transition: background .12s;
+}
+.cb-action-secondary:hover { background: rgba(0,0,0,.04); }
 .cb-action-btn {
   display: inline-flex; align-items: center; gap: 5px;
-  background: #0a0a0a; color: #fff;
+  background: #15803d; color: #fff;
   border-radius: 100px; padding: 8px 15px;
   font-size: 12.5px; font-weight: 600; letter-spacing: -.02em;
   border: none; cursor: pointer; white-space: nowrap;
@@ -92,9 +98,7 @@
   font-family: inherit;
   text-decoration: none; /* .cb-action-btn is also used on <a> tags (retailer comparison cards) */
 }
-.cb-action-btn:hover { background: #222; }
-.cb-action-btn.blue { background: #1d4ed8; }
-.cb-action-btn.blue:hover { background: #1e40af; }
+.cb-action-btn:hover { background: #166534; }
 .cb-action-btn svg { width: 13px; height: 13px; }
 .cb-wordmark-sub { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #c8c8c8; text-align: right; }
 .cb-wordmark-sub em { font-style: normal; color: #22c55e; }
@@ -158,16 +162,12 @@
   background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px;
   padding: 12px 14px; margin-bottom: 12px;
 }
-.dd-price-card.blue { background: #eff6ff; border-color: #bfdbfe; }
 .dd-price-label { font-size: 9.5px; font-weight: 700; letter-spacing: .06em; color: #16a34a; margin-bottom: 2px; }
-.dd-price-card.blue .dd-price-label { color: #1d4ed8; }
 .dd-price-val { font-size: 24px; font-weight: 800; color: #16a34a; letter-spacing: -.03em; }
-.dd-price-card.blue .dd-price-val { color: #1d4ed8; }
 .dd-badge {
   font-size: 10px; font-weight: 700; color: #15803d; background: #fff;
   border: 1px solid #bbf7d0; border-radius: 100px; padding: 5px 9px; text-align: center;
 }
-.dd-badge.blue { color: #1d4ed8; border-color: #bfdbfe; }
 
 .dd-breakdown-toggle {
   width: 100%; display: flex; align-items: center; justify-content: space-between;
@@ -215,8 +215,6 @@
   transition: background .12s;
 }
 .dd-cta:hover { background: #16a34a; }
-.dd-cta.blue { background: #1d4ed8; }
-.dd-cta.blue:hover { background: #1e40af; }
 .dd-cta:disabled { opacity: .6; cursor: default; }
 .dd-note { font-size: 10.5px; color: #b0b0b0; text-align: center; margin-top: 10px; line-height: 1.6; }
 .dd-note a { color: #6b6b6b; text-decoration: underline; }
@@ -254,7 +252,6 @@
   background: #f7f7f5; border-radius: 10px; padding: 11px 13px; margin: 12px 0 16px;
 }
 .dd-offer-terms { font-size: 11.5px; color: #3a3a3a; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 9px 11px; margin: 12px 0 10px; line-height: 1.5; }
-.dd-offer-terms.blue { background: #eff6ff; border-color: #bfdbfe; }
 .dd-offer-terms strong { font-weight: 800; }
 .dd-offer-toprow { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .dd-offer-label { font-size: 12px; font-weight: 600; color: #3a3a3a; margin: 0; }
@@ -272,7 +269,6 @@
 }
 .dd-offer-card:hover { border-color: #22c55e; background: #f0fdf4; }
 .dd-offer-price { font-size: 15px; font-weight: 800; color: #16a34a; letter-spacing: -.02em; }
-.dd-offer-card.blue .dd-offer-price { color: #1d4ed8; }
 .dd-offer-rating { font-size: 11.5px; color: #6b6b6b; margin-top: 1px; }
 .dd-offer-stars { color: #f5a623; letter-spacing: 1px; font-size: 10.5px; }
 .dd-offer-count { color: #9a9a9a; font-weight: 500; }
@@ -288,8 +284,8 @@
 /* Buy-mode value props (replace seller-facing stars when browsing to buy) */
 .dd-value-row { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
 .dd-value-chip {
-  font-size: 10.5px; font-weight: 700; color: #1d4ed8; background: #eff6ff;
-  border: 1px solid #bfdbfe; border-radius: 100px; padding: 5px 10px;
+  font-size: 10.5px; font-weight: 700; color: #15803d; background: #f0fdf4;
+  border: 1px solid #bbf7d0; border-radius: 100px; padding: 5px 10px;
 }
 .dd-bd-value-grid { display: flex; flex-direction: column; gap: 6px; padding: 4px 2px 10px; }
 .dd-bd-value-item { font-size: 12px; font-weight: 600; color: #15803d; }
