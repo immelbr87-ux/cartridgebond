@@ -44,12 +44,17 @@ function matchBbGame(text) {
 }
 
 function findBbAnchor() {
-  return document.querySelector('.shop-product-title, .pdp-header') ||
-         document.querySelector('h1.sku-title, div.sku-title h1')?.closest('div');
+  // Confirmed against live DOM (Aug 2026): the old guesses (.shop-product-title,
+  // .pdp-header, h1.sku-title) don't exist anymore - the real title is a plain
+  // h1 with auto-generated utility classes (text-default font-500 text-5...)
+  // that could change on any Best Buy rebuild, so anchor to the stable
+  // data-component-name="ProductHeader" container around it instead.
+  return document.querySelector('[data-component-name="ProductHeader"] h1') ||
+         document.querySelector('[data-component-name="ProductHeader"]');
 }
 
 function initBb() {
-  const titleEl = document.querySelector('h1.sku-title, div.sku-title h1');
+  const titleEl = document.querySelector('[data-component-name="ProductHeader"] h1');
   if (!titleEl) return;
   const text = (titleEl.textContent || '') + ' ' + document.title;
   if (!text.toLowerCase().includes('nintendo switch')) return;

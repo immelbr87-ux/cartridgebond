@@ -44,7 +44,11 @@ function matchWmtGame(text) {
 }
 
 function findWmtAnchor() {
-  return document.querySelector('.prod-product-cta-area, .prod-content-section-main');
+  // Confirmed against live DOM (Aug 2026): neither guessed class exists.
+  // The real, stable element is the h1[itemprop="name"] title itself -
+  // same one initWmt() already uses for title detection - so mount
+  // directly after it instead of a separate (and wrong) container guess.
+  return document.querySelector('h1[itemprop="name"], #main-title');
 }
 
 function initWmt() {
