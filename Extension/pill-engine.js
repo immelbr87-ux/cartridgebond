@@ -43,8 +43,12 @@ function esc(s){
 }
 
 function buildDropdownShell(game, mode){
+  var isSell = mode === 'sell';
   return `<div class="dd-head">
-    <div class="dd-brand">Cartridge<em>Bond</em></div>
+    <div class="dd-head-left">
+      <div class="dd-brand">Cartridge<em>Bond</em></div>
+      <div class="dd-mode-badge">${isSell ? 'Sell PreOwned' : 'Buy PreOwned'}</div>
+    </div>
     <button class="dd-close" data-cb-action="close" type="button">✕</button>
   </div>
   <div class="dd-body" id="dd-body">
@@ -453,21 +457,17 @@ function starsHTML(n){
   return '&#9733;'.repeat(n) + '<span class="dd-star-off">' + '&#9733;'.repeat(5-n) + '</span>';
 }
 
-// Sell mode: Ownership Score + stars (assessing resale value/liquidity).
-// Buy mode: A1/zero-fee/availability value props instead - a buyer doesn't
-// care what a seller "earns", they care what it costs and how sure the buy is.
+// Sell mode: Ownership Score + stars, plus the full comparison table -
+// eBay net-to-seller and GameStop trade-in are legitimate sell-side
+// reference points here ("you'd net less elsewhere").
+// Buy mode: A1/zero-fee/availability value props, plus ONLY retail vs
+// CartridgeBond - eBay's net-to-seller figure and GameStop's trade-in
+// payout are NOT what a buyer would pay at either place, so showing them
+// as "eBay, used" / "GameStop, used" in a buy-mode context is misleading,
+// not just unhelpful. Omitted here until real buyer-facing prices exist.
 function renderBreakdown(data, mode){
   var c = data.comparison, intel = data.intel;
   var isSell = mode === 'sell';
-  var rows = '';
-  if(c){
-    rows = `
-      <div class="dd-bd-row"><span>Buy new (retail)</span><span>$${c.retailPrice ?? ' - '}</span></div>
-      <div class="dd-bd-row hl"><span>CartridgeBond (A1, used)</span><span>$${c.cartridgeBondPrice}</span></div>
-      <div class="dd-bd-row"><span>eBay, used</span><span>$${c.ebayNetLow}&ndash;${c.ebayNetHigh}</span></div>
-      <div class="dd-bd-row"><span>GameStop, used</span><span>$${c.gameStopTradeIn}</span></div>
-    `;
-  }
 
   if(!isSell){
     var valueBlock = `
@@ -477,8 +477,22 @@ function renderBreakdown(data, mode){
         <div class="dd-bd-value-item">✓ Available now, 30d, or flexible 90d</div>
       </div>
     `;
-    if(!rows) return valueBlock + `<div class="dd-bd-loading">No platform pricing on file yet for this title.</div>`;
-    return valueBlock + rows;
+    if(!c) return valueBlock + `<div class="dd-bd-loading">No platform pricing on file yet for this title.</div>`;
+    var buyRows = `
+      <div class="dd-bd-row"><span>Buy new (retail)</span><span>$${c.retailPrice ?? ' - '}</span></div>
+      <div class="dd-bd-row hl"><span>CartridgeBond (A1, used)</span><span>$${c.cartridgeBondPrice}</span></div>
+    `;
+    return valueBlock + buyRows;
+  }
+
+  var sellRows = '';
+  if(c){
+    sellRows = `
+      <div class="dd-bd-row"><span>Buy new (retail)</span><span>$${c.retailPrice ?? ' - '}</span></div>
+      <div class="dd-bd-row hl"><span>CartridgeBond (A1, used)</span><span>$${c.cartridgeBondPrice}</span></div>
+      <div class="dd-bd-row"><span>eBay, net to seller</span><span>$${c.ebayNetLow}&ndash;${c.ebayNetHigh}</span></div>
+      <div class="dd-bd-row"><span>GameStop, trade-in</span><span>$${c.gameStopTradeIn}</span></div>
+    `;
   }
 
   var scoreBlock = '';
@@ -496,8 +510,8 @@ function renderBreakdown(data, mode){
       </div>
     `;
   }
-  if(!rows && !scoreBlock) return `<div class="dd-bd-loading">No breakdown data yet for this title.</div>`;
-  return scoreBlock + rows;
+  if(!sellRows && !scoreBlock) return `<div class="dd-bd-loading">No breakdown data yet for this title.</div>`;
+  return scoreBlock + sellRows;
 }
 
 // ── Build pill HTML ───────────────────────────────────────────────────────────
