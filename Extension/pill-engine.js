@@ -236,7 +236,7 @@ function renderCustomParamsHTML(blueClass, isSell){
       <div class="dd-value-chip">Zero fees</div>
     </div>`}
     <button class="dd-breakdown-toggle" data-cb-action="toggle-breakdown" type="button">
-      See full price breakdown ${isSell ? '&amp; ownership score' : 'across platforms'}
+      See full price breakdown ${isSell ? '&amp; ownership score' : '&amp; timing options'}
       <svg id="dd-bd-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
     </button>
     <div id="dd-breakdown" class="dd-breakdown"></div>
@@ -470,10 +470,13 @@ function renderBreakdown(data, mode){
   var isSell = mode === 'sell';
 
   if(!isSell){
+    // "A1 condition guaranteed" and "Zero fees" are already shown as chips
+    // right above this toggle (always visible, not hidden behind the
+    // expand) - repeating them again here would just be saying the same
+    // thing twice in the same breath, so only the genuinely new fact
+    // (timing flexibility) goes in the expanded panel.
     var valueBlock = `
       <div class="dd-bd-value-grid">
-        <div class="dd-bd-value-item">✓ A1 condition guaranteed</div>
-        <div class="dd-bd-value-item">✓ Zero fees</div>
         <div class="dd-bd-value-item">✓ Available now, 30d, or flexible 90d</div>
       </div>
     `;
@@ -548,7 +551,7 @@ function buildPill(game, buyers, sellers){
   var actionHTML = hasBuyers || hasSellers
     ? `<div class="cb-action-wrap">${actionInner}</div>`
     : `<div class="cb-dual-wrap">
-        <button class="cb-dual-sell" data-cb-action="open-dropdown" data-mode="sell" type="button">Sell PreOwned</button>
+        <button class="cb-dual-sell cb-dual-active" data-cb-action="open-dropdown" data-mode="sell" type="button">Sell PreOwned</button>
         <button class="cb-dual-buy" data-cb-action="open-dropdown" data-mode="buy" type="button">Buy PreOwned</button>
       </div>`;
 
@@ -581,6 +584,15 @@ var _currentGame = null;
 var _currentBuyers = 0, _currentSellers = 0;
 function cbOpenDropdown(mode){
   var anchor = document.getElementById('cb-pill');
+  // Reflect whichever action was actually clicked - the dual-state pill
+  // (shown before any buyers/sellers exist) shouldn't keep showing "Sell"
+  // as the highlighted action if the person just clicked "Buy".
+  var sellBtn = document.querySelector('.cb-dual-sell');
+  var buyBtn  = document.querySelector('.cb-dual-buy');
+  if(sellBtn && buyBtn){
+    sellBtn.classList.toggle('cb-dual-active', mode === 'sell');
+    buyBtn.classList.toggle('cb-dual-active', mode === 'buy');
+  }
   if(_currentGame) openDropdown(_currentGame, mode, anchor);
 }
 
