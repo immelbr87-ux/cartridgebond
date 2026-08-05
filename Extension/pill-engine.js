@@ -23,6 +23,7 @@
  */
 
 var dropdownOpen = false;
+var _outsideClickHandler = null; // tracks the single active outside-click listener
 var currentTl    = 'flex'; // timeline selection in dropdown
 var _ddGame = null, _ddMode = null, _ddBuyers = 0, _ddSellers = 0;
 var _ddOffers = [], _ddOfferId = null, _ddPickedPrice = 0;
@@ -36,6 +37,10 @@ function closeDropdown(){
   var d = document.getElementById('cb-dropdown');
   if(d) d.remove();
   dropdownOpen = false;
+  if(_outsideClickHandler){
+    document.removeEventListener('click', _outsideClickHandler);
+    _outsideClickHandler = null;
+  }
 }
 
 function esc(s){
@@ -82,21 +87,20 @@ function openDropdown(game, mode, anchorEl){
   if(top + 480 > window.innerHeight) top = Math.max(rect.top - 480, 8);
   dd.style.cssText += `left:${left}px!important;top:${top}px!important;`;
 
-  // Close on outside click
+  // Close on outside click. Only one of these listeners may ever be active
+  // at a time - closeDropdown() (called at the top of this function) already
+  // cleans up any listener left over from a previous dropdown, so a fresh
+  // one can safely be attached here without ever stacking duplicates.
   setTimeout(function(){
-    document.addEventListener('click', function outsideClick(e){
-      // Use composedPath() (captured at dispatch time), not e.target -
-      // an earlier bubble-phase handler (e.g. cbShowConfirm) may have
-      // already replaced dd-body's innerHTML and detached e.target from
-      // the DOM by the time this listener runs, which would make
-      // dd.contains(e.target) wrongly read as "outside" and close the
-      // dropdown on every single click inside it.
+    _outsideClickHandler = function(e){
       var path = e.composedPath();
-      if(!path.includes(dd) && e.target.id !== 'cb-pill'){
+      var pill = document.getElementById('cb-pill');
+      var onPill = pill && path.includes(pill);
+      if(!path.includes(dd) && !onPill){
         closeDropdown();
-        document.removeEventListener('click', outsideClick);
       }
-    });
+    };
+    document.addEventListener('click', _outsideClickHandler);
   }, 100);
 
   fetchOffers(game, mode).then(function(result){
