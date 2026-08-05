@@ -44,7 +44,10 @@ function matchTgtGame(text) {
 }
 
 function findTgtAnchor() {
-  return document.querySelector('div[data-test="product-details-title"]');
+  // Confirmed against live DOM (Aug 2026): the real element is an <h1> with
+  // data-test="product-title" - the old selector (div, "product-details-title")
+  // never matched anything, which silently killed the whole mount.
+  return document.querySelector('h1[data-test="product-title"]');
 }
 
 function initTgt() {
