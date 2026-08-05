@@ -27,11 +27,13 @@
 @keyframes cb-expand-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 
 #cb-pill {
-  display: block;
+  display: inline-block; /* shrink-wrap to content instead of stretching to
+                             fill the parent column - a block-level element
+                             fills its container's width by default even
+                             when content is much shorter, which is what
+                             was causing the big empty gap before the button */
+  max-width: 100%; /* still never overflow a narrow parent */
   margin: 10px 0 4px;
-  max-width: 560px; /* prevents the pill stretching edge-to-edge on wide
-                        SPA layouts (Target etc.) and leaving a huge empty
-                        gap between the text and the action button */
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
@@ -46,7 +48,6 @@
   gap: 12px;
   position: relative;
   overflow: hidden;
-  width: 100%;
   box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 2px 16px rgba(0,0,0,.05);
 }
 .cb-pill-inner::before {

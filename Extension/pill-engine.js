@@ -508,8 +508,8 @@ function buildPill(game, buyers, sellers){
     </button>
     <button class="cb-action-secondary" onclick="cbOpenDropdown(event,'sell')" type="button">Sell PreOwned</button>`;
   } else {
-    msg = `Lock In <strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> Future Resale &nbsp;-&nbsp; A1 Condition`;
-    sub = `Choose Your Resale Timing`;
+    msg = `<strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> PreOwned Buy/Sell Price`;
+    sub = `A1 Condition Only - Choose Your Timing`;
   }
 
   var actionHTML = hasBuyers || hasSellers
