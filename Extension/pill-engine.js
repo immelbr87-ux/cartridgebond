@@ -494,19 +494,19 @@ function buildPill(game, buyers, sellers){
   var msg, sub, actionInner;
 
   if(hasBuyers){
-    msg = `<span class="cb-count" id="cb-cnt">${buyers}</span> Future Buyer${buyers!==1?'s':''} Waiting`;
-    sub = `Complete the Bond &amp; Sell This Game Later - Lock <span class="cb-price">$${game.price}</span> Sell Price Now`;
+    msg = `Sell PreOwned for <strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> - A1 Condition`;
+    sub = `<span class="cb-count" id="cb-cnt">${buyers}</span> Future Buyer${buyers!==1?'s':''} Committed - $0 Fees in Beta`;
     actionInner = `<button class="cb-action-btn" onclick="cbOpenDropdown(event,'sell')" type="button">
-      Commit to Sell Used ${arrowSVG}
+      Sell PreOwned ${arrowSVG}
     </button>
-    <button class="cb-action-secondary" onclick="cbOpenDropdown(event,'buy')" type="button">Buy Used</button>`;
+    <button class="cb-action-secondary" onclick="cbOpenDropdown(event,'buy')" type="button">Buy PreOwned</button>`;
   } else if(hasSellers){
-    msg = `<span class="cb-count" id="cb-cnt">${sellers}</span> Seller${sellers!==1?'s':''} Ready To Sell Used`;
-    sub = `Buy Used at <span class="cb-price">$${game.price}</span> - A1 Condition Guaranteed`;
-    actionInner = `<button class="cb-action-btn blue" onclick="cbOpenDropdown(event,'buy')" type="button">
-      Commit to Buy Used ${arrowSVG}
+    msg = `Buy PreOwned for <strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> - A1 Condition`;
+    sub = `<span class="cb-count" id="cb-cnt">${sellers}</span> Future Seller${sellers!==1?'s':''} Committed - $0 Fees in Beta`;
+    actionInner = `<button class="cb-action-btn" onclick="cbOpenDropdown(event,'buy')" type="button">
+      Buy PreOwned ${arrowSVG}
     </button>
-    <button class="cb-action-secondary" onclick="cbOpenDropdown(event,'sell')" type="button">Sell Used</button>`;
+    <button class="cb-action-secondary" onclick="cbOpenDropdown(event,'sell')" type="button">Sell PreOwned</button>`;
   } else {
     msg = `Lock In <strong style="color:#15803d!important;font-weight:800!important;">$${game.price}</strong> Future Resale &nbsp;-&nbsp; A1 Condition`;
     sub = `Choose Your Resale Timing`;
@@ -515,8 +515,8 @@ function buildPill(game, buyers, sellers){
   var actionHTML = hasBuyers || hasSellers
     ? `<div class="cb-action-wrap">${actionInner}</div>`
     : `<div class="cb-dual-wrap">
-        <button class="cb-dual-sell" onclick="cbOpenDropdown(event,'sell')" type="button">Sell Used</button>
-        <button class="cb-dual-buy" onclick="cbOpenDropdown(event,'buy')" type="button">Buy Used</button>
+        <button class="cb-dual-sell" onclick="cbOpenDropdown(event,'sell')" type="button">Sell PreOwned</button>
+        <button class="cb-dual-buy" onclick="cbOpenDropdown(event,'buy')" type="button">Buy PreOwned</button>
       </div>`;
 
   return `<div id="cb-pill" class="${stateClass}">
